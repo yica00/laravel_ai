@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>诺航后台管理</title>
+    <title>神鹰管理管理</title>
 
     <link href="http://7xtfzn.com1.z0.glb.clouddn.com/Fontawesom/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://7xtfzn.com1.z0.glb.clouddn.com/Fontawesom/css/font-awesome-ie7.min.css" rel="stylesheet">
@@ -25,6 +25,9 @@
         </a>
 
         <ul class="fl menu">
+            <li>
+            <a class="fstMenu" href="/article"><i class="fa fa-check-square-o"></i> 导航内容</a>
+            </li>
             <li>
                 <a class="fstMenu" href="/admin/head_img"><i class="fa fa-file-text-o"></i> 导航图</a>
             </li>
@@ -74,9 +77,9 @@
     <div id="left-bar" class="left-view">
         <ul class="nav">
             <li >
-                <a class="menu" href="/admin/head_img">
+                <a class="menu" href="/article">
                     <i class="fa fa-file-text-o"></i>
-                    <span>导航图</span>
+                    <span>导航</span>
                 </a>
             </li>
             <li>
@@ -85,12 +88,12 @@
                     <span>业务范围</span>
                 </a>
             </li>
-            {{--<li>--}}
-                {{--<a class="menu" href="/goods" style="margin-top: 10px">--}}
-                    {{--<i class="fa fa-check-square-o"></i>--}}
-                    {{--<span>商品</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
+            <li>
+                <a class="menu" href="/admin/head_img" style="margin-top: 10px">
+                    <i class="fa fa-check-square-o"></i>
+                    <span>导航图</span>
+                </a>
+            </li>
             {{--<li>--}}
                 {{--<a class="menu" href="/scalp_order" style="margin-top: 10px">--}}
                     {{--<i class="fa fa-check-square-o"></i>--}}

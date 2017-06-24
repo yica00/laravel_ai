@@ -42,6 +42,7 @@ Route::group(['middleware'=>'auth','namespace'=>'Admin'],function (){
     Route::resource('customer','CustomerController');
     Route::resource('customer_order','Customer_orderController');
     Route::resource('area','AreaController');
+    Route::resource('article','ArticleController');
 //    Route::resource('user','userController');
 
     Route::post('/evaluate/file/upload','EvaluateController@uploadFile');  //评价文件批量导入

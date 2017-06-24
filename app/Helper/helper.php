@@ -38,6 +38,19 @@ if (!function_exists('readJson')){
     }
 }
 
+if (!function_exists('getSubs')){
+    function getSubs($menus,$pid=0){
+        $subs=array();
+        foreach($menus as $item){
+            if($item['pid']==$pid){
+                $item->sons = getSubs($menus,$item['id']);
+                $subs[]=$item;
+            }
+        }
+        return $subs;
+    }
+}
+
 function getUrl($request,$img){
     $rel = $request->file($img);
     if(!$rel) return null;
@@ -58,3 +71,5 @@ function readJson2(){
     $data = json_decode($json_string, true);
     return $data;
 }
+
+
