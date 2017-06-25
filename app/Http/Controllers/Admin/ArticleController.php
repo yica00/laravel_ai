@@ -16,7 +16,7 @@ class ArticleController extends Controller
         $this->getlevel(5,$request);
         return $request->get('str');
 //        $articles = Article::select('id','title','pid')->orderBy('id','asc')->get();
-        $rel = Article::select('id','title','pid')->orderBy('id','asc')->get();
+        $rel = Article::select('id','title','pid')->where('is_nav','1')->orderBy('id','asc')->get();
 //        $articles = getSubs($articles,$pid=0);
 //        return getSubs($articles);
 
@@ -50,6 +50,13 @@ class ArticleController extends Controller
      */
     public function create(){
         return view('admin.article_create');
+    }
+
+    /**
+     * 展示添加子类页面
+     */
+    public function add_son($id){
+        return view('admin.article_add_son');
     }
 
     /**

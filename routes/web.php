@@ -18,9 +18,6 @@ Route::get('/admin/logout', function () {
     return redirect('/home');
 });
 
-Route::get('/t', function () {
-    return view('admin.test');
-});
 
 Route::resource('user','Admin\userController');
 
@@ -50,14 +47,12 @@ Route::group(['middleware'=>'auth','namespace'=>'Admin'],function (){
     Route::resource('article','ArticleController');
 //    Route::resource('user','userController');
 
-    Route::post('/evaluate/file/upload','EvaluateController@uploadFile');  //评价文件批量导入
-    Route::post('jd_account/file/upload','Jd_accountController@uploadFile'); //京东账号批量导入
+
+
+    Route::get('article/add_son/{$id}','ArticleController@add_son');
+    Route::post('article/add_son/{$id}','ArticleController@store_son');
+
+
 });
 
-Route::group(['namespace'=>'Admin','prefix'=>'/v1/admin/'],function (){
-    Route::any('search_city','AreaController@searchCity'); // 根据城市查对应编号
-    Route::any('scalpable_ids/{goods_id}','GoodsController@get_scalpable_ids'); // 获取可刷账号
-    Route::any('jd_accounts','Jd_accountController@cliStore');  // 添加京东账号
-    Route::any('jd_accounts/{id}','Jd_accountController@cliUpdate');// 修改京东账号
-});
 
