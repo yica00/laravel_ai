@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade;
 use Laracasts\Utilities\JavaScript\ViewBinder;
 
 class ArticleController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $this->getlevel(5,$request);
+        return $request->get('str');
 //        $articles = Article::select('id','title','pid')->orderBy('id','asc')->get();
         $rel = Article::select('id','title','pid')->orderBy('id','asc')->get();
 //        $articles = getSubs($articles,$pid=0);
@@ -52,12 +55,26 @@ class ArticleController extends Controller
     /**
      * 新增
      */
-    public function store( ){
+     public function store( ){
+         $pid = Input::get('pid');
+
         $rel = Article::create(['name'=>Input::get('name')]);
         if($rel->wasRecentlyCreated){
             return back()->with('errors','添加成功');
         }
         return back()->withErrors();
+    }
+
+    private function getlevel($pid,$request,$str=""){
+        $artical = Article::find($pid);
+        if( $artical->pid != 0 ){
+            $str .= "　　_";
+            $request->attributes->add(['str'=>$str]);
+            $artical = Article::find($pid);
+            if($artical->pid != 0){
+                $this->getlevel($artical->pid,$request,$str);
+            }
+        }
     }
 
     /**
