@@ -11,18 +11,26 @@ class CreateArticleTable extends Migration
      *
      * @return void
      */
+    protected $fillable = ['title','thumbnail','comtent','pid','is_nav','link','serial_number'];
+
     public function up()
     {
-        //
+        Schema::create('articles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title',80);
+            $table->string('thumbnail',100)->nullable();
+            $table->text('comtent',2000)->nullable();
+            $table->integer('pid');
+            $table->tinyInteger('is_nav')->default(1);
+            $table->integer('serial_number')->default(1);
+            $table->string('link',100)->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        //
+        Schema::dropIfExists('articles');
     }
 }

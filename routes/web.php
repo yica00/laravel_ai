@@ -17,6 +17,11 @@ Route::get('/admin/logout', function () {
     Auth::logout();
     return redirect('/home');
 });
+
+Route::get('/t', function () {
+    return view('admin.test');
+});
+
 Route::resource('user','Admin\userController');
 
 Auth::routes();

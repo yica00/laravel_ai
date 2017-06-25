@@ -5,15 +5,34 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade;
+use Laracasts\Utilities\JavaScript\ViewBinder;
 
 class ArticleController extends Controller
 {
     public function index(){
-        $articles = Article::select('*')->orderBy('id','asc')->get();
+//        $articles = Article::select('id','title','pid')->orderBy('id','asc')->get();
+        $rel = Article::select('id','title','pid')->orderBy('id','asc')->get();
 //        $articles = getSubs($articles,$pid=0);
-        JavaScriptFacade::put(['data' => $articles]);
-        return view('admin.article',compact('articles'));
+//        return getSubs($articles);
+
+        $arr = $arr2 = '';
+        for ( $i=$j=0;$i<count($rel);$i++ ){
+            if($rel[$i]->pid==0){
+                $arr[] = $rel[$i];
+            }else{
+                $arr2[] = $rel[$i];
+            }
+        }
+        for ( $i=0;$i<count($arr2);$i++ ) {
+            for ( $j=0;$j<count($arr);$j++ ) {
+                if ($arr[$j]->id == $arr2[$i]->pid) {
+                    array_splice($arr, $j+1,0,array($arr2[$i]));
+                }
+            }
+        }
+        return view('admin.article')->with('permission',$arr);
     }
 
     /**
