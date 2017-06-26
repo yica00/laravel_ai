@@ -39,6 +39,7 @@
                                 <label for="email" class="col-md-4 control-label">头像</label>
                                 <div class="col-md-6">
                                     <input id="email" type="file"  class="form-control" name="photo" autofocus>
+                                    <img src="{{  $team->photo }}" width="50" />
                                 </div>
                             </div>
 

@@ -13,6 +13,27 @@
 
 Route::group(['middleware'=>'check_setting'],function (){
 
+
+    Route::group(['as'=>'front'],function (){
+        Route::get('about_us','FrontController@about_us');
+        Route::get('team','FrontController@team');
+        Route::get('honor','FrontController@honor');
+        Route::get('enterprise','FrontController@enterprise');
+        Route::get('parenting','FrontController@parenting');
+        Route::get('cs','FrontController@cs');
+        Route::get('camp','FrontController@camp');
+        Route::get('training','FrontController@training');
+        Route::get('base_xisan','FrontController@base_xisan');
+        Route::get('base_qingshan','FrontController@base_qingshan');
+        Route::get('base_guoleyuan','FrontController@base_guoleyuan');
+        Route::get('case','FrontController@our_case');
+        Route::get('plan','FrontController@plan');
+        Route::get('contact','FrontController@contact');
+
+    });
+
+
+
     Route::get('/admin/logout', function () {
         Auth::logout();
         return redirect('/home');
@@ -32,9 +53,8 @@ Route::group(['middleware'=>'check_setting'],function (){
     Route::get('/admin/setting', 'HomeController@setting'); //网站设置
     Route::put('/admin/setting', 'HomeController@do_setting');//网站设置
 
-
-
     Route::get('/', 'FrontController@index');
+
 
 
     Route::group(['middleware'=>'auth','namespace'=>'Admin','prefix'=>'admin'],function (){

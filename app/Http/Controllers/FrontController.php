@@ -40,4 +40,60 @@ class FrontController extends Controller
         return $teams;
     }
 
+    public function about_us(){
+        return view('front.about');
+    }
+
+    public function team(){
+        return view('front.team');
+    }
+
+    public function honor(){
+        return view('front.honor');
+    }
+
+    public function enterprise(){
+        return view('front.enterprise');
+    }
+
+    public function parenting(){
+        return view('front.parenting');
+    }
+
+    public function cs(){
+        return view('front.cs');
+    }
+
+    public function camp(){
+        return view('front.camp');
+    }
+
+    public function training(){
+        return view('front.training');
+    }
+
+    public function base_xisan(){
+        return view('front.base_xisan');
+    }
+
+    public function base_qingshan(){
+        return view('front.base_qingshan');
+    }
+
+    public function base_guoleyuan(){
+        return view('front.base_guoleyuan');
+    }
+
+    public function our_case(){
+        return view('front.case');
+    }
+
+    public function plan(){
+        return view('front.plan');
+    }
+
+    public function contact(){
+        return view('front.contact');
+    }
+
 }

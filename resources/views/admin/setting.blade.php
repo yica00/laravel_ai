@@ -68,7 +68,9 @@
                                 <label for="email" class="col-md-4 control-label">微信公众号</label>
                                 <div class="col-md-6">
                                     <input id="email" type="file"  class="form-control" name="wx_map" autofocus>
+                                    <img src="{{  $setting['wx_map'] }}" width="50" />
                                 </div>
+
                             </div>
 
 
