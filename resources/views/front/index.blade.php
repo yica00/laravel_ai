@@ -2,7 +2,7 @@
 <!-- saved from url=(0024)http://www.clearedu.net/ -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>神鹰</title>
+    <title>{{ session('setting')['web_name']  }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="keywords" content="">
@@ -13,7 +13,7 @@
     <link href="css/base.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.source"></script>
+    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.source.js"></script>
 
     <!--[if lt IE 9]><!-->
     <script src="js/html5shiv.min.js"></script>
@@ -104,10 +104,10 @@
             </div>
             <div class="bd">
                 <ul>
-                    <li><a href="" ><img src="images/bn_1.jpg"></a></li>
-                    <li><a href="" ><img src="images/bn_2.jpg"></a></li>
-                    <li><a href="" ><img src="images/bn_3.jpg"></a></li>
-                    <li><a href="" ><img src="images/bn_4.jpg"></a></li>
+                    <li><a href="" ><img src="{{  $slides[0]->thumbnail }}"></a></li>
+                    <li><a href="" ><img src="{{  $slides[1]->thumbnail }}"></a></li>
+                    <li><a href="" ><img src="{{  $slides[2]->thumbnail }}"></a></li>
+                    <li><a href="" ><img src="{{  $slides[3]->thumbnail }}"></a></li>
                 </ul>
             </div>
         </div>
@@ -145,28 +145,28 @@
                 </div>
                 <div class="bd">
                     <ul>
-                        <li><span><img src="images/base1.jpg"></span></li>
-                        <li><span><img src="images/base2.jpg"></span></li>
-                        <li><span><img src="images/base3.jpg"></span></li>
-                        <li><span><img src="images/base4.jpg"></span></li>
-                        <li><span><img src="images/base5.jpg"></span></li>
-                        <li><span><img src="images/base6.jpg"></span></li>
+                        <li><span><img src="{{  $bases[0][0]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[0][1]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[0][2]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[0][3]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[0][4]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[0][5]->thumbnail }}"></span></li>
                     </ul>
                     <ul>
-                        <li><span><img src="images/base1.jpg"></span></li>
-                        <li><span><img src="images/base2.jpg"></span></li>
-                        <li><span><img src="images/base5.jpg"></span></li>
-                        <li><span><img src="images/base6.jpg"></span></li>
-                        <li><span><img src="images/base3.jpg"></span></li>
-                        <li><span><img src="images/base4.jpg"></span></li>
+                        <li><span><img src="{{  $bases[1][0]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[1][1]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[1][2]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[1][3]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[1][4]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[1][5]->thumbnail }}"></span></li>
                     </ul>
                     <ul>
-                        <li><span><img src="images/base5.jpg"></span></li>
-                        <li><span><img src="images/base6.jpg"></span></li>
-                        <li><span><img src="images/base1.jpg"></span></li>
-                        <li><span><img src="images/base2.jpg"></span></li>
-                        <li><span><img src="images/base3.jpg"></span></li>
-                        <li><span><img src="images/base4.jpg"></span></li>
+                        <li><span><img src="{{  $bases[2][0]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[2][1]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[2][2]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[2][3]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[2][4]->thumbnail }}"></span></li>
+                        <li><span><img src="{{  $bases[2][5]->thumbnail }}"></span></li>
                     </ul>
                 </div>
             </div>
@@ -185,49 +185,44 @@
                     <div class="bd">
                         <ul>
                             <li>
-                                <img src="images/case1.jpg" />
-                                <div class="txt">
-                                    <h2>南充市三野公司2016春季户外拓展</h2>
-                                    <p>合作时间：2016年4月</p>
-                                    <p>合作内容：户外拓展真人cs</p>
-                                    <p>满意度：十分满意</p>
-                                </div>
+                                <img src="{{  $cases[0]->thumbnail }}" />
+                                <div id="case0" hidden="hidden" >{{  $cases[0]->comtent }}</div>
+                                <div class="txt" id ="case0_comtent" ></div>
+                                <script>
+                                    document.getElementById("case0_comtent").innerHTML = document.getElementById("case0").innerText;
+                                </script>
                             </li>
                             <li>
-                                <img src="images/case2.jpg" />
-                                <div class="txt">
-                                    <h2>南充市三野公司2016春季户外拓展</h2>
-                                    <p>合作时间：2016年4月</p>
-                                    <p>合作内容：户外拓展真人cs</p>
-                                    <p>满意度：十分满意</p>
-                                </div>
+                                <img src="{{  $cases[1]->thumbnail }}" />
+                                <div id="case1" hidden="hidden" >{{  $cases[1]->comtent }}</div>
+                                <div class="txt" id ="case1_comtent" ></div>
+                                <script>
+                                    document.getElementById("case1_comtent").innerHTML = document.getElementById("case1").innerText;
+                                </script>
                             </li>
                             <li>
-                                <img src="images/case3.jpg" />
-                                <div class="txt">
-                                    <h2>南充市三野公司2016春季户外拓展</h2>
-                                    <p>合作时间：2016年4月</p>
-                                    <p>合作内容：户外拓展真人cs</p>
-                                    <p>满意度：十分满意</p>
-                                </div>
+                                <img src="{{  $cases[2]->thumbnail }}" />
+                                <div id="case2" hidden="hidden" >{{  $cases[2]->comtent }}</div>
+                                <div class="txt" id ="case2_comtent" ></div>
+                                <script>
+                                    document.getElementById("case2_comtent").innerHTML = document.getElementById("case2").innerText;
+                                </script>
                             </li>
                             <li>
-                                <img src="images/case4.jpg" />
-                                <div class="txt">
-                                    <h2>南充市三野公司2016春季户外拓展</h2>
-                                    <p>合作时间：2016年4月</p>
-                                    <p>合作内容：户外拓展真人cs</p>
-                                    <p>满意度：十分满意</p>
-                                </div>
+                                <img src="{{  $cases[3]->thumbnail }}" />
+                                <div id="case3" hidden="hidden" >{{  $cases[3]->comtent }}</div>
+                                <div class="txt" id ="case3_comtent" ></div>
+                                <script>
+                                    document.getElementById("case3_comtent").innerHTML = document.getElementById("case3").innerText;
+                                </script>
                             </li>
                             <li>
-                                <img src="images/case5.jpg" />
-                                <div class="txt">
-                                    <h2>南充市三野公司2016春季户外拓展</h2>
-                                    <p>合作时间：2016年4月</p>
-                                    <p>合作内容：户外拓展真人cs</p>
-                                    <p>满意度：十分满意</p>
-                                </div>
+                                <img src="{{  $cases[4]->thumbnail }}" />
+                                <div id="case4" hidden="hidden" >{{  $cases[4]->comtent }}</div>
+                                <div class="txt" id ="case4_comtent" ></div>
+                                <script>
+                                    document.getElementById("case4_comtent").innerHTML = document.getElementById("case4").innerText;
+                                </script>
                             </li>
                         </ul>
                     </div>
@@ -337,51 +332,19 @@
                     <div class="hd">&nbsp;</div>
                     <div class="bd">
                         <ul class="picList">
-                            <li>
-                                <a href="team_in.html">
-                                    <span class="pic"><img src="images/tea1.jpg"></span>
-                                    <div class="txt">
-                                        <h2>西山基地</h2>
-                                        <p>许教练</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="team_in.html">
-                                    <span class="pic"><img src="images/tea2.jpg"></span>
-                                    <div class="txt">
-                                        <h2>西山基地</h2>
-                                        <p>许教练</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="team_in.html">
-                                    <span class="pic"><img src="images/tea3.jpg"></span>
-                                    <div class="txt">
-                                        <h2>西山基地</h2>
-                                        <p>许教练</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="team_in.html">
-                                    <span class="pic"><img src="images/tea2.jpg"></span>
-                                    <div class="txt">
-                                        <h2>西山基地</h2>
-                                        <p>许教练</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="team_in.html">
-                                    <span class="pic"><img src="images/tea1.jpg"></span>
-                                    <div class="txt">
-                                        <h2>西山基地</h2>
-                                        <p>许教练</p>
-                                    </div>
-                                </a>
-                            </li>
+                            @foreach($teams as $team)
+                                <li>
+                                    <a href="team_in.html">
+                                        <span class="pic"><img src="{{ $team->photo  }}"></span>
+                                        <div class="txt">
+                                            <h2>{{ $team->belong_to  }}</h2>
+                                            <p>{{ $team->name  }}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
+
+
                         </ul>
                     </div>
                 </div>
@@ -398,19 +361,19 @@
     <div class="w1160 clearfix">
         <div class="top clearfix">
             <div class="ewm fr">
-                <img src="images/erwm.png">
+                <img src="{{ session('setting')['wx_map']  }}">
                 <p>南充神鹰户外</p>
             </div>
             <div class="txt fl">
                 <img src="images/ho_tit_6.png">
                 <span class="bk20">&nbsp;</span>
                 <dl class="clearfix">
-                    <dt><span class="col_1">&nbsp;</span>座机：0817-2189050</dt>
-                    <dd><span class="col_3">&nbsp;</span>手机：黄教练（152-2816-9898） /  许教练（152-2812-1788）</dd>
+                    <dt><span class="col_1">&nbsp;</span>座机：{{ session('setting')['fix_phone']  }}</dt>
+                    <dd><span class="col_3">&nbsp;</span>手机：{{ session('setting')['contacts']  }}</dd>
                 </dl>
                 <dl class="clearfix">
-                    <dt><span class="col_2">&nbsp;</span>QQ：360090407</dt>
-                    <dd><span class="col_4">&nbsp;</span>基地：西山基地、搬罾青山湖基地、搬罾果乐园基地</dd>
+                    <dt><span class="col_2">&nbsp;</span>QQ：{{ session('setting')['qq']  }}</dt>
+                    <dd><span class="col_4">&nbsp;</span>基地：{{ session('setting')['bases']  }}</dd>
                 </dl>
             </div>
         </div>
@@ -424,7 +387,7 @@
     <a class="on_1" href="tencent://message/?uin={$qq[1]}&amp;Menu=yes">&nbsp;</a>
     <a class="on_2 ph" href=""><em><img src="images/phone.jpg"></em></a>
     <a class="on_3 add" href=""><em><img src="images/address.jpg"></em></a>
-    <a class="on_4 ewm" href=""><em><img src="images/erwm.png"></em></a>
+    <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
     <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
 </div>
 <div class="float_erwm">

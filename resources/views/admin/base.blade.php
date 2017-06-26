@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>神鹰管理管理</title>
+    <title>{{ session('setting')['web_name']  }}</title>
 
     <link href="http://7xtfzn.com1.z0.glb.clouddn.com/Fontawesom/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://7xtfzn.com1.z0.glb.clouddn.com/Fontawesom/css/font-awesome-ie7.min.css" rel="stylesheet">
@@ -26,14 +26,23 @@
 
         <ul class="fl menu">
             <li>
-            <a class="fstMenu" href="/article"><i class="fa fa-check-square-o"></i> 导航内容</a>
+                <a class="fstMenu" href="/admin/article"><i class="fa fa-check-square-o"></i> 内容管理</a>
             </li>
             <li>
-                <a class="fstMenu" href="/admin/head_img"><i class="fa fa-file-text-o"></i> 导航图</a>
+                <a class="fstMenu" href="/admin/team"><i class="fa fa-check-square-o"></i> 团队管理</a>
             </li>
             <li>
-                <a class="fstMenu" href="/admin/product"><i class="fa fa-user"></i> 业务范围</a>
+                <a class="fstMenu" href="/admin/setting"><i class="fa fa-check-square-o"></i> 网站配置</a>
             </li>
+            <li>
+                <a class="fstMenu" href="/admin/up_password"><i class="fa fa-check-square-o"></i> 修改密码</a>
+            </li>
+            {{--<li>--}}
+                {{--<a class="fstMenu" href="/admin/head_img"><i class="fa fa-file-text-o"></i> 导航图</a>--}}
+            {{--</li>--}}
+            {{--<li>--}}
+                {{--<a class="fstMenu" href="/admin/product"><i class="fa fa-user"></i> 业务范围</a>--}}
+            {{--</li>--}}
             {{--<li>--}}
                 {{--<a class="fstMenu" href="/goods"><i class="fa fa-check-square-o"></i> 商品管理</a>--}}
             {{--</li>--}}
@@ -76,24 +85,24 @@
     </div>
     <div id="left-bar" class="left-view">
         <ul class="nav">
-            <li >
-                <a class="menu" href="/article">
-                    <i class="fa fa-file-text-o"></i>
-                    <span>导航</span>
-                </a>
-            </li>
-            <li>
-                <a class="menu" href="/admin/product" style="margin-top: 10px">
-                    <i class="fa fa-user"></i>
-                    <span>业务范围</span>
-                </a>
-            </li>
-            <li>
-                <a class="menu" href="/admin/head_img" style="margin-top: 10px">
-                    <i class="fa fa-check-square-o"></i>
-                    <span>导航图</span>
-                </a>
-            </li>
+            {{--<li >--}}
+                {{--<a class="menu" href="/article">--}}
+                    {{--<i class="fa fa-file-text-o"></i>--}}
+                    {{--<span>导航</span>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+            {{--<li>--}}
+                {{--<a class="menu" href="/admin/product" style="margin-top: 10px">--}}
+                    {{--<i class="fa fa-user"></i>--}}
+                    {{--<span>业务范围</span>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+            {{--<li>--}}
+                {{--<a class="menu" href="/admin/head_img" style="margin-top: 10px">--}}
+                    {{--<i class="fa fa-check-square-o"></i>--}}
+                    {{--<span>导航图</span>--}}
+                {{--</a>--}}
+            {{--</li>--}}
             {{--<li>--}}
                 {{--<a class="menu" href="/scalp_order" style="margin-top: 10px">--}}
                     {{--<i class="fa fa-check-square-o"></i>--}}

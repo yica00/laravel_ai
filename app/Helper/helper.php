@@ -57,7 +57,7 @@ function getUrl($request,$img){
     $name = $rel->getClientOriginalExtension();
     $name = time().rand(100,999).".".$name;
     $rel->move('images',$name);
-    return 'images/'.$name;
+    return '/images/'.$name;
 }
 
 

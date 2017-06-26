@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    public $timestamps= false;
 
     protected $fillable = ['title','thumbnail','comtent','pid','is_nav','link','serial_number'];
 

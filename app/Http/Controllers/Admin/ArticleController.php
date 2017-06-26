@@ -13,13 +13,10 @@ use Laracasts\Utilities\JavaScript\ViewBinder;
 class ArticleController extends Controller
 {
     public function index(Request $request){
-        $this->getlevel(5,$request);
-        return $request->get('str');
-//        $articles = Article::select('id','title','pid')->orderBy('id','asc')->get();
-        $rel = Article::select('id','title','pid')->where('is_nav','1')->orderBy('id','asc')->get();
-//        $articles = getSubs($articles,$pid=0);
-//        return getSubs($articles);
+//        $this->getlevel(5,$request);
+//        return $request->get('str');
 
+        $rel = Article::select('id','title','pid')->where('is_nav','1')->orderBy('id','asc')->get();
         $arr = $arr2 = '';
         for ( $i=$j=0;$i<count($rel);$i++ ){
             if($rel[$i]->pid==0){
@@ -52,20 +49,37 @@ class ArticleController extends Controller
         return view('admin.article_create');
     }
 
+
     /**
-     * 展示添加子类页面
+     * 查看内容列表
+     */
+    public function look_son($id){
+        $articles = Article::where('pid',$id)->orderBy('id','desc')->paginate(10);
+        return view('admin.article_list',compact('articles'));
+    }
+
+    /**
+     * 展示添加内容页面
      */
     public function add_son($id){
-        return view('admin.article_add_son');
+        return view('admin.article_add_son',compact('id'));
+    }
+
+    public function store_son( Request $request ){
+        $atic = Input::all();
+        $atic['thumbnail'] = getUrl($request,'thumbnail');
+        $rel = Article::create($atic);
+        if($rel->wasRecentlyCreated){
+            return back()->with('errors','添加成功');
+        }
+        return back()->withErrors();
     }
 
     /**
      * 新增
      */
      public function store( ){
-         $pid = Input::get('pid');
-
-        $rel = Article::create(['name'=>Input::get('name')]);
+        $rel = Article::create(Input::all() );
         if($rel->wasRecentlyCreated){
             return back()->with('errors','添加成功');
         }
@@ -92,18 +106,20 @@ class ArticleController extends Controller
         if(!$article){
             return back()->with('errors','无此数据');
         }
-        return view('admin.article_create',compact('article'));
+        return view('admin.article_edit',compact('article'));
     }
 
     /**
      * 保存编辑
      */
-    public function update($id){
+    public function update($id,Request $request){
         $article = Article::find($id);
         if(!$article){
             return back()->with('errors',"无此数据");
         }
-        $rel = $article->update(Input::except('_method','_token'));
+        $atic = Input::all();
+        $atic['thumbnail'] = getUrl($request,'thumbnail');
+        $rel = $article->update($atic);
         if($rel){
             return back()->with('errors',"更新成功");
         }
@@ -114,6 +130,14 @@ class ArticleController extends Controller
      * 删除数据
      */
     public function destroy($id){
+        $article = Article::find($id);
+        if($article && $article->delete()){
+            return back()->with('errors',"删除成功");
+        }
+        return back()->with('errors',"删除失败");
+    }
+
+    public function delete_son($id){
         $article = Article::find($id);
         if($article && $article->delete()){
             return back()->with('errors',"删除成功");

@@ -6,29 +6,48 @@
 
 
     <div class="main-wrap fadeInRight">
-        <table class="tablePanel2" >
-            <tr>
-                <th>名称</th>
-                <th width="50%" ></th>
-                <th>操作</th>
-            </tr>
-            @foreach($permission as $sort)
-                <tr >
-                    <td>{{ $sort->title  }} </td>
-                    <td> </td>
-                    <td>
-                        <a class="act-btn" href="/Admin/Nav/{{$sort->id}}/edit">编辑</a>
-                        <a class="act-btn" href="/Admin/Nav/{{$sort->id}}/edit">添加子类</a>
-                       @if( $sort->pid != 0 )
-                            <a class="act-btn" href="/Admin/Nav/{{$sort->id}}/edit">删除</a>
-                        @endif
-                        </td>
-                </tr>
-            @endforeach
-        </table>
-        <div class="pagenav">
-            {{--{{ $permission->links() }}--}}
-        </div>
+        <H3>新增内容</H3>
+        <form class="formPanel" action="/article/add_son/{{ $id }}" enctype="multipart/form-data" method="post" >
+            {{ csrf_field()  }}
+            <div class="form-group">
+                <p style="color: red"><?php
+                    if(!is_object($errors)){
+                        echo $errors;
+                    }?>
+                </p>
+                <label>栏目标题：</label><input type="text" class="input-text" name="title" style="width: 400px;"/>
+            </div>
+            <div class="form-group">
+                <label>缩略图：</label><input name="thumbnail" type="file" >
+            </div>
+            <div class="form-group">
+                <label>链接地址：</label>
+                <input name="link"  >
+            </div>
+
+            <input name="pid" hidden="hidden" value="{{ $id }}">
+            <input name="is_nav" hidden="hidden" value=0 >
+            <!-- 加载编辑器的容器 -->
+            <script id="container" name="comtent" type="text/plain">
+
+            </script>
+            <!-- 配置文件 -->
+            <script type="text/javascript" src="/akl/Ueditor/ueditor.config.js"></script>
+            <!-- 编辑器源码文件 -->
+            <script type="text/javascript" src="/akl/Ueditor/ueditor.all.js"></script>
+            <!-- 实例化编辑器 -->
+            <script type="text/javascript">
+                var ue = UE.getEditor('container', {
+                    autoHeightEnabled: true,
+                    autoFloatEnabled: true,
+                    initialFrameWidth : 900,
+                    initialFrameHeight: 400
+                });
+
+
+            </script>
+            <input class="save-btn" type="submit" name="send" value="提交" />
+        </form>
     </div>
 
 @endsection
