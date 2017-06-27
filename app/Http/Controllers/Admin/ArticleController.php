@@ -13,9 +13,6 @@ use Laracasts\Utilities\JavaScript\ViewBinder;
 class ArticleController extends Controller
 {
     public function index(Request $request){
-//        $this->getlevel(5,$request);
-//        return $request->get('str');
-
         $rel = Article::select('id','title','pid')->where('is_nav','1')->orderBy('id','asc')->get();
         $arr = $arr2 = '';
         for ( $i=$j=0;$i<count($rel);$i++ ){
@@ -119,6 +116,9 @@ class ArticleController extends Controller
         }
         $atic = Input::all();
         $atic['thumbnail'] = getUrl($request,'thumbnail');
+        if( !$atic['thumbnail'] ){
+            unset( $atic['thumbnail']);
+        }
         $rel = $article->update($atic);
         if($rel){
             return back()->with('errors',"更新成功");

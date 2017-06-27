@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin\Article;
 use App\Models\Admin\Teams;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 class FrontController extends Controller
@@ -17,7 +18,8 @@ class FrontController extends Controller
         $teams = $this->getTeams();
         $expands = $this->getExpands();
         $plans = $this->getPlans();
-        return view('front.index', compact('slides', 'bases', 'cases', 'teams', 'expands','plans'));
+        $team_introduce = Article::find(5);
+        return view('front.index', compact('slides', 'bases', 'cases', 'teams', 'expands','plans','team_introduce'));
     }
 
     public function getPlans(){
@@ -63,8 +65,10 @@ class FrontController extends Controller
     }
 
     public function team(){
+
         $teams = Teams::select('id','name','belong_to','photo')->orderBy('id','desc')->paginate(6);
-        return view('front.team',compact('teams'));
+        $page = getPage($teams,6);
+        return view('front.team',compact('teams','page'));
     }
 
     public function team_detail($Id){
@@ -105,17 +109,20 @@ class FrontController extends Controller
 
     public function base_xisan(){
         $articles = Article::select('thumbnail')->where('pid','14')->orderBy('id','desc')->paginate(6);
-        return view('front.fight_base',compact('articles'));
+        $page = getPage($articles,6);
+        return view('front.fight_base',compact('articles','page'));
     }
 
     public function base_qingshan(){
         $articles = Article::select('thumbnail')->where('pid','15')->orderBy('id','desc')->paginate(6);
-        return view('front.fight_base',compact('articles'));
+        $page = getPage($articles,6);
+        return view('front.fight_base2',compact('articles','page'));
     }
 
     public function base_guoleyuan(){
         $articles = Article::select('thumbnail')->where('pid','16')->orderBy('id','desc')->paginate(6);
-        return view('front.fight_base',compact('articles'));
+        $page = getPage($articles,6);
+        return view('front.fight_base3',compact('articles','page'));
     }
 
     public function our_case(){

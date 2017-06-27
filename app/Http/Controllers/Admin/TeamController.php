@@ -82,7 +82,9 @@ class TeamController extends Controller
     {
         $atic = Input::except('_token','_method');
         $atic['photo'] = getUrl($request,'photo');
-//        dd($atic);
+        if( ! $atic['photo'] ){
+             unset( $atic['photo']);
+        }
         $team = Teams::find($id);
         $rel = $team->update($atic);
         if( $rel){

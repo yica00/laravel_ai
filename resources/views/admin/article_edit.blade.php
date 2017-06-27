@@ -20,6 +20,9 @@
             </div>
             <div class="form-group">
                 <label style="float: left" >缩略图：</label><input style="float: left" type='file'  name='thumbnail' value="{{$article->thumbnail}}">
+                @if( $article->thumbnail )
+                    <img src="{{$article->thumbnail}}" width="200" />
+                @endif
             </div>
             {{--<div style="clear: left"></div>--}}
             <div class="form-group">

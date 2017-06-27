@@ -72,4 +72,20 @@ function readJson2(){
     return $data;
 }
 
-
+function getPage($teams,$num){
+    $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
+    if($page <= 1){
+        $pre_page = 1;
+    }else{
+        $pre_page = $page - 1;
+    }
+    $next_page = $page + 1;
+    $total =$teams->total();
+    $total_page = ceil( $total/$num);
+    $page = [
+        'pre_page' => $pre_page,
+        'next_page' => $next_page,
+        'total_page' => $total_page,
+    ];
+    return $page;
+}

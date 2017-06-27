@@ -120,13 +120,15 @@ class HomeController extends Controller
     }
 
     public function do_setting( Request $request ){
+        $setting = readJson();
+        $url = getUrl($request,'wx_map');
         $data = [
             'web_name'=>$request->get('web_name'),
             'fix_phone'=>$request->get('fix_phone'),
             'contacts'=>$request->get('contacts'),
             'qq'=>$request->get('qq'),
             'bases'=>$request->get('bases'),
-            'wx_map'=>getUrl($request,'wx_map'),
+            'wx_map'=>$url?$url:$setting['wx_map'],
         ];
         writeJson($data);
         return back()->with('errors',"修改成功");
