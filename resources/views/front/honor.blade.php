@@ -5,7 +5,7 @@
   <!-- bread -->
   <div class="bread">
       <p class="page_nav">
-        <a href="about.html">神鹰简介</a><a href="team.html">教练团队</a><a href="honor.html" class="on">荣誉资质</a>
+          <a href="about_us" class="on">神鹰简介</a><a href="team">教练团队</a><a href="honor">荣誉资质</a>
       </p>
   </div>  
   <div class="w1160 clearfix"> 
@@ -19,40 +19,19 @@
         <span id="nextTop" class="btn next"></span>
         <div id="picBox" class="picBox">
             <ul class="cf" style="width: 6720px; left: -1680px;">
-                <li>
-                    <img src="images/a1.jpg" alt="">
-                    <p>荣誉资质名称</p>
-                </li>
-                <li>
-                    <img src="images/a2.jpg" alt="">
-                    <p>荣誉资质名称</p>
-                </li>
-                <li>
-                    <img src="images/a3.jpg" alt="">
-                    <p>荣誉资质名称</p>
-                </li>
-                <li>
-                    <img src="images/a4.jpg" alt="">
-                    <p>荣誉资质名称</p>
-                </li>
-                <li>
-                    <img src="images/a5.jpg" alt="">
-                    <p>荣誉资质名称</p>
-                </li>
-                <li>
-                    <img src="images/a6.jpg" alt="">
-                    <p>荣誉资质名称</p>
-                </li>
+                @foreach( $honors as $honor )
+                    <li>
+                        <img src="{{  $honor->thumbnail }}" alt="">
+                        <p>{{  $honor->title }}</p>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <div id="listBox" class="listBox">
             <ul class="cf" style="width: 3000px; left: 0px;">
-                <li class="on"><img src="images/a1.jpg" alt=""></li>
-                <li class=""><img src="images/a2.jpg" alt=""></li>
-                <li class=""><img src="images/a3.jpg" alt=""></li>
-                <li class=""><img src="images/a4.jpg" alt=""></li>
-                <li class=""><img src="images/a5.jpg" alt=""></li>
-                <li class=""><img src="images/a6.jpg" alt=""></li>
+                @foreach( $honors as $honor )
+                    <li class="on"><img src="{{  $honor->thumbnail }}" alt=""></li>
+                @endforeach
             </ul>
         </div>
     </div>  

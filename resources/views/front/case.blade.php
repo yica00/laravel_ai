@@ -18,51 +18,16 @@
           <div class="hd">&nbsp;</div>
           <div class="bd">
             <ul>
-              <li>
-                <img src="images/case1.jpg" />
-                <div class="txt">
-                  <h2>南充市三野公司2016春季户外拓展</h2>
-                  <p>合作时间：2016年4月</p>
-                  <p>合作内容：户外拓展真人cs</p>
-                  <p>满意度：十分满意</p>
-                </div>
-              </li>
-              <li>
-                <img src="images/case2.jpg" />
-                <div class="txt">
-                  <h2>南充市三野公司2016春季户外拓展</h2>
-                  <p>合作时间：2016年4月</p>
-                  <p>合作内容：户外拓展真人cs</p>
-                  <p>满意度：十分满意</p>
-                </div>
-              </li>
-              <li>
-                <img src="images/case3.jpg" />
-                <div class="txt">
-                  <h2>南充市三野公司2016春季户外拓展</h2>
-                  <p>合作时间：2016年4月</p>
-                  <p>合作内容：户外拓展真人cs</p>
-                  <p>满意度：十分满意</p>
-                </div>
-              </li>
-              <li>
-                <img src="images/case4.jpg" />
-                <div class="txt">
-                  <h2>南充市三野公司2016春季户外拓展</h2>
-                  <p>合作时间：2016年4月</p>
-                  <p>合作内容：户外拓展真人cs</p>
-                  <p>满意度：十分满意</p>
-                </div>
-              </li>
-              <li>
-                <img src="images/case5.jpg" />
-                <div class="txt">
-                  <h2>南充市三野公司2016春季户外拓展</h2>
-                  <p>合作时间：2016年4月</p>
-                  <p>合作内容：户外拓展真人cs</p>
-                  <p>满意度：十分满意</p>
-                </div>
-              </li>
+              @foreach( $articles as $article )
+                <li>
+                  <img src="{{ $article->thumbnail }}" />
+                  <div class="txt">
+                    {!! $article->comtent !!}
+                  </div>
+                </li>
+              @endforeach
+
+
             </ul>
           </div>
           <!-- 下面是前/后按钮代码，如果不需要删除即可 -->

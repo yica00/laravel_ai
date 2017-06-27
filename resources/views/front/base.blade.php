@@ -10,14 +10,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <!-- 适应手机 -->
     <meta name="viewport" content="width=1160px;">
-    <link href="css/base.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.source.js"></script>
+    <link href="/css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.source.js"></script>
 
     <!--[if lt IE 9]><!-->
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
     <!--[endif]-->
     <!-- 先后 -->
 
@@ -27,7 +27,7 @@
 <div class="header">
     <div class="w1160 clearfix">
         <span class="bk30">&nbsp;</span>
-        <a href="/" class="logo"><img src="images/logo.png"></a>
+        <a href="/" class="logo"><img src="/images/logo.png"></a>
     </div>
 </div>
 <!-- nav -->
@@ -102,7 +102,7 @@
                 <p>南充神鹰户外</p>
             </div>
             <div class="txt fl">
-                <img src="images/ho_tit_6.png">
+                <img src="/images/ho_tit_6.png">
                 <span class="bk20">&nbsp;</span>
                 <dl class="clearfix">
                     <dt><span class="col_1">&nbsp;</span>座机：{{ session('setting')['fix_phone']  }}</dt>
@@ -121,14 +121,14 @@
 </div>
 <!-- 侧边 -->
 <div class="float_onlie">
-    <a class="on_1" href="tencent://message/?uin={$qq[1]}&amp;Menu=yes">&nbsp;</a>
-    <a class="on_2 ph" href=""><em><img src="images/phone.jpg"></em></a>
-    <a class="on_3 add" href=""><em><img src="images/address.jpg"></em></a>
+    <a class="on_1" href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes">&nbsp;</a>
+    <a class="on_2 ph" href=""><em><img src="/images/phone.jpg"></em></a>
+    <a class="on_3 add" href=""><em><img src="/images/address.jpg"></em></a>
     <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
     <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
 </div>
 <div class="float_erwm">
-    <img src="images/cbar_erwm.jpg  ">
+    <img src="/images/cbar_erwm.jpg  ">
 </div>
 <script>RememberScroll.init();</script>
 <script>

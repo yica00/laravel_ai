@@ -28,12 +28,12 @@
                 </div>
                 <span class="bk30">&nbsp;</span>
                 <ul class="list clearfix">
-                    <li><a href="expand.html" class="big"><img src="images/exp_1.png" alt="" /></a></li>
-                    <li><a href="expand.html"><img src="images/exp_2.png" alt="" /></a></li>
-                    <li><a href="cs.html"><img src="images/exp_3.png" alt="" /></a></li>
-                    <li><a href="camp.html"><img src="images/exp_4.png" alt="" /></a></li>
-                    <li><a href="" class="big"><img src="images/exp_5.png" alt="" /></a></li>
-                    <li><a href="training.html"><img src="images/exp_6.png" alt="" /></a></li>
+                    <li><a href="{{  $expands[0]->link }}" class="big"><img src="{{  $expands[0]->thumbnail }}" alt="" /></a></li>
+                    <li><a href="{{  $expands[1]->link }}"><img src="{{  $expands[1]->thumbnail }}" alt="" /></a></li>
+                    <li><a href="{{  $expands[2]->link }}"><img src="{{  $expands[2]->thumbnail }}" alt="" /></a></li>
+                    <li><a href="{{  $expands[3]->link }}"><img src="{{  $expands[3]->thumbnail }}" alt="" /></a></li>
+                    <li><a href="{{  $expands[4]->link }}" class="big"><img src="{{  $expands[4]->thumbnail }}" alt="" /></a></li>
+                    <li><a href="{{  $expands[5]->link }}"><img src="{{  $expands[5]->thumbnail }}" alt="" /></a></li>
                 </ul>
             </div>
         </div>
@@ -44,7 +44,7 @@
             <!-- 基地 -->
             <div class="baseout">
                 <div class="ho_tit_all">
-                    <h2 class="ho_tit_all"><a href="base.html"><img src="images/ho_tit_2.png"></a></h2>
+                    <h2 class="ho_tit_all"><a href="/base_xisan"><img src="/images/ho_tit_2.png"></a></h2>
                 </div>
                 <span class="bk30">&nbsp;</span>
                 <div class="slideTxtBox">
@@ -84,7 +84,7 @@
             <!-- 案例 -->
             <div class="caseout">
                 <div class="ho_tit_all">
-                    <h2 class="ho_tit_all"><a href="case.html"><img src="images/ho_tit_3.png"></a></h2>
+                    <h2 class="ho_tit_all"><a href="/case"><img src="/images/ho_tit_3.png"></a></h2>
                 </div>
                 <span class="bk30">&nbsp;</span>
                 <div class="box">
@@ -151,67 +151,24 @@
             <!-- 方案 -->
             <div class="planout">
                 <div class="ho_tit_all">
-                    <h2 class="ho_tit_all"><a href="plan.html"><img src="images/ho_tit_4.png"></a></h2>
+                    <h2 class="ho_tit_all"><a href="/plan"><img src="/images/ho_tit_4.png"></a></h2>
                 </div>
                 <span class="bk30">&nbsp;</span>
                 <div class="picScroll-leftplan">
                     <div class="hd">&nbsp;</div>
                     <div class="bd">
                         <ul class="picList">
-                            <li>
-                                <a href="plan_in.html">
-                                    <span class="pic"><img src="images/base1.jpg" alt="" /></span>
-                                    <div class="txt">
-                                        <h2>全天地面拓展活动行程</h2>
-                                        <span>了解更多</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="plan_in.html">
-                                    <span class="pic"><img src="images/base2.jpg" alt="" /></span>
-                                    <div class="txt">
-                                        <h2>全天（团队建设+拓展训练+真人CS）活动</h2>
-                                        <span>了解更多</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="plan_in.html">
-                                    <span class="pic"><img src="images/base3.jpg" alt="" /></span>
-                                    <div class="txt">
-                                        <h2>全天地面拓展活动行程</h2>
-                                        <span>了解更多</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="plan_in.html">
-                                    <span class="pic"><img src="images/base1.jpg" alt="" /></span>
-                                    <div class="txt">
-                                        <h2>全天地面拓展活动行程</h2>
-                                        <span>了解更多</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="plan_in.html">
-                                    <span class="pic"><img src="images/base2.jpg" alt="" /></span>
-                                    <div class="txt">
-                                        <h2>全天（团队建设+拓展训练+真人CS）活动</h2>
-                                        <span>了解更多</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="plan_in.html">
-                                    <span class="pic"><img src="images/base3.jpg" alt="" /></span>
-                                    <div class="txt">
-                                        <h2>全天地面拓展活动行程</h2>
-                                        <span>了解更多</span>
-                                    </div>
-                                </a>
-                            </li>
+                            @foreach( $plans as $plan )
+                                <li>
+                                    <a href="/plan/{{  $plan->id }}">
+                                        <span class="pic"><img src="{{  $plan->thumbnail }}" alt="" /></span>
+                                        <div class="txt">
+                                            <h2>{{  $plan->title }}</h2>
+                                            <span>了解更多</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -227,7 +184,7 @@
                     <div class="top">
                         <span class="bk30">&nbsp;</span>
                         <div class="ho_tit_all">
-                            <h2 class="ho_tit_all"><a href="team.html"><img src="images/ho_tit_5.png"></a></h2>
+                            <h2 class="ho_tit_all"><a href="/team"><img src="/images/ho_tit_5.png"></a></h2>
                         </div>
                         <span class="bk20">&nbsp;</span>
                         <div class="txt">
@@ -242,7 +199,7 @@
                             <ul class="picList">
                                 @foreach($teams as $team)
                                     <li>
-                                        <a href="team_in.html">
+                                        <a href="/team/{{ $team->id  }}">
                                             <span class="pic"><img src="{{ $team->photo  }}"></span>
                                             <div class="txt">
                                                 <h2>{{ $team->belong_to  }}</h2>

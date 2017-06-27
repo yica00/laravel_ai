@@ -2,7 +2,7 @@
 <!-- saved from url=(0024)http://www.clearedu.net/ -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>神鹰</title>
+  <title>{{ session('setting')['web_name']  }}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="keywords" content="">
@@ -109,41 +109,50 @@
     <div style="width:100%;height:400px;" id="dituContent"></div>
     </div>
     <div class="contact_list">
-      <dl>
-        <dt>南充神鹰户外军事拓展连锁</dt>
-        <dd>联系人：黄教练（152-2816-9898）&nbsp;&nbsp;&nbsp;&nbsp;许教练（152-2812-1788）</dd>
-        <dd>座机：0817-2189050</dd>
-        <dd>传真：0817-2189050</dd>
-        <dd>QQ： 360090407</dd>
-        <dd>邮箱：360090407@qq.com</dd>
-      </dl>
-      <dl>
-        <dt>西山基地</dt>
-        <dd>地址：西山风景区栖乐垭村（西山草莓园旁）</dd>
-        <dd>联系人：许教练（152-2812-1788）</dd>
-        <dd><b>西山开车路线</b></dd>
-        <dd>从西山风景区正大门，左侧上山路进入隧道，出隧道后沿主路行驶100米下坡处右拐，（有广告牌），再行驶300米即到 </dd>
-        <dd><b>西山公交路线</b></dd>
-        <dd>乘坐公交2路、22路、25路、26路、6路等到西山风景区，然后步行2KM到栖乐垭村西山草莓园旁即到</dd>
-      </dl>
-      <dl>
-        <dt>搬罾青山湖基地</dt>
-        <dd>地址：南充顺庆区搬罾镇青山湖景区>
-        <dd>联系人：胡教练（152-2816-9898）</dd>
-        <dd><b>搬罾开车路线</b></dd>
-        <dd>沿府荆南路(恒大绿洲方向)直行，进入柳树垭隧道，出隧道后右拐(有指示牌)，500米左右就到果乐园</dd>
-        <dd><b>搬罾公交路线</b></dd>
-        <dd>顺庆城镇公交，在城北汽车站出发，到搬罾百香草莓下车，步行200米就到果乐园到</dd>
-      </dl>
-      <dl>
-        <dt>搬罾果乐园基地</dt>
-        <dd>地址：南充顺庆区搬罾镇果乐园内</dd>
-        <dd>联系人：胡教练（188-8233-6709）</dd>
-        <dd><b>搬罾开车路线</b></dd>
-        <dd>沿府荆南路(恒大绿洲方向)直行，进入柳树垭隧道，出隧道后右拐(有指示牌)，500米左右就到果乐园</dd>
-        <dd><b>搬罾公交路线</b></dd>
-        <dd>顺庆城镇公交，在城北汽车站出发，到搬罾百香草莓下车，步行200米就到果乐园到</dd>
-      </dl>
+
+      @foreach( $articles as $article )
+        <dl>
+          <dt>{{ $article->title }}</dt>
+          {!! $article->comtent !!}
+        </dl>
+      @endforeach
+
+
+      {{--<dl>--}}
+        {{--<dt>南充神鹰户外军事拓展连锁</dt>--}}
+        {{--<dd>联系人：黄教练（152-2816-9898）&nbsp;&nbsp;&nbsp;&nbsp;许教练（152-2812-1788）</dd>--}}
+        {{--<dd>座机：0817-2189050</dd>--}}
+        {{--<dd>传真：0817-2189050</dd>--}}
+        {{--<dd>QQ： 360090407</dd>--}}
+        {{--<dd>邮箱：360090407@qq.com</dd>--}}
+      {{--</dl>--}}
+      {{--<dl>--}}
+        {{--<dt>西山基地</dt>--}}
+        {{--<dd>地址：西山风景区栖乐垭村（西山草莓园旁）</dd>--}}
+        {{--<dd>联系人：许教练（152-2812-1788）</dd>--}}
+        {{--<dd><b>西山开车路线</b></dd>--}}
+        {{--<dd>从西山风景区正大门，左侧上山路进入隧道，出隧道后沿主路行驶100米下坡处右拐，（有广告牌），再行驶300米即到 </dd>--}}
+        {{--<dd><b>西山公交路线</b></dd>--}}
+        {{--<dd>乘坐公交2路、22路、25路、26路、6路等到西山风景区，然后步行2KM到栖乐垭村西山草莓园旁即到</dd>--}}
+      {{--</dl>--}}
+      {{--<dl>--}}
+        {{--<dt>搬罾青山湖基地</dt>--}}
+        {{--<dd>地址：南充顺庆区搬罾镇青山湖景区>--}}
+        {{--<dd>联系人：胡教练（152-2816-9898）</dd>--}}
+        {{--<dd><b>搬罾开车路线</b></dd>--}}
+        {{--<dd>沿府荆南路(恒大绿洲方向)直行，进入柳树垭隧道，出隧道后右拐(有指示牌)，500米左右就到果乐园</dd>--}}
+        {{--<dd><b>搬罾公交路线</b></dd>--}}
+        {{--<dd>顺庆城镇公交，在城北汽车站出发，到搬罾百香草莓下车，步行200米就到果乐园到</dd>--}}
+      {{--</dl>--}}
+      {{--<dl>--}}
+        {{--<dt>搬罾果乐园基地</dt>--}}
+        {{--<dd>地址：南充顺庆区搬罾镇果乐园内</dd>--}}
+        {{--<dd>联系人：胡教练（188-8233-6709）</dd>--}}
+        {{--<dd><b>搬罾开车路线</b></dd>--}}
+        {{--<dd>沿府荆南路(恒大绿洲方向)直行，进入柳树垭隧道，出隧道后右拐(有指示牌)，500米左右就到果乐园</dd>--}}
+        {{--<dd><b>搬罾公交路线</b></dd>--}}
+        {{--<dd>顺庆城镇公交，在城北汽车站出发，到搬罾百香草莓下车，步行200米就到果乐园到</dd>--}}
+      {{--</dl>--}}
     </div>
     <span class="bk10">&nbsp;</span>
     <!-- end -->
@@ -155,19 +164,19 @@
   <div class="w1160 clearfix">
     <div class="top clearfix">
       <div class="ewm fr">
-        <img src="images/erwm.png">
+        <img src="{{ session('setting')['wx_map']  }}">
         <p>南充神鹰户外</p>
       </div>
       <div class="txt fl">
         <img src="images/ho_tit_6.png">
         <span class="bk20">&nbsp;</span>
         <dl class="clearfix">
-          <dt><span class="col_1">&nbsp;</span>座机：0817-2189050</dt>
-          <dd><span class="col_3">&nbsp;</span>手机：黄教练（152-2816-9898） /  许教练（152-2812-1788）</dd>
+          <dt><span class="col_1">&nbsp;</span>座机：{{ session('setting')['fix_phone']  }}</dt>
+          <dd><span class="col_3">&nbsp;</span>手机：{{ session('setting')['contacts']  }}</dd>
         </dl>
         <dl class="clearfix">
-          <dt><span class="col_2">&nbsp;</span>QQ：360090407</dt>
-          <dd><span class="col_4">&nbsp;</span>基地：西山基地、搬罾青山湖基地、搬罾果乐园基地</dd>
+          <dt><span class="col_2">&nbsp;</span>QQ：{{ session('setting')['qq']  }}</dt>
+          <dd><span class="col_4">&nbsp;</span>基地：{{ session('setting')['bases']  }}</dd>
         </dl>
       </div>
       </div>
@@ -181,7 +190,7 @@
     <a class="on_1" href="tencent://message/?uin={$qq[1]}&amp;Menu=yes">&nbsp;</a>
     <a class="on_2 ph" href=""><em><img src="images/phone.jpg"></em></a>
     <a class="on_3 add" href=""><em><img src="images/address.jpg"></em></a>
-    <a class="on_4 ewm" href=""><em><img src="images/erwm.png"></em></a>
+    <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
     <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
 </div>
 <div class="float_erwm">

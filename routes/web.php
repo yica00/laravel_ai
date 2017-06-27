@@ -17,6 +17,7 @@ Route::group(['middleware'=>'check_setting'],function (){
     Route::group(['as'=>'front'],function (){
         Route::get('about_us','FrontController@about_us');
         Route::get('team','FrontController@team');
+        Route::get('team/{id}','FrontController@team_detail');
         Route::get('honor','FrontController@honor');
         Route::get('enterprise','FrontController@enterprise');
         Route::get('parenting','FrontController@parenting');
@@ -28,6 +29,7 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('base_guoleyuan','FrontController@base_guoleyuan');
         Route::get('case','FrontController@our_case');
         Route::get('plan','FrontController@plan');
+        Route::get('plan/{id}','FrontController@plan_detail');
         Route::get('contact','FrontController@contact');
 
     });

@@ -5,7 +5,7 @@
   <!-- bread -->
   <div class="bread">
       <p class="page_nav">
-        <a href="base.html" class="on">西山基地</a><a href="base.html">搬罾青山湖基地</a><a href="base.html">搬罾果乐园基地</a>
+        <a href="/base_xisan" class="on">西山基地</a><a href="/base_qingshan">搬罾青山湖基地</a><a href=/base_guoleyuan>搬罾果乐园基地</a>
       </p>
   </div>  
   <div class="w1160 clearfix"> 
@@ -28,32 +28,20 @@
     });
   </script>
   <div id="food_list" class="clearfix">
-          <a  rel="images_group" href="images/base1.jpg">
-           <img src="images/base1.jpg">
+          @foreach( $articles as $article )
+          <a  rel="images_group" href="{{ $article->thumbnail }}">
+              <img src="{{ $article->thumbnail }}">
           </a>
-          <a  rel="images_group" href="images/base2.jpg">
-           <img src="images/base2.jpg">
-          </a>
-          <a  rel="images_group" href="images/base3.jpg">
-           <img src="images/base3.jpg">
-          </a>
-          <a  rel="images_group" href="images/base4.jpg">
-           <img src="images/base4.jpg">
-          </a>
-          <a  rel="images_group" href="images/base5.jpg">
-           <img src="images/base5.jpg">
-          </a>
-          <a  rel="images_group" href="images/base6.jpg">
-           <img src="images/base6.jpg">
-          </a>
+          @endforeach
   </div>
     <span class="bk30">&nbsp;</span>
     <div class="pageJump clearfix">
         <div class="number">
-            <span class="disabled"><a href="">首页</a></span>
-            <span class="disabled"><a href="">上一页</a></span>
-            <span class="disabled"><a href="">下一页</a></span>
-            <span class="disabled"><a href="">末页</a></span>
+            {{ $articles->links() }}
+            {{--<span class="disabled"><a href="">首页</a></span>--}}
+            {{--<span class="disabled"><a href="">上一页</a></span>--}}
+            {{--<span class="disabled"><a href="">下一页</a></span>--}}
+            {{--<span class="disabled"><a href="">末页</a></span>--}}
         </div>
     </div>
     <span class="bk60">&nbsp;</span>
