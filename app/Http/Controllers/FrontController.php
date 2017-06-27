@@ -84,27 +84,32 @@ class FrontController extends Controller
 
     public function enterprise(){
         $article = Article::find(8);
-        return view('front.expand',compact('article'));
+        $articles = Article::select('thumbnail')->where('pid','8')->orderBy('id','asc')->get();
+        return view('front.expand',compact('article','articles'));
     }
 
     public function parenting(){
         $article = Article::find(9);
-        return view('front.expand',compact('article'));
+        $articles = Article::select('thumbnail')->where('pid','9')->orderBy('id','asc')->get();
+        return view('front.expand',compact('article','articles'));
     }
 
     public function cs(){
         $article = Article::find(10);
-        return view('front.cs',compact('article'));
+        $articles = Article::select('thumbnail')->where('pid','10')->orderBy('id','asc')->get();
+        return view('front.cs',compact('article','articles'));
     }
 
     public function camp(){
         $article = Article::find(11);
-        return view('front.camp',compact('article'));
+        $articles = Article::select('thumbnail')->where('pid','11')->orderBy('id','asc')->get();
+        return view('front.camp',compact('article','articles'));
     }
 
     public function training(){
         $article = Article::find(12);
-        return view('front.training',compact('article'));
+        $articles = Article::select('thumbnail')->where('pid','12')->orderBy('id','asc')->get();
+        return view('front.training',compact('article','articles'));
     }
 
     public function base_xisan(){

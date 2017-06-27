@@ -14,7 +14,7 @@ class ArticleController extends Controller
 {
     public function index(Request $request){
         $rel = Article::select('id','title','pid')->where('is_nav','1')->orderBy('id','asc')->get();
-        $arr = $arr2 = '';
+        $arr = $arr2 = [];
         for ( $i=$j=0;$i<count($rel);$i++ ){
             if($rel[$i]->pid==0){
                 $arr[] = $rel[$i];

@@ -21,10 +21,9 @@
         </div>
         <div class="bd">
           <ul>
-            <li><a href="" ><img src="images/case1.jpg"></a></li>
-            <li><a href="" ><img src="images/case2.jpg"></a></li>
-            <li><a href="" ><img src="images/case3.jpg"></a></li>
-            <li><a href="" ><img src="images/case4.jpg"></a></li>
+            @foreach( $articles as $art )
+              <li><a href="" ><img src="{{  $art->thumbnail }}"></a></li>
+            @endforeach
           </ul>
         </div>
       </div>
