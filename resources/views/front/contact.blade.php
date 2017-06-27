@@ -13,7 +13,7 @@
   <link href="css/base.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-  <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.source"></script>
+  <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.source.js"></script>
 
   <!--[if lt IE 9]><!-->
   <script src="js/html5shiv.min.js"></script>
