@@ -106,11 +106,12 @@ class HomeController extends Controller
 
     public function setting(){
 //        $data = [
-//            'web_name'=>'南充神鹰户外军事拓展连锁',
-//            'fix_phone'=>'0817-2189050',
-//            'contacts'=>'手机：黄教练（152-2816-9898） /  许教练（152-2812-1788',
-//            'qq'=>'360090407',
-//            'bases'=>'西山基地、搬罾青山湖基地、搬罾果乐园基地',
+//            'web_name'=>'宜宾星维生物科技有限公司',
+//            'fix_phone'=>'0831-2849498',
+//            'contacts'=>'138-9086-5033 / 136-9602-3208 / 136-9966-3158',
+//            'qq'=>'1521770461',
+//            'bases'=>'四川宜宾市江安县阳春工业园区',
+//            'email'=>'招聘邮箱',
 //            'wx_map'=>'/sah/sadas',
 //        ];
 //        writeJson($data);die();
@@ -128,6 +129,7 @@ class HomeController extends Controller
             'contacts'=>$request->get('contacts'),
             'qq'=>$request->get('qq'),
             'bases'=>$request->get('bases'),
+            'email'=>$request->get('email'),
             'wx_map'=>$url?$url:$setting['wx_map'],
         ];
         writeJson($data);

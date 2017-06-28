@@ -5,78 +5,118 @@
     <title>{{ session('setting')['web_name']  }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="{{ session('setting')['web_name']  }}">
+    <meta name="description" content="{{ session('setting')['web_name']  }}">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <!-- 适应手机 -->
     <meta name="viewport" content="width=1160px;">
-    <link href="/css/base.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
-    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.source.js"></script>
-
-    <!--[if lt IE 9]><!-->
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <!--[endif]-->
-    <!-- 先后 -->
-
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.source.js"></script>
 </head>
 <body>
 <!-- header -->
 <div class="header">
     <div class="w1160 clearfix">
-        <span class="bk30">&nbsp;</span>
-        <a href="/" class="logo"><img src="/images/logo.png"></a>
+        <span class="call fr">&nbsp;</span>
+        <a class="logo fl" href="/">&nbsp;</a>
     </div>
 </div>
 <!-- nav -->
 <div class="nav_box">
     <div class="w1160 clearfix">
         <ul id="nav" class="nav clearfix">
-            <li class="nLi on">
+            <li class="nLi
+            @if( $sty == "index" )
+                    on
+            @endif
+                    ">
                 <h3><a href="/">网站首页</a></h3>
             </li>
-            <li class="nLi">
-                <h3><a href="/about_us">关于我们</a></h3>
+
+            <li class="nLi
+            @if( $sty == "about" )
+                    on
+            @endif">
+                <h3><a href="about">走进星维</a></h3>
                 <ul class="sub">
-                    <li><a href="/about_us">神鹰简介</a></li>
-                    <li><a href="/team">教练团队</a></li>
-                    <li><a href="/honor">荣誉资质</a></li>
+                    <li><a href="about">星维简介</a></li>
+                    <li><a href="about">企业文化</a></li>
+                    <li><a href="office">办公环境</a></li>
+                    <li><a href="office">优秀团队</a></li>
+                    <li><a href="office">荣誉资质</a></li>
                 </ul>
             </li>
-            <li class="nLi">
-                <h3><a href="/enterprise">拓展培训</a></h3>
+
+            <li class="nLi
+            @if( $sty == "news" )
+                    on
+            @endif">
+                <h3><a href="news">新闻中心</a></h3>
                 <ul class="sub">
-                    <li><a href="/enterprise">企业拓展</a></li>
-                    <li><a href="/parenting">亲子拓展</a></li>
+                    <li><a href="news">公司新闻</a></li>
+                    <li><a href="news">行业资讯</a></li>
                 </ul>
             </li>
-            <li class="nLi">
-                <h3><a href="/cs">真人CS</a></h3>
-            </li>
-            <li class="nLi">
-                <h3><a href="/camp">夏令营</a></h3>
-            </li>
-            <li class="nLi">
-                <h3><a href="/training">军训</a></h3>
-            </li>
-            <li class="nLi">
-                <h3><a href="/base_xisan">基地展示</a></h3>
+
+            <li class="nLi
+            @if( $sty == "product" )
+                on
+            @endif
+            ">
+                <h3><a href="product">产品中心</a></h3>
                 <ul class="sub">
-                    <li><a href="/base_xisan">西山基地</a></li>
-                    <li><a href="/base_qingshan">搬罾青山湖基地</a></li>
-                    <li><a href="/base_guoleyuan">搬罾果乐园基地</a></li>
+                    <li><a href="product">醚类</a></li>
+                    <li><a href="product">苯类</a></li>
+                    <li><a href="product">酮类</a></li>
+                    <li><a href="product">酯类</a></li>
+                    <li><a href="product">醇类</a></li>
+                    <li><a href="product">石油烷烃</a></li>
+                    <li><a href="product">其他类</a></li>
                 </ul>
             </li>
-            <li class="nLi">
-                <h3><a href="/case">合作案例</a></h3>
+
+            <li class="nLi
+            @if( $sty == "core" )
+                    on
+            @endif">
+                <h3><a href="core">核心技术</a></h3>
+                <ul class="sub">
+                    <li><a href="core">产品优势</a></li>
+                    <li><a href="core_2">产品特点</a></li>
+                </ul>
             </li>
-            <li class="nLi">
-                <h3><a href="/plan">活动方案</a></h3>
+            <li class="nLi
+            @if( $sty == "service" )
+                    on
+            @endif">
+                <h3><a href="service">营销服务</a></h3>
             </li>
-            <li class="nLi">
-                <h3><a href="/contact">联系我们</a></h3>
+            <li class="nLi
+            @if( $sty == "base" )
+                    on
+            @endif">
+                <h3><a href="base">试验基地</a></h3>
+                <ul class="sub">
+                    <li><a href="base">自贡七星湖葡萄</a></li>
+                    <li><a href="base">威远大棚蔬菜</a></li>
+                    <li><a href="base">河南大豆</a></li>
+                    <li><a href="base">眉山黄丰镇橘子</a></li>
+                    <li><a href="base">云南西双版纳香蕉</a></li>
+                    <li><a href="base">达州蘑菇</a></li>
+                    <li><a href="base">贵州水稻</a></li>
+                </ul>
+            </li>
+            <li class="nLi
+            @if( $sty == "contact" )
+                    on
+            @endif">
+                <h3><a href="contact">联系我们</a></h3>
+                <ul class="sub">
+                    <li><a href="contact">招贤纳士</a></li>
+                    <li><a href="way">联系方式</a></li>
+                </ul>
             </li>
         </ul>
         <script id="jsID" type="text/javascript">
@@ -94,15 +134,16 @@
 </div>
 
 @yield('content')
+
 <div class="contact_out">
     <div class="w1160 clearfix">
         <div class="top clearfix">
             <div class="ewm fr">
                 <img src="{{ session('setting')['wx_map']  }}">
-                <p>南充神鹰户外</p>
+                <p>扫一扫，关注我们</p>
             </div>
             <div class="txt fl">
-                <img src="/images/ho_tit_6.png">
+                <img src="images/ho_tit_6.png">
                 <span class="bk20">&nbsp;</span>
                 <dl class="clearfix">
                     <dt><span class="col_1">&nbsp;</span>座机：{{ session('setting')['fix_phone']  }}</dt>
@@ -110,31 +151,22 @@
                 </dl>
                 <dl class="clearfix">
                     <dt><span class="col_2">&nbsp;</span>QQ：{{ session('setting')['qq']  }}</dt>
-                    <dd><span class="col_4">&nbsp;</span>基地：{{ session('setting')['bases']  }}</dd>
+                    <dd><span class="col_4">&nbsp;</span>地址：{{ session('setting')['bases']  }}</dd>
                 </dl>
             </div>
         </div>
     </div>
     <div class="footer">
-        CopyRight © 2017   南充神鹰户外军事拓展连锁&nbsp;&nbsp;&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;蜀ICP备8888888号蜀ICP备12345678号&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a href="">诺航科技</a>
+        CopyRight © 2017   {{ session('setting')['web_name']  }}&nbsp;&nbsp;&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;蜀ICP备12345678号&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a href="http://www.scnuohang.com">诺航科技</a>
     </div>
 </div>
 <!-- 侧边 -->
 <div class="float_onlie">
     <a class="on_1" href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes">&nbsp;</a>
-    <a class="on_2 ph" href=""><em><img src="/images/phone.jpg"></em></a>
-    <a class="on_3 add" href=""><em><img src="/images/address.jpg"></em></a>
+    <a class="on_2 ph" href=""><em><img src="images/phone.jpg"></em></a>
+    <a class="on_3 add" href=""><em><img src="images/address.jpg"></em></a>
     <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
     <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
 </div>
-<div class="float_erwm">
-    <img src="/images/cbar_erwm.jpg  ">
-</div>
-<script>RememberScroll.init();</script>
-<script>
-    if (document.location.search.match(/type=embed/gi)) {
-        window.parent.postMessage('resize', "*");
-    }
-</script>
 </body>
 </html>

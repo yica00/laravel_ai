@@ -15,26 +15,25 @@ Route::group(['middleware'=>'check_setting'],function (){
 
 
     Route::group(['as'=>'front'],function (){
-        Route::get('about_us','FrontController@about_us');
-        Route::get('team','FrontController@team');
-        Route::get('team/{id}','FrontController@team_detail');
-        Route::get('honor','FrontController@honor');
-        Route::get('enterprise','FrontController@enterprise');
-        Route::get('parenting','FrontController@parenting');
-        Route::get('cs','FrontController@cs');
+        Route::get('/', 'FrontController@index');
+        Route::get('about','FrontController@about');
+        Route::get('news','FrontController@news');
+        Route::get('product','FrontController@product');
+        Route::get('core','FrontController@core');
+        Route::get('service','FrontController@service');
+        Route::get('base','FrontController@pro_base');
+        Route::get('contact','FrontController@contact');
+
         Route::get('camp','FrontController@camp');
         Route::get('training','FrontController@training');
         Route::get('base_xisan','FrontController@base_xisan');
         Route::get('base_qingshan','FrontController@base_qingshan');
         Route::get('base_guoleyuan','FrontController@base_guoleyuan');
-        Route::get('case','FrontController@our_case');
         Route::get('plan','FrontController@plan');
         Route::get('plan/{id}','FrontController@plan_detail');
-        Route::get('contact','FrontController@contact');
 
+        Route::post('/front/message','Admin\MessageController@store');
     });
-
-
 
     Route::get('/admin/logout', function () {
         Auth::logout();
@@ -55,13 +54,11 @@ Route::group(['middleware'=>'check_setting'],function (){
     Route::get('/admin/setting', 'HomeController@setting'); //网站设置
     Route::put('/admin/setting', 'HomeController@do_setting');//网站设置
 
-    Route::get('/', 'FrontController@index');
-
-
 
     Route::group(['middleware'=>'auth','namespace'=>'Admin','prefix'=>'admin'],function (){
         Route::resource('article','ArticleController');
         Route::resource('team','TeamController');
+        Route::resource('message','MessageController');
 
 
         Route::get('/team/{id}/delete','TeamController@destroy');
@@ -77,6 +74,8 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('article/{id}/delete','ArticleController@delete_son');
         Route::post('article/add_son/{id}','ArticleController@store_son');
 
+        Route::get('/admin/message/{id}/look','MessageController@show');
+        Route::get('/admin/message/{id}/delete','MessageController@destroy');
     });
 
 });

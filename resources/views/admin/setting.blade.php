@@ -58,9 +58,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">基地</label>
+                                <label for="email" class="col-md-4 control-label">地址</label>
                                 <div class="col-md-6">
                                     <input id="email"   class="form-control" name="bases"  value="{{ $setting['bases']  }}"  autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">招聘邮箱</label>
+                                <div class="col-md-6">
+                                    <input id="email"   class="form-control" name="email"  value="{{ $setting['email']  }}"  autofocus>
                                 </div>
                             </div>
 

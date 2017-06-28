@@ -29,7 +29,7 @@
                 <a class="fstMenu" href="/admin/article"><i class="fa fa-check-square-o"></i> 内容管理</a>
             </li>
             <li>
-                <a class="fstMenu" href="/admin/team"><i class="fa fa-check-square-o"></i> 团队管理</a>
+                <a class="fstMenu" href="/admin/message"><i class="fa fa-check-square-o"></i> 留言管理</a>
             </li>
             <li>
                 <a class="fstMenu" href="/admin/setting"><i class="fa fa-check-square-o"></i> 网站配置</a>
