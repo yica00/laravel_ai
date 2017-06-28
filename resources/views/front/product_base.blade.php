@@ -72,4 +72,4 @@
   <span class="bk60">&nbsp;</span>
 </div>
 <!-- contact_out -->
-@endsection>
+@endsection

@@ -15,7 +15,10 @@ class FrontController extends Controller
         $slides = $this->getSlides();
         $introduce = $this->getIntroduce();
         $products = $this->getProducet();
-//        $bases = $this->getBases();
+        $core1 = $this->getCore1();
+        $core2 = $this->getCore2();
+        $bases = $this->getBases();
+
 //        $cases = $this->getCases();
 //        $teams = $this->getTeams();
 //        $expands = $this->getExpands();
@@ -23,7 +26,17 @@ class FrontController extends Controller
 //        $team_introduce = Article::find(5);
 //        return view('front.index', compact('slides', 'bases', 'cases', 'teams', 'expands','plans','team_introduce'));
         $sty='index';
-        return view('front.index',compact('sty','slides','introduce','products'));
+        return view('front.index',compact('sty','slides','introduce','products','core1','core2','bases'));
+    }
+
+    public function getCore1(){
+        $core1 = Article::find(50);
+        return $core1;
+    }
+
+    public function getCore2(){
+        $core2 = Article::find(51);
+        return $core2;
     }
 
     public function getIntroduce(){
@@ -50,10 +63,8 @@ class FrontController extends Controller
 
     public function getBases()
     {
-        $base1 = Article::select('thumbnail')->where('pid', '14')->orderBy('id', 'desc')->get();
-        $base2 = Article::select('thumbnail')->where('pid', '15')->orderBy('id', 'desc')->get();
-        $base3 = Article::select('thumbnail')->where('pid', '16')->orderBy('id', 'desc')->get();
-        return [$base1, $base2, $base3];
+        $bases = Article::select('thumbnail','title','link')->where('pid', '7')->orderBy('id', 'asc')->get();
+        return $bases;
     }
 
     public function getCases()
@@ -69,9 +80,9 @@ class FrontController extends Controller
     }
 
     public function about(){
-//        $article = Article::find(4);
+        $article = Article::find(12);
         $sty='about';
-        return view('front.about',compact('sty'));
+        return view('front.about',compact('sty','article'));
     }
 
     public function news(){
@@ -100,7 +111,7 @@ class FrontController extends Controller
 
     public function pro_base(){
         $sty='base';
-        return view('front.product',compact('sty'));
+        return view('front.product_base',compact('sty'));
     }
 
     public function contact(){

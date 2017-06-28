@@ -127,12 +127,13 @@
 <div class="advantage">
   <div class="w1160 clearfix">    
     <a class="tit" href="core">
-      <h2>星维科技长效稳定复合肥   只为农作物的感受着想</h2>
-      <span class="bk20">&nbsp;</span>
-      <h3>针对目前种植过程普遍存在的土壤有机质严重不足所出现的一系列问题，宜宾星维生物科技有限公司依靠自身的技术实力，全新推出健康腐殖酸复合肥</h3>
+      {!! $core1->comtent !!}
+      {{--<h2>星维科技长效稳定复合肥   只为农作物的感受着想</h2>--}}
+      {{--<span class="bk20">&nbsp;</span>--}}
+      {{--<h3>针对目前种植过程普遍存在的土壤有机质严重不足所出现的一系列问题，宜宾星维生物科技有限公司依靠自身的技术实力，全新推出健康腐殖酸复合肥</h3>--}}
     </a>
     <span class="bk40">&nbsp;</span>
-    <img src="images/advantage_img.png">
+    <img src="{{ $core1->thumbnail }}">
   </div>
 </div>
 <span class="bk60">&nbsp;</span>
@@ -144,7 +145,7 @@
     <div class="txt">
     <h2><a href="core_2">产品特点</a></h2>
     <span class="bk10">&nbsp;</span>
-    <p>本公司长效稳定的复合肥是集海内外博士团队最新研发的科研成果，采用获得中国发明专利的最新技术生产而成。</p>
+      {!! $core2->comtent !!}
     </div>
   </div>
 </div>
@@ -159,39 +160,39 @@
       <div class="w540 fl mR10">
         <a href="base" class="basic big">
           <img src="images/base1.jpg">
-          <span>自贡七星湖葡萄</span>
+          <span>{{ mb_substr($bases[0]->title,2,20,'utf8') }}</span>
         </a>
         <span class="bk10">&nbsp;</span>
         <a href="base" class="basic midx">
           <img src="images/base2.jpg">
-          <span>威远大棚蔬菜</span>
+          <span>{{ mb_substr($bases[1]->title,2,20,'utf8') }}</span>
         </a>
       </div>
       <div class="w300 fl mR10">
         <a href="base" class="basic small">
           <img src="images/base3.jpg">
-          <span>河南大豆</span>
+          <span>{{ mb_substr($bases[2]->title,2,20,'utf8') }}</span>
         </a>
         <span class="bk10">&nbsp;</span>
         <a href="base" class="basic small">
           <img src="images/base4.jpg">
-          <span>眉山黄丰镇橘子</span>
+          <span>{{ mb_substr($bases[3]->title,2,20,'utf8') }}</span>
         </a>
         <span class="bk10">&nbsp;</span>
         <a href="base" class="basic small">
           <img src="images/base5.jpg">
-          <span>云南西双版纳香蕉</span>
+          <span>{{ mb_substr($bases[4]->title,2,20,'utf8') }}</span>
         </a>
       </div>
       <div class="w300 fl">
         <a href="base" class="basic small">
           <img src="images/base6.jpg">
-          <span>达州蘑菇</span>
+          <span>{{ mb_substr($bases[5]->title,2,20,'utf8') }}</span>
         </a>
         <span class="bk10">&nbsp;</span>
         <a href="base" class="basic midy">
           <img src="images/base7.jpg">
-          <span>贵州水稻</span>
+          <span>{{ mb_substr($bases[6]->title,2,20,'utf8') }}</span>
         </a>
       </div>
     </div>
