@@ -8,7 +8,7 @@
         <p>news center</p>
       </div>
       <p class="page_nav clearfix">
-          <a href="/company_news" class="on">公司新闻</a><a href="/industy_news">行业资讯</a>
+          <a href="/company_news" >公司新闻</a><a href="/industy_news" class="on">行业资讯</a>
       </p>
   </div>  
 </div> 
@@ -25,21 +25,11 @@
             <div class="bot"><p class="time">{{ $article->created_at }}</p>
               <h2>{{ $article->title }}</h2>
               <p class="txt">
-{{--                {{  mb_substr($article->comtent,3,40,'utf8') }} --}}
               </p></div>
           </a>
         </li>
       @endforeach
 
-
-      {{--<li>--}}
-        {{--<a href="news_in.html">--}}
-          {{--<img src="images/a1.jpg" alt="">--}}
-          {{--<div class="bot"><p class="time">2017/06/20</p>--}}
-          {{--<h2>现代农业示范园为民增收 推动临沭农业创新发展</h2>--}}
-          {{--<p class="txt"> 在距离临沭县约十公里的周庄，有一片约占地327亩的史丹利（荷兰）现代农业示范园...</p></div>--}}
-        {{--</a>--}}
-      {{--</li>--}}
 
     </ul>
     <div class="pageJump clearfix">

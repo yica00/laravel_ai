@@ -8,7 +8,7 @@
         <p>contact us</p>
       </div>
       <p class="page_nav clearfix">
-          <a href="contact.html">招贤纳士</a><a href="way.html" class="on">联系方式</a>
+          <a href="/contact">招贤纳士</a><a href="/way" class="on">联系方式</a>
       </p>
   </div>  
 </div> 
@@ -25,19 +25,19 @@
     <div class="contact_way">
       <dl>
         <dt>座机</dt>
-        <dd>0831-2849498</dd>
+        <dd>{{ session('setting')['fix_phone'] }}</dd>
       </dl>
       <dl>
         <dt>手机</dt>
-        <dd>138-9086-5033 / 136-9602-3208 / 136-9966-3158</dd>
+        <dd>{{ session('setting')['contacts']  }}</dd>
       </dl>
       <dl>
         <dt>QQ</dt>
-        <dd>1521770461</dd>
+        <dd>{{ session('setting')['qq']  }}</dd>
       </dl>
       <dl>
         <dt>地址</dt>
-        <dd>四川宜宾市江安县阳春工业园区</dd>
+        <dd>{{ session('setting')['bases']  }}</dd>
       </dl>
     </div>
     <!-- end -->

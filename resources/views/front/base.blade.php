@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <!-- 适应手机 -->
     <meta name="viewport" content="width=1160px;">
-    <link href="css/base.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.source.js"></script>
+    <link href="/css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.source.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -39,13 +39,11 @@
             @if( $sty == "about" )
                     on
             @endif">
-                <h3><a href="about">走进星维</a></h3>
+                <h3><a href="/about">走进星维</a></h3>
                 <ul class="sub">
-                    <li><a href="about">星维简介</a></li>
-                    <li><a href="about">企业文化</a></li>
-                    <li><a href="office">办公环境</a></li>
-                    <li><a href="office">优秀团队</a></li>
-                    <li><a href="office">荣誉资质</a></li>
+                    @foreach( session('header_nav')[1]->sons as $leader1 )
+                        <li><a href="{{ $leader1->link  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
+                    @endforeach
                 </ul>
             </li>
 
@@ -53,10 +51,11 @@
             @if( $sty == "news" )
                     on
             @endif">
-                <h3><a href="news">新闻中心</a></h3>
+                <h3><a href="/news">新闻中心</a></h3>
                 <ul class="sub">
-                    <li><a href="news">公司新闻</a></li>
-                    <li><a href="news">行业资讯</a></li>
+                    @foreach( session('header_nav')[2]->sons as $leader1 )
+                        <li><a href="{{ $leader1->link }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
+                    @endforeach
                 </ul>
             </li>
 
@@ -65,15 +64,11 @@
                 on
             @endif
             ">
-                <h3><a href="product">产品中心</a></h3>
+                <h3><a href="/product">产品中心</a></h3>
                 <ul class="sub">
-                    <li><a href="product">醚类</a></li>
-                    <li><a href="product">苯类</a></li>
-                    <li><a href="product">酮类</a></li>
-                    <li><a href="product">酯类</a></li>
-                    <li><a href="product">醇类</a></li>
-                    <li><a href="product">石油烷烃</a></li>
-                    <li><a href="product">其他类</a></li>
+                    @foreach( session('header_nav')[3]->sons as $leader1 )
+                        <li><a href="/product/category/{{ $leader1->id  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
+                    @endforeach
                 </ul>
             </li>
 
@@ -81,41 +76,39 @@
             @if( $sty == "core" )
                     on
             @endif">
-                <h3><a href="core">核心技术</a></h3>
+                <h3><a href="/core">核心技术</a></h3>
                 <ul class="sub">
-                    <li><a href="core">产品优势</a></li>
-                    <li><a href="core_2">产品特点</a></li>
+                    @foreach( session('header_nav')[4]->sons as $leader1 )
+                        <li><a href="{{ $leader1->link  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
+                    @endforeach
                 </ul>
             </li>
             <li class="nLi
             @if( $sty == "service" )
                     on
             @endif">
-                <h3><a href="service">营销服务</a></h3>
+                <h3><a href="/service">营销服务</a></h3>
             </li>
             <li class="nLi
             @if( $sty == "base" )
                     on
             @endif">
-                <h3><a href="base">试验基地</a></h3>
+                <h3><a href="/base">试验基地</a></h3>
                 <ul class="sub">
-                    <li><a href="base">自贡七星湖葡萄</a></li>
-                    <li><a href="base">威远大棚蔬菜</a></li>
-                    <li><a href="base">河南大豆</a></li>
-                    <li><a href="base">眉山黄丰镇橘子</a></li>
-                    <li><a href="base">云南西双版纳香蕉</a></li>
-                    <li><a href="base">达州蘑菇</a></li>
-                    <li><a href="base">贵州水稻</a></li>
+                    @foreach( session('header_nav')[6]->sons as $leader1 )
+                        <li><a href="/base/category/{{ $leader1->id  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
+                    @endforeach
                 </ul>
             </li>
             <li class="nLi
             @if( $sty == "contact" )
                     on
             @endif">
-                <h3><a href="contact">联系我们</a></h3>
+                <h3><a href="/contact">联系我们</a></h3>
                 <ul class="sub">
-                    <li><a href="contact">招贤纳士</a></li>
-                    <li><a href="way">联系方式</a></li>
+                    @foreach( session('header_nav')[7]->sons as $leader1 )
+                        <li><a href="{{ $leader1->link  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
+                    @endforeach
                 </ul>
             </li>
         </ul>
@@ -143,7 +136,7 @@
                 <p>扫一扫，关注我们</p>
             </div>
             <div class="txt fl">
-                <img src="images/ho_tit_6.png">
+                <img src="/images/ho_tit_6.png">
                 <span class="bk20">&nbsp;</span>
                 <dl class="clearfix">
                     <dt><span class="col_1">&nbsp;</span>座机：{{ session('setting')['fix_phone']  }}</dt>
@@ -163,8 +156,8 @@
 <!-- 侧边 -->
 <div class="float_onlie">
     <a class="on_1" href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes">&nbsp;</a>
-    <a class="on_2 ph" href=""><em><img src="images/phone.jpg"></em></a>
-    <a class="on_3 add" href=""><em><img src="images/address.jpg"></em></a>
+    <a class="on_2 ph" href=""><em><img src="/images/phone.jpg"></em></a>
+    <a class="on_3 add" href=""><em><img src="/images/address.jpg"></em></a>
     <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
     <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
 </div>

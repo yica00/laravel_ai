@@ -65,7 +65,7 @@ class ArticleController extends Controller
     public function store_son( Request $request ){
         $atic = Input::all();
         $atic['thumbnail'] = getUrl($request,'thumbnail');
-        $atic['is_nav'] = 1;
+//        $atic['is_nav'] = 1;
         $rel = Article::create($atic);
         if($rel->wasRecentlyCreated){
             return back()->with('errors','添加成功');

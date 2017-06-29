@@ -8,7 +8,7 @@
         <p>into xingwei</p>
       </div>
       <p class="page_nav clearfix">
-          <a href="/about" >星维简介</a><a href="/culture">企业文化</a><a href="/office_env"  class="on" >办公环境</a><a href="/team">优秀团队</a><a href="/honor">荣誉资质</a>
+          <a href="/about" >星维简介</a><a href="/culture">企业文化</a><a href="/office_env"  >办公环境</a><a href="/team">优秀团队</a><a href="/honor" class="on" >荣誉资质</a>
       </p>
   </div>  
 </div> 

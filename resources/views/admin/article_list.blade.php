@@ -28,6 +28,8 @@
 
                     <td>
                         <a class="act-btn" href="/admin/article/{{$sort->id}}/edit">编辑</a>
+                        <a class="act-btn" href="/article/{{$sort->id}}/look">查看内容</a>
+                        <a class="act-btn" href="/article/{{$sort->id}}/addson">添加内容</a>
                         <a class="act-btn" href="/article/{{$sort->id}}/delete">删除</a>
                     </td>
                 </tr>

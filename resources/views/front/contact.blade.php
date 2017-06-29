@@ -8,7 +8,7 @@
         <p>contact us</p>
       </div>
       <p class="page_nav clearfix">
-          <a href="contact.html" class="on">招贤纳士</a><a href="way.html">联系方式</a>
+          <a href="/contact" class="on">招贤纳士</a><a href="/way">联系方式</a>
       </p>
   </div>  
 </div> 
@@ -26,43 +26,30 @@
           <div class="t2">
               <h2>在这里，您将得到</h2>
             <p>持续成长的环境和空间；持续提升的个人素质和技能；持续展现的自我价值和人生梦想！</p>
-            <p>如有意向，简历请发送至邮箱：<span class="col_174fa2">1521770461@qq.com</span></p>
+            <p>如有意向，简历请发送至邮箱：<span class="col_174fa2">{{ session('setting')['email']  }}</span></p>
           </div>
           <ul class="list">
-            <li>
-              <h2 class="dt clearfix"><span class="num">[2人]</span><span class="name">销售经理</span></h2>
-              <div class="dd">
-                <p>待遇：4000-6000元/月+提成+年底双薪+年终奖金</p>
-                <p>要求：年龄18-30岁以下，限女性，身高1.60以上，性格活泼开朗，形象气质佳。</p>
-              </div>
-            </li>
-            <li>
-              <h2 class="dt clearfix"><span class="num">[2人]</span><span class="name">销售经理</span></h2>
-              <div class="dd">
-                <p>待遇：4000-6000元/月+提成+年底双薪+年终奖金</p>
-                <p>要求：年龄18-30岁以下，限女性，身高1.60以上，性格活泼开朗，形象气质佳。</p>
-              </div>
-            </li>
-            <li>
-              <h2 class="dt clearfix"><span class="num">[2人]</span><span class="name">销售经理</span></h2>
-              <div class="dd">
-                <p>待遇：4000-6000元/月+提成+年底双薪+年终奖金</p>
-                <p>要求：年龄18-30岁以下，限女性，身高1.60以上，性格活泼开朗，形象气质佳。</p>
-              </div>
-            </li>
+              @foreach($articles as $article )
+                  <li>
+                      <h2 class="dt clearfix"><span class="num"></span><span class="name">{{ $article->title }}</span></h2>
+                      <div class="dd">
+                          {!! $article->comtent  !!}
+                      </div>
+                  </li>
+              @endforeach
+
           </ul>
           <div class="pageJump clearfix">
               <div class="number">
-                  <span class="disabled"><a href="">上一页</a></span>
-                  <span class="disabled"><a href="">1</a></span>
-                  <span class="disabled"><a href="">2</a></span>
-                  <span class="disabled"><a href="">3</a></span>
-                  <span class="disabled"><a href="">下一页</a></span>
+                  <span class="disabled"><a href="/contact">首页</a></span>
+                  <span class="disabled"><a href="/contact?page={{ $pages['pre_page'] }}">上一页</a></span>
+                  <span class="disabled"><a href="/contact?page={{ $pages['next_page'] }}">下一页</a></span>
+                  <span class="disabled"><a href="/contact?page={{ $pages['total_page'] }}">尾页</a></span>
               </div>
           </div>
         </div>
       <div class="pic fl">
-        <img src="images/team.png">
+        <img src="{{ $self->thumbnail }}">
       </div>
     </div>
     <!-- end -->

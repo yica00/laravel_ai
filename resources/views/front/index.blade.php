@@ -47,7 +47,7 @@
   <span class="bk30">&nbsp;</span>
   <p class="btn clearfix">
     @foreach( $products as $product )
-      <a href="/produce/categry/{{  $product->id }}">{{  mb_substr($product->title,2,10,'utf8') }}</a>
+      <a href="/product/category/{{  $product->id }}">{{  mb_substr($product->title,2,10,'utf8') }}</a>
     @endforeach
   </p>
   <span class="bk30">&nbsp;</span>
@@ -55,61 +55,19 @@
       <div class="hd">&nbsp;</div>
       <div class="bd">
         <ul>
-          <li>
-            <a href="product_in" class="clearfix">
-              <img src="images/pro1.jpg" class="fr pic" />
-              <div class="txt fl">
-                <h2>三安</h2>
-                <h3>年销售1000万袋</h3>
-                <span class="bk30">&nbsp;</span>
-                <p>国内首创，并获国家专利。采用的生产工艺为国际先进的干粉物理团粒法。本品是目前国内养分含量最高的复合肥，肥效持久，利用率高。增产效果明显，比传统肥料增产20%以上。</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="product_in" class="clearfix">
-              <img src="images/pro1.jpg" class="fr pic" />
-              <div class="txt fl">
-                <h2>三安2</h2>
-                <h3>年销售1000万袋</h3>
-                <span class="bk30">&nbsp;</span>
-                <p>国内首创，并获国家专利。采用的生产工艺为国际先进的干粉物理团粒法。本品是目前国内养分含量最高的复合肥，肥效持久，利用率高。增产效果明显，比传统肥料增产20%以上。</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="product_in" class="clearfix">
-              <img src="images/pro1.jpg" class="fr pic" />
-              <div class="txt fl">
-                <h2>三安3</h2>
-                <h3>年销售1000万袋</h3>
-                <span class="bk30">&nbsp;</span>
-                <p>国内首创，并获国家专利。采用的生产工艺为国际先进的干粉物理团粒法。本品是目前国内养分含量最高的复合肥，肥效持久，利用率高。增产效果明显，比传统肥料增产20%以上。</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="product_in" class="clearfix">
-              <img src="images/pro1.jpg" class="fr pic" />
-              <div class="txt fl">
-                <h2>三安4</h2>
-                <h3>年销售1000万袋</h3>
-                <span class="bk30">&nbsp;</span>
-                <p>国内首创，并获国家专利。采用的生产工艺为国际先进的干粉物理团粒法。本品是目前国内养分含量最高的复合肥，肥效持久，利用率高。增产效果明显，比传统肥料增产20%以上。</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="product_in" class="clearfix">
-              <img src="images/pro1.jpg" class="fr pic" />
-              <div class="txt fl">
-                <h2>三安5</h2>
-                <h3>年销售1000万袋</h3>
-                <span class="bk30">&nbsp;</span>
-                <p>国内首创，并获国家专利。采用的生产工艺为国际先进的干粉物理团粒法。本品是目前国内养分含量最高的复合肥，肥效持久，利用率高。增产效果明显，比传统肥料增产20%以上。</p>
-              </div>
-            </a>
-          </li>
+          @foreach( $pro_details as $pro_detail )
+            <li>
+              <a href="/product/detail/{{ $pro_detail->id }}" class="clearfix">
+                <img src="{{ $pro_detail->thumbnail }}" class="fr pic" />
+                <div class="txt fl">
+                  <h2>{{ $pro_detail->title }}</h2>
+                  <h3>{{ $pro_detail->link }}</h3>
+                  <span class="bk30">&nbsp;</span>
+                  {!! $pro_detail->comtent !!}
+                </div>
+              </a>
+            </li>
+          @endforeach
         </ul>
       </div>
       <a class="prev" href="javascript:void(0)"></a>
@@ -128,9 +86,6 @@
   <div class="w1160 clearfix">    
     <a class="tit" href="core">
       {!! $core1->comtent !!}
-      {{--<h2>星维科技长效稳定复合肥   只为农作物的感受着想</h2>--}}
-      {{--<span class="bk20">&nbsp;</span>--}}
-      {{--<h3>针对目前种植过程普遍存在的土壤有机质严重不足所出现的一系列问题，宜宾星维生物科技有限公司依靠自身的技术实力，全新推出健康腐殖酸复合肥</h3>--}}
     </a>
     <span class="bk40">&nbsp;</span>
     <img src="{{ $core1->thumbnail }}">
@@ -158,40 +113,40 @@
     <span class="bk50">&nbsp;</span>
     <div class="clearfix">
       <div class="w540 fl mR10">
-        <a href="base" class="basic big">
-          <img src="images/base1.jpg">
+        <a href="{{  $bases[0]->link }}" class="basic big">
+          <img src="{{  $bases[0]->thumbnail }}">
           <span>{{ mb_substr($bases[0]->title,2,20,'utf8') }}</span>
         </a>
         <span class="bk10">&nbsp;</span>
-        <a href="base" class="basic midx">
-          <img src="images/base2.jpg">
+        <a href="{{  $bases[1]->link }}" class="basic midx">
+          <img src="{{  $bases[1]->thumbnail }}">
           <span>{{ mb_substr($bases[1]->title,2,20,'utf8') }}</span>
         </a>
       </div>
       <div class="w300 fl mR10">
-        <a href="base" class="basic small">
-          <img src="images/base3.jpg">
+        <a href="{{  $bases[2]->link }}" class="basic small">
+          <img src="{{  $bases[2]->thumbnail }}">
           <span>{{ mb_substr($bases[2]->title,2,20,'utf8') }}</span>
         </a>
         <span class="bk10">&nbsp;</span>
-        <a href="base" class="basic small">
-          <img src="images/base4.jpg">
+        <a href="{{  $bases[3]->link }}" class="basic small">
+          <img src="{{  $bases[3]->thumbnail }}">
           <span>{{ mb_substr($bases[3]->title,2,20,'utf8') }}</span>
         </a>
         <span class="bk10">&nbsp;</span>
-        <a href="base" class="basic small">
-          <img src="images/base5.jpg">
+        <a href="{{  $bases[4]->link }}" class="basic small">
+          <img src="{{  $bases[4]->thumbnail }}">
           <span>{{ mb_substr($bases[4]->title,2,20,'utf8') }}</span>
         </a>
       </div>
       <div class="w300 fl">
-        <a href="base" class="basic small">
-          <img src="images/base6.jpg">
+        <a href="{{  $bases[5]->link }}" class="basic small">
+          <img src="{{  $bases[5]->thumbnail }}">
           <span>{{ mb_substr($bases[5]->title,2,20,'utf8') }}</span>
         </a>
         <span class="bk10">&nbsp;</span>
-        <a href="base" class="basic midy">
-          <img src="images/base7.jpg">
+        <a href="{{  $bases[6]->link }}" class="basic midy">
+          <img src="{{  $bases[6]->thumbnail }}">
           <span>{{ mb_substr($bases[6]->title,2,20,'utf8') }}</span>
         </a>
       </div>

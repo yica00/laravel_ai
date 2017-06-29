@@ -10,7 +10,7 @@ if (!function_exists('getIds')){
     function getIds( $data ){
         $arr = [];
         for( $i=0;$i<count($data);$i++ ){
-            $arr[] = $data[$i]->jd_account_id;
+            $arr[] = $data[$i]->id;
         }
         return $arr;
     }
