@@ -2,7 +2,7 @@
 <!-- saved from url=(0024)http://www.clearedu.net/ -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>联手网站</title>
+    <title>{{ session('setting')['web_name']  }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="keywords" content="">
@@ -27,63 +27,63 @@
     <div class="w1160 clearfix">
         <ul id="nav" class="nav clearfix">
             <li class="nLi on">
-                <h3><a href="index.html">网站首页<span>home</span></a></h3>
+                <h3><a href="/">网站首页<span>home</span></a></h3>
             </li>
             <li class="nLi">
-                <h3><a href="about.html">关于联手<span>about</span></a></h3>
+                <h3><a href="/about">关于联手<span>about</span></a></h3>
                 <ul class="sub">
-                    <li><a href="about.html">品牌介绍</a></li>
-                    <li><a href="about.html">企业文化</a></li>
-                    <li><a href="about.html">发展历程</a></li>
-                    <li><a href="about.html">组织架构</a></li>
-                    <li><a href="about.html">领导致辞</a></li>
-                    <li><a href="show.html">风采展示</a></li>
+                    <li><a href="about">品牌介绍</a></li>
+                    <li><a href="about">企业文化</a></li>
+                    <li><a href="about">发展历程</a></li>
+                    <li><a href="about">组织架构</a></li>
+                    <li><a href="about">领导致辞</a></li>
+                    <li><a href="show">风采展示</a></li>
                 </ul>
             </li>
             <li class="nLi">
-                <h3><a href="product.html">产品中心<span>product</span></a></h3>
+                <h3><a href="/product">产品中心<span>product</span></a></h3>
                 <ul class="sub">
-                    <li><a href="product.html">沙发</a></li>
-                    <li><a href="product.html">酒柜</a></li>
-                    <li><a href="product.html">衣柜</a></li>
-                    <li><a href="product.html">床</a></li>
-                    <li><a href="product.html">桌椅</a></li>
-                    <li><a href="product.html">鞋柜</a></li>
-                    <li><a href="product.html">橱柜</a></li>
-                    <li><a href="product.html">书柜</a></li>
-                    <li><a href="product.html">茶几</a></li>
-                    <li><a href="product.html">电视柜</a></li>
-                    <li><a href="product.html">梳妆台</a></li>
-                    <li><a href="product.html">窗帘</a></li>
+                    <li><a href="product">沙发</a></li>
+                    <li><a href="product">酒柜</a></li>
+                    <li><a href="product">衣柜</a></li>
+                    <li><a href="product">床</a></li>
+                    <li><a href="product">桌椅</a></li>
+                    <li><a href="product">鞋柜</a></li>
+                    <li><a href="product">橱柜</a></li>
+                    <li><a href="product">书柜</a></li>
+                    <li><a href="product">茶几</a></li>
+                    <li><a href="product">电视柜</a></li>
+                    <li><a href="product">梳妆台</a></li>
+                    <li><a href="product">窗帘</a></li>
                 </ul>
             </li>
             <li class="nLi">
-                <h3><a href="case.html">案例中心<span>case</span></a></h3>
+                <h3><a href="/case">案例中心<span>case</span></a></h3>
             </li>
-            <li class="nLi logo"><a href="index.html">&nbsp;</a></li>
+            <li class="nLi logo"><a href="index">&nbsp;</a></li>
             <li class="nLi">
-                <h3><a href="news.html">新闻中心<span>news</span></a></h3>
+                <h3><a href="news">新闻中心<span>news</span></a></h3>
                 <ul class="sub">
-                    <li><a href="news.html">公司新闻</a></li>
-                    <li><a href="news.html">行业动态</a></li>
+                    <li><a href="news">公司新闻</a></li>
+                    <li><a href="news">行业动态</a></li>
                 </ul>
             </li>
             <li class="nLi">
-                <h3><a href="service.html">服务中心<span>service</span></a></h3>
+                <h3><a href="/service">服务中心<span>service</span></a></h3>
                 <ul class="sub">
-                    <li><a href="service.html">服务流程</a></li>
-                    <li><a href="service.html">承诺保障</a></li>
-                    <li><a href="site.html">安装现场</a></li>
+                    <li><a href="service">服务流程</a></li>
+                    <li><a href="service">承诺保障</a></li>
+                    <li><a href="site">安装现场</a></li>
                 </ul>
             </li>
             <li class="nLi">
-                <h3><a href="human.html">招贤纳士<span>recruitment</span></a></h3>
+                <h3><a href="/recruit">招贤纳士<span>recruitment</span></a></h3>
             </li>
             <li class="nLi">
-                <h3><a href="contact.html">联系我们<span>contact</span></a></h3>
+                <h3><a href="/contact">联系我们<span>contact</span></a></h3>
                 <ul class="sub">
-                    <li><a href="contact.html">在线留言</a></li>
-                    <li><a href="way.html">联系方式</a></li>
+                    <li><a href="/contact">在线留言</a></li>
+                    <li><a href="/way">联系方式</a></li>
                 </ul>
             </li>
         </ul>
@@ -106,14 +106,14 @@
 <div class="siteout">
     <span class="bk50">&nbsp;</span>
     <div class="w1160 clearfix">
-        <h2 class="ho_tit_all"><a href="site.html"><img src="images/ho_tit_4.png"></a></h2>
+        <h2 class="ho_tit_all"><a href="site"><img src="images/ho_tit_4.png"></a></h2>
         <span class="bk30">&nbsp;</span>
         <div class="picScroll-leftsite">
             <div class="hd">&nbsp;</div>
             <div class="bd">
                 <ul class="picList">
                     <li>
-                        <a href="news_in.html">
+                        <a href="news_in">
                             <span class="pic"><img src="images/cp_5.jpg" alt="" /></span>
                             <div class="top">
                                 <h2>保利东滨</h2>
@@ -123,7 +123,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="news_in.html">
+                        <a href="news_in">
                             <span class="pic"><img src="images/cp_6.jpg" alt="" /></span>
                             <div class="top">
                                 <h2>保利东滨</h2>
@@ -133,7 +133,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="news_in.html">
+                        <a href="news_in">
                             <span class="pic"><img src="images/cp_7.jpg" alt="" /></span>
                             <div class="top">
                                 <h2>保利东滨</h2>
@@ -143,7 +143,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="news_in.html">
+                        <a href="news_in">
                             <span class="pic"><img src="images/cp_8.jpg" alt="" /></span>
                             <div class="top">
                                 <h2>保利东滨</h2>
@@ -153,7 +153,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="news_in.html">
+                        <a href="news_in">
                             <span class="pic"><img src="images/cp_9.jpg" alt="" /></span>
                             <div class="top">
                                 <h2>保利东滨</h2>
@@ -163,7 +163,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="news_in.html">
+                        <a href="news_in">
                             <span class="pic"><img src="images/cp_10.jpg" alt="" /></span>
                             <div class="top">
                                 <h2>保利东滨</h2>

@@ -12,15 +12,16 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
-        $slides = $this->getSlides();
-        $introduce = $this->getIntroduce();
-        $products = $this->getProducet();
-        $core1 = $this->getCore1();
-        $core2 = $this->getCore2();
-        $bases = $this->getBases();
-        $pro_details = $this->getProdetail($products);
-        $sty='index';
-        return view('front.index',compact('sty','slides','introduce','products','core1','core2','bases','pro_details','pro_details'));
+//        $slides = $this->getSlides();
+//        $introduce = $this->getIntroduce();
+//        $products = $this->getProducet();
+//        $core1 = $this->getCore1();
+//        $core2 = $this->getCore2();
+//        $bases = $this->getBases();
+//        $pro_details = $this->getProdetail($products);
+//        $sty='index';
+        return view('front.index');
+//        return view('front.index',compact('sty','slides','introduce','products','core1','core2','bases','pro_details','pro_details'));
     }
 
     public function getCore1(){
@@ -28,19 +29,10 @@ class FrontController extends Controller
         return $core1;
     }
 
-    public function getCore2(){
-        $core2 = Article::find(51);
-        return $core2;
-    }
 
     public function getIntroduce(){
         $introduce = Article::find(2);
         return $introduce;
-    }
-
-    public function getPlans(){
-        $plans = Article::select('thumbnail', 'title', 'id')->where('pid', 18)->orderBy('id', 'asc')->get();
-        return $plans;
     }
 
     public function getProducet()
@@ -61,12 +53,6 @@ class FrontController extends Controller
         return $sliders;
     }
 
-    public function getBases()
-    {
-        $bases = Article::select('thumbnail','title','link')->where('pid', '7')->orderBy('id', 'asc')->get();
-        return $bases;
-    }
-
     public function getCases()
     {
         $base1 = Article::select('comtent', 'thumbnail')->where('pid', '17')->orderBy('id', 'desc')->get();
@@ -80,9 +66,8 @@ class FrontController extends Controller
     }
 
     public function about(){
-        $article = Article::find(12);
-        $sty='about';
-        return view('front.about',compact('sty','article'));
+        $article = Article::find(1);
+        return view('front.about',compact('article'));
     }
 
     public function culture(){

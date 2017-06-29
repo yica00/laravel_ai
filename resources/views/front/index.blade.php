@@ -1,4 +1,5 @@
 @extends('front.base')
+@section('content')
 <!-- banner -->
 <div id="slideBox" class="slideBox">
   <div class="hd">&nbsp;</div>
@@ -245,3 +246,4 @@
   <span class="bk100">&nbsp;</span>
 </div>
 <!-- siteout -->
+@endsection

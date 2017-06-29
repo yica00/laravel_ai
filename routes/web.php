@@ -17,11 +17,11 @@ Route::group(['middleware'=>'check_setting'],function (){
 //    Route::group(['as'=>'front','middleware'=>'get_nav'],function (){
     Route::group(['as'=>'front'],function (){
 
-        Route::get('/', function (){
-            return view('front.index');
-        });
+//        Route::get('/', function (){
+//            return view('front.way');
+//        });
 
-//        Route::get('/', 'FrontController@index');
+        Route::get('/', 'FrontController@index');
 
         Route::get('about','FrontController@about');
         Route::get('culture','FrontController@culture');
@@ -29,23 +29,20 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('team','FrontController@team');
         Route::get('honor','FrontController@honor');
 
+        Route::get('product','FrontController@product');
+        Route::get('product/category/{id}','FrontController@product');
+        Route::get('product/detail/{id}','FrontController@product_detail');
+
+        Route::get('case','FrontController@case');
+
         Route::get('news','FrontController@news');
         Route::get('news/{id}','FrontController@news_Detail');
         Route::get('company_news','FrontController@news');
         Route::get('industy_news','FrontController@industy_news');
 
-        Route::get('product','FrontController@product');
-        Route::get('product/category/{id}','FrontController@product');
-        Route::get('product/detail/{id}','FrontController@product_detail');
-
-        Route::get('core','FrontController@core');
-        Route::get('core_technology','FrontController@core');
-        Route::get('core_character','FrontController@core_character');
-
         Route::get('service','FrontController@service');
 
-        Route::get('base','FrontController@pro_base');
-        Route::get('base/category/{id}','FrontController@pro_base');
+        Route::get('recruit','FrontController@recruit');
 
         Route::get('contact','FrontController@contact');
         Route::get('way','FrontController@contact_way');
