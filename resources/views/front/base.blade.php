@@ -2,11 +2,11 @@
 <!-- saved from url=(0024)http://www.clearedu.net/ -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>{{ session('setting')['web_name']  }}</title>
+    <title>联手网站</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="{{ session('setting')['web_name']  }}">
-    <meta name="description" content="{{ session('setting')['web_name']  }}">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <!-- 适应手机 -->
     <meta name="viewport" content="width=1160px;">
@@ -14,101 +14,76 @@
     <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
     <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.source.js"></script>
+
+    <!--[if lt IE 9]><!-->
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <!--[endif]-->
+    <!-- 先后 -->
 </head>
 <body>
-<!-- header -->
-<div class="header">
-    <div class="w1160 clearfix">
-        <span class="call fr">&nbsp;</span>
-        <a class="logo fl" href="/">&nbsp;</a>
-    </div>
-</div>
 <!-- nav -->
 <div class="nav_box">
     <div class="w1160 clearfix">
         <ul id="nav" class="nav clearfix">
-            <li class="nLi
-            @if( $sty == "index" )
-                    on
-            @endif
-                    ">
-                <h3><a href="/">网站首页</a></h3>
+            <li class="nLi on">
+                <h3><a href="index.html">网站首页<span>home</span></a></h3>
             </li>
-
-            <li class="nLi
-            @if( $sty == "about" )
-                    on
-            @endif">
-                <h3><a href="/about">走进星维</a></h3>
+            <li class="nLi">
+                <h3><a href="about.html">关于联手<span>about</span></a></h3>
                 <ul class="sub">
-                    @foreach( session('header_nav')[1]->sons as $leader1 )
-                        <li><a href="{{ $leader1->link  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
-                    @endforeach
+                    <li><a href="about.html">品牌介绍</a></li>
+                    <li><a href="about.html">企业文化</a></li>
+                    <li><a href="about.html">发展历程</a></li>
+                    <li><a href="about.html">组织架构</a></li>
+                    <li><a href="about.html">领导致辞</a></li>
+                    <li><a href="show.html">风采展示</a></li>
                 </ul>
             </li>
-
-            <li class="nLi
-            @if( $sty == "news" )
-                    on
-            @endif">
-                <h3><a href="/news">新闻中心</a></h3>
+            <li class="nLi">
+                <h3><a href="product.html">产品中心<span>product</span></a></h3>
                 <ul class="sub">
-                    @foreach( session('header_nav')[2]->sons as $leader1 )
-                        <li><a href="{{ $leader1->link }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
-                    @endforeach
+                    <li><a href="product.html">沙发</a></li>
+                    <li><a href="product.html">酒柜</a></li>
+                    <li><a href="product.html">衣柜</a></li>
+                    <li><a href="product.html">床</a></li>
+                    <li><a href="product.html">桌椅</a></li>
+                    <li><a href="product.html">鞋柜</a></li>
+                    <li><a href="product.html">橱柜</a></li>
+                    <li><a href="product.html">书柜</a></li>
+                    <li><a href="product.html">茶几</a></li>
+                    <li><a href="product.html">电视柜</a></li>
+                    <li><a href="product.html">梳妆台</a></li>
+                    <li><a href="product.html">窗帘</a></li>
                 </ul>
             </li>
-
-            <li class="nLi
-            @if( $sty == "product" )
-                on
-            @endif
-            ">
-                <h3><a href="/product">产品中心</a></h3>
+            <li class="nLi">
+                <h3><a href="case.html">案例中心<span>case</span></a></h3>
+            </li>
+            <li class="nLi logo"><a href="index.html">&nbsp;</a></li>
+            <li class="nLi">
+                <h3><a href="news.html">新闻中心<span>news</span></a></h3>
                 <ul class="sub">
-                    @foreach( session('header_nav')[3]->sons as $leader1 )
-                        <li><a href="/product/category/{{ $leader1->id  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
-                    @endforeach
+                    <li><a href="news.html">公司新闻</a></li>
+                    <li><a href="news.html">行业动态</a></li>
                 </ul>
             </li>
-
-            <li class="nLi
-            @if( $sty == "core" )
-                    on
-            @endif">
-                <h3><a href="/core">核心技术</a></h3>
+            <li class="nLi">
+                <h3><a href="service.html">服务中心<span>service</span></a></h3>
                 <ul class="sub">
-                    @foreach( session('header_nav')[4]->sons as $leader1 )
-                        <li><a href="{{ $leader1->link  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
-                    @endforeach
+                    <li><a href="service.html">服务流程</a></li>
+                    <li><a href="service.html">承诺保障</a></li>
+                    <li><a href="site.html">安装现场</a></li>
                 </ul>
             </li>
-            <li class="nLi
-            @if( $sty == "service" )
-                    on
-            @endif">
-                <h3><a href="/service">营销服务</a></h3>
+            <li class="nLi">
+                <h3><a href="human.html">招贤纳士<span>recruitment</span></a></h3>
             </li>
-            <li class="nLi
-            @if( $sty == "base" )
-                    on
-            @endif">
-                <h3><a href="/base">试验基地</a></h3>
+            <li class="nLi">
+                <h3><a href="contact.html">联系我们<span>contact</span></a></h3>
                 <ul class="sub">
-                    @foreach( session('header_nav')[6]->sons as $leader1 )
-                        <li><a href="/base/category/{{ $leader1->id  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
-                    @endforeach
-                </ul>
-            </li>
-            <li class="nLi
-            @if( $sty == "contact" )
-                    on
-            @endif">
-                <h3><a href="/contact">联系我们</a></h3>
-                <ul class="sub">
-                    @foreach( session('header_nav')[7]->sons as $leader1 )
-                        <li><a href="{{ $leader1->link  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
-                    @endforeach
+                    <li><a href="contact.html">在线留言</a></li>
+                    <li><a href="way.html">联系方式</a></li>
                 </ul>
             </li>
         </ul>
@@ -128,37 +103,166 @@
 
 @yield('content')
 
-<div class="contact_out">
+<div class="siteout">
+    <span class="bk50">&nbsp;</span>
     <div class="w1160 clearfix">
-        <div class="top clearfix">
-            <div class="ewm fr">
-                <img src="{{ session('setting')['wx_map']  }}">
-                <p>扫一扫，关注我们</p>
-            </div>
-            <div class="txt fl">
-                <img src="/images/ho_tit_6.png">
-                <span class="bk20">&nbsp;</span>
-                <dl class="clearfix">
-                    <dt><span class="col_1">&nbsp;</span>座机：{{ session('setting')['fix_phone']  }}</dt>
-                    <dd><span class="col_3">&nbsp;</span>手机：{{ session('setting')['contacts']  }}</dd>
-                </dl>
-                <dl class="clearfix">
-                    <dt><span class="col_2">&nbsp;</span>QQ：{{ session('setting')['qq']  }}</dt>
-                    <dd><span class="col_4">&nbsp;</span>地址：{{ session('setting')['bases']  }}</dd>
-                </dl>
+        <h2 class="ho_tit_all"><a href="site.html"><img src="images/ho_tit_4.png"></a></h2>
+        <span class="bk30">&nbsp;</span>
+        <div class="picScroll-leftsite">
+            <div class="hd">&nbsp;</div>
+            <div class="bd">
+                <ul class="picList">
+                    <li>
+                        <a href="news_in.html">
+                            <span class="pic"><img src="images/cp_5.jpg" alt="" /></span>
+                            <div class="top">
+                                <h2>保利东滨</h2>
+                                <h3>地址：青华路153号</h3>
+                                <p class="bot">安装：<em>1户</em></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news_in.html">
+                            <span class="pic"><img src="images/cp_6.jpg" alt="" /></span>
+                            <div class="top">
+                                <h2>保利东滨</h2>
+                                <h3>地址：青华路153号</h3>
+                                <p class="bot">安装：<em>1户</em></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news_in.html">
+                            <span class="pic"><img src="images/cp_7.jpg" alt="" /></span>
+                            <div class="top">
+                                <h2>保利东滨</h2>
+                                <h3>地址：青华路153号</h3>
+                                <p class="bot">安装：<em>1户</em></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news_in.html">
+                            <span class="pic"><img src="images/cp_8.jpg" alt="" /></span>
+                            <div class="top">
+                                <h2>保利东滨</h2>
+                                <h3>地址：青华路153号</h3>
+                                <p class="bot">安装：<em>1户</em></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news_in.html">
+                            <span class="pic"><img src="images/cp_9.jpg" alt="" /></span>
+                            <div class="top">
+                                <h2>保利东滨</h2>
+                                <h3>地址：青华路153号</h3>
+                                <p class="bot">安装：<em>1户</em></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news_in.html">
+                            <span class="pic"><img src="images/cp_10.jpg" alt="" /></span>
+                            <div class="top">
+                                <h2>保利东滨</h2>
+                                <h3>地址：青华路153号</h3>
+                                <p class="bot">安装：<em>1户</em></p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
+        <script type="text/javascript">
+            jQuery(".picScroll-leftsite").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:4,trigger:"click"});
+        </script>
     </div>
-    <div class="footer">
-        CopyRight © 2017   {{ session('setting')['web_name']  }}&nbsp;&nbsp;&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;蜀ICP备12345678号&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a href="http://www.scnuohang.com">诺航科技</a>
+    <span class="bk60">&nbsp;</span>
+</div>
+<div class="index_list">
+    <div class="w1160 clearfix">
+        <ul class="list clearfix">
+            <li>
+                <img src="images/ho_btn_1.png" alt="" />
+                <p>免费测量尺寸<br/>送货安装</p>
+            </li>
+            <li>
+                <img src="images/ho_btn_2.png" alt="" />
+                <p>一年内保修<br/>终身维护</p>
+            </li>
+            <li>
+                <img src="images/ho_btn_3.png" alt="" />
+                <p>全城惠价<br/>联手倾情力荐</p>
+            </li>
+            <li>
+                <img src="images/ho_btn_4.png" alt="" />
+                <p>闭口合同一口价<br/>杜绝一切增项</p>
+            </li>
+            <li>
+                <img src="images/ho_btn_5.png" alt="" />
+                <p>施工专业规范<br/>质量有保证</p>
+            </li>
+            <li>
+                <img src="images/ho_btn_6.png" alt="" />
+                <p>大事小事全权负责<br/>问题处理及时</p>
+            </li>
+        </ul>
+    </div>
+    <span class="bk30">&nbsp;</span>
+</div>
+<div class="footer">
+    <div class="w1160 clearfix">
+        <ul class="top clearfix">
+            <li>
+                <img src="images/ho_call.png" alt="" />
+                <p class="one">0817-3631155</p>
+            </li>
+            <li>
+                <img src="images/ho_phone.png" alt="" />
+                <p>152-2812-5515<br/>133-4076-5110 </p>
+            </li>
+            <li>
+                <img src="images/ho_qq.png" alt="" />
+                <p class="one">2875170198</p>
+            </li>
+            <li>
+                <img src="images/ho_add.png" alt="" />
+                <p>潆华工业园区BD-C<br/>南充恩佩瑞机电有限公司内 </p>
+            </li>
+        </ul>
+        <img src="images/cont_img.jpg" alt="" />
+        <div class="bot clearfix">
+            <span class="ewm fl"><img src="images/erwm.png"></span>
+            <ul class="txt fl">
+                <li>联系人：赵清春  </li>
+                <li>邮箱：2875170198@qq.com  </li>
+                <li>电话：152-2812-5515或133-4076-5110</li>
+                <li>座机：0817-3631155   </li>
+            </ul>
+            <ul class="txt fl">
+                <li>传真：0817-3631155   </li>
+                <li>邮编：637000  </li>
+                <li>Q Q：2875170198  </li>
+                <li>地址：顺庆区潆华工业园区BD-C南充恩佩瑞机电有限公司内 </li>
+            </ul>
+        </div>
+    </div>
+    <div class="rights">
+        <div class="w1160 clearfix">
+            CopyRight © 2017   顺庆区联手家具经营部 &nbsp;&nbsp;&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;蜀ICP备8888888号&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a href="">诺航科技</a>
+        </div>
     </div>
 </div>
+
+
 <!-- 侧边 -->
 <div class="float_onlie">
-    <a class="on_1" href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes">&nbsp;</a>
-    <a class="on_2 ph" href=""><em><img src="/images/phone.jpg"></em></a>
-    <a class="on_3 add" href=""><em><img src="/images/address.jpg"></em></a>
-    <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
+    <a class="on_1" href="tencent://message/?uin={$qq[1]}&amp;Menu=yes">&nbsp;</a>
+    <a class="on_2 ph" href=""><em><img src="images/phone.jpg"></em></a>
+    <a class="on_3 add" href=""><em><img src="images/address.jpg"></em></a>
+    <a class="on_4 ewm" href=""><em><img src="images/erwm.png"></em></a>
     <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
 </div>
 </body>
