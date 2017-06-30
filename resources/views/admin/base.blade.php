@@ -1,169 +1,95 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ session('setting')['web_name']  }}</title>
-
-    <link href="http://7xtfzn.com1.z0.glb.clouddn.com/Fontawesom/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://7xtfzn.com1.z0.glb.clouddn.com/Fontawesom/css/font-awesome-ie7.min.css" rel="stylesheet">
-    <link href="http://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
-    <link href="{{ asset('akl/UI/Aikla/css/base.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <script type="text/javascript" src="{{ asset('akl/jQuery/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('akl/Layer/layer.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('akl/UI/Aikla/js/plugin.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('akl/UI/Aikla/js/base.js') }}"></script>
+    <title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/vendor/linearicons/style.css">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+{{--<link rel="stylesheet" href="/assets/css/demo.css">--}}
+<!-- GOOGLE FONTS -->
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon.png">
 </head>
-<body id="admin">
-<div class="full-view">
-    <div id="top-bar" class="main-view">
 
-        <a href="/" clss="fl logo" style="display: inline-block;float:left;" >
-{{--            <img src={{ session()->get('doain')->logo }} style="width: 200px;height: 59px;" />--}}
-        </a>
-
-        <ul class="fl menu">
-            <li>
-                <a class="fstMenu" href="/admin/article"><i class="fa fa-check-square-o"></i> 内容管理</a>
-            </li>
-            <li>
-                <a class="fstMenu" href="/admin/message"><i class="fa fa-check-square-o"></i> 留言管理</a>
-            </li>
-            <li>
-                <a class="fstMenu" href="/admin/setting"><i class="fa fa-check-square-o"></i> 网站配置</a>
-            </li>
-            <li>
-                <a class="fstMenu" href="/admin/up_password"><i class="fa fa-check-square-o"></i> 修改密码</a>
-            </li>
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/admin/head_img"><i class="fa fa-file-text-o"></i> 导航图</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/admin/product"><i class="fa fa-user"></i> 业务范围</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/goods"><i class="fa fa-check-square-o"></i> 商品管理</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/scalp_order"><i class="fa fa-check-square-o"></i> 刷单记录</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/evaluate"><i class="fa fa-check-square-o"></i> 评价管理</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/area"><i class="fa fa-check-square-o"></i> 省市地区</a>--}}
-            {{--</li>--}}
-            {{--@if(Auth::user()->partid==1)--}}
-                {{--<li>--}}
-                    {{--<a class="fstMenu" href="/Admin/Nav"><i class="fa fa-bars"></i> 导航管理</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a class="fstMenu" href="/Admin/Department"><i class="fa fa-bars"></i> 子站管理</a>--}}
-                {{--</li>--}}
-            {{--@endif--}}
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/Admin/Composition"><i class="fa fa-check-square-o"></i> 菜单</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/Admin/Design"><i class="fa fa-check-square-o"></i> 菜单</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/Admin/Tool"><i class="fa fa-check-square-o"></i> 菜单</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/Admin/Style"><i class="fa fa-check-square-o"></i> 菜单</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="fstMenu" href="/Admin/config/config"><i class="fa fa-check-square-o"></i> 菜单</a>--}}
-            {{--</li>--}}
-
-        </ul>
-        <a class="login-out" href="/admin/logout"><i class="fa fa-sign-out"></i> 退出登陆</a>
-{{--        <a class="login-out" >{{ Auth::user()->name }}</a>--}}
-    </div>
-    <div id="left-bar" class="left-view">
-        <ul class="nav">
-            {{--<li >--}}
-                {{--<a class="menu" href="/article">--}}
-                    {{--<i class="fa fa-file-text-o"></i>--}}
-                    {{--<span>导航</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="menu" href="/admin/product" style="margin-top: 10px">--}}
-                    {{--<i class="fa fa-user"></i>--}}
-                    {{--<span>业务范围</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="menu" href="/admin/head_img" style="margin-top: 10px">--}}
-                    {{--<i class="fa fa-check-square-o"></i>--}}
-                    {{--<span>导航图</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="menu" href="/scalp_order" style="margin-top: 10px">--}}
-                    {{--<i class="fa fa-check-square-o"></i>--}}
-                    {{--<span>刷单</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="menu" href="/evaluate" style="margin-top: 10px">--}}
-                    {{--<i class="fa fa-check-square-o"></i>--}}
-                    {{--<span>评价</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="menu" href="/area" style="margin-top: 10px">--}}
-                    {{--<i class="fa fa-check-square-o"></i>--}}
-                    {{--<span>地区</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
-
-            {{--@if(Auth::user()->partid==1)--}}
-                {{--<li>--}}
-                    {{--<a class="menu" href="/Admin/Nav">--}}
-                        {{--<i class="fa fa-bars"></i>--}}
-                        {{--<span>导航</span>--}}
-                    {{--</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a class="menu" href="/Admin/Department">--}}
-                        {{--<i class="fa fa-bars"></i>--}}
-                        {{--<span>子站</span>--}}
-                    {{--</a>--}}
-                {{--</li>--}}
-            {{--@endif--}}
-            {{--<li>--}}
-                {{--<a class="menu" href="/Admin/Composition">--}}
-                    {{--<i class="fa fa-check-square-o"></i>--}}
-                    {{--<span>菜单</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="menu" href="/Admin/Design">--}}
-                    {{--<i class="fa fa-check-square-o"></i>--}}
-                    {{--<span>菜单</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="menu" href="/Admin/config/config">--}}
-                    {{--<i class="fa fa-check-square-o"></i>--}}
-                    {{--<span>菜单</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
-        </ul>
-    </div>
-    <div id="right-bar" class="clear">
-        <div class="main">
-            @yield('content')
+<body>
+<!-- WRAPPER -->
+<div id="wrapper">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="brand">
+            <a href="/"><img src="/assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+        </div>
+        <div class="container-fluid">
+            <div class="navbar-btn">
+                <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+            </div>
+            <div id="navbar-menu">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="/admin/logout"><i class="lnr lnr-exit"></i> <span>退出登录</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAVBAR -->
+    <!-- LEFT SIDEBAR -->
+    <div id="sidebar-nav" class="sidebar">
+        <div class="sidebar-scroll">
+            <nav>
+                <ul class="nav">
+                    <li><a href="/admin" class="active"><i class="lnr lnr-home"></i> <span>后台首页</span></a></li>
+                    <li><a href="/admin/article" ><i class="lnr lnr-inbox"></i> <span>内容管理</span></a></li>
+                    <li><a href="/admin/team" class=""><i class="lnr lnr-user"></i> <span>团队管理</span></a></li>
+                    <li><a href="/admin/setting" class=""><i class="lnr lnr-cog"></i> <span>网站配置</span></a></li>
+                    <li><a href="/admin/up_password" class=""><i class="lnr lnr-sun"></i> <span>修改密码</span></a></li>
+                    {{--<li>--}}
+                    {{--<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>--}}
+                    {{--<div id="subPages" class="collapse ">--}}
+                    {{--<ul class="nav">--}}
+                    {{--<li><a href="page-profile.html" class="">Profile</a></li>--}}
+                    {{--<li><a href="page-login.html" class="">Login</a></li>--}}
+                    {{--<li><a href="page-lockscreen.html" class="">Lockscreen</a></li>--}}
+                    {{--</ul>--}}
+                    {{--</div>--}}
+                    {{--</li>--}}
+                </ul>
+            </nav>
         </div>
     </div>
+    <!-- END LEFT SIDEBAR -->
+    <!-- MAIN -->
+    <div class="main">
+        <!-- MAIN CONTENT -->
+    {{--<div class="main-content">--}}
+    <div class="container-fluid">
+
+    @yield('content')
+
+    </div>
+    {{--</div>--}}
+    <!-- END MAIN CONTENT -->
+    </div>
+    <!-- END MAIN -->
+    <div class="clearfix" ></div>
+    <footer>
+        <div class="container-fluid" >
+            <p class="copyright">&copy; 2017 <a href="#" target="_blank">Theme I Need</a>. All Rights <a href="http://www.scnuohang.com/" target="_blank" >诺航科技</a>.  </p>
+        </div>
+    </footer>
 </div>
-<div style="position: absolute;left: 45%;margin-top: 30%">
-    <h1>诺航网络科技有限公司</h1>
-</div>
+<!-- END WRAPPER -->
+<!-- Javascript -->
+
 </body>
 </html>

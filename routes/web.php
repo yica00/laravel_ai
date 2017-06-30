@@ -18,7 +18,7 @@ Route::group(['middleware'=>'check_setting'],function (){
 //    Route::group(['as'=>'front'],function (){
 
 //        Route::get('/', function (){
-//            return view('front.way');
+//            return view('admin.index');
 //        });
 
         Route::get('/', 'FrontController@index');
