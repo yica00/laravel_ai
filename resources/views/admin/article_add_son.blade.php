@@ -26,7 +26,10 @@
             </div>
 
             <input name="pid" hidden="hidden" value="{{ $id }}">
-            <input name="is_nav" hidden="hidden" value=0 >
+            <div class="form-group">
+                <label>是否为导航：</label><input name="is_nav"  value=0 >  <span style="color: red">0表示不是导航，1表示是导航</span>
+            </div>
+
             <!-- 加载编辑器的容器 -->
             <script id="container" name="comtent" type="text/plain">
 

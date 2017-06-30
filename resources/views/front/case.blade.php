@@ -7,10 +7,7 @@
         <h2>--&nbsp;&nbsp;案例中心&nbsp;&nbsp;--</h2>
         <p>case</p>
       </div>
-      <!-- <p class="page_nav clearfix">
-         <a href="news.html" class="on">公司新闻</a>
-            <a href="news.html">行业动态</a>
-      </p> -->
+
   </div>  
 </div>
 <!-- wap_box -->
@@ -34,88 +31,29 @@
         });
       </script>
     <div id="casen_list" class="clearfix">
-        <a rel="images_group" href="images/cp_5.jpg">
-          <img src="images/cp_5.jpg" alt="" />
-          <span class="box">&nbsp;</span>
-          <div class="txt">
-            <h2>时尚雅致 布艺沙发</h2>
-            <p>110平米二居室</p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_6.jpg">
-          <img src="images/cp_6.jpg" alt="" />
-          <span class="box">&nbsp;</span>
-          <div class="txt">
-            <h2>时尚雅致 布艺沙发</h2>
-            <p>110平米二居室</p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_7.jpg">
-          <img src="images/cp_7.jpg" alt="" />
-          <span class="box">&nbsp;</span>
-          <div class="txt">
-            <h2>时尚雅致 布艺沙发</h2>
-            <p>110平米二居室</p>
-          </div>
-        </a>
+        @foreach( $articles as $article )
+            <a rel="images_group" href="{{ $article->thumbnail }}">
+                <img src="{{ $article->thumbnail }}" alt="" />
+                <span class="box">&nbsp;</span>
+                <div class="txt">
+                    <h2>{{ $article->title }}</h2>
+                    <p>{{ $article->link }}</p>
+                </div>
+            </a>
+        @endforeach
 
-        <a rel="images_group" href="images/cp_8.jpg">
-          <img src="images/cp_8.jpg" alt="" />
-          <span class="box">&nbsp;</span>
-          <div class="txt">
-            <h2>时尚雅致 布艺沙发</h2>
-            <p>110平米二居室</p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_9.jpg">
-          <img src="images/cp_9.jpg" alt="" />
-          <span class="box">&nbsp;</span>
-          <div class="txt">
-            <h2>时尚雅致 布艺沙发</h2>
-            <p>110平米二居室</p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_10.jpg">
-          <img src="images/cp_10.jpg" alt="" />
-          <span class="box">&nbsp;</span>
-          <div class="txt">
-            <h2>时尚雅致 布艺沙发</h2>
-            <p>110平米二居室</p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_6.jpg">
-          <img src="images/cp_6.jpg" alt="" />
-          <span class="box">&nbsp;</span>
-          <div class="txt">
-            <h2>时尚雅致 布艺沙发</h2>
-            <p>110平米二居室</p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_7.jpg">
-          <img src="images/cp_7.jpg" alt="" />
-          <span class="box">&nbsp;</span>
-          <div class="txt">
-            <h2>时尚雅致 布艺沙发</h2>
-            <p>110平米二居室</p>
-          </div>
-        </a>
-
-        <a rel="images_group" href="images/cp_8.jpg">
-          <img src="images/cp_8.jpg" alt="" />
-          <span class="box">&nbsp;</span>
-          <div class="txt">
-            <h2>时尚雅致 布艺沙发</h2>
-            <p>110平米二居室</p>
-          </div>
-        </a>
       </div>
     <div class="pageJump clearfix">
         <div class="number">
-            <span class="disabled"><a href="">上一页</a></span>
-            <span class="disabled"><a href="">1</a></span>
-            <span class="disabled"><a href="">2</a></span>
-            <span class="disabled"><a href="">3</a></span>
-            <span class="disabled"><a href="">下一页</a></span>
+
+            @if( $pages['pre_page']  )
+                <span class="disabled"><a href="/case">首页</a></span>
+                <span class="disabled"><a href="/case?page={{ $pages['pre_page'] }}">上一页</a></span>
+            @endif
+            @if( $pages['next_page'] )
+                    <span class="disabled"><a href="/case?page={{ $pages['next_page'] }}">下一页</a></span>
+                    <span class="disabled"><a href="/case?page={{ $pages['total_page'] }}">尾页</a></span>
+            @endif
         </div>
     </div>
     <!-- end --> 

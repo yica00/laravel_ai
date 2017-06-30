@@ -74,18 +74,40 @@ function readJson2(){
 
 function getPage($teams,$num){
     $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
+    $total =$teams->total();
+    $total_page = ceil( $total/$num);
     if($page <= 1){
-        $pre_page = 1;
+        $pre_page = null;
     }else{
         $pre_page = $page - 1;
     }
-    $next_page = $page + 1;
-    $total =$teams->total();
-    $total_page = ceil( $total/$num);
+    if($page >= $total_page ){
+        $next_page = null;
+    }else{
+        $next_page = $page + 1;
+    }
     $page = [
+        'page'=>$page,
         'pre_page' => $pre_page,
         'next_page' => $next_page,
         'total_page' => $total_page,
     ];
     return $page;
+}
+
+function get_up_down_page($id,$pid){
+    $pre_page = \App\Models\Admin\Article::where('id','>',$id)->where('pid',$pid)->first();
+    if($pre_page){
+        $pre_id = $pre_page->id;
+    }else{
+        $pre_id = null;
+    }
+
+    $next_page = \App\Models\Admin\Article::where('id','<',$id)->where('pid',$pid)->first();
+    if($next_page){
+        $next_id = $next_page->id;
+    }else{
+        $next_id = null;
+    }
+    return [$id,$pre_id,$next_id];
 }

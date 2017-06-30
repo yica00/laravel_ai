@@ -12,23 +12,31 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
-//        $slides = $this->getSlides();
-//        $introduce = $this->getIntroduce();
-//        $products = $this->getProducet();
-//        $core1 = $this->getCore1();
-//        $core2 = $this->getCore2();
-//        $bases = $this->getBases();
-//        $pro_details = $this->getProdetail($products);
-//        $sty='index';
-        return view('front.index');
-//        return view('front.index',compact('sty','slides','introduce','products','core1','core2','bases','pro_details','pro_details'));
+        $slides = $this->getSlides();
+        $recommends = $this->getRecommend();
+        $products = $this->getProducet();
+        $cases = $this->getCase();
+        $newss = $this->getNews();
+        $scences = $this->getScence();
+        return view('front.index',compact('slides','cases','newss','scences','products','recommends'));
     }
 
-    public function getCore1(){
-        $core1 = Article::find(50);
-        return $core1;
+    public function getRecommend(){
+        $articles = Article::where('pid',72)->orderBy('id','asc')->get();
+        return $articles;
     }
-
+    public function getScence(){
+        $articles = Article::where('pid',32)->orderBy('id','desc')->take(6)->get();
+        return $articles;
+    }
+    public function getCase(){
+        $articles = Article::where('pid',5)->orderBy('id','desc')->take(6)->get();
+        return $articles;
+    }
+    public function getNews(){
+        $articles = Article::whereIn('pid',[28,29])->orderBy('id','desc')->take(6)->get();
+        return $articles;
+    }
 
     public function getIntroduce(){
         $introduce = Article::find(2);
@@ -37,7 +45,7 @@ class FrontController extends Controller
 
     public function getProducet()
     {
-        $product = Article::select( 'title', 'id','pid')->where('pid', 4)->orderBy('id', 'asc')->get();
+        $product = Article::select( 'thumbnail','title', 'id','pid')->where('pid', 4)->orderBy('id', 'asc')->take(8)->get();
         return $product;
     }
 
@@ -65,63 +73,83 @@ class FrontController extends Controller
         return $teams;
     }
 
+
+
     public function about(){
-        $article = Article::find(1);
-        return view('front.about',compact('article'));
+        $article = Article::find(10);
+        $link = "/about";
+        return view('front.about',compact('article','link'));
     }
-
     public function culture(){
+        $article = Article::find(11);
+        $link = "/culture";
+        return view('front.about',compact('link','article'));
+    }
+    public function dev_history(){
+        $article = Article::find(12);
+        $link = "/dev_history";
+        return view('front.about',compact('link','article'));
+    }
+    public function organization(){
         $article = Article::find(13);
-        $sty='about';
-        return view('front.about2',compact('sty','article'));
+        $link = "/organization";
+        return view('front.about',compact('link','article'));
+    }
+    public function speak(){
+        $article = Article::find(14);
+        $link = "/speak";
+        return view('front.about',compact('link','article'));
+    }
+    public function view(){
+        $articles = Article::select('thumbnail','title')->where('pid',15)->get();
+        $link = "/view";
+        return view('front.show',compact('articles','link'));
     }
 
-    public function office_env(){
-        $articles = Article::select( 'thumbnail','title')->where('pid', '14')->orderBy('id', 'asc')->get();
-        $sty='about';
-        return view('front.office',compact('sty','articles'));
-    }
 
-    public function team(){
-        $articles = Article::select( 'thumbnail','title')->where('pid', '15')->orderBy('id', 'asc')->get();
-        $sty='about';
-        return view('front.office2',compact('sty','articles'));
-    }
-
-    public function honor(){
-        $articles = Article::select( 'thumbnail','title')->where('pid', '16')->orderBy('id', 'asc')->get();
-        $sty='about';
-        return view('front.office3',compact('sty','articles'));
-    }
 
     public function news(){
-        $articles = Article::select( 'thumbnail','title','created_at','comtent','id')->where('pid', '29')->orderBy('id', 'desc')->paginate(6);
-        $sty='news';
+        $pid = 28;
+        $articles = Article::select( 'thumbnail','title','created_at','comtent','id')->where('pid', $pid)->orderBy('id', 'desc')->paginate(6);
         $pages = getPage($articles,6);
-        return view('front.news',compact('sty','articles','pages'));
+        $category = "company_news";
+        return view('front.news',compact('pid','articles','pages','category'));
     }
-
+    public function industy_news(){
+        $pid = 29;
+        $articles = Article::select( 'thumbnail','title','created_at','comtent','id')->where('pid', $pid)->orderBy('id', 'desc')->paginate(6);
+        $pages = getPage($articles,6);
+        $category = "industy_news";
+        return view('front.news',compact('articles','pages','pid','category'));
+    }
     public function news_Detail($id){
         $article = Article::find($id);
-        $sty='news';
-        return view('front.news_in',compact('sty','article'));
-
+        if($article->pid == 28){
+            $sty = "company_news";
+        }else{
+            $sty = "industy_news";
+        }
+        $up_down = get_up_down_page($id,$article->pid);
+        return view('front.news_in',compact('sty','article','up_down'));
     }
 
-    public function industy_news(){
-        $articles = Article::select( 'thumbnail','title','created_at','comtent','id')->where('pid', '30')->orderBy('id', 'desc')->paginate(6);
-        $sty='news';
-        $pages = getPage($articles,6);
-        return view('front.news2',compact('sty','articles','pages'));
-    }
 
-    public function product($id=43){
-//        $categorys = Article::select( 'title','link','id')->where('pid', '4')->orderBy('id', 'asc')->get();
+
+    public function product($id=16){
         $articles = Article::select( 'thumbnail','title','link','comtent','id')->where('pid', $id)->orderBy('id', 'desc')->paginate(5);
         $pages = getPage($articles,5);
-        $sty='product';
-        return view('front.product',compact('sty','id','articles','pages'));
+        return view('front.product',compact('id','articles','pages'));
     }
+
+
+
+    public function actual_case(){
+        $articles = Article::select('thumbnail','title','link')->where('pid',5)->orderBy('id','desc')->paginate(9);
+        $pages = getPage($articles,9);
+        return view('front.case',compact('pages','articles'));
+    }
+
+
 
     public function product_detail($id){
         $pid = Article::find($id)->pid;
@@ -139,29 +167,40 @@ class FrontController extends Controller
         }
         return view('front.product_in',compact('sty','pid','articles','pre_id','next_id'));
     }
-    public function core(){
-        $article = Article::find(50);
-        $sty='core';
-        return view('front.core',compact('sty','article'));
-    }
 
-    public function core_character(){
-        $article = Article::find(51);
-        $sty='core';
-        return view('front.core_2',compact('sty','article'));
-    }
+
 
     public function service(){
-        $article = Article::find(6);
+        $article = Article::find(30);
         $sty='service';
         return view('front.service',compact('sty','article'));
     }
+    public function promise(){
+        $article = Article::find(31);
+        $sty='promise';
+        return view('front.service',compact('sty','article'));
+    }
+    public function scence(){
+        $articles = Article::select( 'thumbnail','title','link')->where('pid', 32)->orderBy('id', 'asc')->paginate(8);
+        $pages = getPage($articles,8);
+        return view('front.site',compact('articles','pages'));
+    }
+
+
 
     public function pro_base($id = 52){
-        $self = Article::find($id);
-        $articles = Article::select( 'thumbnail')->where('pid', $id)->orderBy('id', 'asc')->get();
+        $self = Article::find(59);
+        $articles = Article::select( 'title','comtent')->where('pid', 59)->orderBy('id', 'desc')->paginate(3);
+        $pages = getPage($articles,3);
         $sty='base';
         return view('front.product_base',compact('sty','articles','id','self'));
+    }
+
+    public function recruit(){
+        $self = Article::find(8);
+        $articles = Article::select( 'title','comtent')->where('pid', 8)->orderBy('id', 'desc')->paginate(3);
+        $pages = getPage($articles,3);
+        return view('front.human',compact('self','articles','pages'));
     }
 
     public function contact(){

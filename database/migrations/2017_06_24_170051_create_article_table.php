@@ -22,7 +22,7 @@ class CreateArticleTable extends Migration
             $table->text('comtent',2000)->nullable();
             $table->integer('pid');
             $table->tinyInteger('is_nav')->default(1);
-            $table->integer('serial_number')->default(1);
+            $table->integer('serial_number')->default(0);
             $table->string('link',100)->nullable();
             $table->timestamps();
             $table->softDeletes();

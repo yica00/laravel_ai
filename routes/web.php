@@ -14,8 +14,8 @@
 Route::group(['middleware'=>'check_setting'],function (){
 
 
-//    Route::group(['as'=>'front','middleware'=>'get_nav'],function (){
-    Route::group(['as'=>'front'],function (){
+    Route::group(['as'=>'front','middleware'=>'get_nav'],function (){
+//    Route::group(['as'=>'front'],function (){
 
 //        Route::get('/', function (){
 //            return view('front.way');
@@ -25,15 +25,16 @@ Route::group(['middleware'=>'check_setting'],function (){
 
         Route::get('about','FrontController@about');
         Route::get('culture','FrontController@culture');
-        Route::get('office_env','FrontController@office_env');
-        Route::get('team','FrontController@team');
-        Route::get('honor','FrontController@honor');
+        Route::get('dev_history','FrontController@dev_history');
+        Route::get('organization','FrontController@organization');
+        Route::get('speak','FrontController@speak');
+        Route::get('view','FrontController@view');
 
         Route::get('product','FrontController@product');
         Route::get('product/category/{id}','FrontController@product');
         Route::get('product/detail/{id}','FrontController@product_detail');
 
-        Route::get('case','FrontController@case');
+        Route::get('case','FrontController@actual_case');
 
         Route::get('news','FrontController@news');
         Route::get('news/{id}','FrontController@news_Detail');
@@ -41,6 +42,8 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('industy_news','FrontController@industy_news');
 
         Route::get('service','FrontController@service');
+        Route::get('promise','FrontController@promise');
+        Route::get('scence','FrontController@scence');
 
         Route::get('recruit','FrontController@recruit');
 

@@ -8,7 +8,9 @@
         <p>about</p>
       </div>
       <p class="page_nav clearfix">
-         <a href="about.html">品牌介绍</a><a href="about.html">企业文化</a><a href="about.html">发展历程</a><a href="about.html">组织架构</a><a href="about.html">领导致辞</a><a href="show.html"  class="on">风采展示</a>
+          @foreach( session('header_nav')[2]->sons as $leader1 )
+              <a href="{{ $leader1->link  }}" @if( $leader1->link == $link  ) class="on"  @endif > {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a>
+          @endforeach
       </p>
   </div>  
 </div>
@@ -24,45 +26,23 @@
         <span id="nextTop" class="btn next"></span>
         <div id="picBox" class="picBox">
             <ul class="cf">
-                <li>
-                    <img src="images/a1.jpg" alt="">
-                    <p>风采展示</p>
-                </li>
-                <li>
-                    <img src="images/a2.jpg" alt="">
-                    <p>风采展示</p>
-                </li>
-                <li>
-                    <img src="images/a3.jpg" alt="">
-                    <p>风采展示</p>
-                </li>
-                <li>
-                    <img src="images/a2.jpg" alt="">
-                    <p>风采展示</p>
-                </li>
-                <li>
-                    <img src="images/a1.jpg" alt="">
-                    <p>风采展示</p>
-                </li>
-                <li>
-                    <img src="images/a3.jpg" alt="">
-                    <p>风采展示</p>
-                </li>
+                @foreach( $articles as $article )
+                    <li>
+                    <img src="{{ $article->thumbnail }}" alt="">
+                    <p>{{  $article->title }}</p>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <div id="listBox" class="listBox">
             <ul class="cf">
-                <li class="on"><img src="images/a1.jpg" alt=""></li>
-                <li class=""><img src="images/a2.jpg" alt=""></li>
-                <li class=""><img src="images/a3.jpg" alt=""></li>
-                <li class=""><img src="images/a2.jpg" alt=""></li>
-                <li class=""><img src="images/a1.jpg" alt=""></li>
-                <li class=""><img src="images/a3.jpg" alt=""></li>
+                @foreach( $articles as $article )
+                    <li class=""><img src="{{ $article->thumbnail }}" alt=""></li>
+                @endforeach
             </ul>
         </div>
     </div>  
     <script type="text/javascript" src="js/photo.js"></script>
-    <!-- end -->
     <!-- end --> 
   </div>
   <span class="bk60">&nbsp;</span>

@@ -8,7 +8,7 @@
         <p>contact</p>
       </div>
       <p class="page_nav clearfix">
-         <a href="contact.html">在线留言</a><a href="way.html" class="on">联系方式</a>
+         <a href="/contact">在线留言</a><a href="/way" class="on">联系方式</a>
       </p>
   </div>  
 </div>
@@ -25,31 +25,31 @@
     <div class="contact_way">
       <dl>
         <dt>联系人</dt>
-        <dd>赵清春</dd>
+        <dd>{{ session('setting')['contact_name']  }}</dd>
       </dl>
       <dl>
         <dt>座机</dt>
-        <dd>0817-3631155</dd>
+        <dd>{{ session('setting')['fix_phone']  }}</dd>
       </dl>
       <dl>
         <dt>手机</dt>
-        <dd>152-2812-5515或133-4076-5110</dd>
+        <dd>{{ session('setting')['contacts']  }}</dd>
       </dl>
       <dl>
         <dt>传真</dt>
-        <dd>0817-3631155</dd>
+        <dd>{{ session('setting')['fix_phone']  }}</dd>
       </dl>
       <dl>
         <dt>Q Q</dt>
-        <dd>2875170198</dd>
+        <dd>{{ session('setting')['qq']  }}</dd>
       </dl>
       <dl>
         <dt>邮箱</dt>
-        <dd>2875170198@qq.com</dd>
+        <dd>{{ session('setting')['email']  }}</dd>
       </dl>
       <dl>
         <dt>地址</dt>
-        <dd>顺庆区潆华工业园区BD-C南充恩佩瑞机电有限公司内</dd>
+        <dd>{{ session('setting')['bases']  }}</dd>
       </dl>
        <dl>
         <dt>邮编</dt>

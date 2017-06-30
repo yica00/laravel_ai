@@ -58,7 +58,7 @@
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">留言内容</label>
                                 <div class="col-md-6">
-                                    <textarea rows="10" cols="50" disabled="true" >{{ $message->message  }}</textarea>
+                                    <textarea rows="10" cols="70" disabled="true" >{{ $message->message  }}</textarea>
                                 </div>
                             </div>
 

@@ -8,7 +8,9 @@
         <p>service</p>
       </div>
       <p class="page_nav clearfix">
-        <a href="service.html">服务流程</a><a href="service.html">承诺保障</a><a href="site.html" class="on">安装现场</a>
+        <a href="/service"  >服务流程</a>
+        <a href="/promise"  >承诺保障</a>
+        <a href="/scence" class="on" >安装现场</a>
       </p>
   </div>  
 </div>
@@ -17,8 +19,8 @@
   <span class="bk30">&nbsp;</span>
   <div class="w1160 clearfix">
     <!-- start -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-1.3.4.css" media="screen" />
-  <script type="text/javascript" src="js/jquery.fancybox-1.3.4.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox-1.3.4.css" media="screen" />
+  <script type="text/javascript" src="/js/jquery.fancybox-1.3.4.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
        
@@ -33,77 +35,26 @@
     });
   </script>
     <div id="food_list" class="clearfix">
-      <a rel="images_group" href="images/cp_5.jpg">
-          <span class="pic"><img src="images/cp_5.jpg" alt="" /></span>
+      @foreach( $articles as $article )
+        <a rel="images_group" href="{{$article->thumbnail}}">
+          <span class="pic"><img src="{{$article->thumbnail}}" alt="" /></span>
           <div class="top">
-            <h2>保利东滨</h2>
-            <h3>地址：青华路153号</h3>
-            <p class="bot">安装：<em>1户</em></p>
+            <h2>{{ $article->title }}</h2>
+            <h3>{{ $article->link }}</h3>
           </div>
         </a>
-        <a rel="images_group" href="images/cp_6.jpg">
-          <span class="pic"><img src="images/cp_6.jpg" alt="" /></span>
-          <div class="top">
-            <h2>保利东滨</h2>
-            <h3>地址：青华路153号</h3>
-            <p class="bot">安装：<em>1户</em></p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_7.jpg">
-          <span class="pic"><img src="images/cp_7.jpg" alt="" /></span>
-          <div class="top">
-            <h2>保利东滨</h2>
-            <h3>地址：青华路153号</h3>
-            <p class="bot">安装：<em>1户</em></p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_8.jpg">
-          <span class="pic"><img src="images/cp_8.jpg" alt="" /></span>
-          <div class="top">
-            <h2>保利东滨</h2>
-            <h3>地址：青华路153号</h3>
-            <p class="bot">安装：<em>1户</em></p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_9.jpg">
-          <span class="pic"><img src="images/cp_9.jpg" alt="" /></span>
-          <div class="top">
-            <h2>保利东滨</h2>
-            <h3>地址：青华路153号</h3>
-            <p class="bot">安装：<em>1户</em></p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_5.jpg">
-          <span class="pic"><img src="images/cp_5.jpg" alt="" /></span>
-          <div class="top">
-            <h2>保利东滨</h2>
-            <h3>地址：青华路153号</h3>
-            <p class="bot">安装：<em>1户</em></p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_6.jpg">
-          <span class="pic"><img src="images/cp_6.jpg" alt="" /></span>
-          <div class="top">
-            <h2>保利东滨</h2>
-            <h3>地址：青华路153号</h3>
-            <p class="bot">安装：<em>1户</em></p>
-          </div>
-        </a>
-        <a rel="images_group" href="images/cp_10.jpg">
-          <span class="pic"><img src="images/cp_10.jpg" alt="" /></span>
-          <div class="top">
-            <h2>保利东滨</h2>
-            <h3>地址：青华路153号</h3>
-            <p class="bot">安装：<em>1户</em></p>
-          </div>
-        </a>
+      @endforeach
       </div>
       <div class="pageJump clearfix">
           <div class="number">
-              <span class="disabled"><a href="">首页</a></span>
-              <span class="disabled"><a href="">上一页</a></span>
-              <span class="disabled"><a href="">下一页</a></span>
-              <span class="disabled"><a href="">末页</a></span>
+            @if( $pages['pre_page']  )
+              <span class="disabled"><a href="/scence">首页</a></span>
+              <span class="disabled"><a href="/scence?page={{ $pages['pre_page'] }}">上一页</a></span>
+            @endif
+            @if( $pages['next_page'] )
+              <span class="disabled"><a href="/scence?page={{ $pages['next_page'] }}">下一页</a></span>
+              <span class="disabled"><a href="/scence?page={{ $pages['total_page'] }}">尾页</a></span>
+            @endif
           </div>
       </div>
     <!-- end --> 

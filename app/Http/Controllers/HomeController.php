@@ -106,12 +106,14 @@ class HomeController extends Controller
 
     public function setting(){
 //        $data = [
-//            'web_name'=>'宜宾星维生物科技有限公司',
-//            'fix_phone'=>'0831-2849498',
+//            'web_name'=>'顺庆区联手家具经营部',
+//            'fax'=>'0817-3631155',
+//            'fix_phone'=>'0817-3631155',
 //            'contacts'=>'138-9086-5033 / 136-9602-3208 / 136-9966-3158',
-//            'qq'=>'1521770461',
-//            'bases'=>'四川宜宾市江安县阳春工业园区',
-//            'email'=>'招聘邮箱',
+//            'contact_name'=>'赵清春',
+//            'qq'=>'2875170198',
+//            'bases'=>'地址：顺庆区潆华工业园区BD-C南充恩佩瑞机电有限公司内',
+//            'email'=>'2875170198@qq.com',
 //            'wx_map'=>'/sah/sadas',
 //        ];
 //        writeJson($data);die();
@@ -125,9 +127,11 @@ class HomeController extends Controller
         $url = getUrl($request,'wx_map');
         $data = [
             'web_name'=>$request->get('web_name'),
+            'fax'=>$request->get('fax'),
             'fix_phone'=>$request->get('fix_phone'),
             'contacts'=>$request->get('contacts'),
             'qq'=>$request->get('qq'),
+            'contact_name'=>$request->get('contact_name'),
             'bases'=>$request->get('bases'),
             'email'=>$request->get('email'),
             'wx_map'=>$url?$url:$setting['wx_map'],
