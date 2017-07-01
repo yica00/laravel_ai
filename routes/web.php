@@ -25,27 +25,25 @@ Route::group(['middleware'=>'check_setting'],function (){
 
         Route::get('about','FrontController@about');
         Route::get('culture','FrontController@culture');
-        Route::get('dev_history','FrontController@dev_history');
-        Route::get('organization','FrontController@organization');
-        Route::get('speak','FrontController@speak');
-        Route::get('view','FrontController@view');
 
-        Route::get('product','FrontController@product');
-        Route::get('product/category/{id}','FrontController@product');
-        Route::get('product/detail/{id}','FrontController@product_detail');
+        Route::get('driver','FrontController@driver');
+        Route::get('process','FrontController@process');
 
-        Route::get('case','FrontController@actual_case');
+        Route::get('training','FrontController@training');
+        Route::get('service_training','FrontController@service_training');
+;
+        Route::get('models','FrontController@models');
+        Route::get('cars','FrontController@cars');
 
-        Route::get('news','FrontController@news');
-        Route::get('news/{id}','FrontController@news_Detail');
-        Route::get('company_news','FrontController@news');
-        Route::get('industy_news','FrontController@industy_news');
+        Route::get('didi','FrontController@didi');
+
+        Route::get('teacher','FrontController@teacher');
+        Route::get('teacher/{id}','FrontController@teacher_detail');
 
         Route::get('service','FrontController@service');
         Route::get('promise','FrontController@promise');
         Route::get('scence','FrontController@scence');
 
-        Route::get('recruit','FrontController@recruit');
 
         Route::get('contact','FrontController@contact');
         Route::get('way','FrontController@contact_way');
@@ -77,6 +75,7 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::resource('article','ArticleController');
         Route::resource('team','TeamController');
         Route::resource('message','MessageController');
+        Route::resource('car','CarController');
 
 
         Route::get('/team/{id}/delete','TeamController@destroy');
@@ -94,6 +93,8 @@ Route::group(['middleware'=>'check_setting'],function (){
 
         Route::get('/admin/message/{id}/look','MessageController@show');
         Route::get('/admin/message/{id}/delete','MessageController@destroy');
+
+        Route::get('/admin/car/{id}/delete','CarController@destroy');
     });
 
 });

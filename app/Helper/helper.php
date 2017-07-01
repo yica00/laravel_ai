@@ -60,6 +60,23 @@ function getUrl($request,$img){
     return '/images/'.$name;
 }
 
+function getMultiUrl($request,$img){
+    $files = $request->file($img);
+    if(!$files) return "";
+    if($request->hasFile($img))
+    {
+        $arr = [];
+        foreach($files as $file) {
+            $name = $file->getClientOriginalExtension();
+            $name = time().rand(1000,9999).".".$name;
+            $file->move('images',$name);
+            $arr[] = '/images/'.$name ;
+        }
+    }
+    $imgstr = implode(',',$arr);
+    return $imgstr;
+}
+
 
 function writeJson2( $data){
     $json_string = json_encode($data);

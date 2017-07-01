@@ -12,21 +12,22 @@
             }?>
         </p>
         <h3><a href="/admin/team/create" >新增员工</a></h3>
-        <table class="tablePanel">
-            <tr>
+        <table class="tablePanel2" cellpadding="0" cellspacing="0" width="100%">
+            <tr style="border-bottom:1px solid #BBB;height: 50px;border-top:1px solid #BBB;">
                 <th>名字</th>
-                <th>所属基地</th>
-                <th>照片</th>
+                <th>职称</th>
+                <th>从业年限</th>
                 <th>介绍</th>
                 <th>培训项目</th>
                 <th>电话</th>
                 <th>操作</th>
             </tr>
             @foreach($teams as $sort)
-                <tr>
+                <tr style="border-bottom:1px solid #BBB;height: 40px">
 
                     <td>{{$sort->name}}</td>
-                    <td>{{$sort->belong_to}}</td>
+                    <td>{{$sort->title}}</td>
+                    <td>{{$sort->work_age}}</td>
                     <td> <img src="{{$sort->photo}}" width="30"> </td>
                     <td>{{$sort->introduce}}</td>
                     <td>{{$sort->iterm}}</td>

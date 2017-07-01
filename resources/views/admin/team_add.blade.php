@@ -43,9 +43,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">所属基地</label>
+                                <label for="email" class="col-md-4 control-label">职称</label>
                                 <div class="col-md-6">
-                                    <input id="email"  class="form-control" name="belong_to"  autofocus>
+                                    <input id="email"  class="form-control" name="title"  autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">从业时间</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="work_age"  autofocus>
                                 </div>
                             </div>
 
@@ -67,6 +74,13 @@
                                 <label for="email" class="col-md-4 control-label">介绍</label>
                                 <div class="col-md-6">
                                     <input id="email"   class="form-control" name="introduce"  autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">培训图集</label>
+                                <div class="col-md-6">
+                                    <input id="email" type="file"  class="form-control" name="imgs[]" multiple autofocus>
                                 </div>
                             </div>
 
