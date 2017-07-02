@@ -55,6 +55,10 @@ function getUrl($request,$img){
     $rel = $request->file($img);
     if(!$rel) return null;
     $name = $rel->getClientOriginalExtension();
+    $arr = ['png','gif','jpeg','jpg'];
+    if( !in_array($name,$arr) ){
+        return null;
+    }
     $name = time().rand(100,999).".".$name;
     $rel->move('images',$name);
     return '/images/'.$name;
@@ -62,12 +66,16 @@ function getUrl($request,$img){
 
 function getMultiUrl($request,$img){
     $files = $request->file($img);
-    if(!$files) return "";
+    if(!$files) return null;
     if($request->hasFile($img))
     {
         $arr = [];
         foreach($files as $file) {
             $name = $file->getClientOriginalExtension();
+            $arr = ['png','gif','jpeg','jpg'];
+            if( !in_array($name,$arr) ){
+                return null;
+            }
             $name = time().rand(1000,9999).".".$name;
             $file->move('images',$name);
             $arr[] = '/images/'.$name ;

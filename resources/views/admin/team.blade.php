@@ -17,14 +17,14 @@
                 <th>名字</th>
                 <th>职称</th>
                 <th>从业年限</th>
+                <th>照片</th>
                 <th>介绍</th>
                 <th>培训项目</th>
                 <th>电话</th>
                 <th>操作</th>
             </tr>
             @foreach($teams as $sort)
-                <tr style="border-bottom:1px solid #BBB;height: 40px">
-
+                <tr>
                     <td>{{$sort->name}}</td>
                     <td>{{$sort->title}}</td>
                     <td>{{$sort->work_age}}</td>

@@ -81,7 +81,7 @@
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">培训图集</label>
                                 <div class="col-md-6">
-                                    <input id="email" type="file"  class="form-control" name="imgs" multiple autofocus>
+                                    <input id="email" type="file"  class="form-control" name="imgs[]" multiple autofocus>
                                 </div>
                             </div>
 
