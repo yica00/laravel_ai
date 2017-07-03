@@ -36,23 +36,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">400电话</label>
-                                <div class="col-md-6">
-                                    <input id="email"  class="form-control" name="phone_400" value="{{ $setting['phone_400']  }}" autofocus>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">固定电话</label>
-                                <div class="col-md-6">
-                                    <input id="email"  class="form-control" name="fix_phone" value="{{ $setting['fix_phone']  }}" autofocus>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">QQ</label>
                                 <div class="col-md-6">
                                     <input id="email"  class="form-control" name="qq" value="{{  $setting['qq'] }}" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">电话</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="phone" value="{{  $setting['phone'] }}" autofocus>
                                 </div>
                             </div>
 
@@ -67,6 +60,20 @@
                                 <label for="email" class="col-md-4 control-label">邮箱</label>
                                 <div class="col-md-6">
                                     <input id="email"   class="form-control" name="email"  value="{{ $setting['email']  }}"  autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">网站关键词</label>
+                                <div class="col-md-6">
+                                    <input id="email"   class="form-control" name="keywords"  value="{{ $setting['keywords']  }}"  autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">关键词描述</label>
+                                <div class="col-md-6">
+                                    <input id="email"   class="form-control" name="description"  value="{{ $setting['description']  }}"  autofocus>
                                 </div>
                             </div>
 

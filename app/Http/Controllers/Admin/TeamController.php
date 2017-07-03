@@ -39,10 +39,8 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $str = getMultiUrl($request,'imgs');
         $atic = Input::all();
         $atic['photo'] = getUrl($request,'photo');
-        $atic['imgs'] = $str;
         $rel = Teams::create($atic);
         if( $rel->wasRecentlyCreated ){
             return back()->with('errors','添加成功');
@@ -84,12 +82,8 @@ class TeamController extends Controller
     {
         $atic = Input::except('_token','_method');
         $atic['photo'] = getUrl($request,'photo');
-        $atic['imgs'] = getMultiUrl($request,'imgs');
         if( ! $atic['photo'] ){
             unset( $atic['photo']);
-        }
-        if( ! $atic['imgs'] ){
-            unset( $atic['imgs']);
         }
         $team = Teams::find($id);
         $rel = $team->update($atic);

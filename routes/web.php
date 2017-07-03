@@ -26,24 +26,18 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('about','FrontController@about');
         Route::get('culture','FrontController@culture');
 
-        Route::get('driver','FrontController@driver');
-        Route::get('process','FrontController@process');
+        Route::get('technology','FrontController@technology');
+        Route::get('mobile','FrontController@mobile');
+        Route::get('marketing','FrontController@marketing');
+        Route::get('network','FrontController@network');
 
-        Route::get('training','FrontController@training');
-        Route::get('service_training','FrontController@service_training');
-;
-        Route::get('models','FrontController@models');
-        Route::get('cars','FrontController@cars');
+        Route::get('case','FrontController@web_case');
+        Route::get('case/category/{id}','FrontController@web_case');
+        Route::get('case/{id}','FrontController@case_detail');
 
-        Route::get('didi','FrontController@didi');
 
-        Route::get('teacher','FrontController@teacher');
-        Route::get('teacher/{id}','FrontController@teacher_detail');
-
-        Route::get('service','FrontController@service');
-        Route::get('promise','FrontController@promise');
-        Route::get('scence','FrontController@scence');
-
+        Route::get('news','FrontController@news');
+        Route::get('industry_news','FrontController@industry_news');
 
         Route::get('contact','FrontController@contact');
         Route::get('way','FrontController@contact_way');

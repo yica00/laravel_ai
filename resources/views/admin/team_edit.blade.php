@@ -58,16 +58,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">服务项目</label>
+                                <label for="email" class="col-md-4 control-label">项目经验</label>
                                 <div class="col-md-6">
                                     <input id="email"  class="form-control" name="iterm" value="{{  $team->iterm }}" autofocus>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">电话</label>
-                                <div class="col-md-6">
-                                    <input id="email"  class="form-control" name="phone" value="{{  $team->phone }}" autofocus>
                                 </div>
                             </div>
 
@@ -77,14 +70,6 @@
                                     <input id="email"   class="form-control" name="introduce"  value="{{ $team->introduce  }}"  autofocus>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">培训图集</label>
-                                <div class="col-md-6">
-                                    <input id="email" type="file"  class="form-control" name="imgs[]" multiple autofocus>
-                                </div>
-                            </div>
-
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">

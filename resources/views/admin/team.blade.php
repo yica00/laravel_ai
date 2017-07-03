@@ -19,8 +19,7 @@
                 <th>从业年限</th>
                 <th>照片</th>
                 <th>介绍</th>
-                <th>培训项目</th>
-                <th>电话</th>
+                <th>个人介绍</th>
                 <th>操作</th>
             </tr>
             @foreach($teams as $sort)
@@ -31,7 +30,6 @@
                     <td> <img src="{{$sort->photo}}" width="30"> </td>
                     <td>{{$sort->introduce}}</td>
                     <td>{{$sort->iterm}}</td>
-                    <td>{{$sort->phone}}</td>
 
                     <td>
                         <a class="act-btn" href="/admin/team/{{$sort->id}}/edit">编辑</a>

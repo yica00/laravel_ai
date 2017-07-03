@@ -13,14 +13,15 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
-        $slides = $this->getSlides();
-        $driver = $this->getDriver();
-        $model = $this->getModels();
-        $cars = $this->getCars();
-        $didi = $this->getDidi();
-        $teachers = $this->getTeachers();
+//        $slides = $this->getSlides();
+//        $driver = $this->getDriver();
+//        $model = $this->getModels();
+//        $cars = $this->getCars();
+//        $didi = $this->getDidi();
+//        $teachers = $this->getTeachers();
         $nav = 1;
-        return view('front.index',compact('nav','driver','slides','model','cars','didi','teachers'));
+        return view('front.index',compact('nav'));
+//        return view('front.index',compact('nav','driver','slides','model','cars','didi','teachers'));
     }
 
     public function getDriver(){
@@ -78,75 +79,58 @@ class FrontController extends Controller
 
 
     public function about(){
-        $article = Article::find(9);
+        $company = Article::find(8);
+        $culture = Article::find(9);
+        $partners = Article::where('pid',11)->orderBy('id','desc')->take(5)->get();
+        $teams = Teams::all();
+        $teams = $this->formartData($teams);
         $nav = 2;
-        $sty = 1;
-        return view('front.about',compact('article','nav','sty'));
-    }
-    public function culture(){
-        $article = Article::find(10);
-        $nav = 2;
-        $sty = 2;
-        return view('front.about',compact('nav','article','sty'));
+        return view('front.about',compact('nav','company','culture','partners','teams'));
     }
 
 
-    public function driver(){
+    public function technology(){
         $nav = 3;
-        $article = Article::find(11);
-        return view('front.driver',compact('nav','article'));
+        $sty = "/technology";
+        $article = Article::find(21);
+        return view('front.technology',compact('nav','article','sty'));
     }
-    public function process(){
+    public function mobile(){
         $nav = 3;
-        $article = Article::find(12);
-        return view('front.driver_2',compact('nav','article'));
+        $sty = "/mobile";
+        $article = Article::find(22);
+        return view('front.technology',compact('nav','article','sty'));
+    }
+    public function marketing(){
+        $nav = 3;
+        $sty = "/marketing";
+        $article = Article::find(23);
+        return view('front.technology',compact('nav','article','sty'));
+    }
+    public function network(){
+        $nav = 3;
+        $sty = "/network";
+        $article = Article::find(24);
+        return view('front.technology',compact('nav','article','sty'));
     }
 
-    public function training(){
-        $article = Article::find(13);
+
+
+    public function web_case( $id = 27 ){
+        $articles = Article::where('pid',5)->get();
         $nav = 4;
-        $sty = 1;
-        return view('front.training',compact('nav','article','sty'));
+        return view('front.case',compact('nav','articles','id'));
     }
-    public function service_training(){
-        $article = Article::find(14);
-        $nav = 4;
-        $sty = 2;
-        return view('front.training',compact('nav','article','sty'));
+    public function case_detail($id){
+
+
     }
 
-    public function models(){
+    public function news(){
         $article = Article::find(15);
         $articles = Article::where('pid',15)->get();
         $nav = 5;
-        return view('front.models',compact('nav','article','articles'));
-    }
-    public function cars(){
-        $articles = Car::paginate(6);
-        $pages = getPage($articles,6);
-        $nav = 5;
-        return view('front.car',compact('nav','articles','pages'));
-    }
-
-    public function didi(){
-        $article = Article::find(6);
-        $nav = 6;
-        return view('front.didi',compact('nav','article'));
-    }
-
-
-    public function teacher(){
-        $articles = Teams::paginate(6);
-        $pages = getPage($articles,6);
-        $nav = 7;
-        return view('front.teacher',compact('nav','articles','pages'));
-    }
-
-    public function teacher_detail($id){
-        $teacher = Teams::find($id);
-        $teacher = $this->formartData($teacher);
-        $nav = 7;
-        return view('front.teacher_in',compact('nav','teacher'));
+        return view('front.news',compact('nav','article','articles'));
     }
 
 
@@ -154,19 +138,16 @@ class FrontController extends Controller
         $self = Article::find(59);
         $articles = Article::select( 'title','comtent')->where('pid', 59)->orderBy('id', 'desc')->paginate(3);
         $pages = getPage($articles,3);
-        $nav = 8;
+        $nav = 6;
         return view('front.contact',compact('nav','articles','self','pages'));
     }
 
-    public function contact_way(){
-        $sty='contact';
-        return view('front.way',compact('sty'));
-    }
 
     public function formartData($data)
     {
-        $data->iterm = explode(',',$data->iterm);
-        $data->imgs = explode(',',$data->imgs);
+        foreach ($data as $da){
+            $da->iterm = explode(',',$da->iterm);
+        }
         return $data;
     }
 

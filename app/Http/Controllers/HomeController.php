@@ -106,12 +106,13 @@ class HomeController extends Controller
 
     public function setting(){
 //        $data = [
-//            'web_name'=>'顺庆区联手家具经营部',
-//            'phone_400'=>'0817-3631155',
-//            'fix_phone'=>'0817-3631155',
-//            'qq'=>'2875170198',
-//            'bases'=>'地址：顺庆区潆华工业园区BD-C南充恩佩瑞机电有限公司内',
-//            'email'=>'2875170198@qq.com',
+//            'web_name'=>'四川诺航科技有限公司',
+//            'phone'=>'158 8176 0037',
+//            'qq'=>'625144908',
+//            'bases'=>'南充市嘉陵区火花路',
+//            'email'=>'lebja@126.com',
+//            'keywords'=>'网站关键词',
+//            'description'=>'关键词描述',
 //            'wx_map'=>'/sah/sadas',
 //        ];
 //        writeJson($data);die();
@@ -125,11 +126,12 @@ class HomeController extends Controller
         $url = getUrl($request,'wx_map');
         $data = [
             'web_name'=>$request->get('web_name'),
-            'phone_400'=>$request->get('phone_400'),
-            'fix_phone'=>$request->get('fix_phone'),
+            'phone'=>$request->get('phone'),
             'qq'=>$request->get('qq'),
             'bases'=>$request->get('bases'),
             'email'=>$request->get('email'),
+            'keywords'=>$request->get('keywords'),
+            'description'=>$request->get('description'),
             'wx_map'=>$url?$url:$setting['wx_map'],
         ];
         writeJson($data);

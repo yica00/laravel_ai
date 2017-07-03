@@ -20,9 +20,9 @@ class CreateTeamsTable extends Migration
             $table->integer('work_age')->nullable();
             $table->string('photo',100)->nullable();
             $table->string('introduce',200)->nullable();
-            $table->string('iterm',20)->nullable();
-            $table->string('imgs',500)->nullable();
-            $table->char('phone',15)->nullable();
+            $table->string('iterm',100)->nullable();
+//            $table->string('imgs',500)->nullable();
+//            $table->char('phone',15)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

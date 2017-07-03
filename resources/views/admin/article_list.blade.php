@@ -11,7 +11,7 @@
                 echo $errors;
             }?>
         </p>
-        <table class="tablePanel" cellpadding="0" cellspacing="0" width="100%">
+        <table class="tablePanel2" cellpadding="0" cellspacing="0" width="100%">
             <tr style="border-bottom:1px solid #BBB;height: 50px;border-top:1px solid #BBB;">
 
                 <th>标题</th>
