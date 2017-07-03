@@ -14,35 +14,34 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         $slides = $this->getSlides();
-        $recommends = $this->getRecommend();
-        $products = $this->getProducet();
-        $cases = $this->getCase();
-        $newss = $this->getNews();
-        $scences = $this->getScence();
+        $driver = $this->getDriver();
+        $model = $this->getModels();
+        $cars = $this->getCars();
+        $didi = $this->getDidi();
+        $teachers = $this->getTeachers();
         $nav = 1;
-        return view('front.index',compact('nav'));
-//        return view('front.index',compact('slides','cases','newss','scences','products','recommends'));
+        return view('front.index',compact('nav','driver','slides','model','cars','didi','teachers'));
     }
 
-    public function getRecommend(){
-        $articles = Article::where('pid',72)->orderBy('id','asc')->get();
+    public function getDriver(){
+        $article = Article::find(3);
+        return $article;
+    }
+    public function getModels(){
+        $article = Article::find(15);
+        return $article;
+    }
+    public function getCars(){
+        $articles = Car::take(3)->get();
         return $articles;
     }
-    public function getScence(){
-        $articles = Article::where('pid',32)->orderBy('id','desc')->take(6)->get();
-        return $articles;
-    }
-    public function getCase(){
-        $articles = Article::where('pid',5)->orderBy('id','desc')->take(6)->get();
-        return $articles;
-    }
-    public function getNews(){
-        $articles = Article::whereIn('pid',[28,29])->orderBy('id','desc')->take(6)->get();
-        return $articles;
+    public function getDidi(){
+        $introduce = Article::find(6);
+        return $introduce;
     }
 
-    public function getIntroduce(){
-        $introduce = Article::find(2);
+    public function getTeachers(){
+        $introduce = Teams::take(6)->get();
         return $introduce;
     }
 
