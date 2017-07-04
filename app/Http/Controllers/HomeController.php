@@ -108,6 +108,7 @@ class HomeController extends Controller
 //        $data = [
 //            'web_name'=>'四川诺航科技有限公司',
 //            'phone'=>'158 8176 0037',
+//            'fax_phone'=>'0817-145678',
 //            'qq'=>'625144908',
 //            'bases'=>'南充市嘉陵区火花路',
 //            'email'=>'lebja@126.com',
@@ -127,6 +128,7 @@ class HomeController extends Controller
         $data = [
             'web_name'=>$request->get('web_name'),
             'phone'=>$request->get('phone'),
+            'fax_phone'=>$request->get('fax_phone'),
             'qq'=>$request->get('qq'),
             'bases'=>$request->get('bases'),
             'email'=>$request->get('email'),

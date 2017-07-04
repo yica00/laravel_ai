@@ -37,6 +37,7 @@ Route::group(['middleware'=>'check_setting'],function (){
 
 
         Route::get('news','FrontController@news');
+        Route::get('news/{id}','FrontController@new_detail');
         Route::get('industry_news','FrontController@industry_news');
 
         Route::get('contact','FrontController@contact');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\MessageRequest;
 use App\Models\Admin\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -37,7 +38,7 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MessageRequest $request)
     {
         $atic = Input::all();
         $rel = Message::create($atic);
@@ -56,7 +57,8 @@ class MessageController extends Controller
     public function show($id)
     {
         $message = Message::find($id);
-        return view('admin.message_show',compact('message'));
+        $up_down = get_message_page($id);
+        return view('admin.message_show',compact('message','up_down'));
     }
 
     /**

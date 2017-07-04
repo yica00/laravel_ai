@@ -28,7 +28,7 @@
           <em class="en">Service hotline</em>
           <em class="cn">服务热线</em>
         </div>
-        <p class="fl">400-4568-917</p> 
+        <p class="fl">{{ session('setting')['phone']  }}</p>
       </li>
       <li class="clearfix">
         <div class="icon fr"><img alt="" src="images/contactIcon2.png"></div>
@@ -36,7 +36,7 @@
           <em class="en">complaint hotline</em>
           <em class="cn">技术热线</em>
         </div>
-        <p class="fl">400-4568-917</p> 
+        <p class="fl">{{ session('setting')['phone']  }}</p>
       </li>
       <li class="clearfix">
         <div class="icon fr"><img alt="" src="images/contactIcon3.png"></div>
@@ -44,7 +44,7 @@
           <em class="en">company Email</em>
           <em class="cn">企业邮箱</em>
         </div>
-        <p class="fl">daronghe@12344.cn</p> 
+        <p class="fl">{{ session('setting')['email']  }}</p>
       </li>
       <li class="clearfix">
         <div class="icon fr"><img alt="" src="images/contactIcon4.png"></div>
@@ -52,7 +52,7 @@
           <em class="en">company fax</em>
           <em class="cn">公司传真</em>
         </div>
-        <p class="fl">0817-145678</p> 
+        <p class="fl">{{ session('setting')['fax_phone']  }}</p>
       </li>
       <li class="big clearfix">
         <div class="icon fr"><img alt="" src="images/contactIcon5.png"></div>
@@ -60,7 +60,7 @@
           <em class="en">company address</em>
           <em class="cn">公司地址</em>
         </div>
-        <p class="fl">南充市江南道道89号</p> 
+        <p class="fl">{{ session('setting')['bases']  }}</p>
       </li>
     </ul>
   </div>  

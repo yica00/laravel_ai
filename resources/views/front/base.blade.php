@@ -45,11 +45,25 @@
                             <div align="center">免费策划<a class="guanbi"></a></div>
                         </div>
                         <div class="min">
-                            <form method="POST" name="form_login" target="_top" class="tc_login">
+                            @if (count($errors) > 0)
+                                <div style="color: red">
+                                    <ul>
+                                        @if( is_object($errors) )
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        @else
+                                            {{ $errors }}
+                                        @endif
+                                    </ul>
+                                </div>
+                            @endif
+                            <form method="POST" name="form_login" target="_top" class="tc_login" action="/front/message">
+                                {{ csrf_field() }}
                                 <p class="p1 clearfix"><span>联系人姓名</span><input type="text" name="name" id="name" required="required" placeholder="请填写真实姓名" autocomplete="off" ></p>
-                                <p class="p1 clearfix"><span>联系人手机</span><input type="text" name="call" id="call" required="required" placeholder="请填写真实手机" autocomplete="off" ></p>
+                                <p class="p1 clearfix"><span>联系人手机</span><input type="text" name="phone" id="call" required="required" placeholder="请填写真实手机" autocomplete="off" ></p>
                                 <p class="p1 clearfix"><span>公司所在地</span><select id="s_province" name="s_province" class="mR10"></select>  <select id="s_city" name="s_city" ></select> </p>
-                                <script class="resources library" src="js/area.js" type="text/javascript"></script>
+                                <script class="resources library" src="/js/area.js" type="text/javascript"></script>
                                 <script type="text/javascript">_init_area();</script>
                                 <script type="text/javascript">
 
@@ -68,8 +82,8 @@
                                     Gid('s_county').setAttribute('onchange','showArea()');
 
                                 </script>
-                                <p class="p1 clearfix"><span>公司名称</span><input type="text" name="add" id="add" required="required" placeholder="" autocomplete="off" ></p>
-                                <p class="p1 clearfix"><span>座机</span><input type="text" name="ph" id="ph" required="required" placeholder="" autocomplete="off" ></p>
+                                <p class="p1 clearfix"><span>公司名称</span><input type="text" name="company" id="add" required="required" placeholder="" autocomplete="off" ></p>
+                                <p class="p1 clearfix"><span>座机</span><input type="text" name="fix_phone" id="ph" required="required" placeholder="" autocomplete="off" ></p>
                                 <div  class="btnch">
                                     <input type="submit" class="button" title="Sign In" value="立即策划">
                                 </div>
@@ -78,7 +92,7 @@
                     </div>
                     <!--  -->
                     <div class="btn btn_3 fr mL20">
-                        <img src="/images/ho_wx_1.png" alt="" class="d_1"><img src="/images/ho_wx_2.png" class="d_2"><img src="/images/ho_wx_3.png" class="d_3">
+                        <img src="/images/ho_wx_1.png" alt="" class="d_1"><img src="/images/ho_wx_2.png" class="d_2"><img src="{{ session('setting')['wx_map']  }}" class="d_3">
                     </div>
                     <a href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes" class="btn fr  mL20">
                         <img src="/images/ho_qq_1.png" alt="" class="d_1"><img src="/images/ho_qq_2.png" class="d_2">
@@ -112,8 +126,8 @@
                     <li class="nLi  @if( $nav == 4 ) on @endif">
                         <h3><a href="/case">案例<span>case</span></a></h3>
                     </li>
-                    <li class="nLi">
-                        <h3><a href="/news  @if( $nav == 5 ) on @endif">新闻<span>news</span</a></h3>
+                    <li class="nLi  @if( $nav == 5 ) on @endif">
+                        <h3><a href="/news" >新闻<span>news</span></a></h3>
                         <ul class="sub">
                             @foreach( session('header_nav')[5]->sons as $leader1 )
                                 <li><a href="{{ $leader1->link  }}"> {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>

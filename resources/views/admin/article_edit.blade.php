@@ -63,7 +63,7 @@
                 });
 
             </script>
-            <input class="save-btn" type="submit" name="send" value="提交文章" />
+            <input class="btn btn-primary" style="margin-left: 40%" type="submit" name="send" value="提交文章" />
         </form>
     </div>
 

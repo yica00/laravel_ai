@@ -23,21 +23,21 @@
   <div class="casein">
     <div class="w1160 clearfix">
       <div class="case_tit">
-        <h2>大蓉和</h2>
-        <p>大蓉和餐饮公司成立于2000年，位于南充市汉中市天汉大道魅力之城，拥有独家外景摄影基地，并创建多组室内豪华实景拍摄主题，是一家集婚纱摄影、艺术写真、广告等多元化发展的摄影机构。</p>
+        <h2>{{ $article->title }}</h2>
+        <p>{{ $article->link }}</p>
       </div>
       <div class="lit_img">
-        <span><img src="images/case.jpg"></span>
+        <span><img src="{{ $article->thumbnail }}"></span>
       </div>
     </div>
     <div class="big_img">
       <div class="w1160 clearfix">
         <h2>WEB DETAIL</h2>
-        <img src="images/case.jpg">
+        {!! $article->comtent !!}
       </div>
     </div>
     <div class="w1160 clearfix">
-      <div class="case_bot"><a href="case.html">返回案例</span></a><a href="" target="_blank">浏览网站</a></div>
+      <div class="case_bot"><a href="/case">返回案例</a><a href="/" target="_blank">浏览网站</a></div>
     </div>
   </div> 
   

@@ -31,30 +31,21 @@
    <div class="caseout">
     <ul class="list clearfix">
       <!--  data-150-bottom-center="transform: rotateY(-90deg); opacity: 0" data-150-center-center="transform: rotate(0); opacity: 1" class="skrollable skrollable-between" -->
-      <li><a href="case_in.html"><img src="images/case_1.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_2.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_3.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_4.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_5.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_6.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_7.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_8.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_1.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_2.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_3.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_4.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_5.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_6.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_7.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_8.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
+     @foreach( $arts as $art )
+      <li><a href="/case/{{ $art->id }}"><img src="{{ $art->thumbnail }}" alt="" /><span>{{ $art->title }}<br><img src="/images/link.png" class="link"></span></a></li>
+     @endforeach
     </ul>
   </div>
   <div class="pageJump clearfix">
       <div class="number">
-          <span class="disabled"><a href="">首页</a></span>
-          <span class="disabled"><a href="">上一页</a></span>
-          <span class="disabled"><a href="">下一页</a></span>
-          <span class="disabled"><a href="">末页</a></span>
+          @if( $pages['pre_page']  )
+              <span class="disabled"><a href="/case/category/{{$id}}">首页</a></span>
+              <span class="disabled"><a href="/case/category/{{$id}}?page={{ $pages['pre_page'] }}">上一页</a></span>
+          @endif
+          @if( $pages['next_page'] )
+              <span class="disabled"><a href="/case/category/{{$id}}?page={{ $pages['next_page'] }}">下一页</a></span>
+              <span class="disabled"><a href="/case/category/{{$id}}?page={{ $pages['total_page'] }}">尾页</a></span>
+          @endif
       </div>
   </div>
   <!-- 内容结束 -->

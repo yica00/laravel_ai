@@ -4,25 +4,25 @@
   <div class="banner_box">
       <div class="DB_tab25">
         <ul class="DB_bgSet">
-            <li style="background:url(images/bn_1_bg.jpg);"></li>
-            <li style="background:url(images/bn_2_bg.jpg);"></li>
-            <li style="background:url(images/bn_3_bg.jpg);"></li>
+            @foreach(  $slides as $slide)
+            <a href="{{ $slide['link'] }}"><li style="background:url({{ $slide['thumbnail'] }});"></li></a>
+            @endforeach
         </ul>
         <ul class="DB_imgSet">
             <li onclick="javascript:window.location.href='#';">
-                <img class="DB_1_1" src="images/stuimg1_1.png" alt="" />
-                <img class="DB_1_2" src="images/stuimg1_2.png" alt="" />
-                <img class="DB_1_3" src="images/stuimg1_3.png" alt="" />
+                <img class="DB_1_1" src="{{ $slides[0]['sons'][0]['thumbnail'] }}" alt="" />
+                <img class="DB_1_2" src="{{ $slides[0]['sons'][1]['thumbnail'] }}" alt="" />
+                <img class="DB_1_3" src="{{ $slides[0]['sons'][2]['thumbnail'] }}" alt="" />
             </li>
             <li onclick="javascript:window.location.href='#';">
-                <img class="DB_2_1" src="images/stuimg2_1.png" alt="" />
-                <img class="DB_2_2" src="images/stuimg2_2.png" alt="" />
-                <img class="DB_2_3" src="images/stuimg2_3.png" alt="" />
+                <img class="DB_2_1" src="{{ $slides[1]['sons'][0]['thumbnail'] }}" alt="" />
+                <img class="DB_2_2" src="{{ $slides[1]['sons'][0]['thumbnail'] }}" alt="" />
+                <img class="DB_2_3" src="{{ $slides[1]['sons'][0]['thumbnail'] }}" alt="" />
             </li>
             <li onclick="javascript:window.location.href='#';">
-                <img class="DB_3_1" src="images/stuimg3_1.png" alt="" />
-                <img class="DB_3_2" src="images/stuimg3_2.png" alt="" />
-                <img class="DB_3_3" src="images/stuimg3_3.png" alt="" />
+                <img class="DB_3_1" src="{{ $slides[2]['sons'][0]['thumbnail'] }}" alt="" />
+                <img class="DB_3_2" src="{{ $slides[2]['sons'][0]['thumbnail'] }}" alt="" />
+                <img class="DB_3_3" src="{{ $slides[2]['sons'][0]['thumbnail'] }}" alt="" />
             </li>
         </ul>
         <div class="DB_menuWrap">
@@ -66,42 +66,58 @@
       <span class="bk30">&nbsp;</span>
       <ul class="list clearfix">
         <li class="li_1" data-400-center-top="transform: scale(0.8); opacity: 0" data-400-center-center="transform: scale(1); opacity: 1">
-          <a href="technology.html">
-           <span class="icon"><img src="images/ho_skill_1.png"></span>
+          <a href="/technology">
+           <span class="icon"><img src="{{ $plans[0]->thumbnail }}"></span>
            <div class="bot">
-            <h2>定制建站</h2>
-            <p class="nr">诺航网络设计师团队为您量身<br/>定制企业官网，让视觉力量助力企业的<br/>影响力</p>
-            <p class="xl"><span>企业网站定制</span><span>平台网站定制</span><span>商城网站定制</span><span>软件开发</span></p>
+            <h2>{{ $plans[0]->title }}</h2>
+            <p class="nr">{!! mb_substr($plans[0]->comtent,3,-4,'utf8') !!}</p>
+            <p class="xl">
+              @foreach( $plans[0]->link as $link )
+              <span>{{ $link }}</span>
+              @endforeach
+            </p>
            </div>
           </a>
         </li>
         <li class="li_2" data-300-center-top="transform: scale(0.8); opacity: 0" data-300-center-center="transform: scale(1); opacity: 1">
-          <a href="technology.html">
-           <span class="icon"><img src="images/ho_skill_2.png"></span>
+          <a href="/technology">
+           <span class="icon"><img src="{{ $plans[1]->thumbnail }}"></span>
            <div class="bot">
-            <h2>移动端开发</h2>
-            <p class="nr">拥抱移动互联网，开发移动端应用，<br/>将用户和企业进行移动连接</p>
-            <p class="xl"><span>手机网站建设</span><span>微信官网建设</span><span>APP定制开发</span><span>小程序开发</span></p>
+             <h2>{{ $plans[1]->title }}</h2>
+             <p class="nr">{!! mb_substr($plans[1]->comtent,3,-4,'utf8') !!}</p>
+             <p class="xl">
+               @foreach( $plans[1]->link as $link )
+                 <span>{{ $link }}</span>
+               @endforeach
+            </p>
            </div>
           </a>
         </li>
         <li class="li_3" data-200-center-top="transform: scale(0.8); opacity: 0" data-200-center-center="transform: scale(1); opacity: 1">
-          <a href="technology.html">
-           <span class="icon"><img src="images/ho_skill_3.png"></span>
-           <div class="bot">
-            <h2>网络整合营销</h2>
-            <p class="nr">锁定企业的目标客户群体，对其<br/>进行前期的数据分析，整合更直接有效的<br/>网络推广方式</p>
-            <p class="xl"><span>微信代运营</span><span>搜索引擎SEO</span><span>网络公关</span><span>口碑营销策划</span></p>
+          <a href="/technology">
+            <span class="icon"><img src="{{ $plans[2]->thumbnail }}"></span>
+            <div class="bot">
+              <h2>{{ $plans[2]->title }}</h2>
+              <p class="nr">{!! mb_substr($plans[2]->comtent,3,-4,'utf8') !!}</p>
+              <p class="xl">
+                @foreach( $plans[2]->link as $link )
+                  <span>{{ $link }}</span>
+                @endforeach
+              </p>
            </div>
           </a>
         </li>
         <li class="li_4" data-100-center-top="transform: scale(0.8); opacity: 0" data-100-center-center="transform: scale(1); opacity: 1">
-          <a href="technology.html">
-           <span class="icon"><img src="images/ho_skill_4.png"></span>
-           <div class="bot">
-            <h2>网络基础服务</h2>
-            <p class="nr">帮助客户选择适配域名，开通快速、<br/>安全的网络空间以及网站<br/>日常维护</p>
-            <p class="xl"><span>域名注册</span><span>后台培训</span><span>日常维护</span><span>网站空间</span></p>
+          <a href="/technology">
+            <span class="icon"><img src="{{ $plans[3]->thumbnail }}"></span>
+            <div class="bot">
+              <h2>{{ $plans[3]->title }}</h2>
+              <p class="nr">{!! mb_substr($plans[3]->comtent,3,-4,'utf8') !!}</p>
+              <p class="xl">
+                @foreach( $plans[3]->link as $link )
+                  <span>{{ $link }}</span>
+                @endforeach
+              </p>
            </div>
           </a>
         </li>
@@ -114,14 +130,9 @@
     <span class="bk80">&nbsp;</span>
     <ul class="list clearfix">
       <!--  data-150-bottom-center="transform: rotateY(-90deg); opacity: 0" data-150-center-center="transform: rotate(0); opacity: 1" class="skrollable skrollable-between" -->
-      <li><a href="case_in.html"><img src="images/case_1.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_2.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_3.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_4.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_5.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_6.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_7.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
-      <li><a href="case_in.html"><img src="images/case_8.jpg" alt="" /><span>林芝华庭房地产<br><img src="images/link.png" class="link"></span></a></li>
+      @foreach( $cases as $case)
+        <li><a href="/case/{{ $case->id }}"><img src="{{ $case->thumbnail }}" alt="" /><span>{{ $case->title }}<br><img src="/images/link.png" class="link"></span></a></li>
+      @endforeach
     </ul>
   </div>
   <!-- teamout -->
@@ -134,7 +145,8 @@
         <h3>创独一无二的设计，造国际品质的工程，行无微不至的服务</h3>
       </div>
       <span class="bk30">&nbsp;</span>
-      <div class="txt">诺航科技有限公司成立于<span>2017年5月</span>，专注于企业电子商务的深入服务，并与纵多国内知名网络服务商形成紧密合作，<br/>截至目前，我们为知名企业定制<span>个性化互联网营策划方案</span>，企业品牌营销得到了显著的提升。<br/>我们公司的定位：“<span>专业的企业互联网策划商</span>”，我们的经营理念：“<span>客户的成功才是我们的成功</span>”。<br/>我们在不断适应和挖掘企业的商务需求，在稳定老市场和老客户的基础上，不断发展，形成多元化的<span>业务运作体系</span>。
+      <div class="txt">
+        {!!  $about->comtent !!}
       </div>
       <span class="bk60">&nbsp;</span>
       <!-- 相册 -->
@@ -146,11 +158,9 @@
             </div>
             <div class="inbd">
               <ul class="picList">
-                <li  data-100-bottom-center="transform: rotate(-90deg); opacity: 0" data-100-center-center="transform: rotate(0); opacity: 1"><img src="images/cp_1.jpg"/></li>
-                <li  data-100-bottom-center="transform: rotate(-90deg); opacity: 0" data-100-center-center="transform: rotate(0); opacity: 1"><img src="images/cp_2.jpg"/></li>
-                <li  data-100-bottom-center="transform: rotate(-90deg); opacity: 0" data-100-center-center="transform: rotate(0); opacity: 1"><img src="images/cp_3.jpg"/></li>
-                <li  data-100-bottom-center="transform: rotate(-90deg); opacity: 0" data-100-center-center="transform: rotate(0); opacity: 1"><img src="images/cp_4.jpg"/></li>
-                <li  data-100-bottom-center="transform: rotate(-90deg); opacity: 0" data-100-center-center="transform: rotate(0); opacity: 1"><img src="images/cp_5.jpg"/></li>
+                @foreach( $teams as $team )
+                <li  data-100-bottom-center="transform: rotate(-90deg); opacity: 0" data-100-center-center="transform: rotate(0); opacity: 1"><img src="{{ $team->photo }}"/></li>
+                @endforeach
               </ul>
             </div>
         </div> 
@@ -158,86 +168,28 @@
         <div class="bd" data-100-bottom-top="transform: translateY(200px); opacity: 0" data-center-top="transform: translateY(0px); opacity: 1" style="transform: translateY(0px); opacity: 1;">
           <!-- data-100-bottom-center="transform: rotateY(-90deg); opacity: 0" data-100-center-center="transform: rotate(0); opacity: 1" -->
           <ul>
+            @foreach( $teams as $team )
             <li class="clearfix">
-              <img src="images/cp_1.jpg" class="pic fl">
+              <img src="{{ $team->photo }}" class="pic fl">
               <div class="intxt fr">
-                <img src="images/name_gzl.png">
+                <img src="/images/name_gzl.png">
                 <div class="t1">
                   <h2>项目经验</h2>
-                  <p><a href="case_in.html">大蓉和</a><a href="case_in.html">快乐宝贝</a><a href="case_in.html">大融城</a><a href="case_in.html">名典</a></p>
+                  <p>
+                    @foreach( $team->iterm as $it )
+                    <a href="/case">{{ $it }}</a>
+                    @endforeach
+                  </p>
                 </div>
                 <span class="bk20">&nbsp;</span>
                 <div class="t1">
                   <h2>个人简介</h2>
-                  <p>这里是个人简介，这里是个人简介，这里是个人简介，这里是个人这里是个人简介，这里是个人简介，这里是个人简介，这里是个人这里是个人简介简介简介</p>
+                  <p>{{ $team->introduce }}</p>
                 </div>
               </div>
-              <span class="year">总经理<br/>5年</span>
+              <span class="year">{{ $team->title }}<br/>{{ $team->work_age }}年</span>
             </li>
-            <li class="clearfix">
-              <img src="images/cp_2.jpg" class="pic fl">
-              <div class="intxt fr">
-                <img src="images/name_gzl.png">
-                <div class="t1">
-                  <h2>项目经验</h2>
-                  <p><a href="case_in.html">大蓉和</a><a href="case_in.html">快乐宝贝</a><a href="case_in.html">大融城</a><a href="case_in.html">名典</a></p>
-                </div>
-                <span class="bk20">&nbsp;</span>
-                <div class="t1">
-                  <h2>个人简介</h2>
-                  <p>这里是个人简介，这里是个人简介，这里是个人简介，这里是个人这里是个人简介，这里是个人简介，这里是个人简介，这里是个人这里是个人简介简介简介</p>
-                </div>
-              </div>
-              <span class="year">总经理<br/>5年</span>
-            </li>
-            <li class="clearfix">
-              <img src="images/cp_3.jpg" class="pic fl">
-              <div class="intxt fr">
-                <img src="images/name_gzl.png">
-                <div class="t1">
-                  <h2>项目经验</h2>
-                  <p><a href="case_in.html">大蓉和</a><a href="case_in.html">快乐宝贝</a><a href="case_in.html">大融城</a><a href="case_in.html">名典</a></p>
-                </div>
-                <span class="bk20">&nbsp;</span>
-                <div class="t1">
-                  <h2>个人简介</h2>
-                  <p>这里是个人简介，这里是个人简介，这里是个人简介，这里是个人这里是个人简介，这里是个人简介，这里是个人简介，这里是个人这里是个人简介简介简介</p>
-                </div>
-              </div>
-              <span class="year">总经理<br/>5年</span>
-            </li>
-            <li class="clearfix">
-              <img src="images/cp_4.jpg" class="pic fl">
-              <div class="intxt fr">
-                <img src="images/name_gzl.png">
-                <div class="t1">
-                  <h2>项目经验</h2>
-                  <p><a href="case_in.html">大蓉和</a><a href="case_in.html">快乐宝贝</a><a href="case_in.html">大融城</a><a href="case_in.html">名典</a></p>
-                </div>
-                <span class="bk20">&nbsp;</span>
-                <div class="t1">
-                  <h2>个人简介</h2>
-                  <p>这里是个人简介，这里是个人简介，这里是个人简介，这里是个人这里是个人简介，这里是个人简介，这里是个人简介，这里是个人这里是个人简介简介简介</p>
-                </div>
-              </div>
-              <span class="year">总经理<br/>5年</span>
-            </li>
-            <li class="clearfix">
-              <img src="images/cp_5.jpg" class="pic fl">
-              <div class="intxt fr">
-                <img src="images/name_gzl.png">
-                <div class="t1">
-                  <h2>项目经验</h2>
-                  <p><a href="case_in.html">大蓉和</a><a href="case_in.html">快乐宝贝</a><a href="case_in.html">大融城</a><a href="case_in.html">名典</a></p>
-                </div>
-                <span class="bk20">&nbsp;</span>
-                <div class="t1">
-                  <h2>个人简介</h2>
-                  <p>这里是个人简介，这里是个人简介，这里是个人简介，这里是个人这里是个人简介，这里是个人简介，这里是个人简介，这里是个人这里是个人简介简介简介</p>
-                </div>
-              </div>
-              <span class="year">总经理<br/>5年</span>
-            </li>
+            @endforeach
           </ul>
         </div>
       </div>
@@ -298,19 +250,15 @@
       </div>
       <span class="bk50">&nbsp;</span>
       <div class="list clearfix" data-100-bottom-top="transform: translateX(-200px); opacity: 0" data-center-top="transform: translateX(0px); opacity: 1" >
-        <span><img src="images/hzs_1.jpg"></span>
-        <span><img src="images/hzs_2.jpg"></span>
-        <span><img src="images/hzs_3.jpg"></span>
-        <span><img src="images/hzs_4.jpg"></span>
-        <span><img src="images/hzs_5.jpg"></span>
+        @foreach( $pateners as $patener )
+        <span><img src="{{ $patener->thumbnail }}"></span>
+        @endforeach
       </div>
       <span class="bk20">&nbsp;</span>
       <div class="list clearfix" data-100-bottom-top="transform: translateX(200px); opacity: 0" data-center-top="transform: translateX(0px); opacity: 1">
-        <span><img src="images/hzs_5.jpg"></span>
-        <span><img src="images/hzs_3.jpg"></span>
-        <span><img src="images/hzs_4.jpg"></span>
-        <span><img src="images/hzs_1.jpg"></span>
-        <span><img src="images/hzs_2.jpg"></span>
+        @foreach( $desc_pateners as $patener )
+          <span><img src="{{ $patener->thumbnail }}"></span>
+        @endforeach
       </div>
     </div>
   </div>

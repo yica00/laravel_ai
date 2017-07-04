@@ -24,8 +24,8 @@
       <div class="w1160 clearfix">
       <span class="bk40">&nbsp;</span>
       <div class="page_nav clearfix">
-          <a href="case.html" class="on">公司资讯</a>
-          <a href="case.html">行业媒体</a>
+          <a href="/news" @if( $category == "news" ) class="on" @endif>公司资讯</a>
+          <a href="/industry_news" @if( $category == "industry_news" ) class="on" @endif >行业媒体</a>
        </div>
        <span class="bk40">&nbsp;</span>
      
@@ -33,96 +33,31 @@
       <div class="advice_in">
           <div class="brand-list" id="brand-waterfall">
             <!-- 循环字母模块 item -->
+            @foreach( $articles as $article )
             <div class="item">
               <div class="boxgrid caption">
-                <a href="news_in.html"><img src="images/130.jpg"/></a>
+                <a href="/news/{{$article->id}}"><img src="{{ $article->thumbnail }}"/></a>
                 <div class="cover boxcaption">
-                  <h3><a href="news_in.html">助您找到最契合家装需求的完美白色</a></h3>
-                  <p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>
+                  <h3><a href="/news/{{$article->id}}">{{ $article->title }}</a></h3>
+                  {{--<p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>--}}
                 </div>
               </div>
             </div>        
-            <div class="item">
-              <div class="boxgrid captiona boxgridq">
-                <a href="news_in.html"><img src="images/131.jpg"/></a>
-                <div class="cover boxcaptiona">
-                  <h3><a href="news_in.html">助您找到最契合家装需求的完美白色</a></h3>
-                  <p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>
-                </div>
-              </div>
-            </div>         
-            <div class="item">
-              <div class="boxgrid caption">
-                <a href="news_in.html"><img src="images/130.jpg"/></a>
-                <div class="cover boxcaption">
-                  <h3><a href="news_in.html">助您找到最契合家装需求的完美白色</a></h3>
-                  <p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="boxgrid caption">
-                <a href="news_in.html"><img src="images/130.jpg"/></a>
-                <div class="cover boxcaption">
-                  <h3><a href="news_in.html">助您找到最契合家装需求的完美白色</a></h3>
-                  <p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>
-                </div>
-              </div>
-            </div>        
-            <div class="item">
-              <div class="boxgrid captiona boxgridq">
-                <a href="news_in.html"><img src="images/131.jpg"/></a>
-                <div class="cover boxcaptiona">
-                  <h3><a href="news_in.html">助您找到最契合家装需求的完美白色</a></h3>
-                  <p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>
-                </div>
-              </div>
-            </div>     
-            <div class="item">
-              <div class="boxgrid captiona boxgridq">
-                <a href="news_in.html"><img src="images/131.jpg"/></a>
-                <div class="cover boxcaptiona">
-                  <h3><a href="news_in.html">助您找到最契合家装需求的完美白色</a></h3>
-                  <p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>
-                </div>
-              </div>
-            </div>       
-            <div class="item">
-              <div class="boxgrid caption">
-                <a href="news_in.html"><img src="images/130.jpg"/></a>
-                <div class="cover boxcaption">
-                  <h3><a href="news_in.html">助您找到最契合家装需求的完美白色</a></h3>
-                  <p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>
-                </div>
-              </div>
-            </div>        
-            <div class="item">
-              <div class="boxgrid captiona boxgridq">
-                <a href="news_in.html"><img src="images/131.jpg"/></a>
-                <div class="cover boxcaptiona">
-                  <h3><a href="news_in.html">助您找到最契合家装需求的完美白色</a></h3>
-                  <p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>
-                </div>
-              </div>
-            </div>        
-            <div class="item">
-              <div class="boxgrid caption">
-                <a href="news_in.html"><img src="images/130.jpg"/></a>
-                <div class="cover boxcaption">
-                  <h3><a href="news_in.html">助您找到最契合家装需求的完美白色</a></h3>
-                  <p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>
-                </div>
-              </div>
-            </div>       
-            <div class="item">
-              <div class="boxgrid captiona boxgridq">
-                <a href="news_in.html"><img src="images/131.jpg"/></a>
-                <div class="cover boxcaptiona">
-                  <h3><a href="news_in.html">助您找到最契合家装需求的完美白色</a></h3>
-                  <p>如果您想营造热情好客的居室氛围，不妨选择略带红色或黄色调的暖系白色多乐士涂料，这些</p>
-                </div>
-              </div>
-            </div>  
+            @endforeach
+          </div>
+        </div>
+        <div class="pageJump clearfix">
+          <div class="number">
+
+            @if( $pages['pre_page']  )
+              <span class="disabled"><a href="/{{ $category }}">首页</a></span>
+              <span class="disabled"><a href="/{{$category}}?page={{ $pages['pre_page'] }}">上一页</a></span>
+            @endif
+            @if( $pages['next_page'] )
+              <span class="disabled"><a href="/{{$category}}?page={{ $pages['next_page'] }}">下一页</a></span>
+              <span class="disabled"><a href="/{{$category}}?page={{ $pages['total_page'] }}">尾页</a></span>
+            @endif
+
           </div>
         </div>
         </div>

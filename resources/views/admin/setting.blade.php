@@ -50,6 +50,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">传真</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="fax_phone" value="{{  $setting['fax_phone'] }}" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">地址</label>
                                 <div class="col-md-6">
                                     <input id="email"   class="form-control" name="bases"  value="{{ $setting['bases']  }}"  autofocus>

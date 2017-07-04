@@ -51,6 +51,17 @@ if (!function_exists('getSubs')){
     }
 }
 
+function getArraySubs($menus,$pid=0){
+    $subs=array();
+    foreach($menus as $item){
+        if($item['pid']==$pid){
+            $item['sons'] = getArraySubs($menus,$item['id']);
+            $subs[]=$item;
+        }
+    }
+    return $subs;
+}
+
 function getUrl($request,$img){
     $rel = $request->file($img);
     if(!$rel) return null;
@@ -129,6 +140,22 @@ function get_up_down_page($id,$pid){
     }
 
     $next_page = \App\Models\Admin\Article::where('id','<',$id)->where('pid',$pid)->first();
+    if($next_page){
+        $next_id = $next_page->id;
+    }else{
+        $next_id = null;
+    }
+    return [$id,$pre_id,$next_id];
+}
+
+function get_message_page($id){
+    $pre_page = \App\Models\Admin\Message::where('id','>',$id)->first();
+    if($pre_page){
+        $pre_id = $pre_page->id;
+    }else{
+        $pre_id = null;
+    }
+    $next_page = \App\Models\Admin\Message::where('id','<',$id)->first();
     if($next_page){
         $next_id = $next_page->id;
     }else{
