@@ -24,9 +24,13 @@ class FrontController extends Controller
         $desc_pateners = $this->getDescPatener();
         $plans = $this->getPlans();
         $nav = 1;
-        return view('front.index',compact('nav','cases','about','teams','pateners','desc_pateners','plans','slides'));
+        return view('front.index',compact('nav','cases','about','teams','pateners','desc_pateners','plans','slides','links'));
     }
 
+    public function getLinks(){
+        $articles = Article::select('id','link')->where('pid',66)->get();
+        return $articles;
+    }
     public function getPlans(){
         $articles = Article::where('pid',49)->get();
         foreach ( $articles as $art ){

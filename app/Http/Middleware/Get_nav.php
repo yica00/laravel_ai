@@ -20,6 +20,8 @@ class Get_nav
             $navs = Article::select('id','title','link','pid')->where('is_nav',1)->get();
             $nav = getSubs($navs,0);
             session(['header_nav' => $navs]);
+            $links = Article::select('id','link','title')->where('pid',66)->get();
+            session(['links' => $links]);
         }
         return $next($request);
     }
