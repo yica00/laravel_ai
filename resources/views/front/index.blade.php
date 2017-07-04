@@ -16,13 +16,13 @@
             </li>
             <li onclick="javascript:window.location.href='#';">
                 <img class="DB_2_1" src="{{ $slides[1]['sons'][0]['thumbnail'] }}" alt="" />
-                <img class="DB_2_2" src="{{ $slides[1]['sons'][0]['thumbnail'] }}" alt="" />
-                <img class="DB_2_3" src="{{ $slides[1]['sons'][0]['thumbnail'] }}" alt="" />
+                <img class="DB_2_2" src="{{ $slides[1]['sons'][1]['thumbnail'] }}" alt="" />
+                <img class="DB_2_3" src="{{ $slides[1]['sons'][2]['thumbnail'] }}" alt="" />
             </li>
             <li onclick="javascript:window.location.href='#';">
                 <img class="DB_3_1" src="{{ $slides[2]['sons'][0]['thumbnail'] }}" alt="" />
-                <img class="DB_3_2" src="{{ $slides[2]['sons'][0]['thumbnail'] }}" alt="" />
-                <img class="DB_3_3" src="{{ $slides[2]['sons'][0]['thumbnail'] }}" alt="" />
+                <img class="DB_3_2" src="{{ $slides[2]['sons'][1]['thumbnail'] }}" alt="" />
+                <img class="DB_3_3" src="{{ $slides[2]['sons'][2]['thumbnail'] }}" alt="" />
             </li>
         </ul>
         <div class="DB_menuWrap">
