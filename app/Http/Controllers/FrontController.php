@@ -168,8 +168,7 @@ class FrontController extends Controller
         $article = Article::find($id);
         $arr = get_article_imgs($article->comtent,2);
         $article->comtent = $arr;
-
-        $pages = getImgsPage(count($arr),2);
+        return $article;
         $nav = 4;
         return view('front.product',compact('nav','id','article','pages'));
     }

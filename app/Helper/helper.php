@@ -164,37 +164,38 @@ function get_message_page($id){
     return [$id,$pre_id,$next_id];
 }
 
-function get_article_imgs($str){
-    $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
-    $pattern = "/(?:\/Uploads).*?(?:\" title)/";
-    preg_match_all($pattern,$str,$matches);
-    if(!$matches[0]){
-        return [];
-    }
-    $arr = [];
-    for ( $i=0;$i<count($matches[0]);$i++ ){
-        $arr[] = mb_substr($matches[0][$i],0,-7,'utf8');
-    }
-    return $arr;
-}
-
-//function get_article_imgs($str,$num){
+//function get_article_imgs($str){
 //    $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
 //    $pattern = "/(?:\/Uploads).*?(?:\" title)/";
 //    preg_match_all($pattern,$str,$matches);
 //    if(!$matches[0]){
 //        return [];
 //    }
-//    $start = ( $page - 1 ) * $num;
-//    $max = $start + $num;
 //    $arr = [];
-//    for ( $i=$start;$i<$max;$i++ ){
-//        if( isset( $matches[0][$i] ) ){
-//            $arr[] = mb_substr($matches[0][$i],0,-7,'utf8');
-//        }
+//    for ( $i=0;$i<count($matches[0]);$i++ ){
+//        $arr[] = mb_substr($matches[0][$i],0,-7,'utf8');
 //    }
 //    return $arr;
 //}
+
+function get_article_imgs($str,$num){
+    $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
+    $pattern = "/(?:\/Uploads).*?(?:\" title)/";
+    preg_match_all($pattern,$str,$matches);
+    if(!$matches[0]){
+        return [];
+    }
+    $pages = getImgsPage(count($matches[0]),$num);
+    $start = ( $page - 1 ) * $num;
+    $max = $start + $num;
+    $arr = [];
+    for ( $i=$start;$i<$max;$i++ ){
+        if( isset( $matches[0][$i] ) ){
+            $arr[] = mb_substr($matches[0][$i],0,-7,'utf8');
+        }
+    }
+    return [$arr,$pages];
+}
 
 function getImgsPage($total,$num){
     $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
