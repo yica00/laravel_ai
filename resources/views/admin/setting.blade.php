@@ -43,16 +43,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">电话</label>
+                                <label for="email" class="col-md-4 control-label">手机</label>
                                 <div class="col-md-6">
                                     <input id="email"  class="form-control" name="phone" value="{{  $setting['phone'] }}" autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">传真</label>
+                                <label for="email" class="col-md-4 control-label">座机</label>
                                 <div class="col-md-6">
-                                    <input id="email"  class="form-control" name="fax_phone" value="{{  $setting['fax_phone'] }}" autofocus>
+                                    <input id="email"  class="form-control" name="fix_phone" value="{{  $setting['fix_phone'] }}" autofocus>
                                 </div>
                             </div>
 
@@ -60,13 +60,6 @@
                                 <label for="email" class="col-md-4 control-label">地址</label>
                                 <div class="col-md-6">
                                     <input id="email"   class="form-control" name="bases"  value="{{ $setting['bases']  }}"  autofocus>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">邮箱</label>
-                                <div class="col-md-6">
-                                    <input id="email"   class="form-control" name="email"  value="{{ $setting['email']  }}"  autofocus>
                                 </div>
                             </div>
 

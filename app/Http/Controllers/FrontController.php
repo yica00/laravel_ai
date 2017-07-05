@@ -13,6 +13,10 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
+        $nav = 1;
+        return view('front.index',compact('nav'));
+
+
         $bgs = $this->getBgs();
         $ids = getIds($bgs);
         $arr =  $bgs->toArray();
@@ -61,7 +65,6 @@ class FrontController extends Controller
         $teams = $this->formartData($teams);
         return $teams;
     }
-
     public function getModels(){
         $article = Article::find(15);
         return $article;
@@ -79,19 +82,16 @@ class FrontController extends Controller
         $introduce = Teams::take(6)->get();
         return $introduce;
     }
-
     public function getProducet()
     {
         $product = Article::select( 'thumbnail','title', 'id','pid')->where('pid', 4)->orderBy('id', 'asc')->take(8)->get();
         return $product;
     }
-
     public function getProdetail($products){
         $ids = getIds($products);
         $product = Article::select( 'title', 'id','thumbnail','link','comtent')->whereIn('pid', $ids)->orderBy('id', 'desc')->take(6)->get();
         return $product;
     }
-
     public function getBgs()
     {
         $sliders = Article::select('thumbnail','link','id','pid')->where('pid', 1)->get();
@@ -104,7 +104,6 @@ class FrontController extends Controller
         $all = getArraySubs($all,1);
         return $all;
     }
-
     public function getTeams()
     {
         $teams = Teams::select('id', 'photo', 'belong_to', 'name','iterm')->orderBy('id', 'desc')->get();
@@ -113,48 +112,72 @@ class FrontController extends Controller
 
 
     public function about(){
-        $company = Article::find(8);
-        $culture = Article::find(9);
-        $partners = Article::where('pid',11)->orderBy('id','desc')->take(5)->get();
-        $teams = Teams::all();
-        $teams = $this->formartData($teams);
+        $article = Article::find(10);
         $nav = 2;
-        return view('front.about',compact('nav','company','culture','partners','teams'));
+        $sty = 1;
+        return view('front.about',compact('nav','article','sty'));
+    }
+    public function culture(){
+        $article = Article::find(11);
+        $nav = 2;
+        $sty = 2;
+        return view('front.about',compact('nav','article','sty'));
+    }
+    public function office(){
+        $articles = Article::where('pid',12)->get();
+        $nav = 2;
+        $sty = 3;
+        return view('front.office',compact('nav','articles','sty'));
+    }
+    public function honor(){
+        $articles = Article::where('pid',13)->get();
+        $nav = 2;
+        $sty = 4;
+        return view('front.office',compact('nav','articles','sty'));
     }
 
 
-    public function technology(){
+    public function news(){
         $nav = 3;
-        $sty = "/technology";
-        $article = Article::find(21);
-        $articles = Article::where('pid',21)->get();
-        return view('front.technology',compact('nav','article','sty','articles'));
+        $category = "news";
+        $articles = Article::where('pid',14)->paginate(9);
+        $pages = getPage($articles,9);
+        return view('front.news',compact('nav','category','articles','pages'));
     }
-    public function mobile(){
+    public function industry_news(){
         $nav = 3;
-        $sty = "/mobile";
-        $article = Article::find(22);
-        $articles = Article::where('pid',21)->get();
-        return view('front.technology',compact('nav','article','sty','articles'));
+        $category = "industry_news";
+        $articles = Article::where('pid',15)->paginate(9);
+        $pages = getPage($articles,9);
+        return view('front.news',compact('nav','category','articles','pages'));
     }
-    public function marketing(){
+    public function new_detail($id){
+        $article = Article::find($id);
         $nav = 3;
-        $sty = "/marketing";
-        $article = Article::find(23);
-        $articles = Article::where('pid',21)->get();
-        return view('front.technology',compact('nav','article','sty','articles'));
-    }
-    public function network(){
-        $nav = 3;
-        $sty = "/network";
-        $article = Article::find(24);
-        $articles = Article::where('pid',21)->get();
-        return view('front.technology',compact('nav','article','sty','articles'));
+        $up_down = get_up_down_page($id,$article->pid);
+        if($article->pid == 25){
+            $sty = "news";
+        }else{
+            $sty = "industry_news";
+        }
+        return view('front.news_in',compact('nav','article','up_down','sty'));
     }
 
 
+    public function product(  $id = 16,$page = 1  ){
+        $article = Article::find($id);
+        $arr = get_article_imgs($article->comtent,2);
+        $article->comtent = $arr;
 
-    public function web_case( $id = 27 ){
+        $pages = getImgsPage(count($arr),2);
+        $nav = 4;
+        return view('front.product',compact('nav','id','article','pages'));
+    }
+
+    public function our_case( ){
+        $nav = 5;
+        return view('front.case',compact('nav'));
+
         $articles = Article::where('pid',5)->get();
         $ids = getIds($articles);
         if( $id == 27 ){
@@ -172,38 +195,34 @@ class FrontController extends Controller
         return view('front.case_in',compact('nav','article'));
     }
 
-    public function news(){
-        $articles = Article::where('pid',25)->paginate(9);
-        $pages = getPage($articles,9);
-        $nav = 5;
-        $category = "news";
-        return view('front.news',compact('nav','pages','category','articles'));
-    }
-    public function industry_news(){
-        $articles = Article::where('pid',26)->paginate(9);
-        $pages = getPage($articles,9);
-        $nav = 5;
-        $category = "industry_news";
-        return view('front.news',compact('nav','pages','category','articles'));
-    }
-    public function new_detail($id){
-        $article = Article::find($id);
-        $nav = 5;
-        $up_down = get_up_down_page($id,$article->pid);
-        if($article->pid == 25){
-            $sty = "news";
-        }else{
-            $sty = "industy_news";
-        }
-        return view('front.news_in',compact('nav','article','up_down','sty'));
+
+    public function equipment(){
+        $nav = 6;
+        return view('front.equip',compact('nav'));
     }
 
+
+
+    public function service(){
+        $nav = 7;
+        return view('front.service',compact('nav'));
+    }
+
+
     public function contact(){
+        $nav = 8;
+        return view('front.contact',compact('nav'));
+
         $self = Article::find(59);
         $articles = Article::select( 'title','comtent')->where('pid', 59)->orderBy('id', 'desc')->paginate(3);
         $pages = getPage($articles,3);
         $nav = 6;
         return view('front.contact',compact('nav','articles','self','pages'));
+    }
+    public function way()
+    {
+        $nav = 8;
+        return view('front.way', compact('nav'));
     }
 
 

@@ -18,30 +18,33 @@ Route::group(['middleware'=>'check_setting'],function (){
 //    Route::group(['as'=>'front'],function (){
 
 //        Route::get('/', function (){
-//            return view('admin.index');
+//            return view('front.index');
 //        });
 
-        Route::get('/', 'FrontController@index');
+        Route::get('/','FrontController@index');
 
         Route::get('about','FrontController@about');
         Route::get('culture','FrontController@culture');
-
-        Route::get('technology','FrontController@technology');
-        Route::get('mobile','FrontController@mobile');
-        Route::get('marketing','FrontController@marketing');
-        Route::get('network','FrontController@network');
-
-        Route::get('case','FrontController@web_case');
-        Route::get('case/category/{id}','FrontController@web_case');
-        Route::get('case/{id}','FrontController@case_detail');
-
+        Route::get('office','FrontController@office');
+        Route::get('honor','FrontController@honor');
 
         Route::get('news','FrontController@news');
         Route::get('news/{id}','FrontController@new_detail');
         Route::get('industry_news','FrontController@industry_news');
 
+        Route::get('product','FrontController@product');
+        Route::get('product/category/{id}','FrontController@product');
+        Route::get('product/detail/{id}','FrontController@product_detail');
+
+        Route::get('case','FrontController@our_case');
+
+        Route::get('equipment','FrontController@equipment');
+
+        Route::get('service','FrontController@service');
+        Route::get('partner','FrontController@partner');
+
         Route::get('contact','FrontController@contact');
-        Route::get('way','FrontController@contact_way');
+        Route::get('way','FrontController@way');
 
         Route::post('/front/message','Admin\MessageController@store');
     });

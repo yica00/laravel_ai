@@ -106,12 +106,11 @@ class HomeController extends Controller
 
     public function setting(){
 //        $data = [
-//            'web_name'=>'四川诺航科技有限公司',
-//            'phone'=>'158 8176 0037',
-//            'fax_phone'=>'0817-145678',
-//            'qq'=>'625144908',
-//            'bases'=>'南充市嘉陵区火花路',
-//            'email'=>'lebja@126.com',
+//            'web_name'=>'南充嘉彩包装印刷有限公司',
+//            'phone'=>'189-9080-6536 （李总）    138-0827-0940（张总）',
+//            'fix_phone'=>'0817-3889628',
+//            'qq'=>'2606531440',
+//            'bases'=>'南充市嘉陵区燕京大道工业园区（燕京啤酒厂前200米）',
 //            'keywords'=>'网站关键词',
 //            'description'=>'关键词描述',
 //            'wx_map'=>'/sah/sadas',
@@ -128,10 +127,9 @@ class HomeController extends Controller
         $data = [
             'web_name'=>$request->get('web_name'),
             'phone'=>$request->get('phone'),
-            'fax_phone'=>$request->get('fax_phone'),
+            'fix_phone'=>$request->get('fix_phone'),
             'qq'=>$request->get('qq'),
             'bases'=>$request->get('bases'),
-            'email'=>$request->get('email'),
             'keywords'=>$request->get('keywords'),
             'description'=>$request->get('description'),
             'wx_map'=>$url?$url:$setting['wx_map'],

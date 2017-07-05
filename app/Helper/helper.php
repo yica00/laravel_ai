@@ -83,8 +83,8 @@ function getMultiUrl($request,$img){
         $arr = [];
         foreach($files as $file) {
             $name = $file->getClientOriginalExtension();
-            $arr = ['png','gif','jpeg','jpg'];
-            if( !in_array($name,$arr) ){
+            $imgs = ['png','gif','jpeg','jpg'];
+            if( !in_array($name,$imgs) ){
                 return null;
             }
             $name = time().rand(1000,9999).".".$name;
@@ -162,4 +162,58 @@ function get_message_page($id){
         $next_id = null;
     }
     return [$id,$pre_id,$next_id];
+}
+
+function get_article_imgs($str){
+    $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
+    $pattern = "/(?:\/Uploads).*?(?:\" title)/";
+    preg_match_all($pattern,$str,$matches);
+    if(!$matches[0]){
+        return [];
+    }
+    $arr = [];
+    for ( $i=0;$i<count($matches[0]);$i++ ){
+        $arr[] = mb_substr($matches[0][$i],0,-7,'utf8');
+    }
+    return $arr;
+}
+
+//function get_article_imgs($str,$num){
+//    $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
+//    $pattern = "/(?:\/Uploads).*?(?:\" title)/";
+//    preg_match_all($pattern,$str,$matches);
+//    if(!$matches[0]){
+//        return [];
+//    }
+//    $start = ( $page - 1 ) * $num;
+//    $max = $start + $num;
+//    $arr = [];
+//    for ( $i=$start;$i<$max;$i++ ){
+//        if( isset( $matches[0][$i] ) ){
+//            $arr[] = mb_substr($matches[0][$i],0,-7,'utf8');
+//        }
+//    }
+//    return $arr;
+//}
+
+function getImgsPage($total,$num){
+    $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
+    $total_page = ceil( $total/$num);
+    if($page <= 1){
+        $pre_page = null;
+    }else{
+        $pre_page = $page - 1;
+    }
+    if($page >= $total_page ){
+        $next_page = null;
+    }else{
+        $next_page = $page + 1;
+    }
+    $page = [
+        'page'=>$page,
+        'pre_page' => $pre_page,
+        'next_page' => $next_page,
+        'total_page' => $total_page,
+    ];
+    return $page;
 }
