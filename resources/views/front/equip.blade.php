@@ -33,38 +33,23 @@
         });
       </script>
     <div id="equip_list" class="clearfix">
-        <a rel="images_group" href="images/sb1.jpg">
-          <img src="images/sb1.jpg">
-          <span>裱瓦机</span>
+        @foreach( $articles as $article )
+        <a rel="images_group" href="{{ $article->thumbnail }}">
+          <img src="{{ $article->thumbnail }}">
+          <span>{{ $article->title }}</span>
         </a>
-        <a rel="images_group" href="images/sb2.jpg">
-          <img src="images/sb2.jpg">
-          <span>裱瓦机</span>
-        </a>
-        <a rel="images_group" href="images/sb3.jpg">
-          <img src="images/sb3.jpg">
-          <span>裱瓦机</span>
-        </a>
-        <a rel="images_group" href="images/sb4.jpg">
-          <img src="images/sb4.jpg">
-          <span>裱瓦机</span>
-        </a>
-        <a rel="images_group" href="images/sb1.jpg">
-          <img src="images/sb1.jpg">
-          <span>裱瓦机</span>
-        </a>
-        <a rel="images_group" href="images/sb2.jpg">
-          <img src="images/sb2.jpg">
-          <span>裱瓦机</span>
-        </a>
+        @endforeach
       </div>
     <div class="pageJump clearfix">
         <div class="number">
-            <span class="disabled"><a href="">上一页</a></span>
-            <span class="disabled"><a href="">1</a></span>
-            <span class="disabled"><a href="">2</a></span>
-            <span class="disabled"><a href="">3</a></span>
-            <span class="disabled"><a href="">下一页</a></span>
+            @if(  $pages['pre_page']  )
+                <span class="disabled"><a href="/equipment">首页</a></span>
+                <span class="disabled"><a href="/equipment?page={{ $pages['pre_page'] }}">上一页</a></span>
+            @endif
+            @if( $pages['next_page'] )
+                <span class="disabled"><a href="/equipment?page={{ $pages['next_page'] }}">下一页</a></span>
+                <span class="disabled"><a href="/equipment?page={{ $pages['total_page'] }}">尾页</a></span>
+            @endif
         </div>
     </div>
     <!-- end --> 

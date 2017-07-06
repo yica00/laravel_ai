@@ -8,7 +8,7 @@
         <p>service center</p>
       </div>
       <p class="page_nav clearfix">
-        <a href="service.html" class="on">服务优势</a><a href="part.html">合作伙伴</a>
+        <a href="/service" class="on">服务优势</a><a href="/partner">合作伙伴</a>
       </p>
   </div>  
 </div>
@@ -18,7 +18,7 @@
     <!-- start -->
     <!-- advantage -->
 <div class="advantage">
-    <div class="tit"><div class="w1160 clearfix"><a href="service.html">我们五大优势<br/>为您提供更优质的包装定制服务</a></div></div>
+    <div class="tit"><div class="w1160 clearfix"><a href="/service">我们五大优势<br/>为您提供更优质的包装定制服务</a></div></div>
     <span class="bk40">&nbsp;</span>
     <div class="w1160 clearfix">
       <div class="ser_list fr">
@@ -67,7 +67,7 @@
     <span class="bk60">&nbsp;</span>
     <div class="ser_big clearfix">
       <div class="w1160 clearfix">
-        <img src="images/ad_3.png" class="fr">
+        <img src="/images/ad_3.png" class="fr">
         <div class="dis fl">
           <span class="bk70">&nbsp;</span>
           <div class="bt clearfix">
@@ -140,12 +140,12 @@
     <h2 class="ho_tit_all"><a href=" "><img src="images/ho_tit_4.png"></a></h2>
     <span class="bk40">&nbsp;</span>
     <ul class="list">
-      <li><img src="images/lc_1.png" alt="" /></li>
-      <li><img src="images/lc_2.png" alt="" /></li>
-      <li><img src="images/lc_3.png" alt="" /></li>
-      <li><img src="images/lc_4.png" alt="" /></li>
-      <li><img src="images/lc_5.png" alt="" /></li>
-      <li><img src="images/lc_6.png" alt="" /></li>
+      <li><img src="/images/lc_1.png" alt="" /></li>
+      <li><img src="/images/lc_2.png" alt="" /></li>
+      <li><img src="/images/lc_3.png" alt="" /></li>
+      <li><img src="/images/lc_4.png" alt="" /></li>
+      <li><img src="/images/lc_5.png" alt="" /></li>
+      <li><img src="/images/lc_6.png" alt="" /></li>
     </ul>
   </div>
 </div>

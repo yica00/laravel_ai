@@ -11,29 +11,30 @@
                 echo $errors;
             }?>
         </p>
-        <table class="tablePanel2" cellpadding="0" cellspacing="0" width="100%">
-            <th>名字</th>
-            <th>手机</th>
-            <th>座机</th>
-            <th>省份</th>
-            <th>城市</th>
-            <th>公司名字</th>
-            <th>操作</th>
-        </tr>
-        @foreach($messages as $sort)
-            <tr>
-                <td>{{$sort->name}}</td>
-                <td>{{$sort->phone}}</td>
-                <td>{{$sort->fix_phone}}</td>
-                <td>{{$sort->s_province}}</td>
-                <td>{{$sort->s_city}}</td>
-                <td>{{$sort->company}}</td>
+        {{--<h3><a href="/admin/team/create" >新增员工</a></h3>--}}
+        <table class="tablePanel2"  cellpadding="0" cellspacing="0" width="100%">
+            <tr style="border-bottom:1px solid #BBB;height: 50px;border-top:1px solid #BBB;">
+                <th>姓名</th>
+                <th>邮箱</th>
+                <th>手机</th>
+                <th>留言内容</th>
+                <th>留言时间</th>
+                <th>操作</th>
+            </tr>
+            @foreach($messages as $sort)
+                <tr>
+
+                    <td>{{$sort->name}}</td>
+                    <td>{{$sort->email}}</td>
+                    <td>{{$sort->phone}}</td>
+                    <td>{{$sort->message}}</td>
+                    <td>{{$sort->created_at}}</td>
                     <td>
-                        <a class="act-btn" href="/admin/message/{{$sort->id}}/look">查看</a>|
+                        <a class="act-btn" href="/admin/message/{{$sort->id}}/look">查看</a>
                         <a class="act-btn" href="/admin/message/{{$sort->id}}/delete">删除</a>
                     </td>
                 </tr>
-         @endforeach
+            @endforeach
 
         </table>
     </div>

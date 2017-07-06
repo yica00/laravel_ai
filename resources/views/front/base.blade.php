@@ -104,7 +104,7 @@
     <span class="bk30">&nbsp;</span>
     <div class="w1160 clearfix">
         <div class="ewm fr">
-            <img src="images/erwm.png">
+            <img src="{{ session('setting')['wx_map']  }}">
             <p>扫一扫，关注我们</p>
         </div>
         <div class="txt fl">
@@ -120,7 +120,9 @@
             <div class="link clearfix">
                 <span class="fl mR10">友情链接 </span>
                 <div class="fl">
-                    <a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a>
+                    @foreach( session('links') as $link )
+                    <a href="{{  $link->link }}" target="_blank">{{ $link->title }}</a>
+                    @endforeach
                 </div>
             </div>
             <div class="copy">CopyRight ◎ 2017 {{ session('setting')['web_name']  }} All Right Reserved&nbsp;&nbsp;&nbsp;&nbsp;蜀ICP备12345678号&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a href="http://www.scnuohang.com" target="_blank">诺航科技</a></div>

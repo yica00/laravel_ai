@@ -5,9 +5,9 @@
   <div class="hd">&nbsp;</div>
   <div class="bd">
     <ul>
-      <li><a href="" style="background:url(images/bn_1.jpg) center no-repeat;">&nbsp;</a></li>
-      <li><a href="" style="background:url(images/bn_2.jpg) center no-repeat;">&nbsp;</a></li>
-      <li><a href="" style="background:url(images/bn_3.jpg) center no-repeat;">&nbsp;</a></li>
+      @foreach( $slides as $slide )
+      <li><a href="{{ $slide->link }}" style="background:url({{ $slide->thumbnail }}) center no-repeat;">&nbsp;</a></li>
+      @endforeach
     </ul>
   </div>
   <a class="prev" href="javascript:void(0)"></a>
@@ -15,18 +15,18 @@
 </div>
 <script type="text/javascript">jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});</script>
 <!-- sear_box -->
-<div class="sear_box">
-  <div class="w1160 clearfix">
-      <!-- 此处关键词可替换 -->
-      <div class="hot_word fl">热门搜索关键词：<a href="">定制包装</a><a href="" class="hot">包装</a><a href="">包装定制</a></div>
-        <div class="search fr">
-          <form>
-        <input class="input-field" placeholder="请输入搜索内容" type="text" value="请输入搜索内容">
-        <input class="input-btn" type="button">
-      </form>
-        </div>  
-  </div>
-</div>
+{{--<div class="sear_box">--}}
+  {{--<div class="w1160 clearfix">--}}
+      {{--<!-- 此处关键词可替换 -->--}}
+      {{--<div class="hot_word fl">热门搜索关键词：<a href="">定制包装</a><a href="" class="hot">包装</a><a href="">包装定制</a></div>--}}
+        {{--<div class="search fr">--}}
+          {{--<form>--}}
+        {{--<input class="input-field" placeholder="请输入搜索内容" type="text" value="请输入搜索内容">--}}
+        {{--<input class="input-btn" type="button">--}}
+      {{--</form>--}}
+        {{--</div>  --}}
+  {{--</div>--}}
+{{--</div>--}}
 <!-- slogn -->
 <div class="slogn">
   <div class="w1160 clearfix">
@@ -62,40 +62,26 @@
 <span class="bk60">&nbsp;</span>
 <!-- product_tit -->
 <div class="w1160 clearfix">
-  <h2 class="ho_tit_all"><a href="product.html"><img src="images/ho_tit_1.png"></a></h2>
+  <h2 class="ho_tit_all"><a href="/product"><img src="images/ho_tit_1.png"></a></h2>
   <span class="bk40">&nbsp;</span>
   <ul class="product_tit clearfix">
-    <li><a href="product.html" class="a_1">包装盒系列</a></li>
-    <li><a href="product.html" class="a_2">手提袋系列</a></li>
-    <li><a href="product.html" class="a_3">礼盒系列</a></li>
-    <li><a href="product.html" class="a_4">包装箱系列</a></li>
-    <li><a href="product.html" class="a_5">食品盒系列</a></li>
-    <li><a href="product.html" class="a_6">茶叶盒系列</a></li>
-    <li><a href="product.html" class="a_7">台历、挂历</a></li>
-    <li><a href="product.html" class="a_8">画册、DM单</a></li>
-    <li><a href="product.html" class="a_9">其他类</a></li>
-    <li><a href="product.html" class="a_10">MORE+</a></li>
+    @foreach( session('header_nav')[4]->sons as $leader1 )
+      <li><a href="/product/category/{{ $leader1->id  }}" class="a_1">{{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
+    @endforeach
+      <li><a href="/product" class="a_10">MORE+</a></li>
   </ul>
   <span class="bk20">&nbsp;</span>
   <div class="product_list clearfix">
-    <a href="product.html"><img src="images/cp1.jpg" alt="" /></a>
-    <a href="product.html"><img src="images/cp2.jpg" alt="" /></a>
-    <a href="product.html"><img src="images/cp3.jpg" alt="" /></a>
-    <a href="product.html"><img src="images/cp4.jpg" alt="" /></a>
-    <a href="product.html"><img src="images/cp5.jpg" alt="" /></a>
-    <a href="product.html"><img src="images/cp6.jpg" alt="" /></a>
+    @foreach( $producets as $producet )
+    <a href="{{ $producet->link }}"><img src="{{ $producet->thumbnail }}" alt="" /></a>
+    @endforeach
   </div>
   <div class="partout clearfix">
     <div class="lolist fr">
       <ul class="clearfix">
-        <li><img src="images/lo1.jpg" alt="" /></li>
-        <li><img src="images/lo2.jpg" alt="" /></li>
-        <li><img src="images/lo3.jpg" alt="" /></li>
-        <li><img src="images/lo4.jpg" alt="" /></li>
-        <li><img src="images/lo3.jpg" alt="" /></li>
-        <li><img src="images/lo2.jpg" alt="" /></li>
-        <li><img src="images/lo4.jpg" alt="" /></li>
-        <li><img src="images/lo1.jpg" alt="" /></li>
+        @foreach( $pateners as $producet )
+        <li><img src="{{ $producet->thumbnail }}" alt="" /></li>
+        @endforeach
       </ul>
     </div>
     <div class="txt fl">
@@ -103,7 +89,7 @@
       <h2>牵手嘉彩包装</h2>
       <p class="b">众多知名企业都选择了我们</p>
       <span class="bk30">&nbsp;</span>
-      <p class="btn"><a href="part.html">查看更多</a></p>
+      <p class="btn"><a href="/partner">查看更多</a></p>
     </div>
   </div>
 </div>
@@ -112,25 +98,23 @@
 <span class="bk60">&nbsp;</span>
 <!-- caseout -->
 <div class="w1160 clearfix">
-  <h2 class="ho_tit_all"><a href="case.html"><img src="images/ho_tit_2.png"></a></h2>
+  <h2 class="ho_tit_all"><a href="/case"><img src="images/ho_tit_2.png"></a></h2>
   <span class="bk40">&nbsp;</span>
   <div class="caseout clearfix">
     <div class="caselist fr">
       <ul class="clearfix">
-        <li><a href="case.html"><img src="images/cp1.jpg"></a></li>
-        <li><a href="case.html"><img src="images/cp2.jpg"></a></li>
-        <li><a href="case.html"><img src="images/cp3.jpg"></a></li>
-        <li><a href="case.html"><img src="images/cp4.jpg"></a></li>
+        <li><a href="/case"><img src="{{ $cases->comtent[0][0] }}"></a></li>
+        <li><a href="/case"><img src="{{ $cases->comtent[0][1] }}"></a></li>
+        <li><a href="/case"><img src="{{ $cases->comtent[0][2] }}"></a></li>
+        <li><a href="/case"><img src="{{ $cases->comtent[0][3] }}"></a></li>
       </ul>
     </div>
     <div class="picScroll-case fl">
       <div class="bd">
         <ul class="picList">
-          <li><a href="case.html"><img src="images/cp1.jpg"></a></li>
-          <li><a href="case.html"><img src="images/cp2.jpg"></a></li>
-          <li><a href="case.html"><img src="images/cp3.jpg"></a></li>
-          <li><a href="case.html"><img src="images/cp4.jpg"></a></li>
-          <li><a href="case.html"><img src="images/cp5.jpg"></a></li>
+          @foreach( $cases->comtent[0] as $case )
+          <li><a href="/case"><img src="{{ $case }}"></a></li>
+          @endforeach
         </ul>
       </div>
       <div class="hd"><ul></ul></div>
@@ -143,48 +127,20 @@
 <div class="equipout">
   <div class="w1160 clearfix">
     <span class="bk40">&nbsp;</span>
-    <h2 class="ho_tit_all"><a href="equip.html"><img src="images/ho_tit_3.png"></a></h2>
+    <h2 class="ho_tit_all"><a href="/equipment"><img src="/images/ho_tit_3.png"></a></h2>
     <span class="bk40">&nbsp;</span>
     <div class="picMarquee-left">
         <div class="hd">&nbsp;</div>
         <div class="bd">
           <ul class="picList">
+            @foreach( $equipments as $equipment )
             <li>
-              <a href="equip.html">
-                <img src="images/sb1.jpg">
-                <span>裱瓦机</span>
+              <a href="/equipment">
+                <img src="{{ $equipment->thumbnail }}">
+                <span>{{ $equipment->title }}</span>
               </a>
             </li>
-            <li>
-              <a href="equip.html">
-                <img src="images/sb2.jpg">
-                <span>裱瓦机</span>
-              </a>
-            </li>
-            <li>
-              <a href="equip.html">
-                <img src="images/sb3.jpg">
-                <span>裱瓦机</span>
-              </a>
-            </li>
-            <li>
-              <a href="equip.html">
-                <img src="images/sb4.jpg">
-                <span>裱瓦机</span>
-              </a>
-            </li>
-            <li>
-              <a href="equip.html">
-                <img src="images/sb1.jpg">
-                <span>裱瓦机</span>
-              </a>
-            </li>
-            <li>
-              <a href="equip.html">
-                <img src="images/sb2.jpg">
-                <span>裱瓦机</span>
-              </a>
-            </li>
+            @endforeach
           </ul>
         </div>
     </div>
@@ -196,7 +152,7 @@
 <span class="bk60">&nbsp;</span>
 <!-- advantage -->
 <div class="advantage">
-    <div class="tit"><div class="w1160 clearfix"><a href="service.html">我们五大优势<br/>为您提供更优质的包装定制服务</a></div></div>
+    <div class="tit"><div class="w1160 clearfix"><a href="/service">我们五大优势<br/>为您提供更优质的包装定制服务</a></div></div>
     <span class="bk40">&nbsp;</span>
     <div class="w1160 clearfix">
       <div class="ser_list fr">

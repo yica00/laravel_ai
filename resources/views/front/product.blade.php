@@ -35,19 +35,23 @@
       });
     </script>
     <div id="productin_list" class="clearfix">
-    @foreach( $article->comtent as $img )
-    <a rel="images_group" href="{{ $img }}"><img src="{{ $img }}" alt="" /></a>
-    @endforeach
+    @if( isset( $article->comtent[0]  ) )
+        @foreach( $article->comtent[0] as $img )
+        <a rel="images_group" href="{{ $img }}"><img src="{{ $img }}" alt="" /></a>
+        @endforeach
+    @endif
   </div>
     <div class="pageJump clearfix">
         <div class="number">
-            @if( $pages['pre_page']  )
-                <span class="disabled"><a href="/product/category/{{$id}}">首页</a></span>
-                <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['pre_page'] }}">上一页</a></span>
-            @endif
-            @if( $pages['next_page'] )
-                <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['next_page'] }}">下一页</a></span>
-                <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['total_page'] }}">尾页</a></span>
+            @if( isset( $article->comtent[1]  ) )
+                @if(  $article->comtent[1]['pre_page']  )
+                    <span class="disabled"><a href="/product/category/{{$id}}">首页</a></span>
+                    <span class="disabled"><a href="/product/category/{{$id}}?page={{ $article->comtent[1]['pre_page'] }}">上一页</a></span>
+                @endif
+                @if( $article->comtent[1]['next_page'] )
+                    <span class="disabled"><a href="/product/category/{{$id}}?page={{ $article->comtent[1]['next_page'] }}">下一页</a></span>
+                    <span class="disabled"><a href="/product/category/{{$id}}?page={{ $article->comtent[1]['total_page'] }}">尾页</a></span>
+                @endif
             @endif
         </div>
     </div>

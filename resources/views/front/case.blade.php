@@ -33,20 +33,25 @@
       });
     </script>
     <div id="productin_list" class="clearfix">
-    <a rel="images_group" href="images/cp1.jpg"><img src="images/cp1.jpg" alt="" /></a>
-    <a rel="images_group" href="images/cp2.jpg"><img src="images/cp2.jpg" alt="" /></a>
-    <a rel="images_group" href="images/cp3.jpg"><img src="images/cp3.jpg" alt="" /></a>
-    <a rel="images_group" href="images/cp4.jpg"><img src="images/cp4.jpg" alt="" /></a>
-    <a rel="images_group" href="images/cp5.jpg"><img src="images/cp5.jpg" alt="" /></a>
-    <a rel="images_group" href="images/cp6.jpg"><img src="images/cp6.jpg" alt="" /></a>
+        @if( isset( $article->comtent[0]  ) )
+            @foreach( $article->comtent[0] as $img )
+                <a rel="images_group" href="{{ $img }}"><img src="{{ $img }}" alt="" /></a>
+            @endforeach
+        @endif
   </div>
     <div class="pageJump clearfix">
         <div class="number">
-            <span class="disabled"><a href="">上一页</a></span>
-            <span class="disabled"><a href="">1</a></span>
-            <span class="disabled"><a href="">2</a></span>
-            <span class="disabled"><a href="">3</a></span>
-            <span class="disabled"><a href="">下一页</a></span>
+            @if( isset( $article->comtent[1]  ) )
+                @if(  $article->comtent[1]['pre_page']  )
+                    <span class="disabled"><a href="/case">首页</a></span>
+                    <span class="disabled"><a href="/case?page={{ $article->comtent[1]['pre_page'] }}">上一页</a></span>
+                @endif
+                @if( $article->comtent[1]['next_page'] )
+                    <span class="disabled"><a href="/case?page={{ $article->comtent[1]['next_page'] }}">下一页</a></span>
+                    <span class="disabled"><a href="/case?page={{ $article->comtent[1]['total_page'] }}">尾页</a></span>
+                    <span class="disabled"><a href="/case?page={{ $article->comtent[1]['total_page'] }}">尾页</a></span>
+                @endif
+            @endif
         </div>
     </div>
     <!-- end --> 

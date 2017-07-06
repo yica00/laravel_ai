@@ -13,8 +13,13 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
+        $slides = $this->getSlides();
+        $producets = $this->getProducet();
+        $pateners = $this->getPatener();
+        $cases = $this->getCases();
+        $equipments = $this->getEquipment();
         $nav = 1;
-        return view('front.index',compact('nav'));
+        return view('front.index',compact('nav','slides','producets','pateners','cases','equipments'));
 
 
         $bgs = $this->getBgs();
@@ -43,21 +48,17 @@ class FrontController extends Controller
         return $articles;
     }
     public function getPatener(){
-        $articles = Article::where('pid',11)->take(5)->get();
-        return $articles;
-    }
-    public function getDescPatener(){
-        $articles = Article::where('pid',11)->orderBy('id','desc')->take(5)->get();
+        $articles = Article::where('pid',26)->take(8)->get();
         return $articles;
     }
     public function getCases(){
-        $articles = Article::find(5)->articles()->get();
-        $ids = getIds($articles);
-        $articles = Article::whereIn('pid',$ids)->orderBy('id','desc')->take(8)->get();
-        return $articles;
+        $article = Article::find(6);
+        $arr = get_article_imgs($article->comtent,6);
+        $article->comtent = $arr;
+        return $article;
     }
-    public function getAbout(){
-        $article = Article::find(3);
+    public function getEquipment(){
+        $article = Article::where('pid',7)->take(6)->get();
         return $article;
     }
     public function getTeam(){
@@ -84,8 +85,8 @@ class FrontController extends Controller
     }
     public function getProducet()
     {
-        $product = Article::select( 'thumbnail','title', 'id','pid')->where('pid', 4)->orderBy('id', 'asc')->take(8)->get();
-        return $product;
+        $articles = Article::where('pid',55)->take(6)->get();
+        return $articles;
     }
     public function getProdetail($products){
         $ids = getIds($products);
@@ -97,12 +98,10 @@ class FrontController extends Controller
         $sliders = Article::select('thumbnail','link','id','pid')->where('pid', 1)->get();
         return $sliders;
     }
-    public function getSlides( $bgs,$ids )
+    public function getSlides()
     {
-        $sons = Article::select('thumbnail','link','id','pid')->whereIn('pid', $ids)->get()->toArray();
-        $all = array_merge($bgs,$sons);
-        $all = getArraySubs($all,1);
-        return $all;
+        $sons = Article::select('thumbnail','link','id','pid')->where('pid', 1)->get();
+        return $sons;
     }
     public function getTeams()
     {
@@ -166,27 +165,18 @@ class FrontController extends Controller
 
     public function product(  $id = 16,$page = 1  ){
         $article = Article::find($id);
-        $arr = get_article_imgs($article->comtent,2);
+        $arr = get_article_imgs($article->comtent,6);
         $article->comtent = $arr;
-        return $article;
         $nav = 4;
         return view('front.product',compact('nav','id','article','pages'));
     }
 
-    public function our_case( ){
+    public function our_case($page = 1 ){
+        $article = Article::find(6);
+        $arr = get_article_imgs($article->comtent,6);
+        $article->comtent = $arr;
         $nav = 5;
-        return view('front.case',compact('nav'));
-
-        $articles = Article::where('pid',5)->get();
-        $ids = getIds($articles);
-        if( $id == 27 ){
-            $arts = Article::whereIn('pid',$ids)->paginate(9);
-        }else{
-            $arts = Article::where('pid',$id)->paginate(9);
-        }
-        $pages = getPage($arts,9);
-        $nav = 4;
-        return view('front.case',compact('nav','articles','id','arts','pages'));
+        return view('front.case',compact('nav','article'));
     }
     public function case_detail($id){
         $article = Article::find($id);
@@ -195,16 +185,23 @@ class FrontController extends Controller
     }
 
 
-    public function equipment(){
+    public function equipment( $page = 1 ){
+        $articles = Article::select('title','thumbnail')->where('pid',7)->orderBy('id','desc')->paginate(6);
+        $pages = getImgsPage($articles->total(),6);
         $nav = 6;
-        return view('front.equip',compact('nav'));
+        return view('front.equip',compact('nav','articles','pages'));
     }
-
 
 
     public function service(){
         $nav = 7;
         return view('front.service',compact('nav'));
+    }
+    public function partner(){
+        $articles = Article::select('title','thumbnail')->where('pid',26)->orderBy('id','desc')->paginate(12);
+        $pages = getImgsPage($articles->total(),7);
+        $nav = 7;
+        return view('front.part',compact('nav','articles','pages'));
     }
 
 
