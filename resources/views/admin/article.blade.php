@@ -10,7 +10,7 @@
         <table class="tablePanel2" cellpadding="0" cellspacing="0" width="100%">
             <tr style="border-bottom:1px solid #BBB;height: 50px;border-top:1px solid #BBB;">
                 <th>名称</th>
-                <th width="50%" ></th>
+                <th width="20%" ></th>
                 <th>操作</th>
             </tr>
             @foreach($permission as $sort)

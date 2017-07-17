@@ -5,284 +5,319 @@
   <div class="hd">&nbsp;</div>
   <div class="bd">
     <ul>
-      @foreach( $slides as $slide )
-      <li><a href="{{ $slide->link }}" style="background:url({{ $slide->thumbnail }}) center no-repeat;">&nbsp;</a></li>
-      @endforeach
+      <li><a href="" style="background:url(images/bn_1.jpg) center no-repeat;">&nbsp;</a></li>
+      <li><a href="" style="background:url(images/bn_2.jpg) center no-repeat;">&nbsp;</a></li>
+      <li><a href="" style="background:url(images/bn_3.jpg) center no-repeat;">&nbsp;</a></li>
     </ul>
   </div>
   <a class="prev" href="javascript:void(0)"></a>
   <a class="next" href="javascript:void(0)"></a>
 </div>
 <script type="text/javascript">jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});</script>
-<!-- sear_box -->
-{{--<div class="sear_box">--}}
-  {{--<div class="w1160 clearfix">--}}
-      {{--<!-- 此处关键词可替换 -->--}}
-      {{--<div class="hot_word fl">热门搜索关键词：<a href="">定制包装</a><a href="" class="hot">包装</a><a href="">包装定制</a></div>--}}
-        {{--<div class="search fr">--}}
-          {{--<form>--}}
-        {{--<input class="input-field" placeholder="请输入搜索内容" type="text" value="请输入搜索内容">--}}
-        {{--<input class="input-btn" type="button">--}}
-      {{--</form>--}}
-        {{--</div>  --}}
-  {{--</div>--}}
-{{--</div>--}}
-<!-- slogn -->
-<div class="slogn">
+<!-- lift -->
+<div class="w1160 clearfix">
+  <ul class="lift_list rotate_img clearfix">
+    <li>
+      <a href="product.html"><img src="images/dt_1.png" alt="" />
+      <p>载货电梯</p></a>
+    </li>
+    <li>
+      <a href="product.html"><img src="images/dt_2.png" alt="" />
+      <p>乘客电梯</p></a>
+    </li>
+    <li>
+      <a href="product.html"><img src="images/dt_3.png" alt="" />
+      <p>家用电梯</p></a>
+    </li>
+    <li>
+      <a href="product.html"><img src="images/dt_4.png" alt="" />
+      <p>医用电梯</p></a>
+    </li>
+    <li>
+      <a href="product.html"><img src="images/dt_5.png" alt="" />
+      <p>观光电梯</p></a>
+    </li>
+    <li>
+      <a href="product.html"><img src="images/dt_6.png" alt="" />
+      <p>汽车电梯</p></a>
+    </li>
+    <li>
+      <a href="product.html"><img src="images/dt_7.png" alt="" />
+      <p>自动扶梯</p></a>
+    </li>
+    <li>
+      <a href="product.html"><img src="images/dt_8.png" alt="" />
+      <p>自动人行道</p></a>
+    </li>
+    <li>
+      <a href="product.html"><img src="images/dt_9.png" alt="" />
+      <p>杂物电梯</p></a>
+    </li>
+    <li>
+      <a href="product.html"><img src="images/dt_10.png" alt="" />
+      <p>配件库房</p></a>
+    </li>
+  </ul>
+</div>
+<!-- about_out -->
+<div class="about_out">
+  <div class="w1160">
+    <span class="bk50">&nbsp;</span>
+    <h2 class="ho_tit_all"><a href="about.html"><img src="images/ho_tit_1.png"></a></h2>
+    <span class="bk50">&nbsp;</span>
+    <div class="txt">四川虹霖西奥电梯有限公司成立于2000年6月，注册资本508万元，法人代表蒲虹霖。营业执照办公地址位于南充市顺庆区北湖路99号罗曼威森大厦308室，公司现有员工80余人，其中取得资质的安装/维保技术人员有42人。2013年初，经四川省质量技术监督局审核，取得了中华人民共和国特种设备（电梯）安装改造维修许可证（安装维修编号：TS3351080-2021）。具有电梯、自动扶梯、自动人行道安装、维修A级资质。公司组织机构健全，技术力量雄厚，管理规范严谨，销售和安装、改造、维修业绩突出，在川东北地区专业电梯销售、安装、改造及维修公司中名列前茅。
+    </div>
+    <span class="bk40">&nbsp;</span>
+    <p class="btn_more"><a href="about.html">&nbsp;</a></p>
+    <span class="bk50">&nbsp;</span>
+  </div>
+</div>
+<!-- service_item -->
+<div class="service_item">
   <div class="w1160 clearfix">
-    <ul class="clearfix">
+    <span class="bk50">&nbsp;</span>
+    <h2 class="ho_tit_all"><a><img src="images/ho_tit_2.png"></a></h2>
+    <span class="bk50">&nbsp;</span>
+    <ul class="list clearfix boost_img">
       <li>
-        <img src="images/slo_1.png" alt="" />
-        <h2>原创设计</h2>
-        <p>design</p>
+        <a href="product.html">
+          <div class="pic"><img src="images/ser_it_1.jpg"></div>
+          <p>电梯销售</p>
+        </a>
       </li>
       <li>
-        <img src="images/slo_2.png" alt="" />
-        <h2>精湛工艺</h2>
-        <p>technology</p>
+        <a href="service.html">
+          <div class="pic"><img src="images/ser_it_2.jpg"></div>
+          <p>电梯安装</p>
+        </a>
       </li>
       <li>
-        <img src="images/slo_3.png" alt="" />
-        <h2>制作成品</h2>
-        <p>installtion</p>
-      </li>
-      <li>
-        <img src="images/slo_4.png" alt="" />
-        <h2>省心物流</h2>
-        <p>logistics</p>
-      </li>
-      <li>
-        <img src="images/slo_5.png" alt="" />
-        <h2>全方位跟踪</h2>
-        <p>track/p>
+        <a href="service.html">
+          <div class="pic"><img src="images/ser_it_3.jpg"></div>
+          <p>电梯维保</p>
+        </a>
       </li>
     </ul>
+    <span class="bk50">&nbsp;</span>
   </div>
 </div>
-<span class="bk60">&nbsp;</span>
-<!-- product_tit -->
+<span class="ho_ad_all ho_ad_1">&nbsp;</span>
+<!-- case_out -->
 <div class="w1160 clearfix">
-  <h2 class="ho_tit_all"><a href="/product"><img src="images/ho_tit_1.png"></a></h2>
-  <span class="bk40">&nbsp;</span>
-  <ul class="product_tit clearfix">
-    @foreach( session('header_nav')[4]->sons as $leader1 )
-      <li><a href="/product/category/{{ $leader1->id  }}" class="a_1">{{  mb_substr($leader1->title,2,20,'utf8' ) }}</a></li>
-    @endforeach
-      <li><a href="/product" class="a_10">MORE+</a></li>
+  <span class="bk50">&nbsp;</span>
+  <h2 class="ho_tit_all"><a href="case.html"><img src="images/ho_tit_3.png"></a></h2>
+  <span class="bk50">&nbsp;</span>
+  <ul class="case_out_list clearfix boost_img">
+    <li>
+      <a href="case_in.html">
+        <div class="pic">
+          <img src="images/case_1.jpg" alt="" />
+        </div>
+        <p>达州江南世家小区</p>
+      </a>
+    </li>
+    <li>
+      <a href="case_in.html">
+        <div class="pic">
+          <img src="images/case_2.jpg" alt="" />
+        </div>
+        <p>达州江南世家小区</p>
+      </a>
+    </li>
+    <li>
+      <a href="case_in.html">
+        <div class="pic">
+          <img src="images/case_3.jpg" alt="" />
+        </div>
+        <p>达州江南世家小区</p>
+      </a>
+    </li>
+    <li>
+      <a href="case_in.html">
+        <div class="pic">
+          <img src="images/case_1.jpg" alt="" />
+        </div>
+        <p>达州江南世家小区</p>
+      </a>
+    </li>
+    <li>
+      <a href="case_in.html">
+        <div class="pic">
+          <img src="images/case_2.jpg" alt="" />
+        </div>
+        <p>达州江南世家小区</p>
+      </a>
+    </li>
+    <li>
+      <a href="case_in.html">
+        <div class="pic">
+          <img src="images/case_3.jpg" alt="" />
+        </div>
+        <p>达州江南世家小区</p>
+      </a>
+    </li>
   </ul>
-  <span class="bk20">&nbsp;</span>
-  <div class="product_list clearfix">
-    @foreach( $producets as $producet )
-    <a href="{{ $producet->link }}"><img src="{{ $producet->thumbnail }}" alt="" /></a>
-    @endforeach
-  </div>
-  <div class="partout clearfix">
-    <div class="lolist fr">
-      <ul class="clearfix">
-        @foreach( $pateners as $producet )
-        <li><img src="{{ $producet->thumbnail }}" alt="" /></li>
-        @endforeach
-      </ul>
-    </div>
-    <div class="txt fl">
-      <span class="bk40">&nbsp;</span>
-      <h2>牵手嘉彩包装</h2>
-      <p class="b">众多知名企业都选择了我们</p>
-      <span class="bk30">&nbsp;</span>
-      <p class="btn"><a href="/partner">查看更多</a></p>
-    </div>
-  </div>
+  <span class="bk30">&nbsp;</span>
 </div>
-<span class="bk60">&nbsp;</span>
-<span class="ho_ad_all">&nbsp;</span>
-<span class="bk60">&nbsp;</span>
-<!-- caseout -->
+<span class="ho_ad_all ho_ad_2">&nbsp;</span>
+<!-- news -->
 <div class="w1160 clearfix">
-  <h2 class="ho_tit_all"><a href="/case"><img src="images/ho_tit_2.png"></a></h2>
-  <span class="bk40">&nbsp;</span>
-  <div class="caseout clearfix">
-    <div class="caselist fr">
-      <ul class="clearfix">
-        <li><a href="/case"><img src="{{ $cases->comtent[0][0] }}"></a></li>
-        <li><a href="/case"><img src="{{ $cases->comtent[0][1] }}"></a></li>
-        <li><a href="/case"><img src="{{ $cases->comtent[0][2] }}"></a></li>
-        <li><a href="/case"><img src="{{ $cases->comtent[0][3] }}"></a></li>
-      </ul>
-    </div>
-    <div class="picScroll-case fl">
+  <span class="bk50">&nbsp;</span>
+  <h2 class="ho_tit_all"><a href="news.html"><img src="images/ho_tit_5.png"></a></h2>
+  <span class="bk50">&nbsp;</span>
+  <div class="clearfix">
+    <div class="txtScroll-top fr">
+      <div class="hd">&nbsp;</div>
       <div class="bd">
-        <ul class="picList">
-          @foreach( $cases->comtent[0] as $case )
-          <li><a href="/case"><img src="{{ $case }}"></a></li>
-          @endforeach
+        <ul class="infoList">
+          <li>
+            <a href="news_in.html" class="clearfix">
+              <div class="dl_r fr">
+                <h2  class="txt_elip">世界那么大，带你去淘宝1</h2>
+                <p class="txt_elip">8月18日，新重庆小商品菜园坝电商配送中心迎来开业盛典新重庆小商品菜园坝电商配送中心迎来开业盛典</p>
+              </div>
+              <div class="dl_l fl">
+                <span class="date">2017</span>
+                <span class="month">03.13</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="news_in.html" class="clearfix">
+              <div class="dl_r fr">
+                <h2  class="txt_elip">世界那么大，带你去淘宝2</h2>
+                <p class="txt_elip">8月18日，新重庆小商品菜园坝电商配送中心迎来开业盛典新重庆小商品菜园坝电商配送中心迎来开业盛典</p>
+              </div>
+              <div class="dl_l fl">
+                <span class="date">2017</span>
+                <span class="month">03.13</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="news_in.html" class="clearfix">
+              <div class="dl_r fr">
+                <h2  class="txt_elip">世界那么大，带你去淘宝3</h2>
+                <p class="txt_elip">8月18日，新重庆小商品菜园坝电商配送中心迎来开业盛典新重庆小商品菜园坝电商配送中心迎来开业盛典</p>
+              </div>
+              <div class="dl_l fl">
+                <span class="date">2017</span>
+                <span class="month">03.13</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="news_in.html" class="clearfix">
+              <div class="dl_r fr">
+                <h2  class="txt_elip">世界那么大，带你去淘宝4</h2>
+                <p class="txt_elip">8月18日，新重庆小商品菜园坝电商配送中心迎来开业盛典新重庆小商品菜园坝电商配送中心迎来开业盛典</p>
+              </div>
+              <div class="dl_l fl">
+                <span class="date">2017</span>
+                <span class="month">03.13</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="news_in.html" class="clearfix">
+              <div class="dl_r fr">
+                <h2  class="txt_elip">世界那么大，带你去淘宝5</h2>
+                <p class="txt_elip">8月18日，新重庆小商品菜园坝电商配送中心迎来开业盛典新重庆小商品菜园坝电商配送中心迎来开业盛典</p>
+              </div>
+              <div class="dl_l fl">
+                <span class="date">2017</span>
+                <span class="month">03.13</span>
+              </div>
+            </a>
+          </li>
         </ul>
       </div>
-      <div class="hd"><ul></ul></div>
-    </div>
-    <script type="text/javascript">jQuery(".picScroll-case").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:1,trigger:"click"});</script>
-  </div>
-</div>
-<span class="bk60">&nbsp;</span>
-<!-- equipout -->
-<div class="equipout">
-  <div class="w1160 clearfix">
-    <span class="bk40">&nbsp;</span>
-    <h2 class="ho_tit_all"><a href="/equipment"><img src="/images/ho_tit_3.png"></a></h2>
-    <span class="bk40">&nbsp;</span>
-    <div class="picMarquee-left">
-        <div class="hd">&nbsp;</div>
-        <div class="bd">
-          <ul class="picList">
-            @foreach( $equipments as $equipment )
-            <li>
-              <a href="/equipment">
-                <img src="{{ $equipment->thumbnail }}">
-                <span>{{ $equipment->title }}</span>
-              </a>
-            </li>
-            @endforeach
-          </ul>
-        </div>
     </div>
     <script type="text/javascript">
-    jQuery(".picMarquee-left").slide({mainCell:".bd ul",autoPlay:true,effect:"leftMarquee",vis:3,interTime:50});
+    jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"top",autoPlay:true,vis:3});
     </script>
-  </div>
-</div>
-<span class="bk60">&nbsp;</span>
-<!-- advantage -->
-<div class="advantage">
-    <div class="tit"><div class="w1160 clearfix"><a href="/service">我们五大优势<br/>为您提供更优质的包装定制服务</a></div></div>
-    <span class="bk40">&nbsp;</span>
-    <div class="w1160 clearfix">
-      <div class="ser_list fr">
-        <img src="images/ad_2.jpg">
-        <span class="bk10">&nbsp;</span>
-        <div class="bt clearfix">
-          <p class="fr">优质产品 创意领先 <br/>更节能，更环保，使用更安心</p>
-          <span class="num fl">NO2</span>
-        </div>
-        <span class="bk20">&nbsp;</span>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>有创意、有深度、有差异化的完成<span>产品包装设计</span><br/>从视觉上由外及内的反映出产品内核的目的。</dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>提升企事业单位形象 ，<br/>提高<span>产品价值</span>！</dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>先后服务过几百家企事业单位。<br/>其中98%的客户<span>满意度良好</span>！</dd>
-        </dl>
-      </div>  
-      <div class="ser_list fl">
-        <img src="images/ad_1.jpg">
-        <span class="bk10">&nbsp;</span>
-        <div class="bt clearfix">
-          <p class="fr">品牌口碑好<br/>南充名列前茅的包装制作公司</p>
-          <span class="num fl">NO1</span>
-        </div>
-        <span class="bk20">&nbsp;</span>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>南充名列前茅的<span>包装制作公司</span><br/>设计、印刷、制作一站式服务， 让您省时省心省钱！</dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>公司标准化流程进行，对每一个客户负责，<br/>嘉彩以口碑赢得客户。</dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>让客户对我们的<span>设计</span>、<br/>品质和服务给予了高度认可!</dd>
-        </dl>
-      </div>  
-    </div>
-    <span class="bk60">&nbsp;</span>
-    <div class="ser_big clearfix">
-      <div class="w1160 clearfix">
-        <img src="images/ad_3.png" class="fr">
-        <div class="dis fl">
-          <span class="bk70">&nbsp;</span>
-          <div class="bt clearfix">
-            <p class="fr">成本降到极致<br/>给您最佳性价比</p>
-            <span class="num fl">NO3</span>
-          </div>
-          <span class="bk20">&nbsp;</span>
-          <dl class="clearfix">
-            <dt>&nbsp;</dt>
-            <dd>从原材料采购到生产工序，经层层优化，保证质量的同时，<br/>成本降到极致。</dd>
-          </dl>
-          <dl class="clearfix">
-            <dt>&nbsp;</dt>
-            <dd>与多家国内知名原材料供应商长期合作，100%保证原材料<br/>用料，确保精美高品质成品。</dd>
-          </dl>
-        </div>
+    <div id="slideBox_news" class="slideBox_news fl">
+      <div class="hd hd_empty">&nbsp;</div>
+      <div class="bd">
+        <ul>
+          <li>
+            <a href="news_in.html">
+              <span class="pic"><img src="images/news_1.jpg"></span>
+              <div class="txt">
+                <p class="p1">公司成功中标昆明•爱尚苑3m/s乘客电梯项目</p>
+                <p class="p2">昆明·爱尚苑电扶梯采购项目招投标活动盛大启幕，业主单位组织评标委员对入围的电扶梯品牌进行了全方位的综合考察和精心比对</p> 
+              </div>
+              <em class="mask_black">&nbsp;</em>
+            </a>
+          </li>
+          <li>
+            <a href="news_in.html">
+              <span class="pic"><img src="images/news_2.jpg"></span>
+              <div class="txt">
+                <p class="p1">公司成功中标昆明•爱尚苑3m/s乘客电梯项目</p>
+                <p class="p2">昆明·爱尚苑电扶梯采购项目招投标活动盛大启幕，业主单位组织评标委员对入围的电扶梯品牌进行了全方位的综合考察和精心比对</p> 
+              </div>
+              <em class="mask_black">&nbsp;</em>
+            </a>
+          </li>
+          <li>
+            <a href="news_in.html">
+              <span class="pic"><img src="images/news_3.jpg"></span>
+              <div class="txt">
+                <p class="p1">公司成功中标昆明•爱尚苑3m/s乘客电梯项目</p>
+                <p class="p2">昆明·爱尚苑电扶梯采购项目招投标活动盛大启幕，业主单位组织评标委员对入围的电扶梯品牌进行了全方位的综合考察和精心比对</p> 
+              </div>
+              <em class="mask_black">&nbsp;</em>
+            </a>
+          </li>
+          <li>
+            <a href="news_in.html">
+              <span class="pic"><img src="images/news_1.jpg"></span>
+              <div class="txt">
+                <p class="p1">公司成功中标昆明•爱尚苑3m/s乘客电梯项目</p>
+                <p class="p2">昆明·爱尚苑电扶梯采购项目招投标活动盛大启幕，业主单位组织评标委员对入围的电扶梯品牌进行了全方位的综合考察和精心比对</p> 
+              </div>
+              <em class="mask_black">&nbsp;</em>
+            </a>
+          </li>
+          <li>
+            <a href="news_in.html">
+              <span class="pic"><img src="images/news_2.jpg"></span>
+              <div class="txt">
+                <p class="p1">公司成功中标昆明•爱尚苑3m/s乘客电梯项目</p>
+                <p class="p2">昆明·爱尚苑电扶梯采购项目招投标活动盛大启幕，业主单位组织评标委员对入围的电扶梯品牌进行了全方位的综合考察和精心比对</p> 
+              </div>
+              <em class="mask_black">&nbsp;</em>
+            </a>
+          </li>
+        </ul>
       </div>
+      <a class="prev" href="javascript:void(0)"></a>
+      <a class="next" href="javascript:void(0)"></a>
     </div>
-    <span class="bk40">&nbsp;</span>
-    <div class="w1160 clearfix">
-      <div class="ser_list fr">
-        <img src="images/ad_5.jpg">
-        <span class="bk10">&nbsp;</span>
-        <div class="bt clearfix">
-          <p class="fr">优质产品 创意领先 <br/>更节能，更环保，使用更安心</p>
-          <span class="num fl">NO5</span>
-        </div>
-        <span class="bk20">&nbsp;</span>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>顶尖设备，一流技术，优质材料<br/>质量问题，全责承担，安心无忧虑!</dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>以<span>诚信友好、互惠互利</span>的原则,<br/>与印刷同行、广告业人士真诚合！</dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>产品造型多样、外观精致、材质高品!</dd>
-        </dl>
-      </div>  
-      <div class="ser_list fl">
-        <img src="images/ad_4.jpg">
-        <span class="bk10">&nbsp;</span>
-        <div class="bt clearfix">
-          <p class="fr">用心服务 回报客户<br/>设计、选材、加工一站式服务</p>
-          <span class="num fl">NO4</span>
-        </div>
-        <span class="bk20">&nbsp;</span>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>优秀的团队，专业的服务<br/>专业设计师为您提供<span>专属私人订制</span>。</dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>价格公道，按时交货!</dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>&nbsp;</dt>
-          <dd>我们坚持做一个专业的、合法的、<br/>正规的纸盒包装公司!</dd>
-        </dl>
-      </div>  
-    </div>
-</div>
-<!-- chengnuo -->
-<span class="chengnuo">&nbsp;</span>
-<span class="bk60">&nbsp;</span>
-<div class="liucheng clearfix">
-  <div class="w1160 clearfix">
-    <h2 class="ho_tit_all"><a href=" "><img src="images/ho_tit_4.png"></a></h2>
-    <span class="bk40">&nbsp;</span>
-    <ul class="list">
-      <li><img src="images/lc_1.png" alt="" /></li>
-      <li><img src="images/lc_2.png" alt="" /></li>
-      <li><img src="images/lc_3.png" alt="" /></li>
-      <li><img src="images/lc_4.png" alt="" /></li>
-      <li><img src="images/lc_5.png" alt="" /></li>
-      <li><img src="images/lc_6.png" alt="" /></li>
-    </ul>
+    <script type="text/javascript">jQuery("#slideBox_news").slide({mainCell:".bd ul",autoPlay:true});</script>
   </div>
 </div>
-<span class="bk60">&nbsp;</span>
+<!-- brand -->
+<div class="w1160 clearfix">
+  <span class="bk50">&nbsp;</span>
+  <h2 class="ho_tit_all"><a href="brand.html"><img src="images/ho_tit_6.png"></a></h2>
+  <span class="bk50">&nbsp;</span>
+  <ul class="whactclient clearfix gray_img">
+      <li><a href="brand_in.html"><img src="images/brd_1.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_2.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_3.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_4.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_5.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_6.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_1.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_2.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_3.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_4.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_5.jpg" alt=""></a></li>
+      <li><a href="brand_in.html"><img src="images/brd_6.jpg" alt=""></a></li>
+    </ul>
+   <span class="bk50">&nbsp;</span>
+</div>
 <!-- footer -->
 @endsection

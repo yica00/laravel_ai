@@ -4,24 +4,28 @@
 <div class="bread">
   <div class="w1160 clearfix">
       <div class="in_tit">
-        <h2>--&nbsp;&nbsp;关于嘉彩&nbsp;&nbsp;--</h2>
-        <p>about jiacai</p>
+        <h2>--&nbsp;&nbsp;关于我们&nbsp;&nbsp;--</h2>
+        <p>about us</p>
       </div>
       <p class="page_nav clearfix">
-        <a href="/about"  @if( $sty == 1 ) class="on" @endif>嘉彩简介</a><a href="/culture"  @if( $sty == 2 ) class="on" @endif>企业文化</a><a href="/office"  @if( $sty == 3 ) class="on" @endif>办公环境</a><a href="/honor"  @if( $sty == 4 ) class="on" @endif>荣誉资质</a>
+          @foreach( session('header_nav')[1]->sons as $leader1 )
+              <a href="{{ $leader1->link  }}" @if( $leader1->link == $sty  ) class="on" @endif>{{  mb_substr($leader1->title,2,20,'utf8' ) }}</a>
+          @endforeach
       </p>
   </div>  
 </div>
 <!-- wap_box -->
 <div class="wap_box">
-  <span class="bk50">&nbsp;</span>
+  <span class="bk30">&nbsp;</span>
   <div class="w1160 clearfix">
-    <!-- start -->
-    {!! $article->comtent !!}
-    <!-- end --> 
-  </div>
+    <!-- 内容 -->
+      {!! $article->comtent !!}
+
+    <!-- end -->
+  </div>  
   <span class="bk60">&nbsp;</span>
 </div>
-<span class="bk60">&nbsp;</span>
+
+
 <!-- footer -->
 @endsection

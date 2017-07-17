@@ -13,6 +13,9 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
+        $nav = 1;
+        return view('front.index',compact('nav'));
+
         $slides = $this->getSlides();
         $producets = $this->getProducet();
         $pateners = $this->getPatener();
@@ -20,20 +23,6 @@ class FrontController extends Controller
         $equipments = $this->getEquipment();
         $nav = 1;
         return view('front.index',compact('nav','slides','producets','pateners','cases','equipments'));
-
-
-        $bgs = $this->getBgs();
-        $ids = getIds($bgs);
-        $arr =  $bgs->toArray();
-        $slides = $this->getSlides( $arr,$ids );
-        $cases = $this->getCases();
-        $about = $this->getAbout();
-        $teams = $this->getTeam();
-        $pateners = $this->getPatener();
-        $desc_pateners = $this->getDescPatener();
-        $plans = $this->getPlans();
-        $nav = 1;
-        return view('front.index',compact('nav','cases','about','teams','pateners','desc_pateners','plans','slides','links'));
     }
 
     public function getLinks(){
@@ -93,11 +82,6 @@ class FrontController extends Controller
         $product = Article::select( 'title', 'id','thumbnail','link','comtent')->whereIn('pid', $ids)->orderBy('id', 'desc')->take(6)->get();
         return $product;
     }
-    public function getBgs()
-    {
-        $sliders = Article::select('thumbnail','link','id','pid')->where('pid', 1)->get();
-        return $sliders;
-    }
     public function getSlides()
     {
         $sons = Article::select('thumbnail','link','id','pid')->where('pid', 1)->get();
@@ -113,35 +97,51 @@ class FrontController extends Controller
     public function about(){
         $article = Article::find(10);
         $nav = 2;
-        $sty = 1;
+        $sty = "/about";
         return view('front.about',compact('nav','article','sty'));
     }
     public function culture(){
         $article = Article::find(11);
         $nav = 2;
-        $sty = 2;
+        $sty = "/culture";
         return view('front.about',compact('nav','article','sty'));
     }
-    public function office(){
-        $articles = Article::where('pid',12)->get();
+    public function organization(){
+        $article = Article::find(12);
         $nav = 2;
-        $sty = 3;
-        return view('front.office',compact('nav','articles','sty'));
+        $sty = "/organization";
+        return view('front.about',compact('nav','article','sty'));
+    }
+    public function speech(){
+        $article = Article::find(13);
+        $nav = 2;
+        $sty = "/speech";
+        return view('front.about',compact('nav','article','sty'));
+    }
+    public function history(){
+        $articles = Article::where('pid',14)->get();
+        $nav = 2;
+        $sty = "/history";
+        return view('front.history',compact('nav','sty','articles'));
+    }
+    public function team(){
+        $article = Article::find(15);
+        $photos = get_article_imgs($article->comtent,100);
+        $nav = 2;
+        $sty = "/team";
+        return view('front.team',compact('nav','articles','sty','photos'));
     }
     public function honor(){
         $articles = Article::where('pid',13)->get();
         $nav = 2;
-        $sty = 4;
-        return view('front.office',compact('nav','articles','sty'));
+        $sty = "/honor";
+        return view('front.team',compact('nav','articles','sty'));
     }
 
 
     public function news(){
         $nav = 3;
-        $category = "news";
-        $articles = Article::where('pid',14)->paginate(9);
-        $pages = getPage($articles,9);
-        return view('front.news',compact('nav','category','articles','pages'));
+        return view('front.news',compact('nav'));
     }
     public function industry_news(){
         $nav = 3;
@@ -164,6 +164,9 @@ class FrontController extends Controller
 
 
     public function product(  $id = 16,$page = 1  ){
+        $nav = 4;
+        return view('front.product',compact('nav'));
+
         $article = Article::find($id);
         $arr = get_article_imgs($article->comtent,6);
         $article->comtent = $arr;
@@ -171,7 +174,20 @@ class FrontController extends Controller
         return view('front.product',compact('nav','id','article','pages'));
     }
 
+    public function equipment( $page = 1 ){
+        $nav = 5;
+        return view('front.equip',compact('nav'));
+
+        $articles = Article::select('title','thumbnail')->where('pid',7)->orderBy('id','desc')->paginate(6);
+        $pages = getImgsPage($articles->total(),6);
+        $nav = 6;
+        return view('front.equip',compact('nav','articles','pages'));
+    }
+
     public function our_case($page = 1 ){
+        $nav = 6;
+        return view('front.case',compact('nav'));
+
         $article = Article::find(6);
         $arr = get_article_imgs($article->comtent,6);
         $article->comtent = $arr;
@@ -184,17 +200,13 @@ class FrontController extends Controller
         return view('front.case_in',compact('nav','article'));
     }
 
-
-    public function equipment( $page = 1 ){
-        $articles = Article::select('title','thumbnail')->where('pid',7)->orderBy('id','desc')->paginate(6);
-        $pages = getImgsPage($articles->total(),6);
-        $nav = 6;
-        return view('front.equip',compact('nav','articles','pages'));
+    public function brand(){
+        $nav = 7;
+        return view('front.brand',compact('nav'));
     }
 
-
     public function service(){
-        $nav = 7;
+        $nav = 8;
         return view('front.service',compact('nav'));
     }
     public function partner(){
@@ -206,7 +218,7 @@ class FrontController extends Controller
 
 
     public function contact(){
-        $nav = 8;
+        $nav = 9;
         return view('front.contact',compact('nav'));
 
         $self = Article::find(59);

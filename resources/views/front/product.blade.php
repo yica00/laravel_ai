@@ -4,61 +4,82 @@
 <div class="bread">
   <div class="w1160 clearfix">
       <div class="in_tit">
-        <h2>--&nbsp;&nbsp;产品中心&nbsp;&nbsp;--</h2>
-        <p>product center</p>
+        <h2>--&nbsp;&nbsp;电梯展示&nbsp;&nbsp;--</h2>
+        <p>Elevator display</p>
       </div>
-      <p class="page_nav clearfix">
-          @foreach( session('header_nav')[4]->sons as $leader1 )
-              <a href="/product/category/{{ $leader1->id  }}" @if( $leader1->id == $id  ) class="on"  @endif > {{  mb_substr($leader1->title,2,20,'utf8' ) }}</a>
-          @endforeach
-       </p>
+       <p class="page_nav clearfix">
+        <a href="product.html" class="on">载货电梯</a><a href="product.html">乘客电梯</a><a href="product.html">家用电梯</a><a href="product.html">家用电梯</a><a href="product.html">观光电梯</a><a href="product.html">汽车电梯</a><a href="product.html">自动扶梯</a><a href="product.html">自动人行道</a><a href="product.html">杂物电梯</a>
+      </p>
   </div>  
 </div>
 <!-- wap_box -->
 <div class="wap_box">
-  <span class="bk50">&nbsp;</span>
+  <span class="bk30">&nbsp;</span>
   <div class="w1160 clearfix">
-    <!-- start -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-1.3.4.css" media="screen" />
-    <script type="text/javascript" src="js/jquery.fancybox-1.3.4.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-         
-        $("a[rel=images_group]").fancybox({
-          'transitionIn':'none',
-          'transitionOut':'none',
-          'titlePosition':'over',
-          'titleFormat':function(title, currentArray, currentIndex, currentOpts) {
-            return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
-          }
-        });
-      });
-    </script>
-    <div id="productin_list" class="clearfix">
-    @if( isset( $article->comtent[0]  ) )
-        @foreach( $article->comtent[0] as $img )
-        <a rel="images_group" href="{{ $img }}"><img src="{{ $img }}" alt="" /></a>
-        @endforeach
-    @endif
-  </div>
+    <!-- 内容 -->
+    <ul class="prd_out_list clearfix filter_img">
+      <li>
+        <a href="product_in.html">
+          <div class="pic">
+            <img src="images/ht_1.jpg" alt="">
+          </div>
+          <p>载货电梯轿厢WTT-4117</p>
+        </a>
+      </li>
+      <li>
+        <a href="product_in.html">
+          <div class="pic">
+            <img src="images/ht_2.jpg" alt="">
+          </div>
+          <p>载货电梯轿厢WTT-4117</p>
+        </a>
+      </li>
+      <li>
+        <a href="product_in.html">
+          <div class="pic">
+            <img src="images/ht_1.jpg" alt="">
+          </div>
+          <p>载货电梯轿厢WTT-4117</p>
+        </a>
+      </li>
+      <li>
+        <a href="product_in.html">
+          <div class="pic">
+            <img src="images/ht_2.jpg" alt="">
+          </div>
+          <p>载货电梯轿厢WTT-4117</p>
+        </a>
+      </li>
+      <li>
+        <a href="product_in.html">
+          <div class="pic">
+            <img src="images/ht_1.jpg" alt="">
+          </div>
+          <p>载货电梯轿厢WTT-4117</p>
+        </a>
+      </li>
+      <li>
+        <a href="product_in.html">
+          <div class="pic">
+            <img src="images/ht_2.jpg" alt="">
+          </div>
+          <p>载货电梯轿厢WTT-4117</p>
+        </a>
+      </li>
+    </ul>
     <div class="pageJump clearfix">
-        <div class="number">
-            @if( isset( $article->comtent[1]  ) )
-                @if(  $article->comtent[1]['pre_page']  )
-                    <span class="disabled"><a href="/product/category/{{$id}}">首页</a></span>
-                    <span class="disabled"><a href="/product/category/{{$id}}?page={{ $article->comtent[1]['pre_page'] }}">上一页</a></span>
-                @endif
-                @if( $article->comtent[1]['next_page'] )
-                    <span class="disabled"><a href="/product/category/{{$id}}?page={{ $article->comtent[1]['next_page'] }}">下一页</a></span>
-                    <span class="disabled"><a href="/product/category/{{$id}}?page={{ $article->comtent[1]['total_page'] }}">尾页</a></span>
-                @endif
-            @endif
-        </div>
+      <div class="number">
+          <span class="disabled"><a href="">首页</a></span>
+          <span class="disabled"><a href="">上一页</a></span>
+          <span class="disabled"><a href="">下一页</a></span>
+          <span class="disabled"><a href="">末页</a></span>
+      </div>
     </div>
-    <!-- end --> 
-  </div>
+    <!-- end -->
+  </div>  
   <span class="bk60">&nbsp;</span>
 </div>
-<span class="bk60">&nbsp;</span>
+
+
 <!-- footer -->
 @endsection
