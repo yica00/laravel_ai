@@ -20,7 +20,7 @@
     @foreach( $producets as $producet )
     <li>
       <a href="/product/category/{{$producet->id}}"><img src="{{$producet->thumbnail}}" alt="" />
-      <p>{{$producet->title}}</p></a>
+      <p>{{ mb_substr($producet->title,2,20)  }}</p></a>
     </li>
     @endforeach
   </ul>
