@@ -15,61 +15,27 @@
   <div class="w1160 clearfix">
     <!-- 内容 -->
     <ul class="prd_out_list clearfix filter_img">
+      @foreach( $articles as $article )
       <li>
-        <a href="equip_in.html">
+        <a href="/equipment/{{$article->id}}">
           <div class="pic">
-            <img src="images/ht_1.jpg" alt="">
+            <img src="{{$article->thumbnail}}" alt="">
           </div>
-          <p>载货电梯轿厢WTT-4117</p>
+          <p>{{$article->title}}</p>
         </a>
       </li>
-      <li>
-        <a href="equip_in.html">
-          <div class="pic">
-            <img src="images/ht_2.jpg" alt="">
-          </div>
-          <p>载货电梯轿厢WTT-4117</p>
-        </a>
-      </li>
-      <li>
-        <a href="equip_in.html">
-          <div class="pic">
-            <img src="images/ht_1.jpg" alt="">
-          </div>
-          <p>载货电梯轿厢WTT-4117</p>
-        </a>
-      </li>
-      <li>
-        <a href="equip_in.html">
-          <div class="pic">
-            <img src="images/ht_2.jpg" alt="">
-          </div>
-          <p>载货电梯轿厢WTT-4117</p>
-        </a>
-      </li>
-      <li>
-        <a href="equip_in.html">
-          <div class="pic">
-            <img src="images/ht_1.jpg" alt="">
-          </div>
-          <p>载货电梯轿厢WTT-4117</p>
-        </a>
-      </li>
-      <li>
-        <a href="equip_in.html">
-          <div class="pic">
-            <img src="images/ht_2.jpg" alt="">
-          </div>
-          <p>载货电梯轿厢WTT-4117</p>
-        </a>
-      </li>
+      @endforeach
     </ul>
     <div class="pageJump clearfix">
       <div class="number">
-          <span class="disabled"><a href="">首页</a></span>
-          <span class="disabled"><a href="">上一页</a></span>
-          <span class="disabled"><a href="">下一页</a></span>
-          <span class="disabled"><a href="">末页</a></span>
+        @if( $pages['pre_page']  )
+          <span class="disabled"><a href="/equipment">首页</a></span>
+          <span class="disabled"><a href="/equipment?page={{ $pages['pre_page'] }}">上一页</a></span>
+        @endif
+        @if( $pages['next_page'] )
+          <span class="disabled"><a href="/equipment?page={{ $pages['next_page'] }}">下一页</a></span>
+          <span class="disabled"><a href="/equipment?page={{ $pages['total_page'] }}">尾页</a></span>
+        @endif
       </div>
     </div>
     <!-- end -->

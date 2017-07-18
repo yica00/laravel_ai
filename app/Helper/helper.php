@@ -132,14 +132,14 @@ function getPage($teams,$num){
 }
 
 function get_up_down_page($id,$pid){
-    $pre_page = \App\Models\Admin\Article::where('id','>',$id)->where('pid',$pid)->first();
+    $pre_page = \App\Models\Admin\Article::where('id','<',$id)->where('pid',$pid)->orderBy('id','desc')->first();
     if($pre_page){
         $pre_id = $pre_page->id;
     }else{
         $pre_id = null;
     }
 
-    $next_page = \App\Models\Admin\Article::where('id','<',$id)->where('pid',$pid)->first();
+    $next_page = \App\Models\Admin\Article::where('id','>',$id)->where('pid',$pid)->orderBy('id','asc')->first();
     if($next_page){
         $next_id = $next_page->id;
     }else{
@@ -164,23 +164,9 @@ function get_message_page($id){
     return [$id,$pre_id,$next_id];
 }
 
-//function get_article_imgs($str){
-//    $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
-//    $pattern = "/(?:\/Uploads).*?(?:\" title)/";
-//    preg_match_all($pattern,$str,$matches);
-//    if(!$matches[0]){
-//        return [];
-//    }
-//    $arr = [];
-//    for ( $i=0;$i<count($matches[0]);$i++ ){
-//        $arr[] = mb_substr($matches[0][$i],0,-7,'utf8');
-//    }
-//    return $arr;
-//}
-
 function get_article_imgs($str,$num){
     $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
-    $pattern = "/(?:\/Uploads).*?(?:\" title)/";
+    $pattern = "/(?:\/Uploads).*?(?:\")/";
     preg_match_all($pattern,$str,$matches);
     if(!$matches[0]){
         return [];
@@ -191,7 +177,7 @@ function get_article_imgs($str,$num){
     $arr = [];
     for ( $i=$start;$i<$max;$i++ ){
         if( isset( $matches[0][$i] ) ){
-            $arr[] = mb_substr($matches[0][$i],0,-7,'utf8');
+            $arr[] = mb_substr($matches[0][$i],0,-1,'utf8');
         }
     }
     return [$arr,$pages];
@@ -217,4 +203,11 @@ function getImgsPage($total,$num){
         'total_page' => $total_page,
     ];
     return $page;
+}
+
+//提取中文字符
+function getChanese($str){
+    $code = "/[\x7f-\xff]+/";
+    preg_match_all($code,$str, $arr);
+    return $arr[0][0];
 }

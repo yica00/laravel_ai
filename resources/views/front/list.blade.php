@@ -8,8 +8,8 @@
         <p>Cooperative brand</p>
       </div>
       <p class="page_nav clearfix">
-        <a href="brand.html">合作品牌</a>
-            <a href="list.html" class="on">业绩清单</a>
+        <a href="/brand">合作品牌</a>
+            <a href="/sales_list" class="on">业绩清单</a>
       </p>
   </div>  
 </div>
@@ -23,13 +23,9 @@
         <div class="all">
           <ul class="clearfix">
             <li>
-              <a href="" class="on">党政机关</a>
-              <a href="">医院</a>
-              <a href="">学校</a>
-              <a href="">房地产</a>
-              <a href="">酒店</a>
-              <a href="">商场</a>
-              <a href="">其他</a>
+              @foreach( $articles as $article )
+              <a href="/sales_list/category/{{$article->id}}" @if( $article->id == $id ) class="on" @endif >{{$article->title}}</a>
+              @endforeach
             </li>
           </ul>
         </div>      
@@ -45,113 +41,31 @@
         <th width="5%">数量（台）</th>
         <th width="10%">检验机构</th>
       </tr>
+        <?php $i = $pages['pre_page']*10;?>
+      @foreach( $order_lists as $list )
       <tr>
-        <td>1</td>
-        <td>南充市委</td>
-        <td>南充北湖路</td>
-        <td>2004.7.12</td>
-        <td>客梯</td>
-        <td>1000kg/1.0/7/7/7</td>
-        <td>2</td>
-        <td>南充质监局</td>
+        <?php $i++ ?>
+        <td>{{ $i }}</td>
+        <td>{{ $list->name }}</td>
+        <td>{{ $list->address }}</td>
+        <td>{{ mb_substr($list->order_data,0,10) }}</td>
+        <td>{{ $list->category }}</td>
+        <td>{{ $list->parameter }}</td>
+        <td>{{ $list->amount }}</td>
+        <td>{{ $list->organization }}</td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>南充市委</td>
-        <td>南充北湖路</td>
-        <td>2004.7.12</td>
-        <td>客梯</td>
-        <td>1000kg/1.0/7/7/7</td>
-        <td>2</td>
-        <td>南充质监局</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>南充市委</td>
-        <td>南充北湖路</td>
-        <td>2004.7.12</td>
-        <td>客梯</td>
-        <td>1000kg/1.0/7/7/7</td>
-        <td>2</td>
-        <td>南充质监局</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>南充市委</td>
-        <td>南充北湖路</td>
-        <td>2004.7.12</td>
-        <td>客梯</td>
-        <td>1000kg/1.0/7/7/7</td>
-        <td>2</td>
-        <td>南充质监局</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>南充市委</td>
-        <td>南充北湖路</td>
-        <td>2004.7.12</td>
-        <td>客梯</td>
-        <td>1000kg/1.0/7/7/7</td>
-        <td>2</td>
-        <td>南充质监局</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>南充市委</td>
-        <td>南充北湖路</td>
-        <td>2004.7.12</td>
-        <td>客梯</td>
-        <td>1000kg/1.0/7/7/7</td>
-        <td>2</td>
-        <td>南充质监局</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>南充市委</td>
-        <td>南充北湖路</td>
-        <td>2004.7.12</td>
-        <td>客梯</td>
-        <td>1000kg/1.0/7/7/7</td>
-        <td>2</td>
-        <td>南充质监局</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>南充市委</td>
-        <td>南充北湖路</td>
-        <td>2004.7.12</td>
-        <td>客梯</td>
-        <td>1000kg/1.0/7/7/7</td>
-        <td>2</td>
-        <td>南充质监局</td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td>南充市委</td>
-        <td>南充北湖路</td>
-        <td>2004.7.12</td>
-        <td>客梯</td>
-        <td>1000kg/1.0/7/7/7</td>
-        <td>2</td>
-        <td>南充质监局</td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td>南充市委</td>
-        <td>南充北湖路</td>
-        <td>2004.7.12</td>
-        <td>客梯</td>
-        <td>1000kg/1.0/7/7/7</td>
-        <td>2</td>
-        <td>南充质监局</td>
-      </tr>
+      @endforeach
     </table>
     <div class="pageJump clearfix">
       <div class="number">
-          <span class="disabled"><a href="">首页</a></span>
-          <span class="disabled"><a href="">上一页</a></span>
-          <span class="disabled"><a href="">下一页</a></span>
-          <span class="disabled"><a href="">末页</a></span>
+        @if( $pages['pre_page']  )
+          <span class="disabled"><a href="/sales_list">首页</a></span>
+          <span class="disabled"><a href="/sales_list?page={{ $pages['pre_page'] }}">上一页</a></span>
+        @endif
+        @if( $pages['next_page'] )
+          <span class="disabled"><a href="/sales_list?page={{ $pages['next_page'] }}">下一页</a></span>
+          <span class="disabled"><a href="/sales_list?page={{ $pages['total_page'] }}">尾页</a></span>
+        @endif
       </div>
     </div>
     <!-- end -->

@@ -20,4 +20,8 @@ class Article extends Model
     public function article(){
         return $this->belongsTo('App\Models\Admin\Article','pid','id');
     }
+
+    public function order_lists(){
+        return $this->belongsTo('App\Models\Admin\Order_list','article_id','id');
+    }
 }

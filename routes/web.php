@@ -34,14 +34,17 @@ Route::group(['middleware'=>'check_setting'],function (){
 
         Route::get('product','FrontController@product');
         Route::get('product/category/{id}','FrontController@product');
-        Route::get('product/detail/{id}','FrontController@product_detail');
+        Route::get('product/{id}','FrontController@product_detail');
 
         Route::get('equipment','FrontController@equipment');
+        Route::get('equipment/{id}','FrontController@equipment_detail');
 
         Route::get('case','FrontController@our_case');
+        Route::get('case/{id}','FrontController@case_detail');
 
         Route::get('brand','FrontController@brand');
         Route::get('sales_list','FrontController@sales_list');
+        Route::get('sales_list/category/{id}','FrontController@sales_list');
 
         Route::get('service','FrontController@service');
         Route::get('service/category/{id}','FrontController@service');
@@ -77,6 +80,7 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::resource('team','TeamController');
         Route::resource('message','MessageController');
         Route::resource('car','CarController');
+        Route::resource('order_list','Order_listController');
 
 
         Route::get('/team/{id}/delete','TeamController@destroy');
@@ -96,6 +100,7 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('/admin/message/{id}/delete','MessageController@destroy');
 
         Route::get('/admin/car/{id}/delete','CarController@destroy');
+        Route::get('/admin/order_list/{id}/delete','Order_listController@destroy');
     });
 
 });

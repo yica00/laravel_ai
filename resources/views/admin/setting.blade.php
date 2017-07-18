@@ -36,6 +36,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">联系人</label>
+                                <div class="col-md-6">
+                                    <input id="email" class="form-control" name="contact"  value="{{  $setting['contact'] }}"  autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">QQ</label>
                                 <div class="col-md-6">
                                     <input id="email"  class="form-control" name="qq" value="{{  $setting['qq'] }}" autofocus>

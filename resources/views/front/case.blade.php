@@ -15,61 +15,27 @@
   <div class="w1160 clearfix">
     <!-- 内容 -->
     <ul class="case_out_list clearfix boost_img">
+      @foreach( $articles as $article )
     <li>
-      <a href="case_in.html">
+      <a href="/case/{{$article->id}}">
         <div class="pic">
-          <img src="images/case_1.jpg" alt="" />
+          <img src="{{$article->thumbnail}}" alt="" />
         </div>
-        <p>达州江南世家小区</p>
+        <p>{{$article->title}}</p>
       </a>
     </li>
-    <li>
-      <a href="case_in.html">
-        <div class="pic">
-          <img src="images/case_2.jpg" alt="" />
-        </div>
-        <p>达州江南世家小区</p>
-      </a>
-    </li>
-    <li>
-      <a href="case_in.html">
-        <div class="pic">
-          <img src="images/case_3.jpg" alt="" />
-        </div>
-        <p>达州江南世家小区</p>
-      </a>
-    </li>
-    <li>
-      <a href="case_in.html">
-        <div class="pic">
-          <img src="images/case_1.jpg" alt="" />
-        </div>
-        <p>达州江南世家小区</p>
-      </a>
-    </li>
-    <li>
-      <a href="case_in.html">
-        <div class="pic">
-          <img src="images/case_2.jpg" alt="" />
-        </div>
-        <p>达州江南世家小区</p>
-      </a>
-    </li>
-    <li>
-      <a href="case_in.html">
-        <div class="pic">
-          <img src="images/case_3.jpg" alt="" />
-        </div>
-        <p>达州江南世家小区</p>
-      </a>
-    </li>
+      @endforeach
   </ul>
     <div class="pageJump clearfix">
       <div class="number">
-          <span class="disabled"><a href="">首页</a></span>
-          <span class="disabled"><a href="">上一页</a></span>
-          <span class="disabled"><a href="">下一页</a></span>
-          <span class="disabled"><a href="">末页</a></span>
+        @if( $pages['pre_page']  )
+          <span class="disabled"><a href="/case">首页</a></span>
+          <span class="disabled"><a href="/case?page={{ $pages['pre_page'] }}">上一页</a></span>
+        @endif
+        @if( $pages['next_page'] )
+          <span class="disabled"><a href="/case?page={{ $pages['next_page'] }}">下一页</a></span>
+          <span class="disabled"><a href="/case?page={{ $pages['total_page'] }}">尾页</a></span>
+        @endif
       </div>
     </div>
     <!-- end -->

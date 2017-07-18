@@ -26,44 +26,23 @@
         <span id="nextTop" class="btn next"></span>
         <div id="picBox" class="picBox">
             <ul class="cf">
+                @foreach( $articles as $article )
                 <li>
-                    <img src="images/a1.jpg" alt="">
-                    <p>优秀团队、荣誉资质均为相册板式</p>
+                    <img src="{{$article->thumbnail}}" alt="">
+                    <p>{{$article->title}}</p>
                 </li>
-                <li>
-                    <img src="images/a2.jpg" alt="">
-                    <p>优秀团队、荣誉资质均为相册板式</p>
-                </li>
-                <li>
-                    <img src="images/a3.jpg" alt="">
-                    <p>优秀团队、荣誉资质均为相册板式</p>
-                </li>
-                <li>
-                    <img src="images/a4.jpg" alt="">
-                    <p>优秀团队、荣誉资质均为相册板式</p>
-                </li>
-                <li>
-                    <img src="images/a5.jpg" alt="">
-                    <p>优秀团队、荣誉资质均为相册板式</p>
-                </li>
-                <li>
-                    <img src="images/a6.jpg" alt="">
-                    <p>优秀团队、荣誉资质均为相册板式</p>
-                </li>
+                @endforeach
             </ul>
         </div>
         <div id="listBox" class="listBox">
             <ul class="cf">
-                <li class="on"><img src="images/a1.jpg" alt=""></li>
-                <li class=""><img src="images/a2.jpg" alt=""></li>
-                <li class=""><img src="images/a3.jpg" alt=""></li>
-                <li class=""><img src="images/a4.jpg" alt=""></li>
-                <li class=""><img src="images/a5.jpg" alt=""></li>
-                <li class=""><img src="images/a6.jpg" alt=""></li>
+                @foreach( $articles as $article )
+                <li><img src="{{ $article->thumbnail }}" alt=""></li>
+                @endforeach
             </ul>
         </div>
     </div>  
-    <script type="text/javascript" src="js/photo.js"></script>
+    <script type="text/javascript" src="/js/photo.js"></script>
     <!-- end -->
   </div>  
   <span class="bk60">&nbsp;</span>

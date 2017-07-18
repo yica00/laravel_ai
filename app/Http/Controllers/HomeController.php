@@ -33,6 +33,7 @@ class HomeController extends Controller
     public function setting(){
 //        $data = [
 //            'web_name'=>'四川虹霖西奥电梯有限公司',
+//            'contact'=>'蒲虹霖',
 //            'phone'=>'138-0827-0978    186-8179-5339',
 //            'fix_phone'=>'0817-2519567',
 //            'fax'=>'0817-2231178',
@@ -53,6 +54,7 @@ class HomeController extends Controller
         $url = getUrl($request,'wx_map');
         $data = [
             'web_name'=>$request->get('web_name'),
+            'contact'=>$request->get('contact'),
             'phone'=>$request->get('phone'),
             'fix_phone'=>$request->get('fix_phone'),
             'fax'=>$request->get('fax'),
