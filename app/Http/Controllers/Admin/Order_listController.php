@@ -12,7 +12,7 @@ class Order_listController extends Controller
 {
     public function index()
     {
-        $order_lists = Order_list::get();
+        $order_lists = Order_list::paginate(10);
         return view('admin.order_list',compact('order_lists'));
     }
 

@@ -43,6 +43,9 @@
             @endforeach
 
         </table>
+        <div>
+            {{$order_lists->links()}}
+        </div>
     </div>
 
 @endsection
