@@ -66,6 +66,7 @@ function getUrl($request,$img){
     $rel = $request->file($img);
     if(!$rel) return null;
     $name = $rel->getClientOriginalExtension();
+    $name = strtolower($name);
     $arr = ['png','gif','jpeg','jpg'];
     if( !in_array($name,$arr) ){
         return null;
@@ -83,6 +84,7 @@ function getMultiUrl($request,$img){
         $arr = [];
         foreach($files as $file) {
             $name = $file->getClientOriginalExtension();
+            $name = strtolower($name);
             $imgs = ['png','gif','jpeg','jpg'];
             if( !in_array($name,$imgs) ){
                 return null;

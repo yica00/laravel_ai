@@ -143,7 +143,7 @@
     </div>
     <div class="rights">
         <div class="w1160 clearfix">
-            CopyRight © 2017  {{ session('setting')['web_name']  }} &nbsp;&nbsp;&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;蜀ICP备8888888号&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a>
+            &nbsp;&nbsp;&nbsp;蜀ICP备8888888号&nbsp;&nbsp;CopyRight © 2017&nbsp;&nbsp; 技术支持：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a>&nbsp;  <h3 style="width: 0;height: 0">{{ session('setting')['web_name']  }} </h3>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
     </div>
 </div>
@@ -250,7 +250,7 @@
         var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
         return icon;
     }
-    setTimeout(initMap(),5000);
-//    initMap();//创建和初始化地图
+//    setTimeout(initMap(),5000);
+    initMap();//创建和初始化地图
 </script>
 </html>
