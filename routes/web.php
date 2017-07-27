@@ -32,12 +32,9 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('industry_news','FrontController@industry_news');
         Route::get('wikipedia','FrontController@wikipedia');
 
-        Route::get('product','FrontController@product');
-        Route::get('product/category/{id}','FrontController@product');
-        Route::get('product/{id}','FrontController@product_detail');
+        Route::get('treatment','FrontController@treatment');
 
-        Route::get('equipment','FrontController@equipment');
-        Route::get('equipment/{id}','FrontController@equipment_detail');
+        Route::get('doctor','FrontController@doctor');
 
         Route::get('case','FrontController@our_case');
         Route::get('case/{id}','FrontController@case_detail');

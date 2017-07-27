@@ -173,40 +173,21 @@ class FrontController extends Controller
     }
 
 
-    public function product(  $id = 20){
+    public function treatment( ){
         $nav = 4;
-        $articles = Article::where('pid',$id)->paginate(6);
+        $articles = Article::where('pid',0)->paginate(6);
         $pages = getPage($articles,6);
-        return view('front.product',compact('nav','id','pages','articles'));
-    }
-    public function product_detail( $id ){
-        $nav = 4;
-        $article = Article::find($id);
-        $articles = Article::where('pid',$id)->get();
-        if(count($articles)){
-            $articles[0]->comtent = get_article_imgs($articles[0]->comtent,100);
-        }
-        $up_down = get_up_down_page($id,$article->pid);
-        return view('front.product_in',compact('nav','article','articles','up_down'));
+        return view('front.treatment',compact('nav','id','pages','articles'));
     }
 
 
-    public function equipment( $page = 1 ){
+    public function doctor(){
         $nav = 5;
         $articles = Article::where('pid',5)->paginate(6);
         $pages = getPage($articles,6);
-        return view('front.equip',compact('nav','articles','pages'));
+        return view('front.doctor',compact('nav','articles','pages'));
     }
-    public function equipment_detail( $id ){
-        $nav = 5;
-        $article = Article::find($id);
-        $articles = Article::where('pid',$id)->get();
-        if(count($articles)){
-            $articles[0]->comtent = get_article_imgs($articles[0]->comtent,100);
-        }
-        $up_down = get_up_down_page($id,$article->pid);
-        return view('front.equip_in',compact('nav','article','articles','up_down'));
-    }
+
 
     public function our_case($page = 1 ){
         $nav = 6;
@@ -241,13 +222,6 @@ class FrontController extends Controller
         $article = Article::find($id);
         return view('front.service',compact('nav','article','id'));
     }
-    public function partner(){
-        $articles = Article::select('title','thumbnail')->where('pid',26)->orderBy('id','desc')->paginate(12);
-        $pages = getImgsPage($articles->total(),7);
-        $nav = 7;
-        return view('front.part',compact('nav','articles','pages'));
-    }
-
 
     public function contact(){
         $nav = 9;

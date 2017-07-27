@@ -16,11 +16,11 @@ class Get_nav
      */
     public function handle($request, Closure $next)
     {
-        if( !session('header_nav') ){
-            $navs = Article::select('id','title','link','pid')->where('is_nav',1)->get();
-            $nav = getSubs($navs,0);
-            session(['header_nav' => $navs]);
-        }
+//        if( !session('header_nav') ){
+//            $navs = Article::select('id','title','link','pid')->where('is_nav',1)->get();
+//            $nav = getSubs($navs,0);
+//            session(['header_nav' => $navs]);
+//        }
         return $next($request);
     }
 }

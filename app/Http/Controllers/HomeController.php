@@ -32,13 +32,12 @@ class HomeController extends Controller
 
     public function setting(){
 //        $data = [
-//            'web_name'=>'四川虹霖西奥电梯有限公司',
-//            'contact'=>'蒲虹霖',
-//            'phone'=>'138-0827-0978    186-8179-5339',
-//            'fix_phone'=>'0817-2519567',
+//            'web_name'=>'杨氏鼻炎',
+//            'phone'=>'138-9086-5033',
+//            'fix_phone'=>'0817-3869772',
 //            'fax'=>'0817-2231178',
-//            'qq'=>'269190867',
-//            'bases'=>'顺庆区北湖路99号罗曼威森308室',
+//            'qq'=>'1521770461',
+//            'bases'=>'四川省南充市嘉陵区光彩大市场1区3幢1-3号',
 //            'keywords'=>'网站关键词',
 //            'description'=>'关键词描述',
 //            'wx_map'=>'/images/erwm.png',
@@ -54,7 +53,6 @@ class HomeController extends Controller
         $url = getUrl($request,'wx_map');
         $data = [
             'web_name'=>$request->get('web_name'),
-            'contact'=>$request->get('contact'),
             'phone'=>$request->get('phone'),
             'fix_phone'=>$request->get('fix_phone'),
             'fax'=>$request->get('fax'),

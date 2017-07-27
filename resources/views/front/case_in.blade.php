@@ -1,41 +1,34 @@
 @extends('front.base')
 @section('content')
-<!-- bread -->
-<div class="bread">
-  <div class="w1160 clearfix">
-      <div class="in_tit">
-        <h2>--&nbsp;&nbsp;工程案例&nbsp;&nbsp;--</h2>
-        <p>Engineering case</p>
-      </div>
-  </div>  
+<div class="in_tit_all">
+  <p>successful case</p>
+  <h2><span>成</span><span>功</span><span>案</span><span>例</span></h2>
 </div>
-<!-- wap_box -->
-<div class="wap_box">
-  <span class="bk30">&nbsp;</span>
+<!-- aboutout -->
+<div class=" com_style">
   <div class="w1160 clearfix">
-    <!-- 内容 -->
-    <div class="news_dis">
-      <div class="top">
-        <h3 class="tit">{{ $article->title }}</h3>
-        <p class="protime"><em>{{ $article->created_at }}</em> <span class="pL10"><i>虹霖电梯</i></span></p>
+    <div class="casein_sty">  
+      <div class="tit">
+        <h3>杨氏鼻炎成功案例之</h3>
+        <h2>鼻窦炎案例1</h2>
       </div>
-      <div class="p_style">
-          {!! $article->comtent !!}
+     <div class="pic"><img src="images/case_1.jpg" class="img_1"><img src="images/watermark.png" class="img_2"></div>
+       <div class="txt">
+        <p><span>康复者:</span>张先生</p>
+        <p><span>症状:</span>鼻子、双眼或许喉咙发痒</p>   
       </div>
-
-      <div class="backpre clearfix">
-          @if( $up_down['1'] )<a href="/case/{{ $up_down['1'] }}" rel="next">上一篇</a> @endif
-          @if( $up_down['2'] ) <a href="/case/{{ $up_down['2'] }}" rel="prev">下一篇</a>@endif
-          <a href="/case">返回上级目录</a>
-      </div>
-          <span class="bk30">&nbsp;</span>
+      <dl class="ddli bg_e8f2ff">
+        <dt>治疗方案</dt>
+        <dd>脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。脑瘫，小儿脑瘫，脑发育迟缓、智力低下以及重型脑损伤、脑与脊髓神经损害(创伤、出血、梗塞所致的偏瘫、截瘫、智力障碍、失语等)的治疗。</dd>
+      </dl>
     </div>
-
-    <!-- end -->
-  </div>  
-  <span class="bk60">&nbsp;</span>
+    <div class="backpre clearfix">      
+          <a href="news_in.html" rel="next">上一篇</a>
+          <a href="news_in.html" rel="prev">下一篇</a>
+          <a href="news.html">返回上级目录</a>
+      </div>
+    <span class="bk60">&nbsp;</span>
+  </div>
 </div>
-
-
 <!-- footer -->
 @endsection

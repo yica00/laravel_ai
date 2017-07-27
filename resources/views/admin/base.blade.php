@@ -58,9 +58,9 @@
                 <ul class="nav">
                     <li><a href="/admin" class="active"><i class="lnr lnr-home"></i> <span>后台首页</span></a></li>
                     <li><a href="/admin/article" ><i class="lnr lnr-inbox"></i> <span>内容管理</span></a></li>
-                    <li><a href="/admin/order_list" class=""><i class="lnr lnr-cart"></i> <span>订单管理</span></a></li>
+                    {{--<li><a href="/admin/order_list" class=""><i class="lnr lnr-cart"></i> <span>订单管理</span></a></li>--}}
                     {{--<li><a href="/admin/car" class=""><i class="lnr lnr-car"></i> <span>车型管理</span></a></li>--}}
-                    <li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>留言管理</span></a></li>
+                    {{--<li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>留言管理</span></a></li>--}}
                     <li><a href="/admin/setting" class=""><i class="lnr lnr-cog"></i> <span>网站配置</span></a></li>
                     <li><a href="/admin/up_password" class=""><i class="lnr lnr-sun"></i> <span>修改密码</span></a></li>
                     {{--<li>--}}
