@@ -4,7 +4,11 @@
         $('#left-bar .nav>li:nth-child(4)>.menu').addClass('on');
     </script>
 
-
+    <h3 style="float: right;margin-top: 2%"><a href="@if( $pid == 0 )
+                /admin/article
+              @else
+                /article/{{ $pid }}/look
+               @endif">返回上级</a></h3>
     <div class="main-wrap fadeInRight">
         <H3>新增内容</H3>
         <form class="formPanel" action="/article/add_son/{{ $id }}" enctype="multipart/form-data" method="post" >
@@ -15,7 +19,7 @@
                         echo $errors;
                     }?>
                 </p>
-                <label>栏目标题：</label><input type="text" class="input-text" name="title" style="width: 400px;"/>
+                <label>栏目标题：</label><input type="text" class="input-text" name="title" style="width: 62%;"/>
             </div>
             <div class="form-group">
                 <label>缩略图：</label><input name="thumbnail" type="file" >
@@ -24,10 +28,20 @@
                 <label>链接地址：</label>
                 <input name="link"  >
             </div>
+            <div class="form-group">
+                <label>排序数字：</label>
+                <input name="serial_number" value="0" >
+            </div>
 
             <input name="pid" hidden="hidden" value="{{ $id }}">
             <div class="form-group">
-                <label>是否为导航：</label><input name="is_nav"  value=0 >  <span style="color: red">0表示不是导航，1表示是导航</span>
+                <label>是否导航：</label>
+                <input name="is_nav"  value="0" >  <span style="color: red">0表示不是导航，1表示是导航</span>
+            </div>
+
+            <div class="form-group">
+                <label>简介：</label>
+                <textarea class="form-control" rows="3" style="width: 70%" name="introduce" ></textarea>
             </div>
 
             <!-- 加载编辑器的容器 -->

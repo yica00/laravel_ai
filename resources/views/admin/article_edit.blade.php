@@ -4,6 +4,12 @@
         $('#left-bar .nav>li:nth-child(4)>.menu').addClass('on');
     </script>
 
+    <h3 style="float: right;margin-top: 2%"><a href="@if( $article->pid  == 0 )
+                /admin/article
+              @else
+                /article/{{ $article->pid  }}/look
+               @endif">返回上级</a>
+    </h3>
 
     <div class="main-wrap fadeInRight">
         <H3>编辑{{$article->title}}</H3>
@@ -16,7 +22,7 @@
                         echo $errors;
                     }?>
                 </p>
-                <label>栏目标题：</label><input type="text" class="input-text" name="title" value="{{$article->title}}" style="width: 400px;"/>
+                <label>栏目标题：</label><input type="text" class="input-text" name="title" value="{{$article->title}}" style="width: 62%;"/>
             </div>
             <div class="form-group">
                 <label style="float: left" >缩略图：</label><input style="float: left" type='file'  name='thumbnail' value="{{$article->thumbnail}}">
@@ -24,11 +30,23 @@
                     <img src="{{$article->thumbnail}}" width="200" />
                 @endif
             </div>
-            {{--<div style="clear: left"></div>--}}
+            <div style="clear: both;margin-bottom: 2%"></div>
             <div class="form-group">
                 <label>链接地址：</label>
                 <input name="link" value="{{$article->link}}" >
             </div>
+
+            <div class="form-group">
+                <label>排序数字：</label>
+                <input name="serial_number" value="{{$article->serial_number}}" >
+            </div>
+
+            <div class="form-group">
+                <label>简介：</label>
+                <textarea class="form-control" rows="3" style="width: 70%" name="introduce" >{{$article->introduce}}</textarea>
+            </div>
+
+
             <div id="comtent" style="display:none;" ><?php echo  html_entity_decode($article->comtent) ?></div>
             {{--<div class="form-group">--}}
                 {{--<label>品牌类别：</label>--}}

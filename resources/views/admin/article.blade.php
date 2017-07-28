@@ -22,8 +22,7 @@
                         <a class="act-btn" href="/article/{{$sort->id}}/look">查看内容</a>|
                         <a class="act-btn" href="/article/{{$sort->id}}/addson">添加内容</a>
                        @if( $sort->pid != 0 )
-                            |<a class="act-btn" href="/article/{{$sort->id}}/delete">删除</a>
-                        @endif
+                            |<a class="act-btn" onclick="if(confirm('确定删除此项？')){location.href='/article/{{$sort->id}}/delete'}"} >删除</a>@endif
                         </td>
                 </tr>
             @endforeach

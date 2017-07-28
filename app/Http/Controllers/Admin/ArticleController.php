@@ -52,14 +52,24 @@ class ArticleController extends Controller
      */
     public function look_son($id){
         $articles = Article::where('pid',$id)->orderBy('id','desc')->paginate(10);
-        return view('admin.article_list',compact('articles'));
+        if( $id != 0 ){
+            $pid = Article::find($id)->pid;
+        }else{
+            $pid = 0;
+        }
+        return view('admin.article_list',compact('articles','pid'));
     }
 
     /**
      * 展示添加内容页面
      */
     public function add_son($id){
-        return view('admin.article_add_son',compact('id'));
+        if( $id != 0 ){
+            $pid = Article::find($id)->pid;
+        }else{
+            $pid = 0;
+        }
+        return view('admin.article_add_son',compact('id','pid'));
     }
 
     public function store_son( Request $request ){

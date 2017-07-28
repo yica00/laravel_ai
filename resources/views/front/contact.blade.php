@@ -11,24 +11,16 @@
     <!-- 内容 -->
     <div class="contact_way">
       <dl>
-        <dt>联系人</dt>
-        <dd>蒲虹霖</dd>
-      </dl>
-      <dl>
         <dt>电话</dt>
-        <dd>0817-2519567</dd>
+        <dd>{{ session('setting')['fix_phone']  }}</dd>
       </dl>
       <dl>
         <dt>手机</dt>
-        <dd>138-0827-0978&nbsp;&nbsp;&nbsp;&nbsp;186-8179-5339</dd>
+        <dd>{{ session('setting')['phone']  }}</dd>
       </dl>
       <dl>
         <dt>QQ&nbsp;</dt>
-        <dd>269190867</dd>
-      </dl>
-      <dl>
-        <dt>传真</dt>
-        <dd>0817-2231178</dd>
+        <dd>{{ session('setting')['qq']  }}</dd>
       </dl>
       <dl>
         <dt>邮编</dt>
@@ -36,7 +28,7 @@
       </dl>
       <dl class="big">
         <dt>地址</dt>
-        <dd>南充市顺庆区北湖路99号罗曼威森308室</dd>
+        <dd>{{ session('setting')['bases']  }}</dd>
       </dl>
       <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
 
