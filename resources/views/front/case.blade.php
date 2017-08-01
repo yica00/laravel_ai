@@ -1,42 +1,67 @@
 @extends('front.base')
 @section('content')
-<div class="in_tit_all">
-  <p>successful case</p>
-  <h2><span>成</span><span>功</span><span>案</span><span>例</span></h2>
+<!-- bread -->
+<div class="bread">
+  <div class="w1160 clearfix">  
+      <div class="top">
+        <h2>--装修风格--</h2>
+        <p><span>decoration style</span></p>
+      </div>
+      <ul class="sublist clearfix">
+        <li><a href="https://yun.kujiale.com/design/3FO4IH45QOMK/show?fromqrcode=true" target="_blank">VR实景装修效果图</a></li>
+        <li><a href="/case" class="on">经典案例</a></li>
+      </ul>
+    </div>
 </div>
-<!-- aboutout -->
-<div class=" com_style">
+<span class="bk50">&nbsp;</span>
+<div class="wap_box">
   <div class="w1160 clearfix">
-    <ul class="casein filter_img">
-      @foreach( $articles as $article )
-      <li >
-        <a href="/case/{{$article->id}}" class="clearfix">
-          <div class="txt fr">
-            <h3>杨氏鼻炎成功案例</h3>
-            <h2></h2>
-            <p><span>康复者</span>{{$article->title}}</p>
-            <p><span>症状</span>{{$article->link}}</p>
-            <p><span>治疗方案</span>{{$article->introduce}}</p>
-          </div>
-          <div class="pic fl"><img src="{{$article->thumbnail}}" class="img_1"><img src="/images/watermark.png" class="img_2"></div>
-        </a>
-      </li>
-      @endforeach
-    </ul>
-    <div class="pageJump clearfix">
-      <div class="number">
-        @if( $pages['pre_page']  )
-          <span class="disabled"><a href="/case">首页</a></span>
-          <span class="disabled"><a href="/case?page={{ $pages['pre_page'] }}">上一页</a></span>
-        @endif
-        @if( $pages['next_page'] )
-          <span class="disabled"><a href="/case?page={{ $pages['next_page'] }}">下一页</a></span>
-          <span class="disabled"><a href="/case?page={{ $pages['total_page'] }}">尾页</a></span>
-        @endif
+    <!-- 内容 -->
+    <div class="sorting">
+      <div class="list clearfix">
+        <div class="all fr">
+          <ul class="clearfix">
+            <li>
+              @foreach( $cates as $cate )
+                @if( $cate->id == 24 )
+                  <a href="/case" class=" @if( $id == null ) on @endif">{{$cate->title}}</a>
+                @else
+                 <a href="/case/category/{{$cate->id}}" class=" @if( $cate->id == $id ) on @endif">{{$cate->title}}</a>
+                @endif
+              @endforeach
+            </li>       
+          </ul>
+        </div>
+        <b class="key fl">风格</b>
       </div>
     </div>
-    <span class="bk60">&nbsp;</span>
-  </div>
+    <span class="bk30">&nbsp;</span>
+    <ul class="caselist clearfix">
+      @foreach( $articles as $article )
+      <li>
+        <a  href="/case/{{$article->id}}">
+          <img src="{{$article->thumbnail}}" alt="">
+          <span class="box">&nbsp;</span>
+          <div class="txt">{{$article->title}}</div>
+        </a>
+      </li>
+        @endforeach
+    </ul>
+    <div class="pageJump clearfix">
+        <div class="number">
+          @if( $pages['pre_page']  )
+            <span class="disabled"><a href="@if($id ==null )/case @else /case/category/{{$id}} @endif">首页</a></span>
+            <span class="disabled"><a href="@if($id ==null )/case?page={{ $pages['pre_page'] }} @else /case/category/{{$id}}?page={{ $pages['pre_page'] }}@endif">上一页</a></span>
+          @endif
+          @if( $pages['next_page'] )
+            <span class="disabled"><a href="@if($id ==null )/case?page={{ $pages['next_page'] }} @else /case/category/{{$id}}?page={{ $pages['next_page'] }}@endif">下一页</a></span>
+            <span class="disabled"><a href="@if($id ==null )/case?page={{ $pages['total_page'] }} @else /case/category/{{$id}}?page={{ $pages['total_page'] }}@endif">尾页</a></span>
+          @endif
+        </div>
+    </div>
+    <!-- end -->
+  </div>  
 </div>
-<!-- footer -->
+<span class="bk80">&nbsp;</span>
+<!-- index_list -->
 @endsection

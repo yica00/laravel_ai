@@ -59,8 +59,10 @@
                     <li><a href="/admin" class="active"><i class="lnr lnr-home"></i> <span>后台首页</span></a></li>
                     <li><a href="/admin/article" ><i class="lnr lnr-inbox"></i> <span>内容管理</span></a></li>
                     {{--<li><a href="/admin/order_list" class=""><i class="lnr lnr-cart"></i> <span>订单管理</span></a></li>--}}
+                    <li><a href="/admin/team" class=""><i class="lnr lnr-users"></i> <span>团队介绍</span></a></li>
                     {{--<li><a href="/admin/car" class=""><i class="lnr lnr-car"></i> <span>车型管理</span></a></li>--}}
-                    {{--<li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>留言管理</span></a></li>--}}
+                    {{--<li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>报价管理</span></a></li>--}}
+                    <li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>留言管理</span></a></li>
                     <li><a href="/admin/setting" class=""><i class="lnr lnr-cog"></i> <span>网站配置</span></a></li>
                     <li><a href="/admin/up_password" class=""><i class="lnr lnr-sun"></i> <span>修改密码</span></a></li>
                     {{--<li>--}}
@@ -94,7 +96,7 @@
     <div class="clearfix" ></div>
     <footer>
         <div class="container-fluid" >
-            <p class="copyright">&copy; 2017 <a href="#" target="_blank">Theme I Need</a>. All Rights <a href="http://www.scnuohang.com/" target="_blank" >诺航科技</a>.  </p>
+            <p class="copyright">&copy; 2017  All Rights <a href="http://www.scnuohang.com/" target="_blank" >诺航科技</a>.  </p>
         </div>
     </footer>
 </div>

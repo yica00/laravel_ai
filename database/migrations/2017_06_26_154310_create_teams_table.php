@@ -17,10 +17,14 @@ class CreateTeamsTable extends Migration
             $table->increments('id');
             $table->string('name',20);
             $table->string('title',20)->nullable();
+            $table->string('education',20)->nullable();
+            $table->string('good_at',40)->nullable();
+            $table->string('design_concept',40)->nullable();
             $table->integer('work_age')->nullable();
             $table->string('photo',100)->nullable();
             $table->string('introduce',200)->nullable();
-            $table->string('iterm',100)->nullable();
+//            $table->string('iterm',200)->nullable();
+            $table->string('production',100)->nullable();
 //            $table->string('imgs',500)->nullable();
 //            $table->char('phone',15)->nullable();
             $table->timestamps();

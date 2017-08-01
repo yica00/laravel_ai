@@ -19,7 +19,7 @@ class CreateArticleTable extends Migration
             $table->increments('id');
             $table->string('title',80);
             $table->string('thumbnail',100)->nullable();
-            $table->string('introduce',100)->nullable();
+            $table->string('introduce',200)->nullable();
             $table->text('comtent',2000)->nullable();
             $table->integer('pid');
             $table->tinyInteger('is_nav')->default(1);

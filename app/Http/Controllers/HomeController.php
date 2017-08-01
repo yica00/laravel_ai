@@ -32,11 +32,11 @@ class HomeController extends Controller
 
     public function setting(){
 //        $data = [
-//            'web_name'=>'杨氏鼻炎',
-//            'phone'=>'138-9086-5033',
-//            'fix_phone'=>'0817-3869772',
-//            'fax'=>'0817-2231178',
-//            'qq'=>'1521770461',
+//            'web_name'=>'南充美品佳装饰工程有限公司',
+//            'phone'=>'180-8159-1458',
+//            'fix_phone'=>'0817-2866062',
+//            'qq'=>'752542578',
+//            'price'=>'688',
 //            'bases'=>'四川省南充市嘉陵区光彩大市场1区3幢1-3号',
 //            'keywords'=>'网站关键词',
 //            'description'=>'关键词描述',

@@ -20,34 +20,34 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('/','FrontController@index');
 
         Route::get('about','FrontController@about');
-        Route::get('culture','FrontController@culture');
-        Route::get('organization','FrontController@organization');
-        Route::get('speech','FrontController@speech');
-        Route::get('history','FrontController@history');
-        Route::get('team','FrontController@team');
-        Route::get('honor','FrontController@honor');
+        Route::get('about/category/{id}','FrontController@about');
 
         Route::get('news','FrontController@news');
+        Route::get('news/category/{id}','FrontController@news');
         Route::get('news/{id}','FrontController@new_detail');
-        Route::get('industry_news','FrontController@industry_news');
-        Route::get('wikipedia','FrontController@wikipedia');
 
         Route::get('treatment','FrontController@treatment');
 
         Route::get('doctor','FrontController@doctor');
 
         Route::get('case','FrontController@our_case');
+        Route::get('case/category/{id}','FrontController@our_case');
         Route::get('case/{id}','FrontController@case_detail');
 
-        Route::get('brand','FrontController@brand');
-        Route::get('sales_list','FrontController@sales_list');
-        Route::get('sales_list/category/{id}','FrontController@sales_list');
+        Route::get('team','FrontController@team');
+        Route::get('team/{id}','FrontController@team_detail');
+
+        Route::get('product','FrontController@product');
+        Route::get('product/category/{id}','FrontController@product_category');
+        Route::get('product/{id}','FrontController@product_detail');
 
         Route::get('service','FrontController@service');
         Route::get('service/category/{id}','FrontController@service');
+        Route::get('witness','FrontController@witness');
+        Route::get('witness/{id}','FrontController@witness_detail');
 
         Route::get('contact','FrontController@contact');
-        Route::get('way','FrontController@way');
+        Route::get('contact/message','FrontController@message');
 
         Route::post('/front/message','Admin\MessageController@store');
     });

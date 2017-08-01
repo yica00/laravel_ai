@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin\Article;
 use App\Models\Admin\Teams;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,7 +29,11 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('admin.team_add');
+        $cates = Article::where('pid',15)->get();
+        $ids = getIds($cates);
+        $articles = Article::select('id','title')->whereIn('pid',$ids)
+            ->orderBy('id','desc')->get();
+        return view('admin.team_add',compact('articles'));
     }
 
     /**
@@ -41,6 +46,7 @@ class TeamController extends Controller
     {
         $atic = Input::all();
         $atic['photo'] = getUrl($request,'photo');
+        $atic['production'] = implode(',',$atic['production']);
         $rel = Teams::create($atic);
         if( $rel->wasRecentlyCreated ){
             return back()->with('errors','添加成功');
@@ -68,7 +74,12 @@ class TeamController extends Controller
     public function edit($id)
     {
         $team = Teams::find($id);
-        return view('admin.team_edit',compact('team'));
+        $team->production = explode(',',$team->production);
+        $cates = Article::where('pid',15)->get();
+        $ids = getIds($cates);
+        $articles = Article::select('id','title')->whereIn('pid',$ids)
+            ->orderBy('id','desc')->get();
+        return view('admin.team_edit',compact('team','articles'));
     }
 
     /**
@@ -82,6 +93,7 @@ class TeamController extends Controller
     {
         $atic = Input::except('_token','_method');
         $atic['photo'] = getUrl($request,'photo');
+        $atic['production'] = implode(',',$atic['production']);
         if( ! $atic['photo'] ){
             unset( $atic['photo']);
         }

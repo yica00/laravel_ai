@@ -7,6 +7,7 @@ use App\Models\Admin\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Psy\Exception\RuntimeException;
 
 class MessageController extends Controller
 {
@@ -17,7 +18,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::get();
+        $messages = Message::orderBy('id','desc')->paginate(20);
         $messages = $this->subSqlStr($messages);
         return view('admin.message',compact('messages'));
     }

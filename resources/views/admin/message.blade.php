@@ -15,7 +15,6 @@
         <table class="tablePanel2"  cellpadding="0" cellspacing="0" width="100%">
             <tr style="border-bottom:1px solid #BBB;height: 50px;border-top:1px solid #BBB;">
                 <th>姓名</th>
-                <th>邮箱</th>
                 <th>手机</th>
                 <th>留言内容</th>
                 <th>留言时间</th>
@@ -25,7 +24,6 @@
                 <tr>
 
                     <td>{{$sort->name}}</td>
-                    <td>{{$sort->email}}</td>
                     <td>{{$sort->phone}}</td>
                     <td>{{$sort->message}}</td>
                     <td>{{$sort->created_at}}</td>
@@ -38,5 +36,5 @@
 
         </table>
     </div>
-
+    {{$messages->links()}}
 @endsection

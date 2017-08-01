@@ -6,30 +6,36 @@ use App\Models\Admin\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\View;
-use Laracasts\Utilities\JavaScript\JavaScriptFacade;
-use Laracasts\Utilities\JavaScript\ViewBinder;
+use Illuminate\Support\Facades\URL;
+
 
 class ArticleController extends Controller
 {
     public function index(Request $request){
-        $rel = Article::select('id','title','pid')->where('is_nav','1')->orderBy('id','asc')->get();
-        $arr = $arr2 = [];
-        for ( $i=$j=0;$i<count($rel);$i++ ){
-            if($rel[$i]->pid==0){
-                $arr[] = $rel[$i];
-            }else{
-                $arr2[] = $rel[$i];
-            }
-        }
-        for ( $i=0;$i<count($arr2);$i++ ) {
-            for ( $j=0;$j<count($arr);$j++ ) {
-                if ($arr[$j]->id == $arr2[$i]->pid) {
-                    array_splice($arr, $j+1,0,array($arr2[$i]));
-                }
-            }
-        }
-        return view('admin.article')->with('permission',$arr);
+        $articles = Article::with(array('articles'=>function( $query ){
+            $query->select('id','pid','title','serial_number')
+                ->where('is_nav','1');
+        }))
+            ->select('id','pid','title','serial_number')->where('pid','0')->where('is_nav','1')
+            ->orderBy('serial_number','asc')->orderBy('id','asc')->get();
+
+//        $rel = Article::select('id','title','pid')->where('is_nav','1')->orderBy('id','asc')->get();
+//        $arr = $arr2 = [];
+//        for ( $i=$j=0;$i<count($rel);$i++ ){
+//            if($rel[$i]->pid==0){
+//                $arr[] = $rel[$i];
+//            }else{
+//                $arr2[] = $rel[$i];
+//            }
+//        }
+//        for ( $i=0;$i<count($arr2);$i++ ) {
+//            for ( $j=0;$j<count($arr);$j++ ) {
+//                if ($arr[$j]->id == $arr2[$i]->pid) {
+//                    array_splice($arr, $j+1,0,array($arr2[$i]));
+//                }
+//            }
+//        }
+        return view('admin.article')->with('permission',$articles);
     }
 
     /**

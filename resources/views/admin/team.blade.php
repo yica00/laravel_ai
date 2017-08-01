@@ -16,24 +16,20 @@
             <tr style="border-bottom:1px solid #BBB;height: 50px;border-top:1px solid #BBB;">
                 <th>名字</th>
                 <th>职称</th>
-                <th>从业年限</th>
                 <th>照片</th>
                 <th>介绍</th>
-                <th>个人介绍</th>
                 <th>操作</th>
             </tr>
             @foreach($teams as $sort)
                 <tr>
                     <td>{{$sort->name}}</td>
                     <td>{{$sort->title}}</td>
-                    <td>{{$sort->work_age}}</td>
                     <td> <img src="{{$sort->photo}}" width="30"> </td>
                     <td>{{$sort->introduce}}</td>
-                    <td>{{$sort->iterm}}</td>
 
                     <td>
-                        <a class="act-btn" href="/admin/team/{{$sort->id}}/edit">编辑</a>
-                        <a class="act-btn" href="/admin/team/{{$sort->id}}/delete">删除</a>
+                        <a class="act-btn" href="/admin/team/{{$sort->id}}/edit">编辑</a> |
+                        <a class="act-btn" onclick="if(confirm('确定删除此项？')){location.href='/admin/team/{{$sort->id}}/delete'}"} >删除</a>
                     </td>
                 </tr>
             @endforeach

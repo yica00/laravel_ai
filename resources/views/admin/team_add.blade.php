@@ -50,25 +50,49 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">从业时间</label>
+                                <label for="email" class="col-md-4 control-label">从业年限</label>
                                 <div class="col-md-6">
                                     <input id="email"  class="form-control" name="work_age"  autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">项目经验</label>
+                                <label for="email" class="col-md-4 control-label">教育背景</label>
                                 <div class="col-md-6">
-                                    <input id="email"  class="form-control" name="iterm"  autofocus>
+                                    <input id="email"  class="form-control" name="education"  autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">介绍</label>
+                                <label for="email" class="col-md-4 control-label">擅长风格</label>
                                 <div class="col-md-6">
-                                    <input id="email"   class="form-control" name="introduce"  autofocus>
+                                    <input id="email"  class="form-control" name="good_at"  autofocus>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">设计理念</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="design_concept"  autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">项目经验</label>
+                                <div class="col-md-6">
+                                    <textarea class="form-control" rows="5" name="introduce" ></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">主要作品</label>
+                                <div class="col-md-6">
+                                    @foreach( $articles as $art )
+                                        <input type="checkbox" name="production[]" value="{{ $art->id }}" /> {{$art->title}}
+                                    @endforeach
+                                </div>
+                            </div>
+
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">

@@ -57,12 +57,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">传真</label>
-                                <div class="col-md-6">
-                                    <input id="email"  class="form-control" name="fax" value="{{  $setting['fax'] }}" autofocus>
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">地址</label>
@@ -91,7 +85,13 @@
                                     <input id="email" type="file"  class="form-control" name="wx_map" autofocus>
                                     <img src="{{  $setting['wx_map'] }}" width="50" />
                                 </div>
+                            </div>
 
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">报价单价</label>
+                                <div class="col-md-6">
+                                    <input id="email"   class="form-control" name="price"  value="{{ $setting['price']  }}"  autofocus>
+                                </div>
                             </div>
 
 

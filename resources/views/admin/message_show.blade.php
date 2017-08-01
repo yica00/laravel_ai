@@ -34,16 +34,37 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">邮箱</label>
+                                <label for="email" class="col-md-4 control-label">电话</label>
                                 <div class="col-md-6">
-                                    <input id="email"  class="form-control" name="email" value="{{  $message->email }}" disabled="true" autofocus>
+                                    <input id="email"  class="form-control" name="belong_to" value="{{ $message->phone  }}" disabled="true" autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">电话</label>
+                                <label for="email" class="col-md-4 control-label">地址</label>
                                 <div class="col-md-6">
-                                    <input id="email"  class="form-control" name="belong_to" value="{{ $message->phone  }}" disabled="true" autofocus>
+                                    <input id="email"  class="form-control" name="email" value="{{  $message->address }}" disabled="true" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">面积</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="email" value="{{  $message->area }}" disabled="true" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">房屋类型</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="email" value="{{  $message->category }}" disabled="true" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">预算</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="email" value="{{  $message->badget }}" disabled="true" autofocus>
                                 </div>
                             </div>
 
