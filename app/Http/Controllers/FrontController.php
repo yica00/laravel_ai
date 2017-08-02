@@ -15,17 +15,20 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         $sliders = $this->getSliders();
-//        $about = $this->getAbout();
-//        $envs = $this->getEnv();
         $products = $this->getProduct();
         $vitnesss = $this->getVitness();
         $cases = $this->getCases();
         $newss = $this->getNews();
         $teams = $this->getTeam();
-        return view('front.index',compact('nav','products','teams','sliders','vitnesss','cases','newss','doctor'));
+        $links = $this->getLink();
+        return view('front.index',compact('nav','products','teams','sliders','vitnesss','cases','newss','links'));
     }
 
 
+    public function getLink(){
+        $Articles = Article::where('pid',46)->orderBy('serial_number','desc')->orderBy('id','desc')->take(14)->get();
+        return $Articles;
+    }
     public function getVitness(){
         $Articles = Article::where('pid',28)->orderBy('serial_number','desc')->orderBy('id','desc')->take(6)->get();
         return $Articles;
