@@ -55,7 +55,7 @@ class HomeController extends Controller
             'web_name'=>$request->get('web_name'),
             'phone'=>$request->get('phone'),
             'fix_phone'=>$request->get('fix_phone'),
-            'fax'=>$request->get('fax'),
+            'price'=>$request->get('price'),
             'qq'=>$request->get('qq'),
             'bases'=>$request->get('bases'),
             'keywords'=>$request->get('keywords'),
