@@ -156,7 +156,9 @@
         <div class="link clearfix">
             <span class="fl mR10">友情链接 </span>
             <div class="fl">
-                <a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a><a href="" target="_blank">蘑菇云科技有限公司</a>
+                @foreach( session('links') as $link )
+                    <a href="{{$link->link}}" target="_blank">{{$link->title}}</a>
+                @endforeach
             </div>
         </div>
     </div>
