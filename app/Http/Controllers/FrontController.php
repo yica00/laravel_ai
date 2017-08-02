@@ -20,7 +20,6 @@ class FrontController extends Controller
         $cases = $this->getCases();
         $newss = $this->getNews();
         $teams = $this->getTeam();
-        $links = $this->getLink();
         return view('front.index',compact('nav','products','teams','sliders','vitnesss','cases','newss','links'));
     }
 

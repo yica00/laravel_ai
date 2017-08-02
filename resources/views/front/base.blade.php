@@ -116,7 +116,7 @@
         <div class="link clearfix">
             <span class="fl mR10">友情链接 </span>
             <div class="fl">
-                @foreach( $links as $link )
+                @foreach( session('links') as $link )
                 <a href="{{$link->link}}" target="_blank">{{$link->title}}</a>
                 @endforeach
             </div>
