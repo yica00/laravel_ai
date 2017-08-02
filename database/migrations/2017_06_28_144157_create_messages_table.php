@@ -22,6 +22,7 @@ class CreateMessagesTable extends Migration
             $table->decimal('badget',8,2)->nullable();
             $table->string('category',15)->nullable();
             $table->string('message',200)->nullable();
+            $table->string('ip',20)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

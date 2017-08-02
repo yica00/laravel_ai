@@ -109,7 +109,7 @@
                       data: $('#forms').serialize(),
                       dataType: 'JSON',
                       success: function (data) {
-                          alert(JSON.stringify(data));
+//                          alert(JSON.stringify(data));
 //                          $(".writeinfo").append(data.msg);
                       }
                   });
