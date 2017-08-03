@@ -26,7 +26,9 @@
     
   </div>  
   <div class="detail_bot clearfix">
+      <div class="w1160 clearfix">
         {!! $article->comtent !!}
+      </div>
   </div>
   <div class="backpre clearfix">
       @if( $up_down['1'] )<a href="/case/{{ $up_down['1'] }}" rel="next">上一篇</a> @endif
