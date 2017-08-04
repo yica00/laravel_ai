@@ -53,7 +53,7 @@
         <a  href="/case/{{$article->id}}">
           <img src="{{$article->thumbnail}}" alt="">
           <span class="box">&nbsp;</span>
-          <div class="txt">{{$article->title}}}}</div>
+          <div class="txt">{{$article->title}}</div>
         </a>
       </li>
         @endforeach
