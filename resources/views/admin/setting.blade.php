@@ -87,14 +87,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">报价单价</label>
-                                <div class="col-md-6">
-                                    <input id="email"   class="form-control" name="price"  value="{{ $setting['price']  }}"  autofocus>
-                                </div>
-                            </div>
-
-
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">

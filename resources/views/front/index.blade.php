@@ -5,316 +5,727 @@
   <div class="hd">&nbsp;</div>
   <div class="bd">
     <ul>
-      @foreach( $sliders as $slider )
-      <li><a href="{{$slider->link}}" style="background:url({{$slider->thumbnail}}) center no-repeat;">&nbsp;</a></li>
-      @endforeach
+      <li><a href="" style="background:url(images/bn_1.jpg) center no-repeat;">&nbsp;</a></li>
+      <li><a href="" style="background:url(images/bn_2.jpg) center no-repeat;">&nbsp;</a></li>
+      <li><a href="" style="background:url(images/bn_3.jpg) center no-repeat;">&nbsp;</a></li>
     </ul>
   </div>
   <a class="prev" href="javascript:void(0)"></a>
   <a class="next" href="javascript:void(0)"></a>
 </div>
 <script type="text/javascript">jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});</script>
-<!-- 报价 -->
+<!--  product-->
 <div class="w1160 clearfix">
-  <span class="bk30">&nbsp;</span>
-  <div class="quotes clearfix">
-      <div class="bear_form fr">
-          <p class="txt">您的爱家预算为</p>
-          <div class="result" id="result">0</div>
-          <div class="btn clearfix">
-             <a class="btn_1" id="submit">免费智能报价</a>
-             <a href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes" class="btn_2">精确人工报价</a>
-          </div>
+  <span class="bk50">&nbsp;</span>
+  <div class="ho_tit_all" >
+    <h2><a href="product.html">product center</a></h2>
+    <h3><a href="product.html">产品中心</a></h3>
+    <p>设计 / 主辅材 / 施工 / 损耗 / 家具 / 软装 / 配饰 一站配齐</p>
+  </div>
+  <span class="bk40">&nbsp;</span>
+  <div class="slideTxtBox">
+      <div class="hd">
+        <ul><li><span>&nbsp;</span>瓷砖</li><li><span>&nbsp;</span>吊顶</li><li><span>&nbsp;</span>厨卫</li><li><span>&nbsp;</span>腻子粉</li><li><span>&nbsp;</span>乳胶漆</li><li><span>&nbsp;</span>门</li></ul>
       </div>
-      <div class="num fl"><p>已成功为<span>12158</span>户家庭提供精准方案</p></div>
-      <div class="quotes_form fl">
-        <form class="clearfix" id="forms" method="post">
-          {{csrf_field()}}
-            <dl class="clearfix">
-                <dt>房屋户型</dt>
-                <dd>
-                    <select>
-                        <option value="1">1室</option><option value="2">2室</option><option value="3">3室</option><option value="4">4室</option>
-                    </select>
-                  </dd>
-                  <dd>
-                    <select>
-                        <option value="1">1厅</option><option value="2">2厅</option><option value="3">3厅</option><option value="4">4厅</option>
-                    </select>
-                  </dd>
-                  <dd>
-                    <select>
-                        <option value="1">1卫</option><option value="2">2卫</option><option value="3">3卫</option>
-                    </select>
-                  </dd>
-                  <dd>
-                    <input class="int_1" type="text" name="area"  id="area" placeholder="输入房地产面积"> <em>㎡</em>
-                </dd>
-              </dl>
-              <dl class="clearfix">
-                <dt>楼盘地址</dt>
-                <dd>
-                    <select>
-                        <option value="1">南充市</option>
-                      {{--<option value="2">绵阳市</option><option value="3">自贡市</option><option value="4">攀枝花市</option><option value="5">泸州市</option><option value="6">德阳市</option><option value="7">广元市</option><option value="8">遂宁市</option><option value="9">内江市</option><option value="10">乐山市</option><option value="11">资阳市</option><option value="12">宜宾市</option><option value="13">南充市</option><option value="14">达州市</option><option value="15">雅安市</option><option value="16">阿坝藏族羌族自治州</option> <option value="17">甘孜藏族自治州</option><option value="18">凉山彝族自治州</option><option value="19">广安市</option><option value="20">巴中市</option><option value="21">眉山市</option>--}}
-                    </select>
-                  </dd>
-                  <dd>
-                    <input class="int_2" type="text" name="address" id="address" placeholder="请填写小区/楼盘详细地址">
-                </dd>
-              </dl>
-              <dl class="clearfix">
-                <dt>装修风格</dt>
-                <dd>
-                    <input class="int_3 on" type="button" name="style" value="现代风格">
-                  </dd>
-                  <dd>
-                    <input class="int_3" type="button"  value="田园风格">
-                  </dd>
-                  <dd>
-                    <input class="int_3" type="button"  value="简约风格">
-                  </dd>
-                  <dd>
-                    <input class="int_3" type="button"  value="欧式风格">
-                  </dd>
-                  <dd>
-                    <input class="int_3" type="button"  value="其他风格">
-                  </dd>
-              </dl>
-          <script>
-              $('.int_3').click(function () {
-                  $('.int_3').each(function () {
-                      var th = $(this);
-                      th.removeClass('on');
-                      th.removeAttr('name');
-                  });
-                  var th = $(this);
-                  th.addClass('on');
-                  th.attr('name',"style");
-              });
-
-              $("#submit").click(function(){
-                  var name = $('#name').val();
-                  var phone = $('#phone').val();
-                  var area = $('#area').val();
-                  if( name == "" ||phone == "" ||area == "" ){
-                      alert("请先输入姓名,电话,和面积后报价");
-                      return false;
-                  }
-                  var price = parseInt(area)*{{ session('setting')['price']  }}
-                  $('#result').html(price);
-                  $.ajax({
-                      url: '/front/message',
-                      type: 'POST',
-                      data: $('#forms').serialize(),
-                      dataType: 'JSON',
-                      success: function (data) {
-//                          alert(JSON.stringify(data));
-//                          $(".writeinfo").append(data.msg);
-                      }
-                  });
-              });
-
-
-          </script>
-              <dl class="clearfix">
-                <dt>您的称呼</dt>
-                  <dd>
-                    <input class="int_4" type="text" name="name" id="name" placeholder="先生/女士">
-                </dd>
-                <dd>
-                    <input class="int_5" type="text" name="phone" id="phone" placeholder="输入手机号">
-                </dd>
-                {{--<dd>--}}
-                    {{--<input class="int_6" type="text" name="" placeholder="输入验证码">--}}
-                {{--</dd>--}}
-                  {{--<dd>--}}
-                    {{--<input class="int_7" type="submit" name="" value="获取验证码">--}}
-                {{--</dd>--}}
-              </dl>
-          </form>
+      <div class="bd">
+        <div class="prodct_out clearfix">
+          <div class="list fr">
+            <ul class="clearfix">
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp1.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp2.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp3.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp4.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp5.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp6.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+            </ul>
+          </div>
+          <div class="ad fl">
+            <img src="images/cp_bg_1.jpg">
+            <a href="product.html"><img src="images/cp_more_1.png"></a>
+          </div>
+        </div>
+        <div class="prodct_out clearfix">
+          <div class="list fr">
+            <ul class="clearfix">
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp1.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp2.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp3.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp4.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp5.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp6.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+            </ul>
+          </div>
+          <div class="ad fl">
+            <img src="images/cp_bg_2.jpg">
+            <a href="product.html"><img src="images/cp_more_2.png"></a>
+          </div>
+        </div>
+        <div class="prodct_out clearfix">
+          <div class="list fr">
+            <ul class="clearfix">
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp1.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp2.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp3.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp4.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp5.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp6.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+            </ul>
+          </div>
+          <div class="ad fl">
+            <img src="images/cp_bg_3.jpg">
+            <a href="product.html"><img src="images/cp_more_3.png"></a>
+          </div>
+        </div>
+        <div class="prodct_out clearfix">
+          <div class="list fr">
+            <ul class="clearfix">
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp1.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp2.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp3.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp4.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp5.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp6.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+            </ul>
+          </div>
+          <div class="ad fl">
+            <img src="images/cp_bg_4.jpg">
+            <a href="product.html"><img src="images/cp_more_4.png"></a>
+          </div>
+        </div>
+        <div class="prodct_out clearfix">
+          <div class="list fr">
+            <ul class="clearfix">
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp1.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp2.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp3.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp4.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp5.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp6.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+            </ul>
+          </div>
+          <div class="ad fl">
+            <img src="images/cp_bg_5.jpg">
+            <a href="product.html"><img src="images/cp_more_5.png"></a>
+          </div>
+        </div>
+        <div class="prodct_out clearfix">
+          <div class="list fr">
+            <ul class="clearfix">
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp1.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp2.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp3.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp4.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp5.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="product_in.html">
+                    <span class="pic"><img src="images/cp6.jpg" alt=""></span>
+                    <span class="mask">&nbsp;</span>
+                    <div class="txt">
+                      <h2>瓷砖</h2>
+                      <p>马可波罗</p>
+                    </div>
+                  </a>
+                </li>
+            </ul>
+          </div>
+          <div class="ad fl">
+            <img src="images/cp_bg_6.jpg">
+            <a href="product.html"><img src="images/cp_more_6.png"></a>
+          </div>
+        </div>
       </div>
     </div>
-  <span class="bk30">&nbsp;</span>
+    <script type="text/javascript">jQuery(".slideTxtBox").slide();</script>
 </div>
-<!-- caseout -->
+<span class="bk50">&nbsp;</span>
+<!--  case-->
 <div class="caseout">
   <div class="w1160 clearfix">
     <span class="bk50">&nbsp;</span>
-    <div class="ho_tit_all">
-      <a href="/case" class="clearfix"><em class="bg_l fl">&nbsp;</em><em class="p fl">装修风格<i>优选数千套精美风格，超万张照片供您欣赏</i></em><em class="bg_r fl">&nbsp;</em></a>
+    <div class="ho_tit_all" >
+      <h2><a href="case.html">typical case</a></h2>
+      <h3><a href="case.html">典型案例</a></h3>
+      <p>精挑细选数千套案例，超万张照片供您欣赏</p>
     </div>
-    <span class="bk30">&nbsp;</span>
+    <span class="bk40">&nbsp;</span>
     <div class="clearfix">
-      <div class="w330 fl mR10">
-        <a href="https://yun.kujiale.com/design/3FO4IH45QOMK/show?fromqrcode=true" target="_blank" class="btn_vr">VR实景装修效果图</a>
-        <span class="bk10">&nbsp;</span>
-        <a href="/case/{{$cases[0]->id}}" class="caseo_link">
-          <img src="{{$cases[0]->thumbnail}}">
+      <div class="w330 fl mR10 boost_img">
+        <a href="case_in.html" class="caseo_link">
+          <img src="images/cp_4.jpg">
           <span class="mask">&nbsp;</span>
-          <span class="txt">{{$cases[0]->title}}</span>
+          <span class="txt">欧式古典欧式古典欧式古典欧式古典欧式古典欧式古典欧式古典欧式古典</span>
+        </a>
+        <span class="bk10">&nbsp;</span>
+        <a href="case_in.html" class="caseo_link">
+          <img src="images/cp_1.jpg">
+          <span class="mask">&nbsp;</span>
+          <span class="txt">欧式古典欧式古典欧式古典欧式古典</span>
         </a>
       </div>
       <div id="slideBoxcp" class="slideBoxcp fl mR10">
         <div class="hd">&nbsp;</div>
         <div class="bd">
-          <ul>
-            @foreach( $cases as $case )
+          <ul class="boost_img">
             <li>
-              <a href="/case/{{$case->id}}">
-                <img src="{{$case->thumbnail}}">
+              <a href="case_in.html">
+                <img src="images/cp_4.jpg">
                 <div class="txt">
-                  <span class="name">{{$case->title}}</span>
+                  <span class="name">中建桐梓林壹号--美式风格</span>
                   <span class="btn">查看更多</span>
                 </div>
                 <span class="mask_black">&nbsp;</span>
               </a>
             </li>
-            @endforeach
+            <li>
+              <a href="case_in.html">
+                <img src="images/cp_5.jpg">
+                <div class="txt">
+                  <span class="name">中建桐梓林壹号--美式风格</span>
+                  <span class="btn">查看更多</span>
+                </div>
+                <span class="mask_black">&nbsp;</span>
+              </a>
+            </li>
+            <li>
+              <a href="case_in.html">
+                <img src="images/cp_6.jpg">
+                <div class="txt">
+                  <span class="name">中建桐梓林壹号--美式风格</span>
+                  <span class="btn">查看更多</span>
+                </div>
+                <span class="mask_black">&nbsp;</span>
+              </a>
+            </li>
+            <li>
+              <a href="case_in.html">
+                <img src="images/cp_7.jpg">
+                <div class="txt">
+                  <span class="name">中建桐梓林壹号--美式风格</span>
+                  <span class="btn">查看更多</span>
+                </div>
+                <span class="mask_black">&nbsp;</span>
+              </a>
+            </li>
+            <li>
+              <a href="case_in.html">
+                <img src="images/cp_8.jpg">
+                <div class="txt">
+                  <span class="name">中建桐梓林壹号--美式风格</span>
+                  <span class="btn">查看更多</span>
+                </div>
+                <span class="mask_black">&nbsp;</span>
+              </a>
+            </li>
           </ul>
         </div>
         <a class="prev" href="javascript:void(0)"></a>
         <a class="next" href="javascript:void(0)"></a>
       </div>
       <script type="text/javascript">jQuery(".slideBoxcp").slide({mainCell:".bd ul",autoPlay:true});</script>
-      <div class="w330 fl">
-        <a href="/case/{{$cases[1]->id}}" class="caseo_link">
-          <img src="{{$cases[1]->thumbnail}}">
+      <div class="w330 fl boost_img">
+        <a href="case_in.html" class="caseo_link">
+          <img src="images/cp_2.jpg">
           <span class="mask">&nbsp;</span>
-          <span class="txt">{{$cases[1]->title}}</span>
+          <span class="txt">欧式古典欧式古典欧式古典欧式古典</span>
         </a>
         <span class="bk10">&nbsp;</span>
-        <a href="/case/{{$cases[2]->id}}" class="caseo_link">
-          <img src="{{$cases[2]->thumbnail}}">
+        <a href="case_in.html" class="caseo_link">
+          <img src="images/cp_3.jpg">
           <span class="mask">&nbsp;</span>
-          <span class="txt">{{$cases[2]->title}}</span>
+          <span class="txt">欧式古典欧式古典欧式古典欧式古典</span>
         </a>
       </div>
     </div>
-    <span class="bk80">&nbsp;</span>
+    <span class="bk70">&nbsp;</span>
   </div>
 </div>
-<!-- teamout -->
+<!-- brand -->
 <div class="w1160 clearfix">
   <span class="bk50">&nbsp;</span>
-  <div class="ho_tit_all">
-    <a href="/team" class="clearfix"><em class="bg_l fl">&nbsp;</em><em class="p fl">设计团队<i>汇聚多余名资深设计师，合力为您打造一个完美的家</i></em><em class="bg_r fl">&nbsp;</em></a>
-  </div>
-  <span class="bk30">&nbsp;</span>
-  <div class="picScroll-lefteam">
-      <div class="hd">
-        <a class="next"></a>
-        <a class="prev"></a>
-      </div>
-      <div class="bd">
-        <ul class="picList">
-          @foreach( $teams as $team )
-          <li>
-            <a href="/team/{{$team->id}}">
-            <img src="{{$team->photo}}" />
-            <div class="txt"><h2>{{$team->name}}</h2><p class="p2">{{$team->title}}</p></div>
-            </a>
-          </li>
-            @endforeach
-        </ul>
-      </div>
-  </div>
-  <script type="text/javascript">
-  jQuery(".picScroll-lefteam").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:4,trigger:"click"});
-  </script>
-  <span class="bk80">&nbsp;</span>
-</div>
-<!-- productout -->
-<div class="productout">
-  <span class="bk50">&nbsp;</span>
-  <div class="w1160 clearfix">
-   <div class="ho_tit_all">
-    <a href="/product" class="clearfix"><em class="bg_l fl">&nbsp;</em><em class="p fl">优质选材<i>集团化采购，一线大品牌，德系材料工艺保障</i></em><em class="bg_r fl">&nbsp;</em></a>
-  </div>
-    <span class="bk40">&nbsp;</span>
-    <ul class="list clearfix">
-      @foreach( $products as $product )
-      <li>
-        <a href="/product/{{$product->id}}">
-          <span class="pic"><img src="{{$product->thumbnail}}" alt="" /></span>
-          <span class="mask_black">&nbsp;</span>
-              <div class="txt">
-                <h2>{{$product->title}}</h2>
-                <p>{{$product->link}}</p>
-              </div>
-        </a>
-      </li>
-        @endforeach
-    </ul>
-  </div>
-  <span class="bk50">&nbsp;</span>
-</div>
-<span class="bk50">&nbsp;</span>
-<div class="ho_add_all">
-</div>
-<span class="bk80">&nbsp;</span>
-<!-- news -->
-<div class="w1160 clearfix">
-      <div class="ho_tit_all">
-      <a href="/news" class="clearfix"><em class="bg_l fl">&nbsp;</em><em class="p fl">新闻中心<i>实时掌握最美品佳资讯，与我们共同成长</i></em><em class="bg_r fl">&nbsp;</em></a>
-      </div>
-    <span class="bk40">&nbsp;</span>
-    <!-- colorful_out -->
-    <div class="picScroll-left-hd">
-      <div class="hd"><a class="next"></a>
-          <a class="prev"></a></div>
-      <div class="bd">
-        <ul class="picList boost_img">
-          @foreach( $newss as $news )
-          <li>
-            <a href="/news/{{$news->id}}">
-              <span class="pic"><img src="{{$news->thumbnail}}"></span>
-              <div class="txt">
-                <h2>{{$news->title}}</h2>
-                <p>{{$news->introduce}}</p>
-                <span class="btn">查看更多</span>
-              </div>
-            </a>
-          </li>
-            @endforeach
-        </ul>
-      </div>
-    </div>
-    <script type="text/javascript">
-    jQuery(".picScroll-left-hd").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:3,trigger:"click"});
-    </script>
-</div>
-
-<span class="bk80">&nbsp;</span>
-<!-- witness -->
-<div class="w1160 clearfix">
-  <div class="ho_tit_all">
-    <a href="/witness" class="clearfix"><em class="bg_l fl">&nbsp;</em><em class="p fl">客户见证<i>我们服务过996位客户，听听他们的声音！</i></em><em class="bg_r fl">&nbsp;</em></a>
+  <div class="ho_tit_all" >
+    <h2><a href="brand.html">cooperative brand</a></h2>
+    <h3><a href="brand.html">合作品牌</a></h3>
+    <p>优选品牌，厂价直供，捍卫居家品质</p>
   </div>
   <span class="bk40">&nbsp;</span>
-    <div class="picScroll-leftwit">
-    <div class="hd">
-      <a class="next"></a>
-      <a class="prev"></a>
-    </div>
-    <div class="bd">
-      <ul class="picList boost_img">
-        @foreach( $vitnesss as $vit )
-        <li>
-          <a href="/witness/{{$vit->id}}">
-                  <span class="pic"><img src="{{$vit->thumbnail}}" alt="" /></span>
-                  <div class="txt">{{$vit->title}}</div>
-                </a>
-        </li>
-          @endforeach
-      </ul>
-    </div>
-  </div>
-
-  <script type="text/javascript">
-  jQuery(".picScroll-leftwit").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:4,trigger:"click"});
-  </script>
+  <ul class="brandout clearfix">
+    <li><a href="brand.html"><img src="images/brd_1.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_2.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_3.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_4.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_5.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_6.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_7.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_8.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_9.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_10.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_11.jpg" alt=""></a></li>
+    <li><a href="brand.html"><img src="images/brd_12.jpg" alt=""></a></li>
+  </ul>
 </div>
-<span class="bk80">&nbsp;</span>
-<!-- index_list -->
+<span class="bk70">&nbsp;</span>
+<!-- service -->
+<div class="serout">
+  <div class="w1160">
+    <span class="bk50">&nbsp;</span>
+    <div class="ho_tit_all" >
+      <h2><a href="service.html">service center</a></h2>
+      <h3><a href="service.html">服务中心</a></h3>
+      <p>颠覆行业潜规则，为难自己，成就客户！</p>
+    </div>
+    <span class="bk40">&nbsp;</span>
+    <ul class="list clearfix">
+      <li>
+        <h2>品牌保障</h2>
+        <p>真爱筑家18年致力客户满意建材</p>
+      </li>
+      <li>
+        <h2>专业保障</h2>
+        <p>资深设计、材料、安装、客服专业团队</p>
+      </li>
+      <li>
+        <h2>质量保障</h2>
+        <p>德系工艺、品质保证</p>
+      </li>
+      <li>
+        <h2>服务保障</h2>
+        <p>专业系统的安装服务及售后保障</p>
+      </li>
+      <li>
+        <h2>材料保障</h2>
+        <p>厂家直供、公司深度整合，全面捍卫建材品质、品牌</p>
+      </li>
+    </ul>
+    <span class="bk70">&nbsp;</span>
+  </div>
+</div>
+<!-- news -->
+<div class="w1160 clearfix">
+  <span class="bk50">&nbsp;</span>
+  <div class="ho_tit_all" >
+    <h2><a href="news.html">news center</a></h2>
+    <h3><a href="news.html">新闻中心</a></h3>
+    <p>实时掌握最新资讯和兄弟动态</p>
+  </div>
+  <span class="bk40">&nbsp;</span>
+  <div class="clearfix">
+      <div class="picScroll-leftgui fr">
+        <div class="hd">
+          <a class="next"></a>
+          <a class="prev"></a>
+        </div>
+        <div class="bd">
+          <ul class="picList boost_img">
+            <li>
+              <a href="news_in.html">
+                <span class="pic"><img src="images/cp_1.jpg" alt="" /></span>
+                <span class="mask_black">&nbsp;</span>
+                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
+              </a>
+            </li>
+            <li>
+              <a href="news_in.html">
+                <span class="pic"><img src="images/cp_2.jpg" alt="" /></span>
+                <span class="mask_black">&nbsp;</span>
+                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
+              </a>
+            </li>
+            <li>
+              <a href="news_in.html">
+                <span class="pic"><img src="images/cp_3.jpg" alt="" /></span>
+                <span class="mask_black">&nbsp;</span>
+                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
+              </a>
+            </li>
+            <li>
+              <a href="news_in.html">
+                <span class="pic"><img src="images/cp_1.jpg" alt="" /></span>
+                <span class="mask_black">&nbsp;</span>
+                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
+              </a>
+            </li>
+            <li>
+              <a href="news_in.html">
+                <span class="pic"><img src="images/cp_2.jpg" alt="" /></span>
+                <span class="mask_black">&nbsp;</span>
+                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
+              </a>
+            </li>
+            <li>
+              <a href="news_in.html">
+                <span class="pic"><img src="images/cp_3.jpg" alt="" /></span>
+                <span class="mask_black">&nbsp;</span>
+                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <script type="text/javascript">
+      jQuery(".picScroll-leftgui").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:3,trigger:"click"});
+      </script>
+      <a href="news.html" class="guide_tit fl"><img src="images/guide_1.jpg"></a>
+  </div>
+  <span class="bk10">&nbsp;</span>
+  <div class="clearfix">
+      <div class="w980 fr">
+        <div class="clearfix">
+          <div class="guideout fl mR10">
+            <span class="pic"><img src="images/guidea.jpg"></span>
+            <span class="mask">&nbsp;</span>
+            <div class="txt">
+              <h2><a href="news.html">最新资讯</a></h2>
+              <ul class="list">
+                <li><a href="news_in.html">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>
+                <li><a href="news_in.html">装修效果图解析-如何装修儿童房？</a></li>
+                <li><a href="news_in.html">装修房子时这些问题千万不要忽略</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="guideout fl mR10">
+            <span class="pic"><img src="images/guideb.jpg"></span>
+            <span class="mask">&nbsp;</span>
+            <div class="txt">
+              <h2><a href="news.html">兄弟动态</a></h2>
+              <ul class="list">
+                <li><a href="news_in.html">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>
+                <li><a href="news_in.html">装修效果图解析-如何装修儿童房？</a></li>
+                <li><a href="news_in.html">装修房子时这些问题千万不要忽略</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="guideout fl">
+            <span class="pic"><img src="images/guidec.jpg"></span>
+            <span class="mask">&nbsp;</span>
+            <div class="txt">
+              <h2><a href="news.html">装修风水</a></h2>
+              <ul class="list">
+                <li><a href="news_in.html">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>
+                <li><a href="news_in.html">装修效果图解析-如何装修儿童房？</a></li>
+                <li><a href="news_in.html">装修房子时这些问题千万不要忽略</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <a href="guide.html" class="guide_tit fl"><img src="images/guide_2.jpg"></a>
+  </div>
+</div>
+<span class="bk50">&nbsp;</span>
+<!-- footer -->
 @endsection

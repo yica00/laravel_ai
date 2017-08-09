@@ -2,41 +2,44 @@
 @section('content')
 <!-- bread -->
 <div class="bread">
-  <div class="w1160 clearfix">  
-      <div class="top">
-        <h2>--装修风格--</h2>
-        <p><span>decoration style</span></p>
-      </div>
-      <ul class="sublist clearfix">
-        <li><a href="https://yun.kujiale.com/design/3FO4IH45QOMK/show?fromqrcode=true" target="_blank">VR实景装修效果图</a></li>
-        <li><a href="/case" class="on">经典案例</a></li>
-      </ul>
+  <div class="w1160 clearfix">
+    <div class="in_tit_all">
+      <p>------&nbsp;&nbsp;typical case&nbsp;&nbsp;------</p>
+      <h2><span>典</span><span>型</span><span>案</span><span>例</span></h2>
     </div>
+  </div>
+</div>
+
+<!--  -->
+<div class="wap_box">
+
+    <!-- 内容 -->
+    <span class="bk50">&nbsp;</span>
+   <div class="news_dis">
+    <div class="w1160 clearfix">
+        <div class="top">
+          <h3 class="tit">现代农业示范园为民增收 推动临沭农业创新发展</h3>
+           <p class="protime">上传时间：<em>2017-08-22</em> <span class="pL10">来源：<i>兄弟建材</i></span></p>
+        </div>
+        </div>
+        <div class="p_style">
+        <div class="w1160 clearfix">
+        
+              <img src="images/cp_4.jpg" style="margin:0 auto 20px;display:block;">
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在距离临沭县约十公里的周庄，有一片约占地327亩的史丹利（荷兰）现代农业示范园，这里交通便利，生态环境良好，田园风光优美，灿烂的人文景观与秀丽的自燃风光交相辉映，拥有丰富的农业与乡村旅游资源。29日，全国媒体临沭行采访团记者来到这里，感受现代农业的魅力。</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在距离临沭县约十公里的周庄，有一片约占地327亩的史丹利（荷兰）现代农业示范园，这里交通便利，生态环境良好，田园风光优美，灿烂的人文景观与秀丽的自燃风光交相辉映，拥有丰富的农业与乡村旅游资源。29日，全国媒体临沭行采访团记者来到这里，感受现代农业的魅力。</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在距离临沭县约十公里的周庄，有一片约占地327亩的史丹利（荷兰）现代农业示范园，这里交通便利，生态环境良好，田园风光优美，灿烂的人文景观与秀丽的自燃风光交相辉映，拥有丰富的农业与乡村旅游资源。29日，全国媒体临沭行采访团记者来到这里，感受现代农业的魅力。</p>
+          </div>
+          </div> 
+          <div class="backpre clearfix">      
+              <a href="case_in.html" rel="next">上一篇</a>
+              <a href="case_in.html" rel="prev">下一篇</a>
+              <a href="case.html">返回上级目录</a>
+          </div>
+    </div>
+    <!-- end -->
+
 </div>
 <span class="bk50">&nbsp;</span>
-<div class="wap_box">
-  <div class="w1160 clearfix">
-    <!-- 内容 -->
-    <div class="detail_top clearfix">
-        <div class="tit">{{$article->title}}</div>
-        <div class="dis">
-            {{$article->introduce}}
-        </div>
-    </div>
-    
-  </div>  
-  <div class="detail_bot clearfix">
-      <div class="w1160 clearfix">
-        {!! $article->comtent !!}
-      </div>
-  </div>
-  <div class="backpre clearfix">
-      @if( $up_down['1'] )<a href="/case/{{ $up_down['1'] }}" rel="next">上一篇</a> @endif
-      @if( $up_down['2'] ) <a href="/case/{{ $up_down['2'] }}" rel="prev">下一篇</a>@endif
-      <a href="/case">返回上级目录</a>
-  </div>
-  <!-- end -->
-</div>
-<span class="bk80">&nbsp;</span>
-<!-- index_list -->
+<!-- footer -->
 @endsection

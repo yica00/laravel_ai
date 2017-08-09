@@ -17,10 +17,7 @@ class CreateMessagesTable extends Migration
             $table->increments('id');
             $table->string('name',10);
             $table->string('phone',20);
-            $table->string('address',40)->nullable();
-            $table->integer('area')->nullable();
-            $table->decimal('badget',8,2)->nullable();
-            $table->string('category',15)->nullable();
+            $table->string('email',40)->nullable();
             $table->string('message',200)->nullable();
             $table->string('ip',20)->nullable();
             $table->timestamps();

@@ -17,7 +17,6 @@
     <!--[if lt IE 9]><!-->
     <script src="/js/html5shiv.min.js"></script>
     <script src="/js/respond.min.js"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
     <!--[endif]-->
     <!-- 先后 -->
 </head>
@@ -25,64 +24,50 @@
 <!-- header -->
 <div class="header">
     <div class="w1160 clearfix">
-        <span class="call fr"><em class="p1"><i>服务热线：</i>{{ session('setting')['fix_phone']  }}</em><em class="p2">{{ session('setting')['phone']  }}</em><em class="p3">地址：{{ session('setting')['bases']  }}</em></span>
+        <div class="w960 fr">
+            <div class="top clearfix">
+                <div class="call fr"><p>24小时免费咨询热线</p><h2>{{ session('setting')['fix_phone']  }}</h2></div>
+                <form class="search fr">
+                    <span class="default">瓷砖型号</span>
+                    <input type="" class="inp_1" id="" placeholder="">
+                    <button type="submit" class="inp_2"><img src="/images/btn_sear.svg"></button>
+                </form>
+            </div>
+            <div class="nav_box">
+                <ul id="nav" class="nav clearfix">
+                    @foreach( session('header_nav') as $navs )
+                        <li class="nLi @if( session('urls') == $navs->link )on @endif">
+                            <h3><a href="{{$navs->link}}">{{$navs->title}}</a></h3>
+                            @if( $navs->articles )
+                                <ul class="sub">
+                                    @foreach( $navs->articles as $arti )
+                                        <li><a href="@if( $arti->link ){{$arti->link}}@else{{$navs->link}}/category/{{$arti->id}}@endif">{{$arti->title}}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
+                    @endforeach
+                </ul>
+                <script id="jsID" type="text/javascript">
+                    jQuery("#nav").slide({
+                        type:"menu",// 效果类型，针对菜单/导航而引入的参数（默认slide）
+                        titCell:".nLi", //鼠标触发对象
+                        targetCell:".sub", //titCell里面包含的要显示/消失的对象
+                        effect:"slideDown", //targetCell下拉效果
+                        delayTime:300 , //效果时间
+                        triggerTime:0, //鼠标延迟触发时间（默认150）
+                        returnDefault:true //鼠标移走后返回默认状态，例如默认频道是“预告片”，鼠标移走后会返回“预告片”（默认false）
+                    });
+                </script>
+            </div>
+        </div>
         <a href="/" class="logo fl">&nbsp;</a>
-    </div>
-
-</div>
-<!-- nav -->
-<div class="nav_box">
-    <div class="w1160 clearfix">
-        <ul id="nav" class="nav clearfix">
-            @foreach( session('header_nav') as $navs )
-             <li class="nLi @if( session('urls') == $navs->link )on @endif">
-                <h3><a href="{{$navs->link}}">{{$navs->title}}</a></h3>
-                @if( $navs->articles )
-                    <ul class="sub">
-                        @foreach( $navs->articles as $arti )
-                         <li><a href="@if( $arti->link ){{$arti->link}}@else{{$navs->link}}/category/{{$arti->id}}@endif">{{$arti->title}}</a></li>
-                        @endforeach
-                    </ul>
-                @endif
-            </li>
-            @endforeach
-        </ul>
-        <script id="jsID" type="text/javascript">
-            jQuery("#nav").slide({
-                type:"menu",// 效果类型，针对菜单/导航而引入的参数（默认slide）
-                titCell:".nLi", //鼠标触发对象
-                targetCell:".sub", //titCell里面包含的要显示/消失的对象
-                effect:"slideDown", //targetCell下拉效果
-                delayTime:300 , //效果时间
-                triggerTime:0, //鼠标延迟触发时间（默认150）
-                returnDefault:true //鼠标移走后返回默认状态，例如默认频道是“预告片”，鼠标移走后会返回“预告片”（默认false）
-            });
-        </script>
     </div>
 </div>
 
 @yield('content')
 
 <!-- footer -->
-<div class="index_list">
-    <div class="w1160 clearfix">
-        <ul class="list clearfix">
-            <li class="one">预约</li>
-            <li>考察公司<br/>交流想法</li>
-            <li class="one">实地勘测</li>
-            <li>签订设计<br/>合同</li>
-            <li>平面功能<br/>方案确认</li>
-            <li class="one">深化设计</li>
-            <li>签订施工<br/>合同</li>
-            <li class="one">施工</li>
-            <li class="one">客户保障</li>
-            <li>装饰主材<br/>挑选</li>
-            <li class="one">家具挑选</li>
-            <li class="one">现场布置</li>
-        </ul>
-    </div>
-    <span class="bk30">&nbsp;</span>
-</div>
 <div class="footer">
     <div class="w1160 clearfix">
         <ul class="top clearfix">
@@ -92,7 +77,7 @@
             </li>
             <li>
                 <img src="/images/ho_phone.png" alt="" />
-                <p class="one">{{ session('setting')['phone']  }}</p>
+                <p>{{ session('setting')['phone']  }}</p>
             </li>
             <li>
                 <img src="/images/ho_qq.png" alt="" />
@@ -100,44 +85,44 @@
             </li>
             <li>
                 <img src="/images/ho_add.png" alt="" />
-                <p>{{ mb_substr(session('setting')['bases'] ,0,9,'utf8') }}<br/>{{ mb_substr(session('setting')['bases'] ,9,30,'utf8') }}</p>
+                <p>{{ mb_substr(session('setting')['bases'],0,10 ) }}<br/>{{ mb_substr(session('setting')['bases'],10,30 ) }} </p>
             </li>
         </ul>
-        <div class="fot_map"><div style="width:100%;height:200px;" id="dituContent"></div></div>
+        <div style="width:100%;height:160px;" id="dituContent"></div>
         <div class="bot clearfix">
             <span class="ewm fl"><img src="{{ session('setting')['wx_map']  }}"></span>
             <ul class="txt fl">
                 <li>座机：{{ session('setting')['fix_phone']  }}</li>
                 <li>电话：{{ session('setting')['phone']  }}</li>
                 <li>Q Q：{{ session('setting')['qq']  }}</li>
-                <li>地址：{{ mb_substr(session('setting')['bases'] ,0,9,'utf8') }}{{ mb_substr(session('setting')['bases'] ,9,30,'utf8') }}</li>
+                <li>地址：{{ session('setting')['bases']  }}</li>
             </ul>
         </div>
         <div class="link clearfix">
             <span class="fl mR10">友情链接 </span>
             <div class="fl">
-                @foreach( session('links') as $link )
-                <a href="{{$link->link}}" target="_blank">{{$link->title}}</a>
-                @endforeach
+                <a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a>
             </div>
         </div>
     </div>
     <div class="rights">
         <div class="w1160 clearfix">
-            CopyRight © 2017  &nbsp;&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;蜀ICP备8888888号&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a>
+            CopyRight © 2017  &nbsp;&nbsp;&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;蜀ICP备8888888号&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a>
         </div>
     </div>
-    <div style="display: none"><h2 title="web_name">{{ session('setting')['web_name']  }}</h2></div>
+    <div style="display: none">{{ session('setting')['web_name']  }}</div>
 </div>
 <!-- 侧边 -->
 <div class="float_onlie">
     <a class="on_1" href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes">&nbsp;</a>
     <a class="on_2 ph" href=""><em>电话：{{ session('setting')['fix_phone']  }}<br/>手机：{{ session('setting')['phone']  }}</em></a>
-    <a class="on_3 add" href=""><em>{{ mb_substr(session('setting')['bases'] ,0,9,'utf8') }}<br/>{{ mb_substr(session('setting')['bases'] ,9,30,'utf8') }}</em></a>
+    <a class="on_3 add" href=""><em>{{ mb_substr(session('setting')['bases'],0,10 ) }}<br/>{{ mb_substr(session('setting')['bases'],10,30 ) }}</em></a>
     <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
     <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
 </div>
-</body>
+@if( \Illuminate\Support\Facades\Request::path() != "contact" )
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+@endif
 <script type="text/javascript">
     //创建和初始化地图函数：
     function initMap(){
@@ -150,8 +135,8 @@
     //创建地图函数：
     function createMap(){
         var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
-        var point = new BMap.Point(106.09019,30.835612);//定义一个中心点坐标
-        map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中
+        var point = new BMap.Point(106.125747,30.835855);//定义一个中心点坐标
+        map.centerAndZoom(point,15);//设定地图的中心点和坐标并将地图显示在地图容器中
         window.map = map;//将map变量存储在全局
     }
 
@@ -177,7 +162,7 @@
     }
 
     //标注点数组
-    var markerArr = [{title:"美品佳装饰",content:"地址：南充市顺庆区潆华工业园区博雅豪庭3幢-102铺",point:"106.088996|30.835566",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:"{{ session('setting')['web_name']  }}",content:"地址：{{ session('setting')['bases']  }}",point:"106.123555|30.835359",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
     ];
     //创建marker
     function addMarker(){
@@ -235,4 +220,5 @@
 
     initMap();//创建和初始化地图
 </script>
+</body>
 </html>

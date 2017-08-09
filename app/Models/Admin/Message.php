@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $fillable = ['name','address','phone','badget','area','category','message','ip'];
+    protected $fillable = ['name','email','phone','message','ip'];
 
     protected $hidden = ['created_at','updated_at','deleted_at'];
 }
