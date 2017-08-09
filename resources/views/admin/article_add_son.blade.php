@@ -4,7 +4,7 @@
         $('#left-bar .nav>li:nth-child(4)>.menu').addClass('on');
     </script>
 
-    <h3 style="float: right;margin-top: 2%"><a href="@if( $pid == 0 )
+    <h3 style="float: right;margin-top: 2%"><a href="@if( $id == 0 )
                 /admin/article
               @else
                 /article/{{ $id }}/look
