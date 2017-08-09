@@ -10,7 +10,7 @@
                 /article/{{ $id }}/look
                @endif">返回上级</a></h3>
     <div class="main-wrap fadeInRight">
-        <h3><a  href="/article/{{$article->id}}/addson">添加【{{$article->title}}】的子类</a></h3>
+        <h3><a  href="/article/{{$id}}/addson">添加【@if( $article ){{$article->title}}@else 顶层 @endif】的子类</a></h3>
         <form class="formPanel" action="/article/add_son/{{ $id }}" enctype="multipart/form-data" method="post" >
             {{ csrf_field()  }}
             <div class="form-group">

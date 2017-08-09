@@ -74,11 +74,13 @@ class ArticleController extends Controller
      */
     public function add_son($id){
         if( $id != 0 ){
-            $pid = Article::find($id)->pid;
+            $article = Article::find($id);
+            $pid = $article->pid;
         }else{
             $pid = 0;
+            $article = null;
         }
-        $article = Article::find($id);
+
         return view('admin.article_add_son',compact('id','pid','article'));
     }
 
