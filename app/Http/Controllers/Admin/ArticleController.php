@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\ArticleCreateRequest;
+use App\Http\Requests\Admin\ArticleUpdateRequest;
 use App\Models\Admin\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -63,7 +65,8 @@ class ArticleController extends Controller
         }else{
             $pid = 0;
         }
-        return view('admin.article_list',compact('articles','pid'));
+        $article = Article::find($id);
+        return view('admin.article_list',compact('articles','pid','article'));
     }
 
     /**
@@ -75,13 +78,13 @@ class ArticleController extends Controller
         }else{
             $pid = 0;
         }
-        return view('admin.article_add_son',compact('id','pid'));
+        $article = Article::find($id);
+        return view('admin.article_add_son',compact('id','pid','article'));
     }
 
-    public function store_son( Request $request ){
+    public function store_son( ArticleCreateRequest $articleCreateRequest ){
         $atic = Input::all();
-        $atic['thumbnail'] = getUrl($request,'thumbnail');
-//        $atic['is_nav'] = 1;
+        $atic['thumbnail'] = getUrl($articleCreateRequest,'thumbnail');
         $rel = Article::create($atic);
         if($rel->wasRecentlyCreated){
             return back()->with('errors','添加成功');
@@ -126,13 +129,13 @@ class ArticleController extends Controller
     /**
      * 保存编辑
      */
-    public function update($id,Request $request){
+    public function update($id,ArticleUpdateRequest $articleUpdateRequest){
         $article = Article::find($id);
         if(!$article){
             return back()->with('errors',"无此数据");
         }
         $atic = Input::all();
-        $atic['thumbnail'] = getUrl($request,'thumbnail');
+        $atic['thumbnail'] = getUrl($articleUpdateRequest,'thumbnail');
         if( !$atic['thumbnail'] ){
             unset( $atic['thumbnail']);
         }

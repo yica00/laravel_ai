@@ -17,15 +17,27 @@
             {{ csrf_field()  }}
             <input type="hidden" name="_method" value="PUT">
             <div class="form-group">
-                <p style="color: red"><?php
-                    if(!is_object($errors)){
-                        echo $errors;
-                    }?>
-                </p>
+
+                <hr style="border-bottom-color: #000000;height:2px;">
+                @if (count($errors) > 0)
+                    <div style="color: red">
+                        <ul>
+                            @if( is_object($errors) )
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            @else
+                                {{ $errors }}
+                            @endif
+                        </ul>
+                    </div>
+                @endif
+
+
                 <label>栏目标题：</label><input type="text" class="input-text" name="title" value="{{$article->title}}" style="width: 62%;"/>
             </div>
             <div class="form-group">
-                <label style="float: left" >缩略图：</label><input style="float: left" type='file'  name='thumbnail' value="{{$article->thumbnail}}">
+                <label style="float: left" >　缩略图：</label><input style="float: left" type='file'  name='thumbnail' value="{{$article->thumbnail}}">
                 @if( $article->thumbnail )
                     <img src="{{$article->thumbnail}}" width="200" />
                 @endif

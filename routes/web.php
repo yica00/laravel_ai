@@ -102,4 +102,8 @@ Route::group(['middleware'=>'check_setting'],function (){
 
 });
 
+Route::any('/register',function (){
+    return null;
+});
+
 

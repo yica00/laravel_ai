@@ -10,6 +10,8 @@
                 /article/{{ $pid }}/look
                @endif">返回上级</a></h3>
     <div class="main-wrap fadeInRight">
+        <h3><a  href="/article/{{$article->id}}/addson">添加【{{$article->title}}】的子类</a></h3>
+
         <p style="color: red"><?php
             if(!is_object($errors)){
                 echo $errors;

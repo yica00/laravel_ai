@@ -7,23 +7,35 @@
     <h3 style="float: right;margin-top: 2%"><a href="@if( $pid == 0 )
                 /admin/article
               @else
-                /article/{{ $pid }}/look
+                /article/{{ $id }}/look
                @endif">返回上级</a></h3>
     <div class="main-wrap fadeInRight">
-        <H3>新增内容</H3>
+        <h3><a  href="/article/{{$article->id}}/addson">添加【{{$article->title}}】的子类</a></h3>
         <form class="formPanel" action="/article/add_son/{{ $id }}" enctype="multipart/form-data" method="post" >
             {{ csrf_field()  }}
             <div class="form-group">
-                <p style="color: red"><?php
-                    if(!is_object($errors)){
-                        echo $errors;
-                    }?>
-                </p>
+
+                <hr style="border-bottom-color: #000000;height:2px;">
+                @if (count($errors) > 0)
+                    <div style="color: red">
+                        <ul>
+                            @if( is_object($errors) )
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            @else
+                                {{ $errors }}
+                            @endif
+                        </ul>
+                    </div>
+                @endif
+
                 <label>栏目标题：</label><input type="text" class="input-text" name="title" style="width: 62%;"/>
             </div>
             <div class="form-group">
-                <label>缩略图：</label><input name="thumbnail" type="file" >
+                <label style="float: left" >　缩略图：</label><input style="float: left" name="thumbnail" type="file" >
             </div>
+            <div style="clear: both;margin-bottom: 2%"></div>
             <div class="form-group">
                 <label>链接地址：</label>
                 <input name="link"  >
