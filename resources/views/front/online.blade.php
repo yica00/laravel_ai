@@ -26,24 +26,29 @@
     <!-- 内容 -->
     <div class="order_warp">
           <p class="top">感谢您填写在线装修信息。为了我们能及时与您取得联系，信息填写后，请保证您的电话处于正常开机状态，我们会有专员第一时间和您取得联系。若您还有疑问，您可以致电客服专线电话：<span>{{ session('setting')['fix_phone']  }}/{{ session('setting')['phone']  }}</span>，我们将会有最专业的客服为您解答疑虑。</p>
-        @if (count($errors) > 0)
-            <div style="color: red">
-                <ul>
-                    @if( is_object($errors) )
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    @else
-                        {{ $errors }}
-                    @endif
-                </ul>
-            </div>
-        @endif
-
         <form  name="reservation" action="/front/message" method="post">
             {{  csrf_field() }}
           <table class="lybclass" cellspacing="0" cellpadding="0" width="800" align="center" border="0">
-              <tbody>              
+              <tbody>
+                  <tr>
+                      <th></th>
+                      <td>
+                          @if (count($errors) > 0)
+                              <div style="color: red">
+                                  <ul>
+                                      @if( is_object($errors) )
+                                          @foreach ($errors->all() as $error)
+                                              <li>{{ $error }}</li>
+                                          @endforeach
+                                      @else
+                                          {{ $errors }}
+                                      @endif
+                                  </ul>
+                              </div>
+                          @endif
+                      </td>
+                  </tr>
+
                   <tr>
                       <th>业主姓名：</th>
                       <td><input id="name" name="name" type="text"><span>请填写您的真实姓名</span><em>*</em></td>
@@ -80,6 +85,14 @@
                   <tr>
                       <th>装修要求：</th>
                       <td><textarea id="lytext" name="message" ></textarea></td>
+                  </tr>
+                  <tr>
+                      <th>验证码：</th>
+                      <td><img src="/vaptcha"></td>
+                  </tr>
+                  <tr>
+                      <th></th>
+                      <td><input id="" name="captcha_code" placeholder="请输入验证码" type="text"><span></span></td>
                   </tr>
               </tbody>
           </table>

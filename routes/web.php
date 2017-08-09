@@ -106,4 +106,8 @@ Route::any('/register',function (){
     return null;
 });
 
+Route::get('/vaptcha',function (){
+    return getCaptcha(4);
+});
+
 

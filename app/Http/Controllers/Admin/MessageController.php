@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\MessageRequest;
 use App\Models\Admin\Message;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -41,7 +42,17 @@ class MessageController extends Controller
      */
     public function store(MessageRequest $request)
     {
+        if( !verifyCaptcha() ){
+            return back()->with('errors','验证码错误，请重试！');
+        }
+        $ip = \Illuminate\Support\Facades\Request::getClientIp();
         $atic = Input::all();
+        $atic['ip'] = $ip;
+        $time = Carbon::now()->subHours(24);
+        $messages = Message::where('ip',$ip)->whereDate('created_at','>',$time)->count();
+        if( $messages > 1 ){
+            return back()->with('errors','当前ip留言过多，请稍后再试');
+        }
         $rel = Message::create($atic);
         if( $rel->wasRecentlyCreated ){
             return back()->with('errors','留言成功，我们会稍后与你联系');
