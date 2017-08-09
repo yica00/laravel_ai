@@ -12,7 +12,7 @@
     </h3>
 
     <div class="main-wrap fadeInRight">
-        <H3>编辑{{$article->title}}</H3>
+        <h3><a>修改【@if( $article ){{$article->title}}@else 顶层 @endif】</a></h3>
         <form class="formPanel" action="/admin/article/{{ $article->id  }}" enctype="multipart/form-data" method="post" >
             {{ csrf_field()  }}
             <input type="hidden" name="_method" value="PUT">
