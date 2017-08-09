@@ -88,11 +88,11 @@
                   </tr>
                   <tr>
                       <th>验证码：</th>
-                      <td><img src="/vaptcha"></td>
+                      <td><img src="/vaptcha" id="vaptcha"></td>
                   </tr>
                   <tr>
                       <th></th>
-                      <td><input id="" name="captcha_code" placeholder="请输入验证码" type="text"><span></span></td>
+                      <td><input id="" name="captcha_code" placeholder="请输入验证码" type="text"><span></span><em>*</em></td>
                   </tr>
               </tbody>
           </table>
@@ -106,11 +106,26 @@
           $('#submit').click(function () {
               var name = $('#name').val();
               var phone = $('#phone').val();
+
               if( phone == "" || name == "" ){
                  alert("姓名和电话必须填写");
                   return false;
               }
+
+              if( isPhoneNo(phone) == false ){
+                  alert("你输入的手机号格式不正确！")
+                  return false;
+              }
           });
+
+          $('#vaptcha').click(function () {
+              $(this).attr('src','/vaptcha?'+ Math.random());
+          });
+
+          function isPhoneNo(phone) {
+              var pattern = /^1[34578]\d{9}$/;
+              return pattern.test(phone);
+          }
       </script>
     <!-- end -->
   </div>  
