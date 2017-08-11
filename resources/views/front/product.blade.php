@@ -12,12 +12,23 @@
 <!-- sublist -->
 <div class="w1160 clearfix">
   <ul class="sublist">
-    <li><a href="product.html" class="on">瓷砖</a></li>
-    <li><a href="product.html">吊顶</a></li>
-    <li><a href="product.html">厨卫</a></li>
-    <li><a href="product.html">腻子粉</a></li>
-    <li><a href="product.html">乳胶漆</a></li>
-    <li><a href="product.html">门</a></li>
+    @foreach( session('header_nav') as $cate )
+      @if( $cate->id == 4 )
+        @foreach( $cate->articles as $art )
+          <li>
+            <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif" class="
+            @if( $art->link )
+            @if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link )
+                    on
+            @endif
+            @else
+            @if( $art->id == $id ) on @endif
+            @endif
+                    ">{{$art->title}}</a>
+          </li>
+        @endforeach
+      @endif
+    @endforeach
   </ul>
 </div>
 <!--  -->
@@ -25,104 +36,29 @@
   <div class="w1160 clearfix">
     <!-- 内容 -->
     <ul class="prodlist clearfix">
+      @foreach( $articles as $article )
       <li>
-        <a href="product_in.html">
-          <span class="pic"><img src="images/cp1.jpg" alt=""></span>
+        <a href="/product/{{$article->id}}">
+          <span class="pic"><img src="{{$article->thumbnail}}" alt=""></span>
           <span class="mask">&nbsp;</span>
           <div class="txt">
-            <h2>瓷砖</h2>
-            <p>马可波罗</p>
+            <h2>{{$article->title}}</h2>
+            <p>{{$article->link}}</p>
           </div>
         </a>
       </li>
-      <li>
-        <a href="product_in.html">
-          <span class="pic"><img src="images/cp2.jpg" alt=""></span>
-          <span class="mask">&nbsp;</span>
-          <div class="txt">
-            <h2>瓷砖</h2>
-            <p>马可波罗</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="product_in.html">
-          <span class="pic"><img src="images/cp3.jpg" alt=""></span>
-          <span class="mask">&nbsp;</span>
-          <div class="txt">
-            <h2>瓷砖</h2>
-            <p>马可波罗</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="product_in.html">
-          <span class="pic"><img src="images/cp4.jpg" alt=""></span>
-          <span class="mask">&nbsp;</span>
-          <div class="txt">
-            <h2>瓷砖</h2>
-            <p>马可波罗</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="product_in.html">
-          <span class="pic"><img src="images/cp1.jpg" alt=""></span>
-          <span class="mask">&nbsp;</span>
-          <div class="txt">
-            <h2>瓷砖</h2>
-            <p>马可波罗</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="product_in.html">
-          <span class="pic"><img src="images/cp2.jpg" alt=""></span>
-          <span class="mask">&nbsp;</span>
-          <div class="txt">
-            <h2>瓷砖</h2>
-            <p>马可波罗</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="product_in.html">
-          <span class="pic"><img src="images/cp3.jpg" alt=""></span>
-          <span class="mask">&nbsp;</span>
-          <div class="txt">
-            <h2>瓷砖</h2>
-            <p>马可波罗</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="product_in.html">
-          <span class="pic"><img src="images/cp5.jpg" alt=""></span>
-          <span class="mask">&nbsp;</span>
-          <div class="txt">
-            <h2>瓷砖</h2>
-            <p>马可波罗</p>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="product_in.html">
-          <span class="pic"><img src="images/cp6.jpg" alt=""></span>
-          <span class="mask">&nbsp;</span>
-          <div class="txt">
-            <h2>瓷砖</h2>
-            <p>马可波罗</p>
-          </div>
-        </a>
-      </li>
+      @endforeach
   </ul>
     <div class="pageJump clearfix">
         <div class="number">
-            <span class="disabled"><a href="">上一页</a></span>
-            <span class="disabled"><a href="">1</a></span>
-            <span class="disabled"><a href="">2</a></span>
-            <span class="disabled"><a href="">3</a></span>
-            <span class="disabled"><a href="">下一页</a></span>
+          @if( $pages['pre_page']  )
+            <span class="disabled"><a href="/product/category/{{$id}}">首页</a></span>
+            <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['pre_page'] }}">上一页</a></span>
+          @endif
+          @if( $pages['next_page'] )
+            <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['next_page'] }}">下一页</a></span>
+            <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['total_page'] }}">尾页</a></span>
+          @endif
         </div>
     </div>
     <!-- end -->

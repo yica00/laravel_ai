@@ -12,8 +12,23 @@
 <!-- sublist -->
 <div class="w1160 clearfix">
   <ul class="sublist">
-    <li><a href="contact.html" class="on">联系方式</a></li>
-    <li><a href="online.html">在线留言</a></li>  
+    @foreach( session('header_nav') as $cate )
+      @if( $cate->id == 8 )
+        @foreach( $cate->articles as $art )
+          <li>
+            <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif" class="
+            @if( $art->link )
+            @if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link )
+                    on
+            @endif
+            @else
+            @if( $art->id == $id ) on @endif
+            @endif
+                    ">{{$art->title}}</a>
+          </li>
+        @endforeach
+      @endif
+    @endforeach
   </ul>
 </div>
 <!--  -->
@@ -61,7 +76,7 @@
                     }
                     
                     //标注点数组
-                    var markerArr = [{title:"南充兄弟建材有限公司",content:"座机：0817-2866062<br/>电话：180-8159-1458<br/>Q&nbsp;Q：752542578<br/>地址：南充市顺庆区潆华工业园区博雅豪庭3幢-102铺",point:"106.118345|30.840506",isOpen:1,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+                    var markerArr = [{title:"{{ session('setting')['web_name']  }}",content:"座机：{{ session('setting')['fix_phone']  }}<br/>电话：{{ session('setting')['phone']  }}<br/>Q&nbsp;Q：{{ session('setting')['qq']  }}<br/>地址：{{ session('setting')['bases']  }}",point:"106.118345|30.840506",isOpen:1,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
                      ];
                     //创建marker
                     function addMarker(){

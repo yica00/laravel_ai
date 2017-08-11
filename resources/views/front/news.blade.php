@@ -12,10 +12,23 @@
 <!-- sublist -->
 <div class="w1160 clearfix">
   <ul class="sublist">
-    <li><a href="news.html" class="on">最新资讯</a></li>
-    <li><a href="news.html">兄弟动态</a></li>
-    <li><a href="news.html">材料知识</a></li>
-    <li><a href="news.html">装修风水</a></li>
+    @foreach( session('header_nav') as $cate )
+      @if( $cate->id == 3 )
+        @foreach( $cate->articles as $art )
+          <li>
+            <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif" class="
+            @if( $art->link )
+                @if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link )
+                        on
+                @endif
+               @else
+                   @if( $art->id == $id ) on @endif
+               @endif
+                    ">{{$art->title}}</a>
+          </li>
+        @endforeach
+      @endif
+    @endforeach
   </ul>
 </div>
 <!--  -->
@@ -23,95 +36,28 @@
   <div class="w1160 clearfix">
     <!-- 内容 -->
     <ul class="newslist clearfix boost_img ">
-          <li>
-              <a href="news_in.html">
-                <span class="pic"><img src="images/cp_5.jpg" alt="" /></span>
-                <div class="txt">
-                  <h2>家居必备小知识</h2>
-                  <span>了解更多</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="news_in.html">
-                <span class="pic"><img src="images/cp_6.jpg" alt="" /></span>
-                <div class="txt">
-                  <h2>中国铁建与重庆市签订两公路项目协议 总投资超200亿元</h2>
-                  <span>了解更多</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="news_in.html">
-                <span class="pic"><img src="images/cp_7.jpg" alt="" /></span>
-                <div class="txt">
-                  <h2>中国铁建与重庆市签订两公路项目协议 总投资超200亿元</h2>
-                  <span>了解更多</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="news_in.html">
-                <span class="pic"><img src="images/cp_8.jpg" alt="" /></span>
-                <div class="txt">
-                  <h2>中国铁建与重庆市签订两公路项目协议 总投资超200亿元</h2>
-                  <span>了解更多</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="news_in.html">
-                <span class="pic"><img src="images/cp_5.jpg" alt="" /></span>
-                <div class="txt">
-                  <h2>家居必备小知识</h2>
-                  <span>了解更多</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="news_in.html">
-                <span class="pic"><img src="images/cp_6.jpg" alt="" /></span>
-                <div class="txt">
-                  <h2>中国铁建与重庆市签订两公路项目协议 总投资超200亿元</h2>
-                  <span>了解更多</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="news_in.html">
-                <span class="pic"><img src="images/cp_7.jpg" alt="" /></span>
-                <div class="txt">
-                  <h2>中国铁建与重庆市签订两公路项目协议 总投资超200亿元</h2>
-                  <span>了解更多</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="news_in.html">
-                <span class="pic"><img src="images/cp_1.jpg" alt="" /></span>
-                <div class="txt">
-                  <h2>中国铁建与重庆市签订两公路项目协议 总投资超200亿元</h2>
-                  <span>了解更多</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="news_in.html">
-                <span class="pic"><img src="images/cp_2.jpg" alt="" /></span>
-                <div class="txt">
-                  <h2>中国铁建与重庆市签订两公路项目协议 总投资超200亿元</h2>
-                  <span>了解更多</span>
-                </div>
-              </a>
-            </li>
+      @foreach( $articles as $article )
+        <li>
+          <a href="/news/{{$article->id}}">
+            <span class="pic"><img src="{{$article->thumbnail}}" alt=""></span>
+            <div class="txt">
+              <h2>{{$article->title}}</h2>
+              <span>了解更多</span>
+            </div>
+          </a>
+        </li>
+      @endforeach
     </ul>
     <div class="pageJump clearfix">
         <div class="number">
-            <span class="disabled"><a href="">上一页</a></span>
-            <span class="disabled"><a href="">1</a></span>
-            <span class="disabled"><a href="">2</a></span>
-            <span class="disabled"><a href="">3</a></span>
-            <span class="disabled"><a href="">下一页</a></span>
+          @if( $pages['pre_page']  )
+            <span class="disabled"><a href="/news/category/{{$id}}">首页</a></span>
+            <span class="disabled"><a href="/news/category/{{$id}}?page={{ $pages['pre_page'] }}">上一页</a></span>
+          @endif
+          @if( $pages['next_page'] )
+            <span class="disabled"><a href="/news/category/{{$id}}?page={{ $pages['next_page'] }}">下一页</a></span>
+            <span class="disabled"><a href="/news/category/{{$id}}?page={{ $pages['total_page'] }}">尾页</a></span>
+          @endif
         </div>
     </div>
     <!-- end -->

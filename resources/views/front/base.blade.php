@@ -27,9 +27,13 @@
         <div class="w960 fr">
             <div class="top clearfix">
                 <div class="call fr"><p>24小时免费咨询热线</p><h2>{{ session('setting')['fix_phone']  }}</h2></div>
-                <form class="search fr">
-                    <span class="default">瓷砖型号</span>
-                    <input type="" class="inp_1" id="" placeholder="">
+                <form class="search fr" action="/search" method="post">
+                    {{csrf_field()}}
+                    <select name="type" class="default">
+                        <option value="1">瓷砖型号</option>
+                        <option value="2">瓷砖名字</option>
+                    </select>
+                    <input type="" class="inp_1" id="" placeholder="" name="value">
                     <button type="submit" class="inp_2"><img src="/images/btn_sear.svg"></button>
                 </form>
             </div>
@@ -101,7 +105,9 @@
         <div class="link clearfix">
             <span class="fl mR10">友情链接 </span>
             <div class="fl">
-                <a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a><a href="" target="_blank">成都谐和动物医院</a>
+                @foreach( session('links') as $link )
+                <a href="{{$link->link}}" target="_blank">{{$link->title}}</a>
+                @endforeach
             </div>
         </div>
     </div>

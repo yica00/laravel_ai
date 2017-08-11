@@ -33,7 +33,7 @@ class Get_nav
         session(['urls' =>$str]);
 
         if( !session('links')  ){
-            $Articles = Article::where('pid',46)->orderBy('serial_number','desc')->orderBy('id','desc')->take(14)->get();
+            $Articles = Article::where('pid',50)->orderBy('serial_number','desc')->orderBy('id','desc')->take(14)->get();
             session(['links' =>$Articles]);
         }
         return $next($request);

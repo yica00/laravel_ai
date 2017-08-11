@@ -20,7 +20,9 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('/','FrontController@index');
 
         Route::get('about','FrontController@about');
-        Route::get('about/category/{id}','FrontController@about');
+        Route::get('about/culture','FrontController@culture');
+        Route::get('about/honor','FrontController@honor');
+        Route::get('about/env','FrontController@env');
 
         Route::get('news','FrontController@news');
         Route::get('news/category/{id}','FrontController@news');
@@ -38,18 +40,20 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('team/{id}','FrontController@team_detail');
 
         Route::get('product','FrontController@product');
-        Route::get('product/category/{id}','FrontController@product_category');
+        Route::get('product/category/{id}','FrontController@product');
         Route::get('product/{id}','FrontController@product_detail');
 
         Route::get('service','FrontController@service');
         Route::get('service/category/{id}','FrontController@service');
-        Route::get('witness','FrontController@witness');
-        Route::get('witness/{id}','FrontController@witness_detail');
+
+        Route::get('brand','FrontController@brand');
+
 
         Route::get('contact','FrontController@contact');
         Route::get('contact/message','FrontController@message');
 
         Route::post('/front/message','Admin\MessageController@store');
+        Route::post('/search','FrontController@search');
     });
 
     Route::get('/admin/logout', function () {
