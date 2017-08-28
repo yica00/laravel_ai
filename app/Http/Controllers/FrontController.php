@@ -253,6 +253,7 @@ class FrontController extends Controller
         $articles = Article::where('pid',17)->where($arr[$type-1],'like','%'.$value.'%')->paginate(6);
         $pages = getPage($articles,6);
         $id = 17;
-        return view('front.product',compact('articles','pages','id'));
+        $url = '?type='.$type.'&value='.$value;
+        return view('front.product',compact('articles','pages','id','url'));
     }
 }

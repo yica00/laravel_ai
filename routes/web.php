@@ -53,7 +53,7 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('contact/message','FrontController@message');
 
         Route::post('/front/message','Admin\MessageController@store');
-        Route::post('/search','FrontController@search');
+        Route::any('/search','FrontController@search');
     });
 
     Route::get('/admin/logout', function () {

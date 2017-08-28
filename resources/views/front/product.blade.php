@@ -51,14 +51,25 @@
   </ul>
     <div class="pageJump clearfix">
         <div class="number">
-          @if( $pages['pre_page']  )
-            <span class="disabled"><a href="/product/category/{{$id}}">首页</a></span>
-            <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['pre_page'] }}">上一页</a></span>
-          @endif
-          @if( $pages['next_page'] )
-            <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['next_page'] }}">下一页</a></span>
-            <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['total_page'] }}">尾页</a></span>
-          @endif
+           @if( isset( $url ) )
+                @if( $pages['pre_page']  )
+                    <span class="disabled"><a href="/search/{{$url}}">首页</a></span>
+                    <span class="disabled"><a href="/search/{{$url}}&page={{ $pages['pre_page'] }}">上一页</a></span>
+                @endif
+                @if( $pages['next_page'] )
+                    <span class="disabled"><a href="/search/{{$url}}&page={{ $pages['next_page'] }}">下一页</a></span>
+                    <span class="disabled"><a href="/search/{{$url}}&page={{ $pages['total_page'] }}">尾页</a></span>
+                @endif
+           @else
+                @if( $pages['pre_page']  )
+                    <span class="disabled"><a href="/product/category/{{$id}}">首页</a></span>
+                    <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['pre_page'] }}">上一页</a></span>
+                @endif
+                @if( $pages['next_page'] )
+                    <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['next_page'] }}">下一页</a></span>
+                    <span class="disabled"><a href="/product/category/{{$id}}?page={{ $pages['total_page'] }}">尾页</a></span>
+                @endif
+           @endif
         </div>
     </div>
     <!-- end -->
