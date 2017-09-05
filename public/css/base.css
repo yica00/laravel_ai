@@ -417,7 +417,23 @@ font-size: 22px;height: 60px;line-height:60px;margin: 0 0 20px;}
 .on_form button{width: 100%;height: 40px;background:#f39600; font-family: "微软雅黑",Verdana, Arial, Helvetica, sans-serif;color: #fff;line-height: 40px;font-size: 18px;
   display: inline-block;border: none;}
 .on_form button:hover{background:#e77119;}
+/*sorting*/
+.sorting{border:1px solid #ccc;padding: 19px 19px 9px;margin: 0 0 20px;}
+.sorting .list{border-bottom: 1px dashed #ccc;margin: 0 0 10px;}
+.sorting .list:last-child{border-bottom: none;margin: 0 ;}
+.sorting .key{width:100px;text-align: center;}
+.sorting .all{width:1000px;}
+.sorting .key,.sorting .all li,.sorting .all li a{display: inline-block;line-height: 30px;}
+.sorting .all li{float: left;margin: 0 0 10px 0;}
+.sorting .all li a{padding: 0 20px;}
+.sorting .all li a.on{background:#f39600; color: #fff; }
+.sorting .all li a:hover{text-decoration: underline;}
 
+.thistlist{background: #f39600;height: 40px;line-height: 40px;margin: 0 0 20px;padding: 10px 10px 0;}
+.thistlist li{text-align: center;float: left;width: 120px;text-align: center;}
+.thistlist li a{color: #fff;}
+.thistlist li.on,.thistlist li:hover{background: #fff;}
+.thistlist li.on a,.thistlist li:hover a{color: #333;}
 
 /*  
     .rotate_img li a:hover img{-ms-transform:rotate(360deg);-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg); 

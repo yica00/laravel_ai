@@ -22,7 +22,7 @@
                               on
                     @endif
                       @else
-                      @if( $art->id == $article->pid ) on @endif
+                      @if( $art->id == $pid ) on @endif
                       @endif
                               ">{{$art->title}}</a>
                   </li>
@@ -60,7 +60,7 @@
                         {!! $article->comtent !!}
 
                     </div>
-                    <p class="btn clearfix"><a href="/product/category/{{$article->pid}}" class="back fr">返回上级目录</a></p>
+                    <p class="btn clearfix"><a href="/product/category/{{$pid}}" class="back fr">返回上级目录</a></p>
           </div>
         </div>
         <div class="real_save fl">
