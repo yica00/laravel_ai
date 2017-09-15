@@ -76,7 +76,7 @@
                     }
                     
                     //标注点数组
-                    var markerArr = [{title:"{{ session('setting')['web_name']  }}",content:"座机：{{ session('setting')['fix_phone']  }}<br/>电话：{{ session('setting')['phone']  }}<br/>Q&nbsp;Q：{{ session('setting')['qq']  }}<br/>地址：{{ session('setting')['bases']  }}",point:"106.118345|30.840506",isOpen:1,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+                    var markerArr = [{title:"{{ session('setting')['web_name']  }}",content:"座机：{{ session('setting')['fix_phone']  }}<br/>电话：{{ session('setting')['phone']  }}<br/>Q&nbsp;Q：{{ session('setting')['qq']  }}<br/>地址：{{ session('setting')['bases']  }}",point:"106.036863|30.753916",isOpen:1,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
                      ];
                     //创建marker
                     function addMarker(){

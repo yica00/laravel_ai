@@ -31,6 +31,7 @@
       @endforeach
   </ul>
 </div>
+
 <!--  -->
 <div class="wap_box">
   <div class="w1160 clearfix">
@@ -101,6 +102,12 @@
             </script>
         </div>
   </div>
+
+      <div class="backpre clearfix">
+          @if( $up_down['1'] )<a href="/product/{{ $up_down['1'] }}" rel="next">上一篇</a> @endif
+          @if( $up_down['2'] ) <a href="/product/{{ $up_down['2'] }}" rel="prev">下一篇</a>@endif
+          <a href="/product/category/{{$article->pid}}">返回上级目录</a>
+      </div>
     <!-- end -->
   </div>  
 </div>

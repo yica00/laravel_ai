@@ -168,8 +168,9 @@ class FrontController extends Controller
     }
     public function product_detail($id){
         $article = Article::find($id);
+        $up_down = get_up_down_page($id,$article->pid);
 //        $article->comtent = get_article_imgs($article->comtent,30);
-        return view('front.product_in',compact('article'));
+        return view('front.product_in',compact('article','up_down'));
     }
 
 
