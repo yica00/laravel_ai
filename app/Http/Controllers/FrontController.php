@@ -16,6 +16,7 @@ class FrontController extends Controller
     {
         $sliders = $this->getSliders();
         $products = $this->getProduct();
+        return $products;
         $brands = $this->getBrands();
         $cases = $this->getCases();
         $newss = $this->getNews();

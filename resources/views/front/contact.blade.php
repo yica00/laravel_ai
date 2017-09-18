@@ -49,7 +49,7 @@
               //创建地图函数：
               function createMap(){
                   var map = new BMap.Map("dituContent_2");//在百度地图容器中创建一个地图
-                  var point = new BMap.Point(106.118839,30.841436);//定义一个中心点坐标
+                  var point = new BMap.Point(106.036863,30.753916);//定义一个中心点坐标
                   map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中
                   window.map = map;//将map变量存储在全局
               }
