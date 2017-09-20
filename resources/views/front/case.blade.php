@@ -4,28 +4,27 @@
 <div class="bread">
   <div class="w1160 clearfix">
     <div class="in_tit_all">
-      <p>------&nbsp;&nbsp;typical case&nbsp;&nbsp;------</p>
-      <h2><span>典</span><span>型</span><span>案</span><span>例</span></h2>
+      <p>------&nbsp;&nbsp;royal cases&nbsp;&nbsp;------</p>
+      <h2><span>皇</span><span>室</span><span>案</span><span>例</span></h2>
     </div>
   </div>
 </div>
-
+<!-- start -->
 <!--  -->
 <div class="wap_box">
+  <span class="bk40">&nbsp;</span>
   <div class="w1160 clearfix">
     <!-- 内容 -->
-    <span class="bk50">&nbsp;</span>
-   <ul class="caseos_link clearfix boost_img">
-       @foreach( $articles as $article )
-     <li>
-      <a href="/case/{{$article->id}}">
-          <img src="{{$article->thumbnail}}">
-          <span class="mask">&nbsp;</span>
-          <span class="txt">{{$article->title}}</span>
-        </a>
-     </li>
-       @endforeach
-   </ul>
+    <ul class="prolist pro-insty">
+        @foreach( $articles as $article )
+          <li>
+            <a href="/case/{{$article->id}}">
+              <div class="pic"><span class="plus">&nbsp;</span><img src="{{$article->thumbnail}}" /></div>
+              <div class="txt">{{$article->title}}</div>
+            </a>
+          </li>
+         @endforeach
+        </ul>
     <div class="pageJump clearfix">
         <div class="number">
             @if( $pages['pre_page']  )
@@ -38,9 +37,9 @@
             @endif
         </div>
     </div>
-    <!-- end -->
   </div>  
 </div>
 <span class="bk50">&nbsp;</span>
+<!-- end -->
 <!-- footer -->
 @endsection

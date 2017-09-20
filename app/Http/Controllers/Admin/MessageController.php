@@ -42,9 +42,9 @@ class MessageController extends Controller
      */
     public function store(MessageRequest $request)
     {
-        if( !verifyCaptcha() ){
-            return back()->with('errors','验证码错误，请重试！');
-        }
+//        if( !verifyCaptcha() ){
+//            return back()->with('errors','验证码错误，请重试！');
+//        }
         $ip = \Illuminate\Support\Facades\Request::getClientIp();
         $atic = Input::all();
         $atic['ip'] = $ip;
@@ -53,6 +53,10 @@ class MessageController extends Controller
         if( $messages > 1 ){
             return back()->with('errors','当前ip留言过多，请稍后再试');
         }
+        if( !isset($atic['message']) ){
+            $atic['message'] = "";
+        }
+        $atic['message'] = '产品数量：'.$atic['amout'].'<br>产品名字：'.$atic['product'].'<br>留言详情：'.$atic['message'];
         $rel = Message::create($atic);
         if( $rel->wasRecentlyCreated ){
             return back()->with('errors','留言成功，我们会稍后与你联系');

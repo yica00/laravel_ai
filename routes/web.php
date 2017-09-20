@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Route::group(['middleware'=>'check_setting'],function (){
 
 
@@ -46,7 +48,7 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('service','FrontController@service');
         Route::get('service/category/{id}','FrontController@service');
 
-        Route::get('brand','FrontController@brand');
+        Route::get('budge','FrontController@budge');
 
 
         Route::get('contact','FrontController@contact');

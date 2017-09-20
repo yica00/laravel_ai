@@ -4,8 +4,8 @@
 <div class="bread">
   <div class="w1160 clearfix">
     <div class="in_tit_all">
-      <p>------&nbsp;&nbsp;about us&nbsp;&nbsp;------</p>
-      <h2><span>关</span><span>于</span><span>我</span><span>们</span></h2>
+      <p>------&nbsp;&nbsp;royal supplies&nbsp;&nbsp;------</p>
+      <h2><span>皇</span><span>室</span><span>御</span><span>品</span></h2>
     </div>
   </div>
 </div>
@@ -16,13 +16,22 @@
       @if( $cate->id == 2 )
         @foreach( $cate->articles as $art )
           <li>
-            <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif" class="@if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link ) on @endif">{{$art->title}}</a>
+            <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif" class="
+            @if( $art->link )
+            @if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link )
+                    on
+@endif
+            @else
+            @if( $art->id == $pid ) on @endif
+            @endif
+                    ">{{$art->title}}</a>
           </li>
         @endforeach
       @endif
     @endforeach
   </ul>
 </div>
+<!-- start -->
 <!--  -->
 <div class="wap_box">
   <div class="w1160 clearfix">
@@ -32,5 +41,6 @@
   </div>  
 </div>
 <span class="bk50">&nbsp;</span>
+<!-- end -->
 <!-- footer -->
 @endsection

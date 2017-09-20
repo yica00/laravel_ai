@@ -66,16 +66,23 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">ICP备案</label>
+                                <div class="col-md-6">
+                                    <input id="email"   class="form-control" name="icp"  value="{{ $setting['icp']  }}"  autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">网站关键词</label>
                                 <div class="col-md-6">
-                                    <input id="email"   class="form-control" name="keywords"  value="{{ $setting['keywords']  }}"  autofocus>
+                                    <textarea id="email" rows="4"  class="form-control" name="keywords"  autofocus>{{ $setting['keywords']  }}</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">关键词描述</label>
                                 <div class="col-md-6">
-                                    <input id="email"   class="form-control" name="description"  value="{{ $setting['description']  }}"  autofocus>
+                                    <textarea id="email"  rows="4" class="form-control" name="description"  autofocus>{{ $setting['description']  }}</textarea>
                                 </div>
                             </div>
 
@@ -83,8 +90,8 @@
                                 <label for="email" class="col-md-4 control-label">微信公众号</label>
                                 <div class="col-md-6">
                                     <input id="email" type="file"  class="form-control" name="wx_map" autofocus>
-                                    <img src="{{  $setting['wx_map'] }}" width="50" />
                                 </div>
+                                <img src="{{  $setting['wx_map'] }}" width="50" />
                             </div>
 
 
@@ -101,5 +108,5 @@
             </div>
 
         </div>
-
+    </div>
 @endsection

@@ -56,6 +56,7 @@ class HomeController extends Controller
             'fix_phone'=>$request->get('fix_phone'),
             'qq'=>$request->get('qq'),
             'bases'=>$request->get('bases'),
+            'icp'=>$request->get('icp'),
             'keywords'=>$request->get('keywords'),
             'description'=>$request->get('description'),
             'wx_map'=>$url?$url:$setting['wx_map'],

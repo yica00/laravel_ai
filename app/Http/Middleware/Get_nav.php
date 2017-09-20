@@ -21,7 +21,7 @@ class Get_nav
             $articles = Article::with(array('articles'=>function( $query ){
                 $query->select('id','pid','title','serial_number','link')->where('is_nav','1');
             }))
-                ->select('id','pid','title','serial_number','link')->where('pid','0')->where('is_nav','1')
+                ->select('id','pid','title','serial_number','link','introduce')->where('pid','0')->where('is_nav','1')
                 ->orderBy('serial_number','asc')->orderBy('id','asc')->get();
             session(['header_nav' =>$articles]);
         }
@@ -33,7 +33,7 @@ class Get_nav
         session(['urls' =>$str]);
 
         if( !session('links')  ){
-            $Articles = Article::where('pid',50)->orderBy('serial_number','desc')->orderBy('id','desc')->take(14)->get();
+            $Articles = Article::where('pid',13)->orderBy('serial_number','desc')->orderBy('id','desc')->take(14)->get();
             session(['links' =>$Articles]);
         }
         return $next($request);

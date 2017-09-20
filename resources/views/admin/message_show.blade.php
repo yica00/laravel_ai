@@ -40,12 +40,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">邮箱</label>
-                                <div class="col-md-6">
-                                    <input id="email"  class="form-control" name="email" value="{{  $message->email }}" disabled="true" autofocus>
-                                </div>
-                            </div>
+                            {{--<div class="form-group">--}}
+                                {{--<label for="email" class="col-md-4 control-label">邮箱</label>--}}
+                                {{--<div class="col-md-6">--}}
+                                    {{--<input id="email"  class="form-control" name="email" value="{{  $message->email }}" disabled="true" autofocus>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
 
 
@@ -57,10 +57,12 @@
                             </div>
 
 
+
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">留言内容</label>
                                 <div class="col-md-6">
-                                    <textarea rows="10" cols="50" disabled="true" >{{ $message->message  }}</textarea>
+                                    <div id="xx2" style="border-style:solid;border-color:#b1b7ba;padding: 10px;border-radius:5px">{!!  $message->message !!}</div>
+                                    {{--<textarea rows="10" cols="50" disabled="true" class="form-control" id="xx2"></textarea>--}}
                                 </div>
                             </div>
 

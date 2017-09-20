@@ -14,223 +14,181 @@
   <a class="next" href="javascript:void(0)"></a>
 </div>
 <script type="text/javascript">jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});</script>
-<!--  product-->
-<div class="w1160 clearfix">
-  <span class="bk50">&nbsp;</span>
-  <div class="ho_tit_all" >
-    <h2><a href="/product">product center</a></h2>
-    <h3><a href="/product">产品中心</a></h3>
-    <p>设计 / 主辅材 / 施工 / 损耗 / 家具 / 软装 / 配饰 一站配齐</p>
-  </div>
-  <span class="bk40">&nbsp;</span>
-  <div class="slideTxtBox">
-      <div class="hd">
-        <ul>
-          @foreach( session('header_nav') as $cate )
-            @if( $cate->id == 4 )
-              @foreach( $cate->articles as $art )
-                <li><span>&nbsp;</span>
-                  <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif">{{$art->title}}</a>
-                </li>
-              @endforeach
-            @endif
-          @endforeach
-        </ul>
-      </div>
-      <div class="bd">
-        @foreach( $products as $product )
-        <div class="prodct_out clearfix">
-          <div class="list fr">
-            <ul class="clearfix">
-              @foreach( $product->articles as $iterm)
-                <li>
-                  <a href="/product/{{$iterm->id}}">
-                    <span class="pic"><img src="{{$iterm->thumbnail}}" alt=""></span>
-                    <span class="mask">&nbsp;</span>
-                    <div class="txt">
-                      <h2>{{$iterm->title}}</h2>
-                      <p>{{$iterm->link}}</p>
-                    </div>
-                  </a>
-                </li>
-              @endforeach
-            </ul>
-          </div>
-          <div class="ad fl">
-            <img src="{{$product->thumbnail}}">
-            <a href="/product/category/{{$product->id}}"><img src="images/cp_more_1.png"></a>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-    <script type="text/javascript">jQuery(".slideTxtBox").slide();</script>
 </div>
-<span class="bk50">&nbsp;</span>
-<!--  case-->
-<div class="caseout">
+<!-- quoted -->
+<div class="quoted">
   <div class="w1160 clearfix">
-    <span class="bk50">&nbsp;</span>
-    <div class="ho_tit_all" >
-      <h2><a href="/case">typical case</a></h2>
-      <h3><a href="/case">典型案例</a></h3>
-      <p>精挑细选数千套案例，超万张照片供您欣赏</p>
+    <div class="txt-2 fr">
+      <h2>免费电话报价</h2>
+      <p>{{ session('setting')['fix_phone']  }}</p>
     </div>
-    <span class="bk40">&nbsp;</span>
-    <div class="clearfix">
-      <div class="w330 fl mR10 boost_img">
-        <a href="/case/{{$cases[3]->id}}" class="caseo_link">
-          <img src="{{$cases[3]->thumbnail}}">
-          <span class="mask">&nbsp;</span>
-          <span class="txt">{{$cases[3]->title}}</span>
-        </a>
-        <span class="bk10">&nbsp;</span>
-        <a href="/case/{{$cases[0]->id}}" class="caseo_link">
-          <img src="{{$cases[0]->thumbnail}}">
-          <span class="mask">&nbsp;</span>
-          <span class="txt">{{$cases[0]->title}}</span>
-        </a>
-      </div>
-      <div id="slideBoxcp" class="slideBoxcp fl mR10">
-        <div class="hd">&nbsp;</div>
-        <div class="bd">
-          <ul class="boost_img">
-            @foreach( $cases as $case )
-            <li>
-              <a href="/case/{{$case->id}}">
-                <img src="{{$case->thumbnail}}">
-                <div class="txt">
-                  <span class="name">{{$case->name}}</span>
-                  <span class="btn">查看更多</span>
-                </div>
-                <span class="mask_black">&nbsp;</span>
-              </a>
-            </li>
-            @endforeach
-          </ul>
-        </div>
-        <a class="prev" href="javascript:void(0)"></a>
-        <a class="next" href="javascript:void(0)"></a>
-      </div>
-      <script type="text/javascript">jQuery(".slideBoxcp").slide({mainCell:".bd ul",autoPlay:true});</script>
-      <div class="w330 fl boost_img">
-        <a href="/case/{{$cases[1]->id}}" class="caseo_link">
-          <img src="{{$cases[1]->thumbnail}}">
-          <span class="mask">&nbsp;</span>
-          <span class="txt">{{$cases[1]->title}}</span>
-        </a>
-        <span class="bk10">&nbsp;</span>
-        <a href="{{$cases[2]->id}}" class="caseo_link">
-          <img src="{{$cases[2]->thumbnail}}">
-          <span class="mask">&nbsp;</span>
-          <span class="txt">{{$cases[2]->title}}</span>
-        </a>
-      </div>
+    <div class="txt-1 fl">
+     <h2>皇室石材要花多少钱</h2>
+     <p>8s填写表单获取精准报价</p>
     </div>
-    <span class="bk70">&nbsp;</span>
+    <div class="form-1 fl">
+        <form class="quo-form-1 clearfix" action="/front/message" method="post">
+          {{  csrf_field() }}
+          @if (count($errors) > 0)
+            <div style="color: red">
+              <ul>
+                @if( is_object($errors) )
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                @else
+                  {{ $errors }}
+                @endif
+              </ul>
+            </div>
+          @endif
+          <input type="submit" class="btn_2 fr" id="submit" placeholder="获取报价" value="获取报价">
+          <div class="w200 fl mR10">
+            <label><input class="btn_1" type="text" name="name" id="name" placeholder="姓名"></label>
+            <label><input class="btn_1" type="text" name="product" id="phone" placeholder="产品"></label>
+          </div>
+          <div class="w200 fl">
+            <label><input class="btn_1" type="text" name="phone" placeholder="电话"></label>
+            <label><input class="btn_1" type="text" name="amout" placeholder="数量"></label>
+          </div>
+        </form>
+      <script>
+          $("#submit").click(function () {
+              var name = $('#name').val();
+              var phone = $('#phone').val();
+              if (name == "" || phone == "" ) {
+                  alert("请先输入姓名,电话后报价");
+                  return false;
+              }
+              $.ajax({
+                  url: '/front/message',
+                  type: 'POST',
+                  data: $('#forms').serialize(),
+                  dataType: 'JSON',
+                  success: function (data) {
+//                      alert(JSON.stringify(data));
+//                          $(".writeinfo").append(data.msg);
+                  }
+              });
+          });
+      </script>
+    </div>
   </div>
 </div>
-<!-- brand -->
+<span class="bk20">&nbsp;</span>
+<!-- ho-list -->
 <div class="w1160 clearfix">
-  <span class="bk50">&nbsp;</span>
-  <div class="ho_tit_all" >
-    <h2><a href="/brand">cooperative brand</a></h2>
-    <h3><a href="/brand">合作品牌</a></h3>
-    <p>优选品牌，厂价直供，捍卫居家品质</p>
+  <ul class="ho-list clearfix">
+    <li>
+      <h2>全尺寸定制</h2>
+      <p>可根据自身安装背景墙位置<br/>实际尺寸“私人订制”</p>
+    </li>
+    <li>
+      <h2>图案自由定制</h2>
+      <p>充分满足客户在空间装饰中的<br/>个性化需求</p>
+    </li>
+    <li>
+      <h2>釉面定制</h2>
+      <p>可根据背景墙图案及自身喜好<br/>来选择亮光釉或哑光釉</p>
+    </li>
+    <li>
+      <h2>透光定制</h2>
+      <p>可选择透光效果或不透光效果<br/>抑或全透光效果或者半透光效果置</p>
+    </li>
+  </ul>
+</div>
+<!-- product -->
+<div class="w1160 clearfix">
+  <span class="bk20">&nbsp;</span>
+  <div class="ho-tit-all">
+    <a href="/product">
+      <span class="p1">{ 皇室石材 }</span>
+      <span class="p2"><i>royal stone</i></span>
+    </a>
   </div>
   <span class="bk40">&nbsp;</span>
-  <ul class="brandout clearfix">
-    @foreach( $brands as $brand )
-    <li><a href="/brand"><img src="{{$brand->thumbnail}}" alt=""></a></li>
+  <ul class="prod-list clearfix">
+    @foreach( $products as $product )
+    <li>
+      <a href="/product/{{$product->id}}">
+        <span class="pic">
+          <img src="{{$product->thumbnail}}" alt="">
+        </span>
+        <div class="txt">
+          <h2>{{$product->title}}</h2>
+          <p class="p1">{ 皇室石材 }</p>
+          <p class="p2">&nbsp;</p>
+        </div>
+        <div class="mask">&nbsp;</div>
+      </a>
+    </li>
     @endforeach
   </ul>
 </div>
-<span class="bk70">&nbsp;</span>
-<!-- service -->
-<div class="serout">
-  <div class="w1160">
-    <span class="bk50">&nbsp;</span>
-    <div class="ho_tit_all" >
-      <h2><a href="/service">service center</a></h2>
-      <h3><a href="/service">服务中心</a></h3>
-      <p>颠覆行业潜规则，为难自己，成就客户！</p>
-    </div>
-    <span class="bk40">&nbsp;</span>
-    <ul class="list clearfix">
-      @foreach( $services as $service )
-      <li>
-        <h2>{{$service->title}}</h2>
-        <p>{{$service->introduce}}</p>
-      </li>
-      @endforeach
-    </ul>
-    <span class="bk70">&nbsp;</span>
-  </div>
-</div>
-<!-- news -->
-<div class="w1160 clearfix">
-  <span class="bk50">&nbsp;</span>
-  <div class="ho_tit_all" >
-    <h2><a href="/news">news center</a></h2>
-    <h3><a href="/news">新闻中心</a></h3>
-    <p>实时掌握最新资讯和兄弟动态</p>
+<span class="bk40">&nbsp;</span>
+<!-- caseout -->
+<div class="caseout">
+  <span class="bk40">&nbsp;</span>
+  <div class="ho-tit-all">
+    <a href="/case">
+      <span class="p1">{ 皇室案例 }</span>
+      <span class="p2"><i>royal case</i></span>
+    </a>
   </div>
   <span class="bk40">&nbsp;</span>
-  <div class="clearfix">
-      <div class="picScroll-leftgui fr">
-        <div class="hd">
-          <a class="next"></a>
-          <a class="prev"></a>
-        </div>
-        <div class="bd">
-          <ul class="picList boost_img">
-            @foreach( $newss[1] as $article )
-            <li>
-              <a href="/news/{{$article->id}}">
-                <span class="pic"><img src="{{$article->thumbnail}}" alt="" /></span>
-                <span class="mask_black">&nbsp;</span>
-                    <p>{{$article->title}}</p>
-              </a>
-            </li>
-            @endforeach
-          </ul>
-        </div>
+  <div class="w1160 clearfix">
+    <div class="picScroll-left">
+      <div class="bd">
+        <ul class="picList prolist">
+          @foreach( $cases as $case )
+          <li>
+            <a href="/case/{{$case->id}}">
+              <div class="pic"><span class="plus">&nbsp;</span><img src="{{$case->thumbnail}}" /></div>
+              <div class="txt">{{$case->title}}</div>
+            </a>
+          </li>
+          @endforeach
+        </ul>
       </div>
-      <script type="text/javascript">
-      jQuery(".picScroll-leftgui").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:3,trigger:"click"});
-      </script>
-      <a href="/news/category/15" class="guide_tit fl"><img src="images/guide_1.jpg"></a>
-  </div>
-  <span class="bk10">&nbsp;</span>
-  <div class="clearfix">
-      <div class="w980 fr">
-        <div class="clearfix">
-          <div class="guideout fl mR10">
-            <span class="pic"><img src="{{$newss[0][0]->thumbnail}}"></span>
-            <span class="mask">&nbsp;</span>
-            <div class="txt">
-              <h2><a href="/news/category/{{$newss[0][0]->id}}">{{$newss[0][0]->title}}</a></h2>
-            </div>
-          </div>
-          <div class="guideout fl mR10">
-            <span class="pic"><img src="{{$newss[0][1]->thumbnail}}"></span>
-            <span class="mask">&nbsp;</span>
-            <div class="txt">
-              <h2><a href="/news/category/{{$newss[0][1]->id}}">{{$newss[0][1]->title}}</a></h2>
-            </div>
-          </div>
-          <div class="guideout fl">
-            <span class="pic"><img src="{{$newss[0][3]->thumbnail}}"></span>
-            <span class="mask">&nbsp;</span>
-            <div class="txt">
-              <h2><a href="/news/category/{{$newss[0][3]->id}}">{{$newss[0][3]->title}}</a></h2>
-            </div>
-          </div>
-        </div>
+      <div class="hd">
+        <ul></ul>
       </div>
-    <a href="/news" class="guide_tit fl"><img src="images/guide_2.jpg"></a>
+    </div>
+    <script type="text/javascript">
+    jQuery(".picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,scroll:3,vis:3,trigger:"click"});
+    </script>
   </div>
 </div>
-<span class="bk50">&nbsp;</span>
+<!-- newsout -->
+<div class="w1160 clearfix">
+  <span class="bk40">&nbsp;</span>
+  <div class="ho-tit-all">
+    <a href="/news">
+      <span class="p1">{ 皇室动态 }</span>
+      <span class="p2"><i>royal dynamic</i></span>
+    </a>
+  </div>
+  <span class="bk40">&nbsp;</span>
+  <ul class="newsout clearfix">
+    @foreach( $newss as $k=>$news )
+    <li>
+      <a href="/news/{{$news->id}}">
+        @if( $k % 2 == 0 )
+        <div class="pic"><img src="{{$news->thumbnail}}" /></div>
+        @endif
+        <div class="txt">
+          <h2>{{$news->title}}</h2>
+          <p class="p1">{{$news->introduce}}</p>
+          <p class="p2">&nbsp;</p>
+          <p class="p3">{{mb_substr($news->created_at,0,10)}}</p>
+        </div>
+          @if( $k % 2 == 1 )
+            <div class="pic"><img src="{{$news->thumbnail}}" /></div>
+          @endif
+      </a>
+    </li>
+   @endforeach
+  </ul>
+</div>
 <!-- footer -->
 @endsection

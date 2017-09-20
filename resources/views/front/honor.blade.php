@@ -4,8 +4,8 @@
 <div class="bread">
   <div class="w1160 clearfix">
     <div class="in_tit_all">
-      <p>------&nbsp;&nbsp;about us&nbsp;&nbsp;------</p>
-      <h2><span>关</span><span>于</span><span>我</span><span>们</span></h2>
+      <p>------&nbsp;&nbsp;royal supplies&nbsp;&nbsp;------</p>
+      <h2><span>皇</span><span>室</span><span>御</span><span>品</span></h2>
     </div>
   </div>
 </div>
@@ -16,22 +16,31 @@
           @if( $cate->id == 2 )
               @foreach( $cate->articles as $art )
                   <li>
-                      <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif" class="@if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link ) on @endif">{{$art->title}}</a>
+                      <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif" class="
+            @if( $art->link )
+                      @if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link )
+                              on
+                    @endif
+                      @else
+                      @if( $art->id == $pid ) on @endif
+                      @endif
+                              ">{{$art->title}}</a>
                   </li>
               @endforeach
           @endif
-       @endforeach
+      @endforeach
   </ul>
 </div>
+<!-- start -->
 <!--  -->
 <div class="wap_box">
   <div class="w1160 clearfix">
     <!-- 内容 -->
     <div class="mod18">
-        <span id="prev" class="btn prev"></span>
-        <span id="next" class="btn next"></span>
-        <span id="prevTop" class="btn prev"></span>
-        <span id="nextTop" class="btn next"></span>
+        <span id="prev" class="btns prev"></span>
+        <span id="next" class="btns next"></span>
+        <span id="prevTop" class="btns prev"></span>
+        <span id="nextTop" class="btns next"></span>
         <div id="picBox" class="picBox">
             <ul class="cf">
                 @foreach( $articles as $article )
@@ -39,13 +48,13 @@
                     <img src="{{$article->thumbnail}}" alt="">
                     <p>{{$article->title}}</p>
                 </li>
-               @endforeach
+                @endforeach
             </ul>
         </div>
         <div id="listBox" class="listBox">
             <ul class="cf">
                 @foreach( $articles as $article )
-                <li class=""><img src="{{$article->thumbnail}}" alt=""></li>
+                <li class="on"><img src="{{$article->thumbnail}}" alt="{{$article->title}}"></li>
                 @endforeach
             </ul>
         </div>
@@ -55,5 +64,6 @@
   </div>  
 </div>
 <span class="bk50">&nbsp;</span>
+<!-- end -->
 <!-- footer -->
 @endsection
