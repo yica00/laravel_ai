@@ -116,7 +116,7 @@
         </span>
         <div class="txt">
           <h2>{{$product->title}}</h2>
-          <p class="p1">{ 皇室石材 }</p>
+          <p class="p1">{ {{$product->link}} }</p>
           <p class="p2">&nbsp;</p>
         </div>
         <div class="mask">&nbsp;</div>
