@@ -35,7 +35,7 @@
       <p><select id="" name="product">
             <option value="0" selected = "selected">请选择您需要的产品</option>
               @foreach( $articles as $article )
-            <option value="{{$article->title}}">{{$article->title}}</option>
+            <option value="{{$article->title}}--{{$article->link}}">{{$article->title}}--{{$article->link}}</option>
               @endforeach
           </select>
       </p>

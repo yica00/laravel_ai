@@ -212,7 +212,7 @@ class FrontController extends Controller
     }
 
     public function budge(){
-        $articles = Article::select('id','title')->where('pid',3)->get();
+        $articles = Article::select('id','title','link')->where('pid',3)->get();
         return view('front.budge',compact('articles'));
     }
 
