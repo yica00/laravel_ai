@@ -251,19 +251,19 @@
             <div class="form-1 fl">
                 <form class="quo-form-1 clearfix" action="/front/message" method="post">
                     {{  csrf_field() }}
-                    {{--@if (count($errors) > 0)--}}
-                        {{--<div style="color: red">--}}
-                            {{--<ul>--}}
-                                {{--@if( is_object($errors) )--}}
-                                    {{--@foreach ($errors->all() as $error)--}}
-                                        {{--<li>{{ $error }}</li>--}}
-                                    {{--@endforeach--}}
-                                {{--@else--}}
-                                    {{--{{ $errors }}--}}
-                                {{--@endif--}}
-                            {{--</ul>--}}
-                        {{--</div>--}}
-                    {{--@endif--}}
+                    @if (count($errors) > 0)
+                        <div style="color: red">
+                            <ul>
+                                @if( is_object($errors) )
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                @else
+                                    {{ $errors }}
+                                @endif
+                            </ul>
+                        </div>
+                    @endif
                     <input type="submit" class="btn_2 fr" id="submit" placeholder="获取报价" value="获取报价">
                     <div class="w200 fl mR10">
                         <label><input class="btn_1" type="text" name="name" id="name" placeholder="姓名"></label>
