@@ -176,7 +176,7 @@ class FrontController extends Controller
             $id = $thirds->id;
         }
         $articles = Article::where('pid',$id)->orderBy('serial_number','desc')
-            ->orderBy('id','desc')->paginate(9);
+            ->orderBy('id','asc')->paginate(9);
         $pages = getPage($articles,9);
         return view('front.product',compact('articles','pages','id','seconds','thirds'));
     }
