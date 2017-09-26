@@ -265,14 +265,11 @@
                         </div>
                     @endif
                     <input type="submit" class="btn_2 fr" id="submit" placeholder="获取报价" value="获取报价">
-                    <div class="w200 fl mR10">
-                        <label><input class="btn_1" type="text" name="name" id="name" placeholder="姓名"></label>
-                        <label><input class="btn_1" type="text" name="product" id="phone" placeholder="产品"></label>
+                    <div class="ipt_all clearfix">
+                        <label class="fr" style="margin: 0 10px 0 0;"><input class="btn_1" type="text" name="name" id="name" placeholder="姓名"></label>
+                        <label class="fl"><input class="btn_1" type="text" name="phone" id="phone" placeholder="电话"></label>
                     </div>
-                    <div class="w200 fl">
-                        <label><input class="btn_1" type="text" name="phone" placeholder="电话"></label>
-                        <label><input class="btn_1" type="text" name="amout" placeholder="数量"></label>
-                    </div>
+                    <label class="lab_2"><input class="btn_3" type="text" name="message" placeholder="地址"></label>
                 </form>
             </div>
 

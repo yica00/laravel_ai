@@ -32,14 +32,8 @@
           @endif
       <p><input type="text" value="" name="name" id="name" class="input" placeholder="请输入您的真实姓名"></p>
       <p><input type="text" value="" name="phone" id="phone" class="input" placeholder="请输入您的电话"></p>
-      <p><select id="" name="product">
-            <option value="0" selected = "selected">请选择您需要的产品</option>
-              @foreach( $articles as $article )
-            <option value="{{$article->title}}--{{$article->link}}">{{$article->title}}--{{$article->link}}</option>
-              @endforeach
-          </select>
-      </p>
-      <p><input type="text" value="" name="amout" id="" class="input" placeholder="请输入您需要的产品数量"></p>
+
+      <p><input type="text" value="" name="address" id="" class="input" placeholder="请输入您的地址"></p>
       <p><textarea name="message" class="textarea" id="" value="" placeholder="如何您还有其他问题需要咨询，可以在这里给我们留言"></textarea></p>
       <p><button type="submit" id="submit" class="submit_but">确认提交</button></p>
     </form>

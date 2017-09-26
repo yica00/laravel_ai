@@ -164,21 +164,21 @@ class FrontController extends Controller
     }
 
 
-    public function product( ){
+    public function product( $id=0 ){
 //        $cid = Input::get('cid');
 //        $tid = Input::get('tid');
 //        $seconds = Article::where('pid',$id)->orderBy('serial_number','desc')->orderBy('id','asc')->get();
 //        if( !$cid ){
 //            $cid = $seconds[0]->id;
 //        }
-//        $thirds = Article::where('pid',$cid)->orderBy('serial_number','desc')->orderBy('id','asc')->get();
-//        if( !$tid ){
-//            $tid = $thirds[0]->id;
-//        }
-        $articles = Article::where('pid',3)->orderBy('serial_number','desc')
-            ->orderBy('id','desc')->paginate(6);
-        $pages = getPage($articles,6);
-        return view('front.product',compact('articles','pages','id','cid','tid','seconds','thirds'));
+        $thirds = Article::where('pid',3)->orderBy('id','asc')->first();
+        if( !$id ){
+            $id = $thirds->id;
+        }
+        $articles = Article::where('pid',$id)->orderBy('serial_number','desc')
+            ->orderBy('id','desc')->paginate(9);
+        $pages = getPage($articles,9);
+        return view('front.product',compact('articles','pages','id','seconds','thirds'));
     }
     public function product_detail($id){
         $article = Article::find($id);
@@ -186,7 +186,7 @@ class FrontController extends Controller
         $up_down = get_up_down_page($id,$article->pid);
 //        $third = Article::find($article->pid);
 //        $second = Article::find($third->pid);
-//        $pid = $second->pid;
+        $pid = $article->pid;
         return view('front.product_in',compact('article','pid','up_down'));
     }
 

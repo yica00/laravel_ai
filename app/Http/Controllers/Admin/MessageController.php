@@ -53,12 +53,12 @@ class MessageController extends Controller
         if( $messages > 1 ){
             return back()->with('errors','当前ip留言过多，请稍后再试');
         }
-        if( !isset($atic['message']) ){
-            $atic['message'] = "";
+        if( isset($atic['address']) ){
+            $atic['message'] = '地址：'.$atic['address'].'<br>消息详情：'.$atic['message'];
         }
-        if (isset($atic['amout'])){
-            $atic['message'] = '产品数量：'.$atic['amout'].'<br>产品名字：'.$atic['product'].'<br>留言详情：'.$atic['message'];
-        }
+//        if (isset($atic['amout'])){
+//            $atic['message'] = '产品数量：'.$atic['amout'].'<br>产品名字：'.$atic['product'].'<br>留言详情：'.$atic['message'];
+//        }
         $rel = Message::create($atic);
         if( $rel->wasRecentlyCreated ){
             return back()->with('errors','留言成功，我们会稍后与你联系');
