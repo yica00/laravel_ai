@@ -108,7 +108,7 @@
   <ul class="prod-list clearfix">
     @foreach( $products as $product )
     <li>
-      <a href="/product/{{$product->id}}">
+      <a href="/product/category/{{$product->id}}">
         <span class="pic">
           <img src="{{$product->thumbnail}}" alt="">
         </span>
