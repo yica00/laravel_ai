@@ -199,11 +199,15 @@ class FrontController extends Controller
     }
 
 
-    public function our_case( ){
-        $articles = Article::where('pid',4)
+    public function our_case( $id = 0 ){
+        $types = Article::where('pid',4)->orderBy('id','asc')->get();
+        if( !$id ){
+            $id = $types[0]->id;
+        }
+        $articles = Article::where('pid',$id)
             ->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
         $pages = getPage($articles,6);
-        return view('front.case',compact('articles','pages'));
+        return view('front.case',compact('articles','pages','id'));
     }
     public function case_detail($id){
         $article = Article::find($id);
