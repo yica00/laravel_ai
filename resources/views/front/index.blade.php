@@ -140,7 +140,7 @@
         <ul class="picList prolist">
           @foreach( $cases as $case )
           <li>
-            <a href="/case/{{$case->id}}">
+            <a href="/case/category/{{$case->id}}">
               <div class="pic"><span class="plus">&nbsp;</span><img src="{{$case->thumbnail}}" /></div>
               <div class="txt">{{$case->title}}</div>
             </a>
