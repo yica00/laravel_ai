@@ -16,63 +16,63 @@
 <script type="text/javascript">jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});</script>
 </div>
 <!-- quoted -->
-<div class="quoted">
-  <div class="w1160 clearfix">
-    <div class="txt-2 fr">
-      <h2>免费电话报价</h2>
-      <p>{{ session('setting')['fix_phone']  }}</p>
-    </div>
-    <div class="txt-1 fl">
-     <h2>皇室石材要花多少钱</h2>
-     <p>8s填写表单获取精准报价</p>
-    </div>
-    <div class="form-1 fl">
-        <form class="quo-form-1 clearfix" action="/front/message" method="post">
-          {{  csrf_field() }}
-          @if (count($errors) > 0)
-            <div style="color: red">
-              <ul>
-                @if( is_object($errors) )
-                  @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                  @endforeach
-                @else
-                  {{ $errors }}
-                @endif
-              </ul>
-            </div>
-          @endif
-          <input type="submit" class="btn_2 fr" id="submit" placeholder="获取报价" value="获取报价">
+{{--<div class="quoted">--}}
+  {{--<div class="w1160 clearfix">--}}
+    {{--<div class="txt-2 fr">--}}
+      {{--<h2>免费电话报价</h2>--}}
+      {{--<p>{{ session('setting')['fix_phone']  }}</p>--}}
+    {{--</div>--}}
+    {{--<div class="txt-1 fl">--}}
+     {{--<h2>皇室石材要花多少钱</h2>--}}
+     {{--<p>8s填写表单获取精准报价</p>--}}
+    {{--</div>--}}
+    {{--<div class="form-1 fl">--}}
+        {{--<form class="quo-form-1 clearfix" action="/front/message" method="post">--}}
+          {{--{{  csrf_field() }}--}}
+          {{--@if (count($errors) > 0)--}}
+            {{--<div style="color: red">--}}
+              {{--<ul>--}}
+                {{--@if( is_object($errors) )--}}
+                  {{--@foreach ($errors->all() as $error)--}}
+                    {{--<li>{{ $error }}</li>--}}
+                  {{--@endforeach--}}
+                {{--@else--}}
+                  {{--{{ $errors }}--}}
+                {{--@endif--}}
+              {{--</ul>--}}
+            {{--</div>--}}
+          {{--@endif--}}
+          {{--<input type="submit" class="btn_2 fr" id="submit" placeholder="获取报价" value="获取报价">--}}
 
-          <div class="ipt_all clearfix">
-            <label class="fr" style="margin: 0 10px 0 0;"><input class="btn_1" type="text" name="name" id="name" placeholder="姓名"></label>
-            <label class="fl"><input class="btn_1" type="text" name="phone" id="phone" placeholder="电话"></label>
-          </div>
-          <label class="lab_2"><input class="btn_3" type="text" name="message" placeholder="地址"></label>
-        </form>
-      <script>
-          $("#submit").click(function () {
-              var name = $('#name').val();
-              var phone = $('#phone').val();
-              if (name == "" || phone == "" ) {
-                  alert("请先输入姓名,电话后报价");
-                  return false;
-              }
-              $.ajax({
-                  url: '/front/message',
-                  type: 'POST',
-                  data: $('#forms').serialize(),
-                  dataType: 'JSON',
-                  success: function (data) {
-//                      alert(JSON.stringify(data));
-//                          $(".writeinfo").append(data.msg);
-                  }
-              });
-          });
-      </script>
-    </div>
-  </div>
-</div>
+          {{--<div class="ipt_all clearfix">--}}
+            {{--<label class="fr" style="margin: 0 10px 0 0;"><input class="btn_1" type="text" name="name" id="name" placeholder="姓名"></label>--}}
+            {{--<label class="fl"><input class="btn_1" type="text" name="phone" id="phone" placeholder="电话"></label>--}}
+          {{--</div>--}}
+          {{--<label class="lab_2"><input class="btn_3" type="text" name="message" placeholder="地址"></label>--}}
+        {{--</form>--}}
+      {{--<script>--}}
+          {{--$("#submit").click(function () {--}}
+              {{--var name = $('#name').val();--}}
+              {{--var phone = $('#phone').val();--}}
+              {{--if (name == "" || phone == "" ) {--}}
+                  {{--alert("请先输入姓名,电话后报价");--}}
+                  {{--return false;--}}
+              {{--}--}}
+              {{--$.ajax({--}}
+                  {{--url: '/front/message',--}}
+                  {{--type: 'POST',--}}
+                  {{--data: $('#forms').serialize(),--}}
+                  {{--dataType: 'JSON',--}}
+                  {{--success: function (data) {--}}
+{{--//                      alert(JSON.stringify(data));--}}
+{{--//                          $(".writeinfo").append(data.msg);--}}
+                  {{--}--}}
+              {{--});--}}
+          {{--});--}}
+      {{--</script>--}}
+    {{--</div>--}}
+  {{--</div>--}}
+{{--</div>--}}
 <span class="bk20">&nbsp;</span>
 <!-- ho-list -->
 <div class="w1160 clearfix">
