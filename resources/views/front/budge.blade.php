@@ -34,6 +34,17 @@
       <p><input type="text" value="" name="phone" id="phone" class="input" placeholder="请输入您的电话"></p>
 
       <p><input type="text" value="" name="address" id="" class="input" placeholder="请输入您的地址"></p>
+      <p>
+          <select id="" name="style">
+              <option value="请选择风格">请选择风格</option>
+              <option value="中式">中式</option>
+              <option value="欧式" >欧式</option>
+              <option value="美式">美式</option>
+              <option value="英式" >英式</option>
+              <option value="现代">现代</option>
+          </select>
+      </p>
+
       <p><textarea name="message" class="textarea" id="" value="" placeholder="如何您还有其他问题需要咨询，可以在这里给我们留言"></textarea></p>
       <p><button type="submit" id="submit" class="submit_but">确认提交</button></p>
     </form>
