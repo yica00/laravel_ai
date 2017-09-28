@@ -42,7 +42,7 @@
         <div class="txt">
           <p><span>品牌：</span>{{$article->title}}</p>
           <p><span>型号：</span>{{$article->link}}</p>
-          <p><span>简介：{{$article->introduce}}</span></p>
+          <p><span>简介：@foreach( explode(',',$article->introduce) as $intro ) {{$intro}} <br> @endforeach </span></p>
         </div>
         <p class="btn clearfix"><a href="/product/category/{{$pid}}" class="back fr">返回上级目录</a></p>
       </div>
