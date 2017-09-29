@@ -175,10 +175,11 @@ class FrontController extends Controller
         if( !$id ){
             $id = $thirds->id;
         }
+        $title = Article::find($id);
         $articles = Article::where('pid',$id)->orderBy('serial_number','desc')
             ->orderBy('id','asc')->paginate(9);
         $pages = getPage($articles,9);
-        return view('front.product',compact('articles','pages','id','seconds','thirds'));
+        return view('front.product',compact('articles','pages','id','thirds','title'));
     }
     public function product_detail($id){
         $article = Article::find($id);

@@ -44,7 +44,7 @@
             <img src="{{$article->thumbnail}}" alt="">
           </span>
           <div class="txt">
-            <h2>{{$article->title}}</h2>
+            <h2>{{$title->title}}</h2>
             <p class="p1">{ {{$article->link}} }</p>
             <p class="p2">&nbsp;</p>
           </div>
