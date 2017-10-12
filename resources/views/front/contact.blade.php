@@ -15,7 +15,7 @@
   <span class="bk40">&nbsp;</span>
   <div class="w1160 clearfix">
     <!-- 内容 -->
-    <div style="width:100%;height:400px;" id="dituContent-2"></div>
+    {{--<div style="width:100%;height:400px;" id="dituContent-2"></div>--}}
     <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
     <script type="text/javascript">
           //创建和初始化地图函数：
