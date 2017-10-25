@@ -23,6 +23,9 @@ Route::group(['middleware'=>'check_setting'],function (){
 
         Route::get('about','FrontController@about');
         Route::get('about/culture','FrontController@culture');
+        Route::get('about/brand','FrontController@brand');
+        Route::get('about/video','FrontController@video');
+        Route::get('about/video/{id}','FrontController@video_detail');
         Route::get('about/honor','FrontController@honor');
         Route::get('about/env','FrontController@env');
 
@@ -32,7 +35,18 @@ Route::group(['middleware'=>'check_setting'],function (){
 
         Route::get('treatment','FrontController@treatment');
 
-        Route::get('doctor','FrontController@doctor');
+        Route::get('menu','FrontController@menu_list');
+
+        Route::get('store','FrontController@store_list');
+        Route::get('store/{id}','FrontController@store_dedail');
+
+        Route::get('active','FrontController@active_list');
+        Route::get('active/{id}','FrontController@active_dedail');
+
+        Route::get('join','FrontController@join_detail');
+        Route::get('join/category/{id}','FrontController@join_detail');
+        Route::get('join/suply','FrontController@join_suply');
+
 
         Route::get('case','FrontController@our_case');
         Route::get('case/category/{id}','FrontController@our_case');

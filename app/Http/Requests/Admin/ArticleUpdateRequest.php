@@ -28,7 +28,7 @@ class ArticleUpdateRequest extends FormRequest
             'thumbnail' => 'mimetypes:image/gif,image/png,image/jpeg,image/bmp',
             'introduce' => 'max:200',
             'is_nav' => 'in:0,1',
-            'serial_number' => 'integer',
+//            'serial_number' => 'integer',
             'link' => 'max:100',
         ];
     }

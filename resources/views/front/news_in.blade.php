@@ -4,34 +4,34 @@
 <div class="bread">
   <div class="w1160 clearfix">
     <div class="in_tit_all">
-      <p>------&nbsp;&nbsp;royal dynamic&nbsp;&nbsp;------</p>
-      <h2><span>皇</span><span>室</span><span>动</span><span>态</span></h2>
+      <h2>Nutrition and health</h2>
+      <p>营养健康</p>
+      <div class="line">&nbsp;</div>
     </div>
   </div>
 </div>
+<span class="bk30">&nbsp;</span>
 <!-- start -->
-<!--  -->
 <div class="wap_box">
-  <span class="bk40">&nbsp;</span>
-  <div class="news_dis">
-    <div class="w1160 clearfix">
-      <div class="top">
-          <h3 class="tit">{{$article->title}}</h3>
-          <p class="protime">上传时间：<em>{{$article->created_at}}</em> <span class="pL10">来源：<i>皇室御品</i></span></p>
+  <div class="w1160 clearfix">
+    <!-- 内容 -->
+    <div class="honor_dis clearfix">
+      <div class="tit">
+        <h2>{{$article->title}}</h2>
+        <p>上传时间：<em>{{$article->created_at}}</em> <span class="pL10">来源：<i>李记酸菜鸡</i></span></p>
       </div>
-    </div>
-    <div class="p_style">
-      <div class="w1160 clearfix">
+      <div class="p_style">
           {!! $article->comtent !!}
       </div>
-    </div> 
+    </div>
     <div class="backpre clearfix">
         @if( $up_down['1'] )<a href="/news/{{ $up_down['1'] }}" rel="next">上一篇</a> @endif
         @if( $up_down['2'] ) <a href="/news/{{ $up_down['2'] }}" rel="prev">下一篇</a>@endif
         <a href="/news">返回上级目录</a>
     </div>
+    <!-- end -->
+  </div>  
 </div>
-<span class="bk50">&nbsp;</span>
+<span class="bk60">&nbsp;</span>
 <!-- end -->
-<!-- footer -->
 @endsection

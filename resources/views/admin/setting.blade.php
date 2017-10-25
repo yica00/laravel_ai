@@ -66,6 +66,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">地图坐标</label>
+                                <div class="col-md-6">
+                                    <input id="email"   class="form-control" name="bases_xy"  value="{{ $setting['bases_xy']  }}"  autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">ICP备案</label>
                                 <div class="col-md-6">
                                     <input id="email"   class="form-control" name="icp"  value="{{ $setting['icp']  }}"  autofocus>

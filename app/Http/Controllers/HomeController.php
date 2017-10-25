@@ -32,11 +32,13 @@ class HomeController extends Controller
 
     public function setting(){
 //        $data = [
-//            'web_name'=>'南充兄弟建材有限公司',
+//            'web_name'=>'李记酸菜鸡',
 //            'phone'=>'180-8159-1458',
 //            'fix_phone'=>'0817-2866062',
 //            'qq'=>'752542578',
 //            'bases'=>'南充市顺庆区潆华工业园区博雅豪庭3幢-102铺',
+//            'bases_xy'=>'106.11477,30.828413',
+//            'icp'=>'蜀备8888888号',
 //            'keywords'=>'网站关键词',
 //            'description'=>'关键词描述',
 //            'wx_map'=>'/images/erwm.png',
@@ -56,6 +58,7 @@ class HomeController extends Controller
             'fix_phone'=>$request->get('fix_phone'),
             'qq'=>$request->get('qq'),
             'bases'=>$request->get('bases'),
+            'bases_xy'=>$request->get('bases_xy'),
             'icp'=>$request->get('icp'),
             'keywords'=>$request->get('keywords'),
             'description'=>$request->get('description'),
