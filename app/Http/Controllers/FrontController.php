@@ -155,7 +155,7 @@ class FrontController extends Controller
 
     public function store_dedail($id){
         $article = Article::find($id);
-        $article->comtent = get_article_imgs($article->comtent,10);
+        $article->comtent = get_article_imgs($article->comtent,40);
         return view('front.store_in',compact('article'));
     }
 
