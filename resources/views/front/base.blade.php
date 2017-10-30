@@ -185,7 +185,7 @@
             <ul class="txt fl">
                 <li>座机：{{ session('setting')['fix_phone']  }}</li>
                 <li>电话：{{ session('setting')['phone']  }}</li>
-                <li>Q Q：{{ session('setting')['qq']  }}</li>
+{{--                <li>Q Q：{{ session('setting')['qq']  }}</li>--}}
                 <li>地址：{{ session('setting')['bases']  }}</li>
             </ul>
         </div>
