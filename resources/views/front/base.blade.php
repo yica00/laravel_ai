@@ -200,7 +200,7 @@
 </div>
 <!-- 侧边 -->
 <div class="float_onlie">
-    <a class="on_1" href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes">&nbsp;</a>
+{{--    <a class="on_1" href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes">&nbsp;</a>--}}
     <a class="on_2 ph" href=""><em>电话：{{ session('setting')['fix_phone']  }}<br/>手机：{{ session('setting')['phone']  }}</em></a>
     <a class="on_3 add" href=""><em>{{ session('setting')['bases']  }}</em></a>
     <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
