@@ -32,13 +32,13 @@
       </div>
       <img src="{{$article->thumbnail}}" alt="{{$article->title}}" />
     </div>
-    <span class="bk20">&nbsp;</span>
-    <div class="store_mid_box">
-      <h2>门店简介</h2>
-      <div class="txt">
-        {{$article->introduce}}
-      </div>
-    </div>
+    {{--<span class="bk20">&nbsp;</span>--}}
+    {{--<div class="store_mid_box">--}}
+      {{--<h2>门店简介</h2>--}}
+      {{--<div class="txt">--}}
+        {{--{{$article->introduce}}--}}
+      {{--</div>--}}
+    {{--</div>--}}
     <span class="bk20">&nbsp;</span>
     <div class="store_mid_box">
       <h2>门店环境</h2>
