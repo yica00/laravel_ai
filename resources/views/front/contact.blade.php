@@ -115,7 +115,7 @@
   <span class="bk30">&nbsp;</span>
   <div class="w1160 clearfix">
     <!-- 内容 -->
-    <ul class="con_list clearfix">
+    <ul class="con_list clearfix" >
       <li>
         <img src="/images/con_1.png" alt="">
         <h2>联系电话</h2>
@@ -124,7 +124,7 @@
         <p>手机：{{ session('setting')['phone']  }}</p>
       </li>
 
-      <li>
+      <li style="margin-left: 20%">
         <img src="/images/con_3.png" alt="">
         <h2>总店地址</h2>
         <p>{{ session('setting')['bases']  }}</p>
