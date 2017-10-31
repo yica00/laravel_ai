@@ -123,11 +123,7 @@
         <p>加盟专线：{{ session('setting')['fix_phone']  }}</p>
         <p>手机：{{ session('setting')['phone']  }}</p>
       </li>
-      <li>
-        <img src="/images/con_2.png" alt="">
-        <h2>在线咨询</h2>
-        <p>QQ：{{ session('setting')['qq']  }}</p>
-      </li>
+
       <li>
         <img src="/images/con_3.png" alt="">
         <h2>总店地址</h2>
