@@ -46,7 +46,8 @@ class TeamController extends Controller
     {
         $atic = Input::all();
         $atic['photo'] = getUrl($request,'photo');
-        $atic['production'] = implode(',',$atic['production']);
+        $atic['wx_img'] = getUrl($request,'wx_img');
+        $atic['production'] = isset( $atic['production']) ?implode(',',$atic['production']):"";
         $rel = Teams::create($atic);
         if( $rel->wasRecentlyCreated ){
             return back()->with('errors','添加成功');
@@ -93,9 +94,13 @@ class TeamController extends Controller
     {
         $atic = Input::except('_token','_method');
         $atic['photo'] = getUrl($request,'photo');
-        $atic['production'] = implode(',',$atic['production']);
+        $atic['wx_img'] = getUrl($request,'wx_img');
+        $atic['production'] = isset( $atic['production']) ?implode(',',$atic['production']):"";
         if( ! $atic['photo'] ){
             unset( $atic['photo']);
+        }
+        if( ! $atic['wx_img'] ){
+            unset( $atic['wx_img']);
         }
         $team = Teams::find($id);
         $rel = $team->update($atic);

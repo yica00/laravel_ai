@@ -11,7 +11,6 @@ class CreateArticleTable extends Migration
      *
      * @return void
      */
-    protected $fillable = ['title','thumbnail','comtent','pid','is_nav','link','serial_number'];
 
     public function up()
     {

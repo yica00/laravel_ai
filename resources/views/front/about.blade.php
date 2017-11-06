@@ -4,23 +4,24 @@
 <div class="bread">
   <div class="w1160 clearfix">
     <div class="in_tit_all">
-      <h2>Brand culture</h2>
-      <p>品牌故事</p>
-      <div class="line">&nbsp;</div>
+      <h2>about us</h2>
+      <p>关于我们</p>
     </div>
     <span class="bk20">&nbsp;</span>
     <ul class="sublist">
       @foreach( session('header_nav') as $cate )
-        @if( $cate->id == 2 )
+        @if( $cate->id == 8)
           @foreach( $cate->articles as $art )
-            <li  class="
-              @if( $art->link )
-                @if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link ) on @endif
-              @else
-                @if( $art->id == $pid ) on @endif
-              @endif
-             ">
-              <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif">{{$art->title}}</a>
+            <li class="
+            @if( $art->link )
+            @if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link )
+                    on
+@endif
+            @else
+            @if( $art->id == $id ) on @endif
+            @endif
+                    ">
+              <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif" >{{$art->title}}</a>
             </li>
           @endforeach
         @endif
@@ -28,15 +29,15 @@
     </ul>
   </div>
 </div>
-<span class="bk30">&nbsp;</span>
-<!-- start -->
 <div class="wap_box">
+  <span class="bk40">&nbsp;</span>
   <div class="w1160 clearfix">
-    <!-- 内容 -->
+  <!-- start -->
+  <div class="txt_model_1">
     {!! $article->comtent !!}
-    <!-- end -->
-  </div>  
+  </div>
+  <!-- end -->
+  </div>
+  <span class="bk40">&nbsp;</span>
 </div>
-<span class="bk60">&nbsp;</span>
-<!-- end -->
 @endsection

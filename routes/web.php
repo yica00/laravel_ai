@@ -28,6 +28,8 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('about/video/{id}','FrontController@video_detail');
         Route::get('about/honor','FrontController@honor');
         Route::get('about/env','FrontController@env');
+        Route::get('about/contact','FrontController@contact');
+        Route::get('about/offer','FrontController@offer');
 
         Route::get('news','FrontController@news');
         Route::get('news/category/{id}','FrontController@news');
@@ -49,15 +51,29 @@ Route::group(['middleware'=>'check_setting'],function (){
 
 
         Route::get('case','FrontController@our_case');
-        Route::get('case/category/{id}','FrontController@our_case');
+        Route::get('case/{hid}/{sid}','FrontController@our_case');
+//        Route::get('case/category/{id}','FrontController@our_case');
         Route::get('case/{id}','FrontController@case_detail');
 
-        Route::get('team','FrontController@team');
+        Route::get('team','FrontController@team_design');
+        Route::get('/team/design','FrontController@team_design');
+        Route::get('team/supervise','FrontController@team_supervise');
         Route::get('team/{id}','FrontController@team_detail');
+        Route::get('worker/{id}','FrontController@worker_detail');
+
+        Route::get('quality','FrontController@quality');
+        Route::get('quality/category/{id}','FrontController@quality');
+
+        Route::get('project','FrontController@project');
+        Route::get('project/{id}','FrontController@project_detail');
 
         Route::get('product','FrontController@product');
         Route::get('product/category/{id}','FrontController@product');
         Route::get('product/{id}','FrontController@product_detail');
+
+        Route::get('guide','FrontController@guide');
+        Route::get('guide/category/{id}','FrontController@guide');
+        Route::get('guide/{id}','FrontController@guide_detail');
 
         Route::get('service','FrontController@service');
         Route::get('service/category/{id}','FrontController@service');
@@ -98,6 +114,7 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::resource('message','MessageController');
         Route::resource('car','CarController');
         Route::resource('order_list','Order_listController');
+        Route::resource('rcase','RcaseController');
 
 
         Route::get('/team/{id}/delete','TeamController@destroy');
@@ -117,6 +134,7 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('/admin/message/{id}/delete','MessageController@destroy');
 
         Route::get('/admin/car/{id}/delete','CarController@destroy');
+        Route::get('/admin/rcase/{id}/delete','RcaseController@destroy');
         Route::get('/admin/order_list/{id}/delete','Order_listController@destroy');
     });
 

@@ -185,6 +185,23 @@ function get_article_imgs($str,$num){
     return [$arr,$pages];
 }
 
+function get_case_page($id){
+    $pre_page = \App\Models\Admin\Rcase::where('id','<',$id)->orderBy('id','desc')->first();
+    if($pre_page){
+        $pre_id = $pre_page->id;
+    }else{
+        $pre_id = null;
+    }
+
+    $next_page = \App\Models\Admin\Rcase::where('id','>',$id)->orderBy('id','asc')->first();
+    if($next_page){
+        $next_id = $next_page->id;
+    }else{
+        $next_id = null;
+    }
+    return [$id,$pre_id,$next_id];
+}
+
 function getImgsPage($total,$num){
     $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
     $total_page = ceil( $total/$num);

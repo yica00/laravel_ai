@@ -36,10 +36,28 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">人员类别</label>
+                                <div class="col-md-6">
+                                    <select name="cate">
+                                        <option value="1" @if( $team->cate == 1 ) selected @endif >设计团队</option>
+                                        <option value="2" @if( $team->cate == 2 ) selected @endif>工程监管</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">头像</label>
                                 <div class="col-md-6">
                                     <input id="email" type="file"  class="form-control" name="photo" autofocus>
                                     <img src="{{  $team->photo }}" width="50" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">二维码</label>
+                                <div class="col-md-6">
+                                    <input id="email" type="file"  class="form-control" name="wx_img" autofocus>
+                                    <img src="{{  $team->wx_img }}" width="50" />
                                 </div>
                             </div>
 
