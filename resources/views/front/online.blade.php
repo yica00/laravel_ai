@@ -100,7 +100,7 @@
           <div class="bd">
             <ul class="infoList">
               @foreach( $messages as $message )
-              <li><span class="p_1">{{$message->phone}}</span><span class="p_2">{{$message->name}}</span><span class="p_3">已申请报价</span><span class="p_4">{{ \Carbon\Carbon::now('PRC')->diffInDays($message->created_at) }}天前</span></li>
+              <li><span class="p_1">{{mb_substr($message->phone,0,3)}}****{{mb_substr($message->phone,7,4)}}</span><span class="p_2">{{$message->name}}</span><span class="p_3">已申请报价</span><span class="p_4">{{ \Carbon\Carbon::now('PRC')->diffInDays($message->created_at) }}天前</span></li>
               @endforeach
             </ul>
           </div>
@@ -109,7 +109,7 @@
         jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"top",autoPlay:true,vis:7});
         </script>
         <div class="txt">
-          <h2>已有<span>110</span>户业主申请报价</h2>
+          <h2>已有<span>{{$num}}</span>户业主申请报价</h2>
           <p>我们承诺您的信息将被严格保密</p>
         </div>
       </div>

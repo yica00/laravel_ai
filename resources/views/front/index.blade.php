@@ -179,7 +179,7 @@
           <div class="bd">
             <ul class="infoList">
               @foreach( $messages as $message )
-                <li><span class="p_1">{{$message->phone}}</span><span class="p_2">{{$message->name}}</span><span class="p_3">已申请报价</span><span class="p_4">{{ \Carbon\Carbon::now('PRC')->diffInDays($message->created_at) }}天前</span></li>
+                <li><span class="p_1">{{mb_substr($message->phone,0,3)}}****{{mb_substr($message->phone,7,4)}}</span><span class="p_2">{{$message->name}}</span><span class="p_3">已申请报价</span><span class="p_4">{{ \Carbon\Carbon::now('PRC')->diffInDays($message->created_at) }}天前</span></li>
               @endforeach
             </ul>
           </div>
@@ -188,7 +188,7 @@
         jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"top",autoPlay:true,vis:7});
         </script>
         <div class="txt">
-          <h2>已有<span>110</span>户业主申请报价</h2>
+          <h2>已有<span>{{$num}}</span>户业主申请报价</h2>
           <p>我们承诺您的信息将被严格保密</p>
         </div>
       </div>
@@ -209,33 +209,35 @@
     <div class="top clearfix">
       <div class="w570 fr">
         <div class="clearfix">
-          <a href="case_in.html" class="cp_all cp_2 fr">
-            <img src="images/cp_6.jpg">
+          <a href="/case/{{$cases[0]->id}}" class="cp_all cp_2 fr">
+            <img src="{{$cases[0]->thumbnail}}">
             <span class="mask">&nbsp;</span>
             <span class="line">&nbsp;</span>
-            <span class="name">田园风格94平方米三房两厅两卫</span>
+            <span class="name">{{$cases[2]->title}}</span>
           </a>
-          <a href="case_in.html" class="cp_all cp_2 fl">
-            <img src="images/cp_7.jpg">
+          <a href="/case/{{$cases[1]->id}}" class="cp_all cp_2 fl">
+            <img src="{{$cases[1]->thumbnail}}">
             <span class="mask">&nbsp;</span>
             <span class="line">&nbsp;</span>
-            <span class="name">田园风格94平方米三房两厅两卫</span>
+            <span class="name">{{$cases[1]->title}}</span>
           </a>
         </div>
         <span class="bk10">&nbsp;</span>
         <div class="clearfix">
-          <a href="case_in.html" class="cp_all cp_2 fr">
-            <img src="images/cp_2.jpg">
+          <a href="/case/{{$cases[2]->id}}" class="cp_all cp_2 fr">
+            <img src="{{$cases[2]->thumbnail}}">
             <span class="mask">&nbsp;</span>
             <span class="line">&nbsp;</span>
-            <span class="name">田园风格94平方米三房两厅两卫</span>
+            <span class="name">{{$cases[2]->title}}</span>
           </a>
-          <a href="case_in.html" class="cp_all cp_2 fl">
-            <img src="images/cp_3.jpg">
+          @if( isset( $cases[3] ) )
+          <a href="/case/{{$cases[3]->id}}" class="cp_all cp_2 fl">
+            <img src="{{$cases[3]->thumbnail}}">
             <span class="mask">&nbsp;</span>
             <span class="line">&nbsp;</span>
-            <span class="name">田园风格94平方米三房两厅两卫</span>
+            <span class="name">{{$cases[3]->title}}</span>
           </a>
+            @endif
         </div>
       </div>
       <!-- banner -->
@@ -243,54 +245,16 @@
         <div class="hd">&nbsp;</div>
         <div class="bd">
           <ul>
+            @foreach( $cases as $case )
             <li>
-              <a href="case_in.html" class="cp_all cp_3">
-                <img src="images/cp_4.jpg">
+              <a href="/case/{{$case->id}}" class="cp_all cp_3">
+                <img src="{{$case->thumbnail}}">
                 <span class="mask">&nbsp;</span>
                 <span class="line">&nbsp;</span>
-                <span class="name">田园风格94平方米三房两厅两卫</span>
+                <span class="name">{{$case->title}}</span>
               </a>
             </li>
-            <li>
-              <a href="case_in.html" class="cp_all cp_3">
-                <img src="images/cp_5.jpg">
-                <span class="mask">&nbsp;</span>
-                <span class="line">&nbsp;</span>
-                <span class="name">田园风格94平方米三房两厅两卫</span>
-              </a>
-            </li>
-            <li>
-              <a href="case_in.html" class="cp_all cp_3">
-                <img src="images/cp_6.jpg">
-                <span class="mask">&nbsp;</span>
-                <span class="line">&nbsp;</span>
-                <span class="name">田园风格94平方米三房两厅两卫</span>
-              </a>
-            </li>
-            <li>
-              <a href="case_in.html" class="cp_all cp_3">
-                <img src="images/cp_7.jpg">
-                <span class="mask">&nbsp;</span>
-                <span class="line">&nbsp;</span>
-                <span class="name">田园风格94平方米三房两厅两卫</span>
-              </a>
-            </li>
-            <li>
-              <a href="case_in.html" class="cp_all cp_3">
-                <img src="images/cp_8.jpg">
-                <span class="mask">&nbsp;</span>
-                <span class="line">&nbsp;</span>
-                <span class="name">田园风格94平方米三房两厅两卫</span>
-              </a>
-            </li>
-            <li>
-              <a href="case_in.html" class="cp_all cp_3">
-                <img src="images/cp_9.jpg">
-                <span class="mask">&nbsp;</span>
-                <span class="line">&nbsp;</span>
-                <span class="name">田园风格94平方米三房两厅两卫</span>
-              </a>
-            </li>
+            @endforeach
           </ul>
         </div>
         <a class="prev" href="javascript:void(0)"></a>
@@ -300,14 +264,9 @@
     </div>
     <span class="bk10">&nbsp;</span>
     <ul class="list clearfix">
-        <li><a href="case.html"><img src="images/cp_l1.jpg" alt="" /><span>客厅</span></a></li>
-        <li><a href="case.html"><img src="images/cp_l2.jpg" alt="" /><span>卧室</span></a></li>
-        <li><a href="case.html"><img src="images/cp_l3.jpg" alt="" /><span>餐厅</span></a></li>
-        <li><a href="case.html"><img src="images/cp_l4.jpg" alt="" /><span>厨房</span></a></li>
-        <li><a href="case.html"><img src="images/cp_l5.jpg" alt="" /><span>卫生间</span></a></li>
-        <li><a href="case.html"><img src="images/cp_l6.jpg" alt="" /><span>阳台</span></a></li>
-        <li><a href="case.html"><img src="images/cp_l7.jpg" alt="" /><span>儿童房</span></a></li>
-        <li><a href="case.html"><img src="images/cp_l8.jpg" alt="" /><span>更多</span></a></li>
+      @foreach( $houses as $house  )
+        <li><a href="/case/{{$house->id}}/0"><img src="{{$house->thumbnail}}" alt="" /><span>{{$house->title}}</span></a></li>
+      @endforeach
     </ul>
   </div>
 </div>
@@ -316,7 +275,7 @@
   <div class="w1160 clearfix">
     <span class="bk50">&nbsp;</span>
     <div class="ho_tit_all">
-      <a href="team.html">
+      <a href="/team">
         <h2>设计团队</h2>
         <p>130位平均7年以上设计经验资深设计师为您服务</p>
       </a>
@@ -329,66 +288,18 @@
       </div>
       <div class="bd">
         <ul class="picList">
+          @foreach( $teams as $team )
           <li>
-            <a href="team_in.html">
-              <span class="pic"><img src="images/sj_1.jpg" alt="" /></span>
-              <span class="ewm"><img src="images/sj_ewm.jpg" alt="" /></span>
+            <a href="/team/{{$team->id}}">
+              <span class="pic"><img src="{{$team->photo}}" alt="" /></span>
+              <span class="ewm"><img src="{{$team->wx_img}}" alt="" /></span>
               <div class="txt">
-                <h2>邵来明</h2>
+                <h2>{{$team->title}}</h2>
                 <span>查看详情</span>
               </div>
             </a>
           </li>
-          <li>
-            <a href="team_in.html">
-              <span class="pic"><img src="images/sj_2.jpg" alt="" /></span>
-              <span class="ewm"><img src="images/sj_ewm.jpg" alt="" /></span>
-              <div class="txt">
-                <h2>邵来明</h2>
-                <span>查看详情</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="team_in.html">
-              <span class="pic"><img src="images/sj_3.jpg" alt="" /></span>
-              <span class="ewm"><img src="images/sj_ewm.jpg" alt="" /></span>
-              <div class="txt">
-                <h2>邵来明</h2>
-                <span>查看详情</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="team_in.html">
-              <span class="pic"><img src="images/sj_4.jpg" alt="" /></span>
-              <span class="ewm"><img src="images/sj_ewm.jpg" alt="" /></span>
-              <div class="txt">
-                <h2>邵来明</h2>
-                <span>查看详情</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="team_in.html">
-              <span class="pic"><img src="images/sj_5.jpg" alt="" /></span>
-              <span class="ewm"><img src="images/sj_ewm.jpg" alt="" /></span>
-              <div class="txt">
-                <h2>邵来明</h2>
-                <span>查看详情</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="team_in.html">
-              <span class="pic"><img src="images/sj_6.jpg" alt="" /></span>
-              <span class="ewm"><img src="images/sj_ewm.jpg" alt="" /></span>
-              <div class="txt">
-                <h2>邵来明</h2>
-                <span>查看详情</span>
-              </div>
-            </a>
-          </li>
+            @endforeach
         </ul>
       </div>
     </div>
@@ -403,7 +314,7 @@
   <div class="top">
     <div class="w1160 clearfix">
       <div class="ho_tit_all">
-        <a href="quality.html">
+        <a href="/quality">
           <h2>品质工程</h2>
           <p>看不见的品质和看不见的细节，我们都同样用心</p>
         </a>
@@ -415,20 +326,16 @@
     <div id="demo1" class="picBtnTop">
       <div class="hd">
         <ul>
-          <li><a href="quality.html">品质家装</a></li>
-          <li><a href="quality.html">施工保障</a></li>
-          <li><a href="quality.html">环保体系</a></li>
-          <li><a href="quality.html">顶级工艺</a></li>
-          <li><a href="quality.html">环保材料</a></li>
+          @foreach( $qualitys as $quality )
+          <li><a href="/quality/category/{{$quality->id}}">{{$quality->title}}</a></li>
+          @endforeach
         </ul>
       </div>
       <div class="bd">
         <ul>
-          <li><a href="quality.html"><img src="images/quilty_1.png" /></a></li>
-          <li><a href="quality.html"><img src="images/quilty_2.png" /></a></li>
-          <li><a href="quality.html"><img src="images/quilty_3.png" /></a></li>
-          <li><a href="quality.html"><img src="images/quilty_4.png" /></a></li>
-          <li><a href="quality.html"><img src="images/quilty_5.png" /></a></li>
+          @foreach( $qualitys as $quality )
+          <li><a href="/quality/category/{{$quality->id}}"><img src="{{$quality->thumbnail}}" /></a></li>
+          @endforeach
         </ul>
       </div>
     </div>
@@ -443,7 +350,7 @@
   <div class="w1160 clearfix">
     <span class="bk50">&nbsp;</span>
     <div class="ho_tit_all">
-      <a href="project.html">
+      <a href="/project">
         <h2>在建工程</h2>
         <p>直击交换空间一线工地，装修细节一目了然</p>
       </a>
@@ -452,26 +359,25 @@
     <div class="clearfix">
       <div class="list fr">
         <ul class="clearfix">
-          <li><a href="project_in.html"><img src="images/gz_1.jpg" /><div class="txt">楼盘：锦东庭园  92㎡ 美式、乡村</div></a></li>
-          <li><a href="project_in.html"><img src="images/gz_2.jpg" /><div class="txt">楼盘：锦东庭园  92㎡ 美式、乡村</div></a></li>
-          <li><a href="project_in.html"><img src="images/gz_3.jpg" /><div class="txt">楼盘：锦东庭园  92㎡ 美式、乡村</div></a></li>
-          <li><a href="project_in.html"><img src="images/gz_4.jpg" /><div class="txt">楼盘：锦东庭园  92㎡ 美式、乡村</div></a></li>
-          <li><a href="project_in.html"><img src="images/gz_5.jpg" /><div class="txt">楼盘：锦东庭园  92㎡ 美式、乡村</div></a></li>
-          <li><a href="project_in.html"><img src="images/gz_6.jpg" /><div class="txt">楼盘：锦东庭园  92㎡ 美式、乡村</div></a></li>
+          @foreach( $projects as $project )
+          <li><a href="/project/{{$project->id}}"><img src="{{$project->thumbnail}}" /><div class="txt">{{$project->title}}</div></a></li>
+          @endforeach
         </ul>
       </div>
       <div class="workers fl">
         <div id="slideBox_work" class="slideBox_work">
           <div class="hd">
-            <ul><li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li></ul>
+            <ul>
+              @foreach( $workers as $project )
+              <li>&nbsp;</li>
+              @endforeach
+            </ul>
           </div>
           <div class="bd">
             <ul>
-              <li><a href="worker_in.html"><img src="images/wor_1.jpg" /><div class="txt">姓名：<span>赵长亮</span>   |   工作年限：<span>16年</span></div></a></li>
-              <li><a href="worker_in.html"><img src="images/wor_2.jpg" /><div class="txt">姓名：<span>赵长亮</span>   |   工作年限：<span>16年</span></div></a></li>
-              <li><a href="worker_in.html"><img src="images/wor_1.jpg" /><div class="txt">姓名：<span>赵长亮</span>   |   工作年限：<span>16年</span></div></a></li>
-              <li><a href="worker_in.html"><img src="images/wor_2.jpg" /><div class="txt">姓名：<span>赵长亮</span>   |   工作年限：<span>16年</span></div></a></li>
-              <li><a href="worker_in.html"><img src="images/wor_1.jpg" /><div class="txt">姓名：<span>赵长亮</span>   |   工作年限：<span>16年</span></div></a></li>
+              @foreach( $workers as $team )
+              <li><a href="/worker/{{$team->id}}"><img src="{{$team->photo}}" /><div class="txt">姓名：<span>{{$team->name}}</span>   |   工作年限：<span>{{$team->work_age}}年</span></div></a></li>
+                @endforeach
             </ul>
           </div>
         </div>
@@ -485,7 +391,7 @@
   <div class="w1160 clearfix">
     <span class="bk50">&nbsp;</span>
     <div class="ho_tit_all">
-      <a href="guide.html">
+      <a href="/guide">
         <h2>装修攻略</h2>
         <p>家庭装修全攻略，交换空间就是您的家装百科全书</p>
       </a>
@@ -499,55 +405,22 @@
         </div>
         <div class="bd">
           <ul class="picList">
+            @foreach( $guides as $guide )
             <li>
-              <a href="guide_in.html">
-                <span class="pic"><img src="images/cp_1.jpg" alt="" /></span>
+              <a href="/guide/category/{{$guide->id}}">
+                <span class="pic"><img src="{{$guide->thumbnail}}" alt="" /></span>
                 <span class="mask_black">&nbsp;</span>
-                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
+                    <p>{{$guide->title}}</p>
               </a>
             </li>
-            <li>
-              <a href="guide_in.html">
-                <span class="pic"><img src="images/cp_2.jpg" alt="" /></span>
-                <span class="mask_black">&nbsp;</span>
-                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
-              </a>
-            </li>
-            <li>
-              <a href="guide_in.html">
-                <span class="pic"><img src="images/cp_3.jpg" alt="" /></span>
-                <span class="mask_black">&nbsp;</span>
-                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
-              </a>
-            </li>
-            <li>
-              <a href="guide_in.html">
-                <span class="pic"><img src="images/cp_1.jpg" alt="" /></span>
-                <span class="mask_black">&nbsp;</span>
-                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
-              </a>
-            </li>
-            <li>
-              <a href="guide_in.html">
-                <span class="pic"><img src="images/cp_2.jpg" alt="" /></span>
-                <span class="mask_black">&nbsp;</span>
-                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
-              </a>
-            </li>
-            <li>
-              <a href="guide_in.html">
-                <span class="pic"><img src="images/cp_3.jpg" alt="" /></span>
-                <span class="mask_black">&nbsp;</span>
-                    <p>客厅装修你还在吊顶吗？真的是落伍土气的真的是落伍土气的</p>
-              </a>
-            </li>
+            @endforeach
           </ul>
         </div>
       </div>
       <script type="text/javascript">
       jQuery(".picScroll-leftgui").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:3,trigger:"click"});
       </script>
-      <a href="guide.html" class="guide_tit fl"><img src="images/guide_1.png"></a>
+      <a href="/guide" class="guide_tit fl"><img src="images/guide_1.png"></a>
     </div>
      <span class="bk10">&nbsp;</span>
     <div class="clearfix">
@@ -557,41 +430,41 @@
             <span class="pic"><img src="images/guidea.jpg"></span>
             <span class="mask">&nbsp;</span>
             <div class="txt">
-              <h2><a href="guide.html">设计知识</a></h2>
-              <ul class="list">
-                <li><a href="guide_in.html">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>
-                <li><a href="guide_in.html">装修效果图解析-如何装修儿童房？</a></li>
-                <li><a href="guide_in.html">装修房子时这些问题千万不要忽略</a></li>
-              </ul>
+              <h2><a href="/guide/category/17">设计知识</a></h2>
+              {{--<ul class="list">--}}
+                {{--<li><a href="guide_in">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>--}}
+                {{--<li><a href="guide_in">装修效果图解析-如何装修儿童房？</a></li>--}}
+                {{--<li><a href="guide_in">装修房子时这些问题千万不要忽略</a></li>--}}
+              {{--</ul>--}}
             </div>
           </div>
           <div class="guideout fl mR10">
             <span class="pic"><img src="images/guideb.jpg"></span>
             <span class="mask">&nbsp;</span>
             <div class="txt">
-              <h2><a href="guide.html">材料知识</a></h2>
-              <ul class="list">
-                <li><a href="guide_in.html">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>
-                <li><a href="guide_in.html">装修效果图解析-如何装修儿童房？</a></li>
-                <li><a href="guide_in.html">装修房子时这些问题千万不要忽略</a></li>
-              </ul>
+              <h2><a href="/guide/category/18">材料知识</a></h2>
+              {{--<ul class="list">--}}
+                {{--<li><a href="guide_in">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>--}}
+                {{--<li><a href="guide_in">装修效果图解析-如何装修儿童房？</a></li>--}}
+                {{--<li><a href="guide_in">装修房子时这些问题千万不要忽略</a></li>--}}
+              {{--</ul>--}}
             </div>
           </div>
           <div class="guideout fl">
             <span class="pic"><img src="images/guidec.jpg"></span>
             <span class="mask">&nbsp;</span>
             <div class="txt">
-              <h2><a href="guide.html">装修风水</a></h2>
-              <ul class="list">
-                <li><a href="guide_in.html">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>
-                <li><a href="guide_in.html">装修效果图解析-如何装修儿童房？</a></li>
-                <li><a href="guide_in.html">装修房子时这些问题千万不要忽略</a></li>
-              </ul>
+              <h2><a href="/guide/category/19">装修风水</a></h2>
+              {{--<ul class="list">--}}
+                {{--<li><a href="guide_in">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>--}}
+                {{--<li><a href="guide_in">装修效果图解析-如何装修儿童房？</a></li>--}}
+                {{--<li><a href="guide_in">装修房子时这些问题千万不要忽略</a></li>--}}
+              {{--</ul>--}}
             </div>
           </div>
         </div>
       </div>
-      <a href="guide.html" class="guide_tit fl"><img src="images/guide_2.png"></a>
+      <a href="/guide" class="guide_tit fl"><img src="images/guide_2.png"></a>
     </div>
   </div>
 </div>
@@ -600,7 +473,7 @@
   <div class="w1160 clearfix">
     <span class="bk60">&nbsp;</span>
     <div class="ho_tit_all">
-      <a href="news.html">
+      <a href="/news">
         <h2>优惠活动</h2>
         <p>实时放送优惠活动，已钜惠 62769 人装修</p>
       </a>
@@ -611,56 +484,18 @@
           <a class="prev"></a></div>
       <div class="bd">
         <ul class="picList">
+          @foreach( $newss as $news )
           <li>
-            <a href="news_in.html">
-              <span class="pic"><img src="images/cp_1.jpg"></span>
+            <a href="/news/{{$news->id}}">
+              <span class="pic"><img src="{{$news->thumbnail}}"></span>
               <div class="txt">
-                <h2>家庭装修报价你需要看些什么?</h2>
-                <p>在日常的家居装修中，或者是正在准备打算在日常的家居装修中，或者是正在准备装修的业主朋友来说，家装装修报价</p>
+                <h2>{{$news->title}}</h2>
+                <p>{{$news->introduce}}</p>
                 <span class="btn">more +</span>
               </div>
             </a>
           </li>
-          <li>
-            <a href="news_in.html">
-              <span class="pic"><img src="images/cp_2.jpg"></span>
-              <div class="txt">
-                <h2>家庭装修报价你需要看些什么?</h2>
-                <p>在日常的家居装修中，或者是正在准备打算装修的业主朋友来说，家装装修报价</p>
-                <span class="btn">more +</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="news_in.html">
-              <span class="pic"><img src="images/cp_3.jpg"></span>
-              <div class="txt">
-                <h2>家庭装修报价你需要看些什么?</h2>
-                <p>在日常的家居装修中，或者是正在准备在日常的家居装修中，或者是正在准备打算装修的业主朋友来说，家装装修报价</p>
-                <span class="btn">more +</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="news_in.html">
-              <span class="pic"><img src="images/cp_4.jpg"></span>
-              <div class="txt">
-                <h2>家庭装修报价你需要看些什么?</h2>
-                <p>在日常的家居装修中，或者是正在准备打算装修的业主朋友来说，家装装修报价</p>
-                <span class="btn">more +</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="news_in.html">
-              <span class="pic"><img src="images/cp_5.jpg"></span>
-              <div class="txt">
-                <h2>家庭装修报价你需要看些什么?</h2>
-                <p>在日常的家居装修中，或者是正在准备打算装修的业主朋友来说，家装装修报价</p>
-                <span class="btn">more +</span>
-              </div>
-            </a>
-          </li>
+          @endforeach
         </ul>
       </div>
     </div>
