@@ -215,21 +215,25 @@
             <span class="line">&nbsp;</span>
             <span class="name">{{$cases[2]->title}}</span>
           </a>
+          @if( isset( $cases[1] ) )
           <a href="/case/{{$cases[1]->id}}" class="cp_all cp_2 fl">
             <img src="{{$cases[1]->thumbnail}}">
             <span class="mask">&nbsp;</span>
             <span class="line">&nbsp;</span>
             <span class="name">{{$cases[1]->title}}</span>
           </a>
+          @endif
         </div>
         <span class="bk10">&nbsp;</span>
         <div class="clearfix">
+          @if( isset( $cases[2] ) )
           <a href="/case/{{$cases[2]->id}}" class="cp_all cp_2 fr">
             <img src="{{$cases[2]->thumbnail}}">
             <span class="mask">&nbsp;</span>
             <span class="line">&nbsp;</span>
             <span class="name">{{$cases[2]->title}}</span>
           </a>
+          @endif
           @if( isset( $cases[3] ) )
           <a href="/case/{{$cases[3]->id}}" class="cp_all cp_2 fl">
             <img src="{{$cases[3]->thumbnail}}">
