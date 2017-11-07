@@ -25,9 +25,9 @@
                         @endif
 
                         <h3>新增案例</h3>
-                        <form class="form-horizontal" role="form" method="POST" action="/admin/rcase" enctype="multipart/form-data"  >
+                        <form class="form-horizontal" role="form" method="POST" action="/admin/rcase/{{  $rcase->id }}" enctype="multipart/form-data"  >
                             {{csrf_field()}}
-
+                            <input type="hidden" name="_method" value="PUT">
                             <div class="form-group">
                                 <label for="email" class="col-md-2 control-label">案例名</label>
                                 <div class="col-md-10">
