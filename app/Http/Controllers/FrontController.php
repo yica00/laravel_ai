@@ -228,14 +228,14 @@ class FrontController extends Controller
         return view('front.history',compact('nav','sty','articles'));
     }
     public function team_design(){
-        $teams = Teams::where('cate',1)->orderBy('id','asc')->paginate(6);
-        $pages = getPage($teams,6);
+        $teams = Teams::where('cate',1)->orderBy('id','asc')->paginate(8);
+        $pages = getPage($teams,8);
         $id =1;
         return view('front.team',compact('teams','pages','id'));
     }
     public function team_supervise(){
-        $teams = Teams::where('cate',2)->orderBy('id','asc')->paginate(6);
-        $pages = getPage($teams,6);
+        $teams = Teams::where('cate',2)->orderBy('id','asc')->paginate(8);
+        $pages = getPage($teams,8);
         $id =2;
         return view('front.worker',compact('teams','pages','id'));
     }
