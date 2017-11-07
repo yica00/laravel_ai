@@ -150,7 +150,7 @@ class FrontController extends Controller
         return view('front.about',compact('article'));
     }
     public function culture(){
-        $article = Article::find(10);
+        $article = Article::find(21);
         return view('front.about',compact('article'));
     }
     public function brand(){
