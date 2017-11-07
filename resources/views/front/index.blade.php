@@ -213,7 +213,7 @@
             <img src="{{$cases[0]->thumbnail}}">
             <span class="mask">&nbsp;</span>
             <span class="line">&nbsp;</span>
-            <span class="name">{{$cases[2]->title}}</span>
+            <span class="name">{{$cases[0]->title}}</span>
           </a>
           @if( isset( $cases[1] ) )
           <a href="/case/{{$cases[1]->id}}" class="cp_all cp_2 fl">
