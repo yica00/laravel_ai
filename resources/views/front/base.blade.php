@@ -75,7 +75,7 @@
         <span class="bk20">&nbsp;</span>
         <div class="clearfix">
             <div class="ewm fr">
-                <img src="/images/sj_ewm.jpg">
+                <img src="{{ session('setting')['wx_map']  }}">
             </div>
             <div class="txt fl">
                 <p>座机：{{ session('setting')['fix_phone']  }}</p>
