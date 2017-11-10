@@ -320,7 +320,7 @@ class FrontController extends Controller
 
     public function project(){
         $articles = Article::where('pid',5)->orderBy('serial_number','desc')
-            ->orderBy('id','asc')->paginate(61);
+            ->orderBy('id','asc')->paginate(6);
         $pages = getPage($articles,6);
         return view('front.project',compact('articles','pages'));
     }
