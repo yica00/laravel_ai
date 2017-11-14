@@ -8,6 +8,7 @@ use App\Models\Admin\Message;
 use App\Models\Admin\Order_list;
 use App\Models\Admin\Rcase;
 use App\Models\Admin\Teams;
+use function foo\func;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -17,20 +18,19 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         $sliders = $this->getSliders();
-        $about = $this->getAbout();
+//        $about = $this->getAbout();
         $cases = $this->getCases();
-        $houses = $this->getHouse();
+        $classs = $this->getHouse();
         $teams = $this->getTeam();
-        $qualitys = $this->getQquality();
+//        $qualitys = $this->getQquality();
         $projects = $this->getProject();
-        $workers = $this->getWorker();
-        $guides = $this->getGuide();
+        $schools = $this->getWorker();
+        $works = $this->getGuide();
         $newss= $this->getNews();
-//        $services = $this->getService();
+        $stars = $this->getService();
         $articles = Article::where('pid',26)->get();
         $messages = Message::orderBy('id','desc')->take(20)->get();
-        $num = Message::count();
-        return view('front.index',compact('articles','projects','guides','workers','qualitys','messages','sliders','num','cases','newss','houses','teams'));
+        return view('front.index',compact('articles','projects','works','schools','qualitys','messages','sliders','stars','cases','newss','classs','teams'));
     }
 
 
@@ -43,7 +43,9 @@ class FrontController extends Controller
         return $Articles;
     }
     public function getHouse(){
-        $Articles = Article::where('pid',25)->orderBy('serial_number','desc')->get();
+        $Articles = Article::where('pid',2)->get();
+        $ids = getIds($Articles);
+        $Articles = Article::whereIn('pid',$ids)->orderBy('serial_number','desc')->get();
         return $Articles;
     }
     public function getVitness(){
@@ -51,15 +53,15 @@ class FrontController extends Controller
         return $Articles;
     }
     public function getGuide(){
-        $Articles = Article::where('pid',16)->orderBy('serial_number','desc')->orderBy('id','desc')->take(6)->get();
+        $Articles = Article::where('pid',5)->orderBy('serial_number','desc')->orderBy('id','desc')->take(10)->get();
         return $Articles;
     }
     public function getProject(){
-        $Articles = Article::where('pid',5)->orderBy('serial_number','desc')->orderBy('id','desc')->take(6)->get();
+        $Articles = Article::where('pid',38)->orderBy('serial_number','desc')->orderBy('id','desc')->take(4)->get();
         return $Articles;
     }
     public function getNews(){
-        $articles = Article::where('pid',7)->orderBy('serial_number','desc')->orderBy('id','desc')->take(3)->get();
+        $articles = Article::where('pid',12)->orderBy('serial_number','desc')->orderBy('id','desc')->take(6)->get();
         return $articles;
     }
     public function getActive(){
@@ -84,7 +86,7 @@ class FrontController extends Controller
         return $articles;
     }
     public function getService(){
-        $articles = Article::where('pid',44)->orderBy('serial_number','desc')->orderBy('id','asc')->get();
+        $articles = Article::where('pid',4)->orderBy('serial_number','desc')->orderBy('id','asc')->take(12)->get();
         return $articles;
     }
     public function getCases(){
@@ -98,11 +100,11 @@ class FrontController extends Controller
         return $article;
     }
     public function getTeam(){
-        $teams = Teams::where('cate',1)->take(10) ->get();
+        $teams = Teams::take(12) ->get();
         return $teams;
     }
     public function getWorker(){
-        $teams = Teams::where('cate',2)->take(10) ->get();
+        $teams = Article::with('articles')->where('pid',11)->get();
         return $teams;
     }
     public function getModels(){
@@ -135,7 +137,7 @@ class FrontController extends Controller
     }
     public function getSliders()
     {
-        $sons = Article::select('thumbnail','link','id','pid')->where('pid',38)->get();
+        $sons = Article::select('thumbnail','link','id','pid')->where('pid',35)->get();
         return $sons;
     }
     public function getTeams()
@@ -144,13 +146,35 @@ class FrontController extends Controller
         return $teams;
     }
 
+    public function items( $id = 15  ){
+        $article = Article::with(['teams' => function($qeury){
+            $qeury->orderBy('id','asc')->take(10);
+        }])
+            ->with(['rcases' => function($qeury){
+                $qeury->orderBy('id','asc')->take(4);
+            }])
+            ->with('articles')
+            ->find($id);
+        $article->comtent = get_article_imgs($article->comtent,5);
+        return view('front.item',compact('article','id'));
+    }
+    public function item_detail($id){
+        $article = Article::with('articles')->find($id);
+        foreach ( $article->articles as $k=>$item ){
+            if( $item->serial_number == 300 ){
+                $article->classs = Article::with('articles')->find($item->id);
+                unset( $article->articles[$k] );
+            }
+        }
+        return view('front.item_in',compact('article'));
+    }
 
     public function about(){
-        $article = Article::find(20);
+        $article = Article::with('teams')->find(8);
         return view('front.about',compact('article'));
     }
     public function culture(){
-        $article = Article::find(21);
+        $article = Article::find(9);
         return view('front.about',compact('article'));
     }
     public function brand(){
@@ -159,11 +183,10 @@ class FrontController extends Controller
         return view('front.brand',compact('article'));
     }
     public function video(){
-        $article = Article::where('pid',12)->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
-        $pages = getPage($article,6);
-        return view('front.video',compact('article','pages'));
+        $articles = Article::where('pid',10)->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
+        $pages = getPage($articles,6);
+        return view('front.video',compact('articles','pages'));
     }
-
     public function video_detail($id){
         $article = Article::find($id);
         $up_down = get_up_down_page($id,$article->pid);
@@ -181,12 +204,40 @@ class FrontController extends Controller
         $pages = getPage($articles,3);
         return view('front.store',compact('articles','pages'));
     }
-
     public function store_dedail($id){
         $article = Article::find($id);
         $article->comtent = get_article_imgs($article->comtent,40);
         return view('front.store_in',compact('article'));
     }
+
+    public function star(){
+        $articles = Article::where('pid',4)->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
+        $pages = getPage($articles,6);
+        return view('front.star',compact('articles','pages'));
+    }
+    public function star_dedail($id){
+        $article = Article::find($id);
+        $up_down = get_up_down_page($id,$article->pid);
+        return view('front.star_in',compact('article','up_down'));
+    }
+
+    public function work(){
+        $articles = Article::where('pid',5)->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
+        $pages = getPage($articles,6);
+        return view('front.work',compact('articles','pages'));
+    }
+    public function work_dedail($id){
+        $article = Article::find($id);
+        $up_down = get_up_down_page($id,$article->pid);
+        return view('front.work_in',compact('article','up_down'));
+    }
+
+    public function compus($id=28){
+        $cates = Article::where('pid',11)->get();
+        $article = Article::with('articles')->find($id);
+        return view('front.compus',compact('article','cates','id'));
+    }
+
 
     public function active_list(){
         $articles = Article::where('pid',5)->orderBy('id','desc')->paginate(3);
@@ -227,11 +278,11 @@ class FrontController extends Controller
         $sty = "/history";
         return view('front.history',compact('nav','sty','articles'));
     }
-    public function team_design(){
-        $teams = Teams::where('cate',1)->orderBy('id','asc')->paginate(8);
-        $pages = getPage($teams,8);
+    public function team(){
+        $teams = Teams::orderBy('id','asc')->paginate(10);
+        $pages = getPage($teams,10);
         $id =1;
-        return view('front.team',compact('teams','pages','id'));
+        return view('front.teacher',compact('teams','pages','id'));
     }
     public function team_supervise(){
         $teams = Teams::where('cate',2)->orderBy('id','asc')->paginate(8);
@@ -240,11 +291,10 @@ class FrontController extends Controller
         return view('front.worker',compact('teams','pages','id'));
     }
     public function team_detail($id){
-        $team = Teams::with('rcases')->find($id);
-        if( $team->cate == 1 ){
-            return view('front.team_in',compact('team'));
-        }
-        return view('front.team_in',compact('team'));
+        $team = Teams::with(['rcases'=>function( $qurey ) use($id) {
+            $qurey->where('cate',1)->where('team_id',$id)->take(8);
+        }])->find($id);
+        return view('front.teacher_in',compact('team'));
     }
     public function worker_detail($id){
         $team = Teams::with('rcases')->find($id);
@@ -265,7 +315,7 @@ class FrontController extends Controller
 
 
     public function news( ){
-        $articles = Article::where('pid',7)->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
+        $articles = Article::where('pid',12)->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
         $pages = getPage($articles,6);
         return view('front.news',compact('articles','pages'));
     }
@@ -409,15 +459,18 @@ class FrontController extends Controller
     }
 
     public function contact(){
-        return view('front.contact');
+        $schools = Article::where('pid',11)->get();
+        $classs = Article::where('pid',2)->get();
+        return view('front.contact',compact('schools','classs'));
     }
     public function message(){
-        return view('front.online');
+        $schools = Article::where('pid',11)->get();
+        $classs = Article::where('pid',2)->get();
+        return view('front.online',compact('schools','classs'));
     }
     public function way()
     {
-        $nav = 9;
-        return view('front.way', compact('nav'));
+        return view('front.way');
     }
 
 

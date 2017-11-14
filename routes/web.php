@@ -31,16 +31,26 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('about/contact','FrontController@contact');
         Route::get('about/offer','FrontController@offer');
 
-        Route::get('news','FrontController@news');
+        Route::get('about/news','FrontController@news');
         Route::get('news/category/{id}','FrontController@news');
-        Route::get('news/{id}','FrontController@new_detail');
+        Route::get('about/news/{id}','FrontController@new_detail');
 
         Route::get('treatment','FrontController@treatment');
 
-        Route::get('menu','FrontController@menu_list');
+        Route::get('item/{id}','FrontController@items');
+        Route::get('item/detail/{id}','FrontController@item_detail');
 
         Route::get('store','FrontController@store_list');
-        Route::get('store/{id}','FrontController@store_dedail');
+        Route::get('about/store/{id}','FrontController@store_dedail');
+
+        Route::get('star','FrontController@star');
+        Route::get('star/{id}','FrontController@star_dedail');
+
+        Route::get('about/compus','FrontController@compus');
+        Route::get('about/compus/{id}','FrontController@compus');
+
+        Route::get('work','FrontController@work');
+        Route::get('work/{id}','FrontController@work_dedail');
 
         Route::get('active','FrontController@active_list');
         Route::get('active/{id}','FrontController@active_dedail');
@@ -55,7 +65,7 @@ Route::group(['middleware'=>'check_setting'],function (){
 //        Route::get('case/category/{id}','FrontController@our_case');
         Route::get('case/{id}','FrontController@case_detail');
 
-        Route::get('team','FrontController@team_design');
+        Route::get('teacher','FrontController@team');
         Route::get('/team/design','FrontController@team_design');
         Route::get('team/supervise','FrontController@team_supervise');
         Route::get('team/{id}','FrontController@team_detail');
@@ -82,10 +92,45 @@ Route::group(['middleware'=>'check_setting'],function (){
 
 
         Route::get('contact','FrontController@contact');
+        Route::get('contact/way','FrontController@way');
         Route::get('contact/message','FrontController@message');
 
         Route::post('/front/message','Admin\MessageController@store');
         Route::any('/search','FrontController@search');
+
+        Route::group(['as'=>'front','middleware'=>'get_nav','prefix'=>'wap'],function (){
+            Route::get('/','WapController@index');
+
+            Route::get('about','WapController@about');
+            Route::get('about/culture','WapController@culture');
+
+            Route::get('item/{id}','WapController@items');
+            Route::get('item/detail/{id}','WapController@item_detail');
+
+            Route::get('teacher','WapController@team');
+            Route::get('team/{id}','WapController@team_detail');
+            Route::get('tcompus/{id}','WapController@team_compus');
+
+            Route::get('star','WapController@star');
+            Route::get('star/{id}','WapController@star_dedail');
+
+            Route::get('work','WapController@work');
+            Route::get('work/{id}','WapController@work_dedail');
+
+            Route::get('news','WapController@news');
+            Route::get('news/{id}','WapController@new_detail');
+
+            Route::get('about','WapController@about');
+            Route::get('culture','WapController@culture');
+            Route::get('video','WapController@video');
+            Route::get('video/{id}','WapController@video_detail');
+            Route::get('compus','WapController@compus');
+            Route::get('compus/{id}','WapController@compus');
+
+            Route::get('contact','WapController@contact');
+
+        });
+
     });
 
     Route::get('/admin/logout', function () {

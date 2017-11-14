@@ -21,25 +21,32 @@
     <!-- 先后 -->
 </head>
 <body>
-<!-- header -->
 <div class="header inheader">
-    <div class="w1160 clearfix">
+    <div class="w1280 clearfix">
         <!-- nav -->
         <div class="nav_box fr">
             <ul id="nav" class="nav clearfix">
-                @foreach( session('header_nav') as $navs )
-                    <li class="nLi @if( session('urls') == $navs->link )on @endif">
-                        <h3><a href="{{$navs->link}}">{{$navs->title}}<span>{{$navs->introduce}}</span></a></h3>
-                        @if( count($navs->articles)>0 )
-                            <ul class="sub">
-                                @foreach( $navs->articles as $arti )
-                                    <li>
-                                        <a href="@if( $arti->link ){{$arti->link}}@else{{$navs->link}}/category/{{$arti->id}}@endif">{{$arti->title}}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </li>
+                @foreach( session('header_nav') as $k=>$navs )
+                    @if( $k==1 )
+                        @foreach( $navs->articles as $arti )
+                            <li class="nLi">
+                                <h3><a href="/item/{{$arti->id}}">{{$arti->title}}</a></h3>
+                            </li>
+                        @endforeach
+                    @elseif( $k<7 )
+                        <li class="nLi @if( session('urls') == $navs->link )on @endif">
+                            <h3><a href="{{$navs->link}}">{{$navs->title}}<span>{{$navs->introduce}}</span></a></h3>
+                            @if( count($navs->articles)>0 )
+                                <ul class="sub">
+                                    @foreach( $navs->articles as $arti )
+                                        <li>
+                                            <a href="@if( $arti->link ){{$arti->link}}@else{{$navs->link}}/category/{{$arti->id}}@endif">{{$arti->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
+                    @endif
                 @endforeach
             </ul>
             <script id="jsID" type="text/javascript">
@@ -63,39 +70,68 @@
 @yield('content')
 
 <!-- footer -->
+<div class="item_out">
+    <div class="w1280 clearfix">
+        <ul class="list clearfix">
+            @foreach( session('header_nav') as $k=>$navs )
+                @if( $k==1 )
+                    @foreach( $navs->articles as $arti )
+                        <li>
+                            <a href="/item/{{$arti->id}}">
+                                <div class="btn_all btn_1">&nbsp;</div>
+                                <h2>{{$arti->title}}</h2>
+                                <p>{{$arti->introduce}}</p>
+                            </a>
+                        </li>
+                    @endforeach
+                @endif
+            @endforeach
+        </ul>
+    </div>
+</div>
+<span class="bk60">&nbsp;</span>
+<!-- goenrol -->
+<div class="goenrol">
+    <div class="w1280 clearfix">
+        <h2>Welcome to our school</h2>
+        <p>您所了解的美丽俏佳人化妆培训学校远远超越一所普通的形象设计学校！</p>
+        <a href="/contact">点击立即报名</a>
+    </div>
+</div>
 <div class="footer">
-    <div class="w1160 clearfix">
-        <div class="clearfix">
-            <div class="call fr">
-                <h2>有任何建议或意见请联系我们 </h2>
-                <p>{{ session('setting')['fix_phone']  }}</p>
-            </div>
-            <img src="/images/price_case.gif" class="fl">
+    <span class="bk30">&nbsp;</span>
+    <div class="w1280 clearfix">
+        <p class="fot_nav">
+            @foreach( session('header_nav') as $k=>$navs )
+                @if( $k==1 )
+                    @foreach( $navs->articles as $arti )
+                        <a href="/item/{{$arti->id}}">{{$arti->title}}</a>
+                    @endforeach
+                @endif
+            @endforeach
+        </p>
+        <span class="bk30">&nbsp;</span>
+        <div class="ewm">
+            <img src="{{ session('setting')['wx_map']  }}">
+            <p>扫描二维码关注我们</p>
         </div>
         <span class="bk20">&nbsp;</span>
-        <div class="clearfix">
-            <div class="ewm fr">
-                <img src="{{ session('setting')['wx_map']  }}">
-            </div>
-            <div class="txt fl">
-                <p>座机：{{ session('setting')['fix_phone']  }}</p>
-                <P>电话：{{ session('setting')['phone']  }}</p>
-                <P>Q Q：{{ session('setting')['qq']  }}</p>
-                <P>地址：{{ session('setting')['bases']  }}</p>
-            </div>
+        <div class="txt">
+            <p>招生服务咨询热线 / <span>{{ session('setting')['fix_phone']  }}</span></p>
+            <p>总校地址 / <span>{{ session('setting')['bases']  }}</span></p>
+            <p>QQ在线咨询 / <span>{{ session('setting')['qq']  }}</span></p>
         </div>
-        <span class="bk40">&nbsp;</span>
+        <span class="bk30">&nbsp;</span>
     </div>
     <div class="bot">
-        <div class="w1160 clearfix">
-            copyright 2017© 交换空间装饰  {{ session('setting')['icp']  }}  <span>技术支持：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a></span>
+        <div class="w1280 clearfix">版权所有 © 四川美丽俏佳人企业管理有限公司 Copyright Qiaojiaren All Rights Reserved <span>技术支持 ：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a></span>
         </div>
     </div>
 </div>
 <!-- float -->
 <div class="float_onlie">
-    <a class="on_1" href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes">&nbsp;</a>
-    <a class="on_2 ph" href=""><em>电话：{{ session('setting')['fix_phone']  }}<br>手机：{{ session('setting')['phone']  }}</em></a>
+    <a class="on_1" href="/contact">&nbsp;</a>
+    <a class="on_2 ph" href=""><em>电话：{{ session('setting')['fix_phone']  }}</em></a>
     <a class="on_3 add" href=""><em>{{ session('setting')['bases']  }}</em></a>
     <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
     <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>

@@ -16,5 +16,9 @@ class Teams extends Model
     public function rcases(){
         return $this->hasMany('App\Models\Admin\Rcase','team_id','id');
     }
+
+    public function item(){
+        return $this->belongsTo('App\Models\Admin\Article','work_age','id');
+    }
 }
 

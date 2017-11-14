@@ -1,26 +1,17 @@
 @extends('front.base')
 @section('content')
 <!-- bread -->
+<span class="bk30">&nbsp;</span>
 <div class="bread">
-  <div class="w1160 clearfix">
+  <div class="w1280 clearfix">
     <div class="in_tit_all">
-      <h2>about us</h2>
-      <p>关于我们</p>
+      <div class="bt"><span>Brand <b>culture</b></span>/ 品牌文化</div>
     </div>
-    <span class="bk20">&nbsp;</span>
-    <ul class="sublist">
+    <ul class="sublist clearfix sub_5">
       @foreach( session('header_nav') as $cate )
-        @if( $cate->id == 8)
+        @if( $cate->id == 6 )
           @foreach( $cate->articles as $art )
-            <li class="
-            @if( $art->link )
-            @if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link )
-                    on
-@endif
-            @else
-            @if( $art->id == $id ) on @endif
-            @endif
-                    ">
+            <li class="@if( \Illuminate\Support\Facades\Request::getRequestUri() == $art->link ) on @endif">
               <a href="@if( $art->link ){{$art->link}}@else{{$cate->link}}/category/{{$art->id}}@endif" >{{$art->title}}</a>
             </li>
           @endforeach
@@ -30,14 +21,14 @@
   </div>
 </div>
 <div class="wap_box">
-  <span class="bk40">&nbsp;</span>
-  <div class="w1160 clearfix">
+  <div class="w1280 clearfix">
   <!-- start -->
   <div class="txt_model_1">
     {!! $article->comtent !!}
   </div>
   <!-- end -->
   </div>
-  <span class="bk40">&nbsp;</span>
+  <span class="bk80">&nbsp;</span>
 </div>
+<!-- item -->
 @endsection

@@ -10,18 +10,18 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <!-- 适应手机 -->
   <meta name="viewport" content="width=1280px;">
-  <link href="/css/base.css" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
-  <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.source.js"></script>
+  <link href="css/base.css" rel="stylesheet" type="text/css"> 
+  <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+  <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.source.js"></script>
   <!--[if lt IE 9]><!-->
-  <script src="/js/html5shiv.min.js"></script>
-  <script src="/js/respond.min.js"></script>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
   <!--[endif]-->
   <!-- 先后 -->
 </head>
 <body>
-<div class="heder_banner">
+<div class="hed_ban">
   <!-- banner -->
   <div id="slideBox" class="slideBox">
     <div class="hd">&nbsp;</div>
@@ -36,29 +36,38 @@
       <a class="next" href="javascript:void(0)"></a>
     </div>
     <script type="text/javascript">jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});</script>
+  </div>
   <!-- header -->
   <div class="header">
-    <div class="w1160 clearfix">
+    <div class="w1280 clearfix">
       <!-- nav -->
       <div class="nav_box fr">
         <ul id="nav" class="nav clearfix">
-          @foreach( session('header_nav') as $navs )
-            <li class="nLi @if( session('urls') == $navs->link )on @endif">
-              <h3><a href="{{$navs->link}}">{{$navs->title}}<span>{{$navs->introduce}}</span></a></h3>
-              @if( count($navs->articles)>0 )
-                <ul class="sub">
-                  @foreach( $navs->articles as $arti )
-                    <li>
-                      <a href="@if( $arti->link ){{$arti->link}}@else{{$navs->link}}/category/{{$arti->id}}@endif">{{$arti->title}}</a>
-                    </li>
-                  @endforeach
-                </ul>
-              @endif
-            </li>
+          @foreach( session('header_nav') as $k=>$navs )
+            @if( $k==1 )
+              @foreach( $navs->articles as $arti )
+              <li class="nLi">
+                <h3><a href="/item/{{$arti->id}}">{{$arti->title}}</a></h3>
+              </li>
+              @endforeach
+            @elseif( $k<7 )
+              <li class="nLi @if( session('urls') == $navs->link )on @endif">
+                <h3><a href="{{$navs->link}}">{{$navs->title}}<span>{{$navs->introduce}}</span></a></h3>
+                @if( count($navs->articles)>0 )
+                  <ul class="sub">
+                    @foreach( $navs->articles as $arti )
+                      <li>
+                        <a href="@if( $arti->link ){{$arti->link}}@else{{$navs->link}}/category/{{$arti->id}}@endif">{{$arti->title}}</a>
+                      </li>
+                    @endforeach
+                  </ul>
+                @endif
+              </li>
+            @endif
           @endforeach
         </ul>
         <script id="jsID" type="text/javascript">
-          jQuery("#nav").slide({
+          jQuery("#nav").slide({ 
             type:"menu",// 效果类型，针对菜单/导航而引入的参数（默认slide）
             titCell:".nLi", //鼠标触发对象
             targetCell:".sub", //titCell里面包含的要显示/消失的对象
@@ -73,429 +82,327 @@
     </div>
   </div>
 </div>
-<!-- promise -->
-<div class="promise_out">
-  <div class="w1160 clearfix">
-    <ul class="clearfix">
-      <li>
-        <img src="images/pro_1.png" alt="" />
-        <p>预算准确</p>
-      </li>
-      <li>
-        <img src="images/pro_2.png" alt="" />
-        <p>价格实惠</p>
-      </li>
-      <li>
-        <img src="images/pro_3.png" alt="" />
-        <p>家装省心</p>
-      </li>
-      <li>
-        <img src="images/pro_4.png" alt="" />
-        <p>材料环保</p>
-      </li>
-      <li>
-        <img src="images/pro_5.png" alt="" />
-        <p>协调性强</p>
-      </li>
-      <li>
-        <img src="images/pro_6.png" alt="" />
-        <p>品质更高</p>
-      </li>
-    </ul>
-  </div>
-</div>
-<!-- price -->
-<div class="price_out">
-  <div class="w1160 clearfix">
-    <span class="bk50">&nbsp;</span>
-    <div class="tit">
-      <h2>免费获取设计报价方案</h2>
-      <p>装修第一步，算一算我家装修一共需要花多少钱</p>
-    </div>
-    <span class="bk40">&nbsp;</span>
-    <div class="clearfix">
-      <div class="w450 mR50 fr">
-        <form class="on_form" action="/front/message" method="post">
-          {{  csrf_field() }}
-          @if (count($errors) > 0)
-            <div style="color: red">
-              <ul>
-                @if( is_object($errors) )
-                  @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                  @endforeach
-                @else
-                  {{ $errors }}
-                @endif
-              </ul>
-            </div>
-          @endif
-          <p><input type="text" value="" name="name" id="name" class="input" placeholder="请输入您的姓名"></p>
-          <p><input type="text" value="" name="phone" id="phone" class="input" placeholder="请输入您的电话"></p>
-          <p><input type="text" value="" name="xiaoqu" id="phone" class="input" placeholder="请输入您的小区"></p>
-          <p><input type="text" value="" name="budge" id="phone" class="input" placeholder="请输入您的预算"></p>
-          <p><input type="text" value="" name="area" id="phone" class="input" placeholder="请输入您的建筑面积"></p>
-          <p>
-            <select id="" name="style">
-              <option value="0" selected="selected">请选择您的装修风格</option>
-              @foreach( $articles as $article )
-                <option value="{{$article->title}}">{{$article->title}}</option>
-              @endforeach
-            </select>
-          </p>
-
-          <button type="submit" class="submit_but">&nbsp;</button>
-        </form>
-        <script>
-            $('.submit_but').click(function () {
-                var name = $('#name').val();
-                var phone = $('#phone').val();
-
-                if( phone == "" || name == "" ){
-                    alert("姓名和电话必须填写");
-                    return false;
-                }
-
-                if( isPhoneNo(phone) == false ){
-                    alert("你输入的手机号格式不正确！")
-                    return false;
-                }
-            });
-
-            $('#vaptcha').click(function () {
-                $(this).attr('src','/vaptcha?'+ Math.random());
-            });
-
-            function isPhoneNo(phone) {
-                var pattern = /^1[34578]\d{9}$/;
-                return pattern.test(phone);
-            }
-        </script>
-
-      </div>
-      <div class="w570 mL50 fl">
-        <div class="txtScroll-top">
-          <div class="hd">&nbsp;</div>
-          <div class="bd">
-            <ul class="infoList">
-              @foreach( $messages as $message )
-                <li><span class="p_1">{{mb_substr($message->phone,0,3)}}****{{mb_substr($message->phone,7,4)}}</span><span class="p_2">{{$message->name}}</span><span class="p_3">已申请报价</span><span class="p_4">{{ \Carbon\Carbon::now('PRC')->diffInDays($message->created_at) }}天前</span></li>
-              @endforeach
-            </ul>
-          </div>
-        </div>
-        <script type="text/javascript">
-        jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"top",autoPlay:true,vis:7});
-        </script>
-        <div class="txt">
-          <h2>已有<span>{{$num}}</span>户业主申请报价</h2>
-          <p>我们承诺您的信息将被严格保密</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- case_out -->
-<div class="case_out">
-  <div class="w1160 clearfix">
-    <span class="bk50">&nbsp;</span>
+<!-- item -->
+<span class="bk60">&nbsp;</span>
+<div class="item_out">
+  <div class="w1280 clearfix">
     <div class="ho_tit_all">
-      <a href="/case">
-        <h2>装修案例</h2>
-        <p>优选当下主流设计风格，超10万张装修设计图片供您赏析</p>
+      <a href="/item/15">
+        <img src="images/ho_tit_1.png">
+        <h2>王牌<span>课程</span></h2>
+        <h3>一站式专业化妆造型培训综合平台</h3>
+        <p>Walk into beautiful and beautiful world, witness our training legend, we will develop<br/>together with you</p>
+        <img src="images/star_red.png">
       </a>
     </div>
-    <span class="bk40">&nbsp;</span>
-    <div class="top clearfix">
-      <div class="w570 fr">
+    <span class="bk30">&nbsp;</span>
+    <div class="clearfix">
+      <div class="w310 fr">
+        @if( isset( $classs[4] ) )
+        <a href="/item/detail/{{ $classs[4]->id }}" class="img img_2 col_white">
+          <img src="{{ $classs[4]->thumbnail }}">
+          <div class="txt">
+            <h2>{{ $classs[4]->title }}</h2>
+            <p>{{ $classs[4]->link }}</p>
+          </div>
+        </a>
+        @endif
+        <span class="bk10">&nbsp;</span>
+          @if( isset( $classs[5] ) )
+        <a href="/item/detail/{{ $classs[5]->id }}" class="img img_4">
+          <img src="{{ $classs[5]->thumbnail }}">
+          <div class="txt">
+            <h2>{{ $classs[5]->title }}</h2>
+            <p>{{ $classs[5]->link }}</p>
+          </div>
+        </a>
+            @endif
+      </div>
+      <div class="w960 fl">
         <div class="clearfix">
-          <a href="/case/{{$cases[0]->id}}" class="cp_all cp_2 fr">
-            <img src="{{$cases[0]->thumbnail}}">
-            <span class="mask">&nbsp;</span>
-            <span class="line">&nbsp;</span>
-            <span class="name">{{$cases[0]->title}}</span>
-          </a>
-          @if( isset( $cases[1] ) )
-          <a href="/case/{{$cases[1]->id}}" class="cp_all cp_2 fl">
-            <img src="{{$cases[1]->thumbnail}}">
-            <span class="mask">&nbsp;</span>
-            <span class="line">&nbsp;</span>
-            <span class="name">{{$cases[1]->title}}</span>
+          <div class="w310 fr">
+            @if( isset( $classs[1] ) )
+            <a href="/item/detail/{{ $classs[1]->id }}" class="img img_2 ">
+              <img src="{{ $classs[1]->thumbnail }}">
+              <div class="txt">
+                <h2>{{ $classs[1]->title }}</h2>
+                <p>{{ $classs[1]->link }}</p>
+              </div>
+            </a>
+            @endif
+            <span class="bk10">&nbsp;</span>
+            <a href="/item/detail/17" class="img img_2 ">
+              <img src="images/item_3.jpg">
+            </a>
+          </div>
+          @if( isset( $classs[0] ) )
+          <a href="/item/detail/{{ $classs[0]->id }}" class="img img_1 col_white fl">
+            <img src="{{ $classs[0]->thumbnail }}">
+            <div class="txt">
+              <h2>{{ $classs[0]->title }}</h2>
+              <p>{{ $classs[0]->link }}</p>
+            </div>
           </a>
           @endif
         </div>
         <span class="bk10">&nbsp;</span>
         <div class="clearfix">
-          @if( isset( $cases[2] ) )
-          <a href="/case/{{$cases[2]->id}}" class="cp_all cp_2 fr">
-            <img src="{{$cases[2]->thumbnail}}">
-            <span class="mask">&nbsp;</span>
-            <span class="line">&nbsp;</span>
-            <span class="name">{{$cases[2]->title}}</span>
+          @if( isset( $classs[3] ) )
+          <a href="/item/detail/{{ $classs[3]->id }}" class="img img_3 fr  col_white">
+            <img src="{{ $classs[3]->thumbnail }}">
+            <div class="txt">
+              <h2>{{ $classs[3]->title }}</h2>
+              <p>{{ $classs[3]->link }}</p>
+            </div>
           </a>
           @endif
-          @if( isset( $cases[3] ) )
-          <a href="/case/{{$cases[3]->id}}" class="cp_all cp_2 fl">
-            <img src="{{$cases[3]->thumbnail}}">
-            <span class="mask">&nbsp;</span>
-            <span class="line">&nbsp;</span>
-            <span class="name">{{$cases[3]->title}}</span>
+          @if( isset( $classs[2] ) )
+          <a href="/item/detail/{{ $classs[2]->id }}" class="img img_2 fl  col_white">
+            <img src="{{ $classs[2]->thumbnail }}">
+            <div class="txt">
+              <h2>{{ $classs[2]->title }}</h2>
+              <p>{{ $classs[2]->link }}</p>
+            </div>
           </a>
             @endif
         </div>
       </div>
-      <!-- banner -->
-      <div id="slideBoxcp" class="slideBoxcp fl">
-        <div class="hd">&nbsp;</div>
-        <div class="bd">
-          <ul>
-            @foreach( $cases as $case )
+    </div>
+    <span class="bk40">&nbsp;</span>
+    <ul class="list clearfix">
+      @foreach( session('header_nav') as $k=>$navs )
+        @if( $k==1 )
+          @foreach( $navs->articles as $arti )
             <li>
-              <a href="/case/{{$case->id}}" class="cp_all cp_3">
-                <img src="{{$case->thumbnail}}">
-                <span class="mask">&nbsp;</span>
-                <span class="line">&nbsp;</span>
-                <span class="name">{{$case->title}}</span>
+              <a href="/item/{{$arti->id}}">
+                <div class="btn_all btn_1">&nbsp;</div>
+                <h2>{{$arti->title}}</h2>
+                <p>{{$arti->introduce}}</p>
               </a>
             </li>
-            @endforeach
-          </ul>
-        </div>
-        <a class="prev" href="javascript:void(0)"></a>
-        <a class="next" href="javascript:void(0)"></a>
-      </div>
-      <script type="text/javascript">jQuery(".slideBoxcp").slide({mainCell:".bd ul",autoPlay:true});</script>
-    </div>
-    <span class="bk10">&nbsp;</span>
-    <ul class="list clearfix">
-      @foreach( $houses as $house  )
-        <li><a href="/case/{{$house->id}}/0"><img src="{{$house->thumbnail}}" alt="" /><span>{{$house->title}}</span></a></li>
+          @endforeach
+        @endif
       @endforeach
+
     </ul>
   </div>
 </div>
-<!-- team_out -->
-<div class="team_out">
-  <div class="w1160 clearfix">
-    <span class="bk50">&nbsp;</span>
+<!-- teacher_out -->
+<span class="bk60">&nbsp;</span>
+<div class="teacher_out">
+  <span class="bk60">&nbsp;</span>
+  <div class="w1280 clearfix">
     <div class="ho_tit_all">
-      <a href="/team">
-        <h2>设计团队</h2>
-        <p>130位平均7年以上设计经验资深设计师为您服务</p>
+      <a href="/teacher">
+        <img src="images/ho_tit_2.png">
+        <h2>明星<span>师资</span></h2>
+        <h3>一线大咖手把手教学</h3>
+        <p>Walk into beautiful and beautiful world, witness our training legend, we will develop<br/>together with you</p>
+        <img src="images/star_red.png">
       </a>
     </div>
-    <span class="bk40">&nbsp;</span>
+    <span class="bk30">&nbsp;</span>
     <div class="picScroll-leftsys">
       <div class="hd">
         <a class="next"></a>
         <a class="prev"></a>
       </div>
       <div class="bd">
-        <ul class="picList">
+        <ul class="picList team_list_o">
           @foreach( $teams as $team )
           <li>
             <a href="/team/{{$team->id}}">
               <span class="pic"><img src="{{$team->photo}}" alt="" /></span>
-              <span class="ewm"><img src="{{$team->wx_img}}" alt="" /></span>
               <div class="txt">
-                <h2>{{$team->title}}</h2>
-                <span>查看详情</span>
+                <h2>{{$team->name}}</h2>
+                <p>{{$team->title}}</p>
               </div>
             </a>
           </li>
-            @endforeach
+          @endforeach
         </ul>
       </div>
     </div>
     <script type="text/javascript">
-    jQuery(".picScroll-leftsys").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:4,trigger:"click"});
+    jQuery(".picScroll-leftsys").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:5,trigger:"click"});
     </script>
-    <span class="bk50">&nbsp;</span>
   </div>
+  <span class="bk60">&nbsp;</span>
 </div>
-<!-- quality_out -->
-<div class="quality_out">
-  <div class="top">
-    <div class="w1160 clearfix">
-      <div class="ho_tit_all">
-        <a href="/quality">
-          <h2>品质工程</h2>
-          <p>看不见的品质和看不见的细节，我们都同样用心</p>
-        </a>
-      </div>
+<!-- star_out -->
+<span class="bk60">&nbsp;</span>
+<div class="star_out">
+  <div class="w1280 clearfix">
+    <div class="ho_tit_all">
+      <a href="/star">
+        <img src="images/ho_tit_3.png">
+        <h2>走进<span>片场</span></h2>
+        <h3>您将有机会为您喜爱的明星化妆</h3>
+        <p>Walk into beautiful and beautiful world, witness our training legend, we will develop<br/>together with you</p>
+        <img src="images/star_red.png">
+      </a>
     </div>
-  </div>
-  <span class="bk50">&nbsp;</span>
-  <div class="w1160 clearfix">
-    <div id="demo1" class="picBtnTop">
-      <div class="hd">
-        <ul>
-          @foreach( $qualitys as $quality )
-          <li><a href="/quality/category/{{$quality->id}}">{{$quality->title}}</a></li>
-          @endforeach
-        </ul>
-      </div>
-      <div class="bd">
-        <ul>
-          @foreach( $qualitys as $quality )
-          <li><a href="/quality/category/{{$quality->id}}"><img src="{{$quality->thumbnail}}" /></a></li>
-          @endforeach
-        </ul>
-      </div>
-    </div>
+    <span class="bk30">&nbsp;</span>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox-1.3.4.css" media="screen">
+    <script type="text/javascript" src="/js/jquery.fancybox-1.3.4.js"></script>
     <script type="text/javascript">
-    //唯一不同：jQuery("#demo1")
-    jQuery("#demo1").slide({ mainCell:".bd ul",effect:"top",autoPlay:true,triggerTime:0 });</script>
-  </div>
-  <span class="bk70">&nbsp;</span>
-</div>
-<!-- project_out -->
-<div class="project_out">
-  <div class="w1160 clearfix">
-    <span class="bk50">&nbsp;</span>
-    <div class="ho_tit_all">
-      <a href="/project">
-        <h2>在建工程</h2>
-        <p>直击交换空间一线工地，装修细节一目了然</p>
-      </a>
-    </div>
-    <span class="bk40">&nbsp;</span>
-    <div class="clearfix">
-      <div class="list fr">
-        <ul class="clearfix">
-          @foreach( $projects as $project )
-          <li><a href="/project/{{$project->id}}"><img src="{{$project->thumbnail}}" /><div class="txt">{{$project->title}}</div></a></li>
-          @endforeach
-        </ul>
-      </div>
-      <div class="workers fl">
-        <div id="slideBox_work" class="slideBox_work">
-          <div class="hd">
-            <ul>
-              @foreach( $workers as $project )
-              <li>&nbsp;</li>
-              @endforeach
-            </ul>
-          </div>
-          <div class="bd">
-            <ul>
-              @foreach( $workers as $team )
-              <li><a href="/worker/{{$team->id}}"><img src="{{$team->photo}}" /><div class="txt">姓名：<span>{{$team->name}}</span>   |   工作年限：<span>{{$team->work_age}}年</span></div></a></li>
-                @endforeach
-            </ul>
-          </div>
-        </div>
-        <script type="text/javascript">jQuery(".slideBox_work").slide({mainCell:".bd ul",autoPlay:true});</script>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- guide_out -->
-<div class="guide_out">
-  <div class="w1160 clearfix">
-    <span class="bk50">&nbsp;</span>
-    <div class="ho_tit_all">
-      <a href="/guide">
-        <h2>装修攻略</h2>
-        <p>家庭装修全攻略，交换空间就是您的家装百科全书</p>
-      </a>
-    </div>
-    <span class="bk40">&nbsp;</span>
-    <div class="clearfix">
-      <div class="picScroll-leftgui fr">
-        <div class="hd">
-          <a class="next"></a>
-          <a class="prev"></a>
-        </div>
-        <div class="bd">
-          <ul class="picList">
-            @foreach( $guides as $guide )
-            <li>
-              <a href="/guide/category/{{$guide->id}}">
-                <span class="pic"><img src="{{$guide->thumbnail}}" alt="" /></span>
-                <span class="mask_black">&nbsp;</span>
-                    <p>{{$guide->title}}</p>
-              </a>
-            </li>
-            @endforeach
-          </ul>
-        </div>
-      </div>
-      <script type="text/javascript">
-      jQuery(".picScroll-leftgui").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:3,trigger:"click"});
-      </script>
-      <a href="/guide" class="guide_tit fl"><img src="images/guide_1.png"></a>
-    </div>
-     <span class="bk10">&nbsp;</span>
-    <div class="clearfix">
-      <div class="w980 fr">
-        <div class="clearfix">
-          <div class="guideout fl mR10">
-            <span class="pic"><img src="images/guidea.jpg"></span>
-            <span class="mask">&nbsp;</span>
-            <div class="txt">
-              <h2><a href="/guide/category/17">设计知识</a></h2>
-              {{--<ul class="list">--}}
-                {{--<li><a href="guide_in">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>--}}
-                {{--<li><a href="guide_in">装修效果图解析-如何装修儿童房？</a></li>--}}
-                {{--<li><a href="guide_in">装修房子时这些问题千万不要忽略</a></li>--}}
-              {{--</ul>--}}
-            </div>
-          </div>
-          <div class="guideout fl mR10">
-            <span class="pic"><img src="images/guideb.jpg"></span>
-            <span class="mask">&nbsp;</span>
-            <div class="txt">
-              <h2><a href="/guide/category/18">材料知识</a></h2>
-              {{--<ul class="list">--}}
-                {{--<li><a href="guide_in">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>--}}
-                {{--<li><a href="guide_in">装修效果图解析-如何装修儿童房？</a></li>--}}
-                {{--<li><a href="guide_in">装修房子时这些问题千万不要忽略</a></li>--}}
-              {{--</ul>--}}
-            </div>
-          </div>
-          <div class="guideout fl">
-            <span class="pic"><img src="images/guidec.jpg"></span>
-            <span class="mask">&nbsp;</span>
-            <div class="txt">
-              <h2><a href="/guide/category/19">装修风水</a></h2>
-              {{--<ul class="list">--}}
-                {{--<li><a href="guide_in">如何确定装修风格和装修预和装修预和装修预和装修预算？</a></li>--}}
-                {{--<li><a href="guide_in">装修效果图解析-如何装修儿童房？</a></li>--}}
-                {{--<li><a href="guide_in">装修房子时这些问题千万不要忽略</a></li>--}}
-              {{--</ul>--}}
-            </div>
-          </div>
-        </div>
-      </div>
-      <a href="/guide" class="guide_tit fl"><img src="images/guide_2.png"></a>
-    </div>
+      $(document).ready(function() {
+         
+        $("a[rel=images_group]").fancybox({
+          'transitionIn':'none',
+          'transitionOut':'none',
+          'titlePosition':'over',
+          'titleFormat':function(title, currentArray, currentIndex, currentOpts) {
+            return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+          }
+        });
+      });
+    </script>
+    <ul class="list clearfix">
+      <li class="li_1">
+        @foreach( $stars as $k=>$star )
+          @if( $k<2 )
+        <a rel="images_group" href="{{$star->thumbnail}}"><div class="pic"><img src="{{$star->thumbnail}}" alt="{{$star->title}}"></div></a>
+          @endif
+        @endforeach
+      </li>
+      <li class="li_2">
+        @foreach( $stars as $k=>$star )
+          @if( 1<$k && $k<4 )
+            <a rel="images_group" href="{{$star->thumbnail}}"><div class="pic"><img src="{{$star->thumbnail}}" alt="{{$star->title}}"></div></a>
+          @endif
+        @endforeach
+      </li>
+      <li class="li_3">
+        @foreach( $stars as $k=>$star )
+          @if( 3<$k && $k<8 )
+            <a rel="images_group" href="{{$star->thumbnail}}"><div class="pic"><img src="{{$star->thumbnail}}" alt="{{$star->title}}"></div></a>
+          @endif
+        @endforeach
+      </li>
+      <li class="li_4">
+        @foreach( $stars as $k=>$star )
+          @if( 7<$k && $k<10 )
+            <a rel="images_group" href="{{$star->thumbnail}}"><div class="pic"><img src="{{$star->thumbnail}}" alt="{{$star->title}}"></div></a>
+          @endif
+        @endforeach
+      </li>
+      <li class="li_5">
+        @foreach( $stars as $k=>$star )
+          @if( 9<$k )
+            <a rel="images_group" href="{{$star->thumbnail}}"><div class="pic"><img src="{{$star->thumbnail}}" alt="{{$star->title}}"></div></a>
+          @endif
+        @endforeach
+      </li>
+    </ul>
   </div>
 </div>
-<!-- news_out -->
-<div class="news_out">
-  <div class="w1160 clearfix">
-    <span class="bk60">&nbsp;</span>
+<!-- work -->
+<span class="bk60">&nbsp;</span>
+<div class="work_out">
+  <span class="bk60">&nbsp;</span>
+  <div class="w1280 clearfix">
     <div class="ho_tit_all">
-      <a href="/news">
-        <h2>优惠活动</h2>
-        <p>实时放送优惠活动，已钜惠 62769 人装修</p>
+      <a href="/work">
+        <img src="images/ho_tit_4.png">
+        <h2>学员<span>作品</span></h2>
+        <h3>我们的高手学员都被千金求聘</h3>
+        <p>Walk into beautiful and beautiful world, witness our training legend, we will develop<br/>together with you</p>
+        <img src="images/star_red.png">
       </a>
     </div>
-    <span class="bk40">&nbsp;</span>
-    <div class="picScroll-left-hd">
-      <div class="hd"><a class="next"></a>
-          <a class="prev"></a></div>
+    <span class="bk30">&nbsp;</span>
+    <div class="picScroll-left-work">
       <div class="bd">
         <ul class="picList">
+          @foreach( $works as $work )
+          <li><a rel="" href="/work/{{$work->id}}"><div class="pic"><img src="{{$work->thumbnail}}" alt="{{$work->title}}"></div></a></li>
+          @endforeach
+        </ul>
+      </div>
+      <div class="hd">
+        <ul></ul>
+      </div>
+    </div>
+    <script type="text/javascript">
+    jQuery(".picScroll-left-work").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:4,scroll:1,trigger:"click"});
+    </script>
+    <span class="bk60">&nbsp;</span>
+  </div>
+</div>
+<!-- video_out -->
+<div class="video_out">
+  <span class="bk100">&nbsp;</span>
+  <span class="bk5">&nbsp;</span>
+  <a href="/about/video/27">
+    <img src="images/play_btn.png">
+  </a>
+</div>
+<!-- compus_out -->
+<span class="bk10">&nbsp;</span>
+<div class="w1280 clearfix">
+  <div class="slideTxtBox">
+    <div class="hd">
+      <ul>
+        @foreach( $schools as $school )
+        <li><a href="/about/compus"><h2>{{$school->title}}</h2><p>campus</p></a></li>
+        @endforeach
+      </ul>
+    </div>
+    <div class="bd">
+      @foreach( $schools as $school )
+      <div class="compus_img clearfix">
+        <div class="top">
+          @foreach( $school->articles as $arti )
+            @if( $k<3 )
+          <a rel="images_group" href="{{$arti->thumbnail}}" class="img_all img_1 fl mR10"><div class="pic"><img src="{{$arti->thumbnail}}" alt=""></div></a>
+            @endif
+          @endforeach
+        </div>
+        <span class="bk10">&nbsp;</span>
+        <div class="bot">
+          <a href="/about/compus" class="txt fl mR10"><h2>教学环境</h2><p>Teaching<br/>environment</p></a>
+          @foreach( $school->articles as $arti )
+            @if( 2<$k && $k<5 )
+              <a rel="images_group" href="{{$arti->thumbnail}}" class="img_all img_1 fl mR10"><div class="pic"><img src="{{$arti->thumbnail}}" alt=""></div></a>
+            @endif
+          @endforeach
+        </div>
+      </div>
+      @endforeach
+    </div>
+  </div>
+  <script type="text/javascript">jQuery(".slideTxtBox").slide();</script>
+</div>
+<span class="bk60">&nbsp;</span>
+<!-- news_out -->
+<div class="news_out">
+  <span class="bk60">&nbsp;</span>
+  <div class="w1280 clearfix">
+    <div class="ho_tit_all">
+      <a href="/about/news">
+        <img src="images/ho_tit_5.png">
+        <h2>新闻<span>动态</span></h2>
+        <h3>行中圈内动态 俏佳人榜上有名</h3>
+        <p>Walk into beautiful and beautiful world, witness our training legend, we will develop<br/>together with you</p>
+        <img src="images/star_red.png">
+      </a>
+    </div>
+    <span class="bk30">&nbsp;</span>
+    <div class="picScroll-leftsys" id="picScroll-leftnews">
+      <div class="hd">
+        <a class="next"></a>
+        <a class="prev"></a>
+      </div>
+      <div class="bd">
+        <ul class="picList news_list_o">
           @foreach( $newss as $news )
           <li>
-            <a href="/news/{{$news->id}}">
-              <span class="pic"><img src="{{$news->thumbnail}}"></span>
+            <a href="/about/news/{{$news->id}}">
+              <span class="pic"><img src="{{$news->thumbnail}}" alt="{{$news->title}}" /></span>
               <div class="txt">
                 <h2>{{$news->title}}</h2>
                 <p>{{$news->introduce}}</p>
-                <span class="btn">more +</span>
               </div>
             </a>
           </li>
@@ -504,47 +411,82 @@
       </div>
     </div>
     <script type="text/javascript">
-    jQuery(".picScroll-left-hd").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:3,trigger:"click"});
+    jQuery("#picScroll-leftnews").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:3,trigger:"click"});
     </script>
+    <span class="bk60">&nbsp;</span>
   </div>
 </div>
-<span class="bk40">&nbsp;</span>
+<!-- privilege -->
+<div class="privilege">
+  <span class="bk60">&nbsp;</span>
+  <div class="w1280 clearfix">
+    <div class="ho_tit_all">
+      <a href="">
+        <img src="images/ho_tit_6.png">
+      </a>
+    </div>
+    <span class="bk30">&nbsp;</span>
+    <ul class="list clearfix">
+      @foreach( $projects as $project )
+      <li>
+        <div class="txt">
+          <h2>{{$project->title}}</h2>
+          <p>{{$project->introduce}}</p>
+        </div>
+        <div class="bot">
+          {!! $project->comtent !!}
+        </div>
+      </li>
+      @endforeach
+    </ul>
+  </div>
+</div>
+<span class="bk60">&nbsp;</span>
+<!-- goenrol -->
+<div class="goenrol">
+  <div class="w1280 clearfix">
+      <h2>Welcome to our school</h2>
+      <p>您所了解的美丽俏佳人化妆培训学校远远超越一所普通的形象设计学校！</p>
+      <a href="/contact">点击立即报名</a>
+  </div>
+</div>
 <div class="footer">
-  <div class="w1160 clearfix">
-    <div class="clearfix">
-      <div class="call fr">
-        <h2>有任何建议或意见请联系我们 </h2>
-        <p>{{ session('setting')['fix_phone']  }}</p>
-      </div>
-      <img src="/images/price_case.gif" class="fl">
+  <span class="bk30">&nbsp;</span>
+  <div class="w1280 clearfix">
+    <p class="fot_nav">
+      @foreach( session('header_nav') as $k=>$navs )
+        @if( $k==1 )
+          @foreach( $navs->articles as $arti )
+            <a href="/item/{{$arti->id}}">{{$arti->title}}</a>
+          @endforeach
+        @endif
+      @endforeach
+    </p>
+    <span class="bk30">&nbsp;</span>
+    <div class="ewm">
+      <img src="{{ session('setting')['wx_map']  }}">
+      <p>扫描二维码关注我们</p>
     </div>
     <span class="bk20">&nbsp;</span>
-    <div class="clearfix">
-      <div class="ewm fr">
-        <img src="/images/sj_ewm.jpg">
-      </div>
-      <div class="txt fl">
-        <p>座机：{{ session('setting')['fix_phone']  }}</p>
-        <P>电话：{{ session('setting')['phone']  }}</p>
-        <P>Q Q：{{ session('setting')['qq']  }}</p>
-        <P>地址：{{ session('setting')['bases']  }}</p>
-      </div>
+    <div class="txt">
+      <p>招生服务咨询热线 / <span>{{ session('setting')['fix_phone']  }}</span></p>
+      <p>总校地址 / <span>{{ session('setting')['bases']  }}</span></p>
+      <p>QQ在线咨询 / <span>{{ session('setting')['qq']  }}</span></p>
     </div>
-    <span class="bk40">&nbsp;</span>
+    <span class="bk30">&nbsp;</span>
   </div>
   <div class="bot">
-    <div class="w1160 clearfix">
-      copyright 2017© 交换空间装饰  {{ session('setting')['icp']  }}  <span>技术支持：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a></span>
+    <div class="w1280 clearfix">版权所有 © 四川美丽俏佳人企业管理有限公司 Copyright Qiaojiaren All Rights Reserved <span>技术支持 ：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a></span>
     </div>
   </div>
 </div>
 <!-- float -->
 <div class="float_onlie">
-  <a class="on_1" href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes">&nbsp;</a>
-  <a class="on_2 ph" href=""><em>电话：{{ session('setting')['fix_phone']  }}<br>手机：{{ session('setting')['phone']  }}</em></a>
-  <a class="on_3 add" href=""><em>{{ session('setting')['bases']  }}</em></a>
-  <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
-  <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
+    <a class="on_1" href="/contact">&nbsp;</a>
+    <a class="on_2 ph" href=""><em>电话：{{ session('setting')['fix_phone']  }}<br>手机：{{ session('setting')['phone']  }}</em></a>
+    <a class="on_3 add" href=""><em>{{ session('setting')['bases']  }}</em></a>
+    <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
+    <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
 </div>
 </body>
 </html>

@@ -43,37 +43,59 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-2 control-label">设计师</label>
+                                <label for="email" class="col-md-2 control-label">类型</label>
+                                <div class="col-md-10">
+                                    <select name="cate" id="email" style="width:200px;" >
+                                        <option value ="1" >老师作品</option>
+                                        <option value ="2" >学生作品</option>
+                                    </select>
+                                    <p style="color:red;">如果是学生作品就不用选择老师，正文部分必须填写，且必须选择案例类型</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-2 control-label">作者</label>
                                 <div class="col-md-10">
                                     <select name="team_id" id="email" style="width:200px;" >
                                         @foreach( $teams as $stor )
-                                            <option value ="{{ $stor->id }}">{{ $stor->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email" class="col-md-2 control-label">房间类型</label>
-                                <div class="col-md-10">
-                                    <select name="house_id" id="email" style="width:200px;" >
-                                        @foreach( $houses as $stor )
-                                            <option value ="{{ $stor->id }}">{{ $stor->title }}</option>
+                                            <option value ="{{ $stor->id }}" >{{ $stor->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-2 control-label">装修风格</label>
+                                <label for="email" class="col-md-2 control-label">案例类型</label>
                                 <div class="col-md-10">
-                                    <select name="style_id" id="email"  style="width:200px;">
+                                    <select name="style_id" id="email" style="width:200px;" >
                                         @foreach( $styles as $stor )
-                                            <option value ="{{ $stor->id }}">{{ $stor->title }}</option>
+                                            <option value ="{{ $stor->id }}" >{{ $stor->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
+                            
+                            {{--<div class="form-group">--}}
+                                {{--<label for="email" class="col-md-2 control-label">房间类型</label>--}}
+                                {{--<div class="col-md-10">--}}
+                                    {{--<select name="house_id" id="email" style="width:200px;" >--}}
+                                        {{--@foreach( $houses as $stor )--}}
+                                            {{--<option value ="{{ $stor->id }}">{{ $stor->title }}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+
+                            {{--<div class="form-group">--}}
+                                {{--<label for="email" class="col-md-2 control-label">装修风格</label>--}}
+                                {{--<div class="col-md-10">--}}
+                                    {{--<select name="style_id" id="email"  style="width:200px;">--}}
+                                        {{--@foreach( $styles as $stor )--}}
+                                            {{--<option value ="{{ $stor->id }}">{{ $stor->title }}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
                             <div class="form-group" >
                                 <label for="email" class="col-md-2 control-label">详情</label>

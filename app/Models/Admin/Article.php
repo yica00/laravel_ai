@@ -24,4 +24,12 @@ class Article extends Model
     public function order_lists(){
         return $this->belongsTo('App\Models\Admin\Order_list','article_id','id');
     }
+
+    public function teams(){
+        return $this->hasMany('App\Models\Admin\Teams','work_age','id');
+    }
+
+    public function rcases(){
+        return $this->hasMany('App\Models\Admin\Rcase','style_id','id');
+    }
 }

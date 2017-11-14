@@ -36,6 +36,12 @@ class Get_nav
             $Articles = Article::where('pid',13)->orderBy('serial_number','desc')->orderBy('id','desc')->take(14)->get();
             session(['links' =>$Articles]);
         }
+
+        if( !session('meili')  ){
+            $schools = Article::where('pid',11)->get();
+            $classs = Article::where('pid',2)->get();
+            session(['meili' =>[$schools,$classs]]);
+        }
         return $next($request);
     }
 }

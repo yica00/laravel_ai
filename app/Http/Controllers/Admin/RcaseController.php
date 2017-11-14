@@ -26,7 +26,7 @@ class RcaseController extends Controller
     public function create()
     {
         $houses = Article::where('pid',25)->get();
-        $styles = Article::where('pid',26)->get();
+        $styles = Article::where('pid',2)->get();
         $teams = Teams::get();
         return view('admin.rcase_add',compact('houses','styles','teams'));
     }
@@ -68,7 +68,7 @@ class RcaseController extends Controller
     public function edit($id)
     {
         $houses = Article::where('pid',25)->get();
-        $styles = Article::where('pid',26)->get();
+        $styles = Article::where('pid',2)->get();
         $teams = Teams::get();
         $rcase = Rcase::find($id);
         return view('admin.rcase_edit',compact('rcase','houses','styles','teams'));

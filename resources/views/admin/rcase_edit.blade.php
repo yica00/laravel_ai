@@ -39,11 +39,23 @@
                                 <label for="email" class="col-md-2 control-label">缩略图</label>
                                 <div class="col-md-10">
                                     <input id="email" type="file"  class="form-control" name="thumbnail" autofocus>
+                                    <img src="{{$rcase->thumbnail}}" width="200px" />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-2 control-label">设计师</label>
+                                <label for="email" class="col-md-2 control-label">类型</label>
+                                <div class="col-md-10">
+                                    <select name="cate" id="email" style="width:200px;" >
+                                        <option value ="1"  @if($rcase->cate == 1  ) selected @endif  >老师作品</option>
+                                        <option value ="2"  @if($rcase->cate == 2  ) selected @endif   >学生作品</option>
+                                    </select>
+                                    <p style="color:red;">如果是学生作品就不用选择老师，正文部分必须填写，且必须选择案例类型</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-2 control-label">作者</label>
                                 <div class="col-md-10">
                                     <select name="team_id" id="email" style="width:200px;" >
                                         @foreach( $teams as $stor )
@@ -51,21 +63,23 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email" class="col-md-2 control-label">房间类型</label>
-                                <div class="col-md-10">
-                                    <select name="house_id" id="email" style="width:200px;" >
-                                        @foreach( $houses as $stor )
-                                            <option value ="{{ $stor->id }}" @if($stor->id == $rcase->house_id  ) selected @endif >{{ $stor->title }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <p></p>
                             </div>
 
+
+                            {{--<div class="form-group">--}}
+                                {{--<label for="email" class="col-md-2 control-label">房间类型</label>--}}
+                                {{--<div class="col-md-10">--}}
+                                    {{--<select name="house_id" id="email" style="width:200px;" >--}}
+                                        {{--@foreach( $houses as $stor )--}}
+                                            {{--<option value ="{{ $stor->id }}" @if($stor->id == $rcase->house_id  ) selected @endif >{{ $stor->title }}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+
                             <div class="form-group">
-                                <label for="email" class="col-md-2 control-label">装修风格</label>
+                                <label for="email" class="col-md-2 control-label">案例类型</label>
                                 <div class="col-md-10">
                                     <select name="style_id" id="email"  style="width:200px;">
                                         @foreach( $styles as $stor )
@@ -74,8 +88,8 @@
                                     </select>
                                 </div>
                             </div>
-                            <div id="comtent" style="display:none;" ><?php echo  html_entity_decode($rcase->comtent) ?></div>
 
+                            <div id="comtent" style="display:none;" ><?php echo  html_entity_decode($rcase->comtent) ?></div>
                             <div class="form-group" >
                                 <label for="email" class="col-md-2 control-label">详情</label>
                                 <!-- 加载编辑器的容器 -->
@@ -105,7 +119,7 @@
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        添加
+                                        修改
                                     </button>
                                 </div>
                             </div>
