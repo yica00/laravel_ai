@@ -27,6 +27,7 @@
     </ul> 
 
   </div>
+  {{$teams->links()}}
   <!-- end -->
   </div>
   <span class="bk80">&nbsp;</span>

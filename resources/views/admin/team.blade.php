@@ -35,6 +35,9 @@
             @endforeach
 
         </table>
+        <div class="pagenav">
+            {{ $teams->links() }}
+        </div>
     </div>
 
 @endsection
