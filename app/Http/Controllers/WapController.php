@@ -66,8 +66,8 @@ class WapController extends Controller
     }
 
     public function team(){
-        $teams = Teams::orderBy('id','asc')->paginate(10);
-        $pages = getPage($teams,10);
+        $teams = Teams::orderBy('id','asc')->paginate(9);
+        $pages = getPage($teams,9);
         $id =1;
         return view('front.wap.teacher',compact('teams','pages','id'));
     }
