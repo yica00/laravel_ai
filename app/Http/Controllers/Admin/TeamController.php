@@ -17,8 +17,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = Teams::get();
-        $teams = $this->subSqlStr($teams);
+        $teams = Teams::paginate(10);
         return view('admin.team',compact('teams'));
     }
 
