@@ -1,5 +1,6 @@
 @extends('front.base')
 @section('content')
+  <link href="/css/app.css" rel="stylesheet" type="text/css">
 <!-- bread -->
 <span class="bk30">&nbsp;</span>
 <div class="bread">
