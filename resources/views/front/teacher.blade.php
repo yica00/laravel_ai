@@ -28,7 +28,8 @@
     </ul> 
 
   </div>
-  {{$teams->links()}}
+  <div style="float: right;margin-right: 20%">
+    {{$teams->links()}}
   <!-- end -->
   </div>
   <span class="bk80">&nbsp;</span>
