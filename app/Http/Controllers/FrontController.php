@@ -178,9 +178,15 @@ class FrontController extends Controller
         return view('front.about',compact('article'));
     }
     public function brand(){
-        $article = Article::find(11);
-        $article->comtent = get_article_imgs($article->comtent,10);
-        return view('front.brand',compact('article'));
+        $self = Article::find(2);
+        $articles = Article::with('articles')->whereIn('id',[7,8,9,10,11])
+            ->orderBy('serial_number','desc')->orderBy('id','asc')->get();
+        foreach ( $articles as $k=>$arti ){
+            if( $k>2 ){
+                $articles[$k]->comtent = get_article_imgs($arti->comtent,20);
+            }
+        }
+        return view('front.brand',compact('articles','self'));
     }
     public function video(){
         $articles = Article::where('pid',10)->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
@@ -428,7 +434,7 @@ class FrontController extends Controller
         $articles = Article::where('pid',26)->get();
         $messages = Message::orderBy('id','desc')->take(20)->get();
         $num = Message::count();
-        return view('front.online',compact('articles','messages','num'));
+        return view('front.order',compact('articles','messages','num'));
     }
 
     public function budge(){

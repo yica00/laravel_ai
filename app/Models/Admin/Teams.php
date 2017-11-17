@@ -9,7 +9,7 @@ class Teams extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name','education','title','work_age','photo','wx_img','introduce','good_at','design_concept','production','cate'];
+    protected $fillable = ['name','education','title','honor','photo','wx_img','introduce','good_at','design_concept','comtent','cate'];
 
     protected $hidden = ['created_at','updated_at','deleted_at'];
 

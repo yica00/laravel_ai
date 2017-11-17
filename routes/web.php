@@ -23,22 +23,25 @@ Route::group(['middleware'=>'check_setting'],function (){
 
         Route::get('about','FrontController@about');
         Route::get('about/culture','FrontController@culture');
-        Route::get('about/brand','FrontController@brand');
         Route::get('about/video','FrontController@video');
         Route::get('about/video/{id}','FrontController@video_detail');
         Route::get('about/honor','FrontController@honor');
         Route::get('about/env','FrontController@env');
         Route::get('about/contact','FrontController@contact');
-        Route::get('about/offer','FrontController@offer');
 
-        Route::get('about/news','FrontController@news');
+        Route::get('order','FrontController@offer');
+
+        Route::get('brand','FrontController@brand');
+
+        Route::get('news','FrontController@news');
         Route::get('news/category/{id}','FrontController@news');
-        Route::get('about/news/{id}','FrontController@new_detail');
+        Route::get('news/{id}','FrontController@new_detail');
 
         Route::get('treatment','FrontController@treatment');
 
+        Route::get('item','FrontController@items');
         Route::get('item/{id}','FrontController@items');
-        Route::get('item/detail/{id}','FrontController@item_detail');
+        Route::get('item/category/{id}','FrontController@item_detail');
 
         Route::get('store','FrontController@store_list');
         Route::get('about/store/{id}','FrontController@store_dedail');
@@ -194,3 +197,10 @@ Route::get('/vaptcha',function (){
 });
 
 
+Route::group(['middleware'=>'check_setting'],function (){
+    Route::group(['as'=>'front','middleware'=>'get_nav'],function () {
+        Route::get('/home', function () {
+            return view('front.home');
+        });
+    });
+});

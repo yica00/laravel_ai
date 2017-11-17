@@ -96,22 +96,36 @@
                                 {{--</div>--}}
                             {{--</div>--}}
 
+                            {{--<div class="form-group">--}}
+                                {{--<label for="email" class="col-md-4 control-label">所教专业</label>--}}
+                                {{--<div class="col-md-6">--}}
+                                    {{--<select name="work_age" id="email" style="width:200px;" >--}}
+                                        {{--@foreach( $items as $stor )--}}
+                                            {{--<option value ="{{ $stor->id }}" @if($stor->id == $team->work_age  ) selected @endif >{{ $stor->title }}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                                {{--<p></p>--}}
+                            {{--</div>--}}
+
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">所教专业</label>
+                                <label for="email" class="col-md-4 control-label">荣誉title</label>
                                 <div class="col-md-6">
-                                    <select name="work_age" id="email" style="width:200px;" >
-                                        @foreach( $items as $stor )
-                                            <option value ="{{ $stor->id }}" @if($stor->id == $team->work_age  ) selected @endif >{{ $stor->title }}</option>
-                                        @endforeach
-                                    </select>
+                                    <textarea class="form-control" rows="4" name="honor" >{{  $team->honor }}</textarea>
                                 </div>
-                                <p></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">擅长项目</label>
+                                <div class="col-md-6">
+                                    <textarea class="form-control" rows="4" name="good_at" >{{  $team->good_at }}</textarea>
+                                </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">介绍</label>
                                 <div class="col-md-6">
-                                    <textarea class="form-control" rows="5" name="introduce" >{{  $team->introduce }}</textarea>
+                                    <textarea class="form-control" rows="6" name="introduce" >{{  $team->introduce }}</textarea>
                                 </div>
                             </div>
 
@@ -123,6 +137,33 @@
                                     {{--@endforeach--}}
                                 {{--</div>--}}
                             {{--</div>--}}
+
+                            <div id="comtent" style="display:none;" ><?php echo  html_entity_decode($team->comtent) ?></div>
+                            <div class="form-group" >
+                                <label for="email" class="col-md-4 control-label">工作图集</label>
+                                <!-- 加载编辑器的容器 -->
+                                <div class="col-md-6">
+                                    <script id="container" name="comtent" type="text/plain">
+                                    </script>
+                                    <!-- 配置文件 -->
+                                    <script type="text/javascript" src="/akl/Ueditor/ueditor.config.js"></script>
+                                    <!-- 编辑器源码文件 -->
+                                    <script type="text/javascript" src="/akl/Ueditor/ueditor.all.js"></script>
+                                    <!-- 实例化编辑器 -->
+                                    <script type="text/javascript">
+                                        var ue = UE.getEditor('container', {
+                                            autoHeightEnabled: true,
+                                            autoFloatEnabled: true,
+                                            initialFrameWidth : 900,
+                                            initialFrameHeight: 400
+                                        });
+                                        ue.ready(function() {
+                                            ue.setContent($('#comtent').html());
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">

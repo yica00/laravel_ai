@@ -54,7 +54,7 @@ class MessageController extends Controller
             return back()->with('errors','当前ip留言过多，请稍后再试');
         }
 
-        $atic['message'] = '校区：'.$atic['school'].'<br>课程：'.$atic['class'].'<br>留言：'.$atic['content'].'<br>';
+        $atic['message'] = '预约时间：'.$atic['time'].'<br>预约项目：'.$atic['item'].'<br>留言：'.$atic['content'].'<br>';
 
 //        if (isset($atic['amout'])){
 //            $atic['message'] = '产品数量：'.$atic['amout'].'<br>产品名字：'.$atic['product'].'<br>留言详情：'.$atic['message'];

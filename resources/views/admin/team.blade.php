@@ -17,7 +17,7 @@
                 <th>名字</th>
                 <th>职称</th>
                 <th>照片</th>
-                <th>介绍</th>
+                {{--<th>介绍</th>--}}
                 <th>操作</th>
             </tr>
             @foreach($teams as $sort)
@@ -25,7 +25,7 @@
                     <td>{{$sort->name}}</td>
                     <td>{{$sort->title}}</td>
                     <td> <img src="{{$sort->photo}}" width="30"> </td>
-                    <td>{{$sort->introduce}}</td>
+                    {{--<td>{{$sort->introduce}}</td>--}}
 
                     <td>
                         <a class="act-btn" href="/admin/team/{{$sort->id}}/edit">编辑</a> |
