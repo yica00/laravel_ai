@@ -31,7 +31,7 @@
         <div class="nav_box fr">
             <ul id="nav" class="nav clearfix">
                 @foreach( session('header_nav') as $ks=>$navs )
-                    @if( $ks > 0 )
+                    @if( $ks > 0 && $ks<6 )
                         <li class="nLi">
                             <h3><a href="{{$navs->link}}">{{$navs->title}}</a></h3>
                             @if( $navs->articles )
@@ -75,13 +75,9 @@
 <div class="footer">
     <div class="w1280 clearfix">
         <ul class="list  clearfix">
-            <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: slideInLeft;"><img src="/images/btn_3_1.png">高贵飘逸眼</a></li>
-            <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: slideInLeft;"><img src="/images/btn_3_2.png">恒久时尚鼻</a></li>
-            <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: slideInLeft;"><img src="/images/btn_3_3.png">明快U型轮廓</a></li>
-            <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.6s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.6s; animation-name: slideInLeft;"><img src="/images/btn_3_4.png">魅力喜悦肌</a></li>
-            <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.8s; animation-name: slideInLeft;"><img src="/images/btn_3_5.png">秀美天鹅颈</a></li>
-            <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="1s" style="visibility: visible; animation-duration: 1s; animation-delay: 1s; animation-name: slideInLeft;"><img src="/images/btn_3_6.png">笔直迷人背</a></li>
-            <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="1.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 1.2s; animation-name: slideInLeft;"><img src="/images/btn_3_7.png">丝滑质感肤</a></li>
+            @foreach( session('header_nav1') as $ks=>$navs )
+                <li><a href="/item/category/{{$navs->id}}" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="{{ $k*0.2 }}s" style="visibility: visible; animation-duration: 1s; animation-delay: {{ $k*0.2 }}s; animation-name: slideInLeft;"><img src="{{$navs->comtent[0][2]}}">{{$navs->title}}</a></li>
+            @endforeach
         </ul>
         <span class="bk50">&nbsp;</span>
         <div class="ewm wow bounceInDown" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-name: bounceInDown;">

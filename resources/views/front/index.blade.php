@@ -2,11 +2,11 @@
 <!-- saved from url=(0024)http://www.clearedu.net/ -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>依美医疗美容</title>
+  <title>{{ session('setting')['web_name']  }}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
+  <meta name="keywords" content="{{ session('setting')['keywords']  }}">
+  <meta name="description" content="{{ session('setting')['description']  }}">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <!-- 适应手机 -->
   <meta name="viewport" content="width=1280px">

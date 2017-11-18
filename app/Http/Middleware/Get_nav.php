@@ -19,7 +19,7 @@ class Get_nav
 
         if( !session('header_nav') ){
             $articles = Article::with(array('articles'=>function( $query ){
-                $query->select('id','pid','title','serial_number','link')->where('is_nav','1');
+                $query->select('id','pid','title','serial_number','link','thumbnail')->where('is_nav','1');
             }))
                 ->select('id','pid','title','serial_number','link','introduce')->where('pid','0')->where('is_nav','1')
                 ->orderBy('serial_number','asc')->orderBy('id','asc')->get();
@@ -31,6 +31,21 @@ class Get_nav
             $str = "/".$arr[3];
         }
         session(['urls' =>$str]);
+
+        if( !session('header_nav1') ){
+            $cats = Article::where('pid',3)->orderBy('serial_number','desc')->get();
+            for ( $i=0;$i<count($cats);$i++ ){
+//                $articles = Article::with(array('articles'=>function( $query ){
+//                    $query->select('id','pid','title','serial_number','link')->where('is_nav','0');
+//                }))
+//                    ->select('id','pid','title','serial_number','link','introduce','comtent')->where('pid',$cats[$i]->id)
+//                    ->where('serial_number','1500')
+//                    ->orderBy('serial_number','asc')->orderBy('id','asc')->get();
+                $cats[$i]->comtent = get_article_imgs($cats[$i]->comtent,3);
+//                $cats[$i]->articles = $articles;
+            }
+            session(['header_nav1' =>$cats]);
+        }
 
         return $next($request);
     }

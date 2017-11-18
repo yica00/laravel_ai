@@ -40,18 +40,21 @@ class WapController extends Controller
         return $teams;
     }
 
-    public function items( $id = 15  ){
-        $article = Article::with(['teams' => function($qeury){
-            $qeury->orderBy('id','asc')->take(10);
-        }])
-            ->with(['rcases' => function($qeury){
-                $qeury->orderBy('id','asc')->take(4);
-            }])
-            ->with('articles')
+    public function items( $id = 63  ){
+        $article = Article::with('articles')
             ->find($id);
-        $article->comtent = get_article_imgs($article->comtent,5);
-        $cates = Article::where('pid',2)->get();
-        return view('front.wap.class',compact('article','id','cates'));
+        foreach ( $article->articles as $k=>$item ){
+            if( $item->serial_number == 100 ){
+                $sons = Article::with('articles')->find($item->id);
+                foreach ( $sons->articles as $ks=>$items ){
+                    $sons->articles[$ks] = get_article_imgs2($items->comtent,2);
+                }
+                $article->cases = $sons;
+                unset( $article->articles[$k] );
+            }
+        }
+        $article->comtent = get_article_imgs2($article->comtent,2);
+        return view('front.wap.item',compact('article','id','cates'));
     }
     public function item_detail($id){
         $article = Article::with('articles')->find($id);

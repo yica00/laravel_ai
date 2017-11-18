@@ -2,11 +2,11 @@
 <!-- saved from url=(0024)http://www.clearedu.net/ -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>依美医疗美容</title>
+  <title>{{ session('setting')['web_name']  }}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
+  <meta name="keywords" content="{{ session('setting')['keywords']  }}">
+  <meta name="description" content="{{ session('setting')['description']  }}">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <!-- 适应手机 -->
   <meta name="viewport" content="width=1280px;">
@@ -27,12 +27,16 @@
 <div class="header_banner">
   <!-- banner -->
   <div id="slideBox" class="slideBox">
-    <div class="hd"><ul><li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li></ul></div>
+    <div class="hd"><ul>
+       @foreach( $sliders as $slider )
+        <li>&nbsp;</li>
+       @endforeach
+      </ul></div>
     <div class="bd">
       <ul>
-        <li><a href="" style="background:url(images/bn_1.jpg) center bottom no-repeat;">&nbsp;</a></li>
-        <li><a href="" style="background:url(images/bn_2.jpg) center bottom no-repeat;">&nbsp;</a></li>
-        <li><a href="" style="background:url(images/bn_3.jpg) center bottom no-repeat;">&nbsp;</a></li>
+        @foreach( $sliders as $slider )
+        <li><a href="" style="background:url({{$slider->thumbnail}}) center bottom no-repeat;">&nbsp;</a></li>
+        @endforeach
       </ul>
     </div>
   </div>
@@ -44,7 +48,7 @@
       <div class="nav_box fr">
         <ul id="nav" class="nav clearfix">
           @foreach( session('header_nav') as $ks=>$navs )
-            @if( $ks > 0 )
+            @if( $ks > 0 && $ks<6 )
             <li class="nLi">
               <h3><a href="{{$navs->link}}">{{$navs->title}}</a></h3>
               @if( $navs->articles )
@@ -76,19 +80,19 @@
           });
         </script>
       </div>
-      <a href="home.html" class="logo fl">&nbsp;</a>
+      <a href="/home" class="logo fl">&nbsp;</a>
     </div>
   </div>
   <div class="scroll_xx" id="scroll_xx"><img src="images/btn_xx.png"></div>
   <div class="item_nav">
     <ul class="list clearfix">
-      <li><a href="item.html">高贵飘逸眼</a></li>
-      <li><a href="item.html">恒久时尚鼻</a></li>
-      <li><a href="item.html">明快U型轮廓</a></li>
-      <li><a href="item.html">魅力喜悦肌</a></li>
-      <li><a href="item.html">秀美天鹅颈</a></li>
-      <li><a href="item.html">笔直迷人背</a></li>
-      <li><a href="item.html">丝滑质感肤</a></li>
+      @foreach( session('header_nav') as $ks=>$navs )
+        @if( $ks == 2 )
+          @foreach( $navs->articles as $k=>$arti )
+        <li><a href="/item/category/{{$arti->id}}">{{$arti->title}}</a></li>
+          @endforeach
+        @endif
+      @endforeach
     </ul>
   </div>
 </div>
@@ -100,7 +104,7 @@
       <div class="team_out">
         <span class="bk60">&nbsp;</span>
         <div class="ho_tit_all">
-          <a href="team.html">
+          <a href="/team">
             <h2>专/家/团/队</h2>
             <p>国内知名专家助阵<span>依美</span>，专业技术传递<span>恒久美</span></p>
           </a>
@@ -115,20 +119,17 @@
             <ul class="picList teacher_list_o">
               <li>
                 <div class="ho_team_all clearfix">
-                  <img src="images/team_1.png" class="pic wow fadeInLeft" data-wow-duration="1s" data-wow-offset="200" style="visibility: visible; animation-duration: 1s; animation-name: fadeInLeft;">
+                  <img src="{{$teams->thumbnail}}" class="pic wow fadeInLeft" data-wow-duration="1s" data-wow-offset="200" style="visibility: visible; animation-duration: 1s; animation-name: fadeInLeft;">
                   <div class="txt_1">
                     <div class="dis wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="200" style="visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: fadeInDown;">
-                      徐海教授医科大学毕业后一直从事临床医学工作，先后在医院的皮肤科与烧伤科担任医师，他从事的医学工作一直与人的形象和美有关。徐海教授是一个完美主义者,在他的临床实践中，他感觉到无论他多么的努力，也很难把一个皮肤破损的病人修饰成心中理想的形象，为此他非常痛苦，最终他毅然下决心放弃了医院的临床工作，走向了他心中的理想，创造完美形象的医疗美容之路。
+                      {{$teams->introduce}}
                     </div>
-                    <p class="btns"><a href="order.html" class="wow shake TalkUrl animated" data-wow-duration="8s" data-wow-iteration="infinite" style="visibility: visible; animation-duration: 8s; animation-iteration-count: infinite; animation-name: shake;">&nbsp;</a></p>
+                    <p class="btns"><a href="/order" class="wow shake TalkUrl animated" data-wow-duration="8s" data-wow-iteration="infinite" style="visibility: visible; animation-duration: 8s; animation-iteration-count: infinite; animation-name: shake;">&nbsp;</a></p>
                   </div>
                   <div class="txt_2 wow bounceInUp DbImg2Show Abs" data-wow-duration="1s" data-wow-offset="300" style="visibility: visible; animation-duration: 0.5s; animation-name: bounceInUp;">
-                    <h2>南充医疗美容医院院长</h2>
+                    <h2>{{$teams->title}}</h2>
                     <div class="dis">
-                      <p>中国医疗美容整形协会会员</p>
-                      <p>国家认证整形外科副主任</p>
-                      <p>香港依美医疗美容集团总裁</p>
-                      <p>“恒久美美雕”医疗美容系列项目创始人</p>
+                      {!! $teams->comtent !!}
                     </div>
                   </div>
                 </div>
@@ -144,7 +145,7 @@
       <div class="item_out">
         <span class="bk60">&nbsp;</span>
         <div class="ho_tit_all">
-          <a href="item.html">
+          <a href="/item">
             <h2>经/典/项/目</h2>
             <p>恒久美美雕<span>七大经典项目</span>，让你的<span>魅力永恒</span></p>
           </a>
@@ -157,48 +158,14 @@
           </div>
           <div class="bd">
             <ul class="picList item_olist">
+              @foreach( session('header_nav1') as $ks=>$navs )
               <li class="swatch-container">
-                <a href="item.html" class="inner wow slideInDown" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: slideInDown;">
-                  <img src="images/item_img_1.png" class="front">
-                  <img src="images/item_img_1h.png" class="back">
+                <a href="/item/category/{{$navs->id}}" class="inner wow slideInDown" data-wow-duration="{{ 1+0.2*$k }}s" style="visibility: visible; animation-duration: {{ 1+0.2*$k }}s; animation-name: slideInDown;">
+                  <img src="{{$navs->comtent[0][0]}}" class="front">
+                  <img src="{{$navs->comtent[0][1]}}" class="back">
                 </a>
               </li>
-              <li class="swatch-container">
-                <a href="item.html" class="inner wow slideInDown" data-wow-duration="1.2s" style="visibility: visible; animation-duration: 1.2s; animation-name: slideInDown;">
-                  <img src="images/item_img_2.png" class="front">
-                  <img src="images/item_img_2h.png" class="back">
-                </a>
-              </li>
-              <li class="swatch-container">
-                <a href="item.html" class="inner wow slideInDown" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-name: slideInDown;">
-                  <img src="images/item_img_3.png" class="front">
-                  <img src="images/item_img_3h.png" class="back">
-                </a>
-              </li>
-              <li class="swatch-container">
-                <a href="item.html" class="inner wow slideInDown" data-wow-duration="1.6s" style="visibility: visible; animation-duration: 1.6s; animation-name: slideInDown;">
-                  <img src="images/item_img_4.png" class="front">
-                  <img src="images/item_img_4h.png" class="back">
-                </a>
-              </li>
-              <li class="swatch-container">
-                <a href="item.html" class="inner wow slideInDown" data-wow-duration="1.8s" style="visibility: visible; animation-duration: 1.8s; animation-name: slideInDown;">
-                  <img src="images/item_img_5.png" class="front">
-                  <img src="images/item_img_5h.png" class="back">
-                </a>
-              </li>
-              <li class="swatch-container">
-                <a href="item.html" class="inner wow slideInDown" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-name: slideInDown;">
-                  <img src="images/item_img_6.png" class="front">
-                  <img src="images/item_img_6h.png" class="back">
-                </a>
-              </li>
-              <li class="swatch-container">
-                <a href="item.html" class="inner wow slideInDown" data-wow-duration="2.2s" style="visibility: visible; animation-duration: 2.2s; animation-name: slideInDown;">
-                  <img src="images/item_img_7.png" class="front">
-                  <img src="images/item_img_7h.png" class="back">
-                </a>
-              </li>
+              @endforeach
             </ul>
           </div>
         </div>
@@ -210,7 +177,7 @@
       <div class="news_out">
         <span class="bk60">&nbsp;</span>
         <div class="ho_tit_all">
-          <a href="news.html">
+          <a href="/news">
             <h2>新/闻/咨/讯</h2>
             <p>行中圈内动态，依美<span>榜上有名</span></p>
           </a>
@@ -221,34 +188,22 @@
         <div class="picScroll-news" id="picScroll-news-1">
           <div class="bd">
             <ul class="picList">
+              @foreach( $newss as $news )
               <li>
-                <a href="news_in.html">
-                  <h2>玻尿酸致失明 微整形不能“危整形”</h2>
-                  <p>“几百元就能打一支玻尿酸”、“1000元就能玻尿酸隆鼻”这样的广告充斥于黑美容院或是微整形工作室等“三非”(即非法医疗机构、非专业医...</p>
+                <a href="/news/{{$news->id}}">
+                  <h2>{{$news->title}}</h2>
+                  <p>{{$news->introduce}}</p>
                 </a>
               </li>
-              <li>
-                <a href="news_in.html">
-                  <h2>玻尿酸致失明 微整形不能“危整形”2</h2>
-                  <p>“几百元就能打一支玻尿酸”、“1000元就能玻尿酸隆鼻”这样的广告充斥于黑美容院或是微整形工作室等“三非”(即非法医疗机构、非专业医...</p>
-                </a>
-              </li>
-              <li>
-                <a href="news_in.html">
-                  <h2>玻尿酸致失明 微整形不能“危整形”3</h2>
-                  <p>“几百元就能打一支玻尿酸”、“1000元就能玻尿酸隆鼻”这样的广告充斥于黑美容院或是微整形工作室等“三非”(即非法医疗机构、非专业医...</p>
-                </a>
-              </li>
-              <li>
-                <a href="news_in.html">
-                  <h2>玻尿酸致失明 微整形不能“危整形”4</h2>
-                  <p>“几百元就能打一支玻尿酸”、“1000元就能玻尿酸隆鼻”这样的广告充斥于黑美容院或是微整形工作室等“三非”(即非法医疗机构、非专业医...</p>
-                </a>
-              </li>
+              @endforeach
             </ul>
           </div>
           <div class="hd">
-            <ul><li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li></ul>
+            <ul>
+              @foreach( $newss as $news )
+              <li>&nbsp;</li>
+              @endforeach
+            </ul>
           </div>
         </div>
         <script type="text/javascript">
@@ -264,39 +219,35 @@
 <div class="footer">
   <div class="w1280 clearfix">
     <ul class="list  clearfix">
-      <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: slideInLeft;"><img src="images/btn_3_1.png">高贵飘逸眼</a></li>
-      <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: slideInLeft;"><img src="images/btn_3_2.png">恒久时尚鼻</a></li>
-      <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: slideInLeft;"><img src="images/btn_3_3.png">明快U型轮廓</a></li>
-      <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.6s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.6s; animation-name: slideInLeft;"><img src="images/btn_3_4.png">魅力喜悦肌</a></li>
-      <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.8s; animation-name: slideInLeft;"><img src="images/btn_3_5.png">秀美天鹅颈</a></li>
-      <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="1s" style="visibility: visible; animation-duration: 1s; animation-delay: 1s; animation-name: slideInLeft;"><img src="images/btn_3_6.png">笔直迷人背</a></li>
-      <li><a href="item.html" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="1.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 1.2s; animation-name: slideInLeft;"><img src="images/btn_3_7.png">丝滑质感肤</a></li>
+      @foreach( session('header_nav1') as $ks=>$navs )
+        <li><a href="/item/category/{{$navs->id}}" class="wow slideInLeft" data-wow-duration="1s" data-wow-delay="{{ $k*0.2 }}s" style="visibility: visible; animation-duration: 1s; animation-delay: {{ $k*0.2 }}s; animation-name: slideInLeft;"><img src="{{$navs->comtent[0][2]}}">{{$navs->title}}</a></li>
+      @endforeach
     </ul>
     <span class="bk50">&nbsp;</span>
     <div class="ewm wow bounceInDown" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-name: bounceInDown;">
-      <img src="images/ewm.jpg">
+      <img src="{{ session('setting')['wx_map']  }}">
       <p>扫描二维码关注我们</p>
     </div>
     <span class="bk20">&nbsp;</span>
-    <h2 class="call"><span>&nbsp;</span>0817-7100000</h2>
+    <h2 class="call"><span>&nbsp;</span>{{ session('setting')['fix_phone']  }}</h2>
     <span class="bk10">&nbsp;</span>
     <div class="bot">
-      <p>来院地址：南充市顺庆区文化路234号(北湖公园对面)</p>
+      <p>来院地址：{{ session('setting')['bases']  }}</p>
       <p>版权所有 © 依美医疗美容机构 Copyright Yimei All Rights Reserved  技术支持 ：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a></p>
     </div>
   </div>
 </div>
 <!-- float_onlie -->
 <div class="float_onlie">
-    <a class="on_1" href="tencent://message/?uin={$qq[1]}&amp;Menu=yes">&nbsp;</a>
-    <a class="on_2 ph" href=""><em>电话：0817-2866062<br>手机：180-8159-1458</em></a>
-    <a class="on_3 add" href=""><em>顺庆区潆华工业园区<br>博雅豪庭3幢-102铺</em></a>
-    <a class="on_4 ewm" href=""><em><img src="images/ewm.jpg"></em></a>
-    <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
+  <a class="on_1" href="tencent://message/?uin={{ session('setting')['qq']  }}&amp;Menu=yes">&nbsp;</a>
+  <a class="on_2 ph" href=""><em>电话：{{ session('setting')['fix_phone']  }}<br>手机：{{ session('setting')['phone']  }}</em></a>
+  <a class="on_3 add" href=""><em>{{ session('setting')['bases']  }}</em></a>
+  <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
+  <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
 </div>
-<script src="js/wow.min.js"></script>
-<script src="js/swiper-3.3.1.jquery.min.js"></script>
-<script src="js/swiper.animate1.0.2.min.js"></script>
-<script src="js/global.js"></script>
+<script src="/js/wow.min.js"></script>
+<script src="/js/swiper-3.3.1.jquery.min.js"></script>
+<script src="/js/swiper.animate1.0.2.min.js"></script>
+<script src="/js/global.js"></script>
 </body>
 </html>

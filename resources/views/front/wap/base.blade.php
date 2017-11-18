@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>{{ session('setting')['web_name']  }}</title>
+    <title>依美医疗美容</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {{--<meta name="viewport" content="width=device-width,initial-scale=1,">--}}
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="{{ session('setting')['description']  }}">
-    <meta name="keywords" content="{{ session('setting')['keywords']  }}">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <!-- base -->
-    <meta name="viewport" content="width=720px;">
+
     <script type="text/javascript" src="/js/wap/jquery-1.9.1.min.js"></script>
     <script src="/js/wap/TouchSlide.1.1.js"></script>
     <script src="/js/wap/touchslider.js"></script>
@@ -32,36 +33,24 @@
     <script>
         var _hmt = _hmt || [];
     </script>
-    <script type="text/javascript">
-        window.onload = function (){
-            var oWin = document.getElementById("win");
-            var oLay = document.getElementById("overlay");
-            var oBtn = document.getElementById("popmenu");
-            var oClose = document.getElementById("close");
-            oBtn.onclick = function (){
-                oLay.style.display = "block";
-                oWin.style.display = "block"
-            };
-            oLay.onclick = function (){
-                oLay.style.display = "none";
-                oWin.style.display = "none"
-            }
-        };
-    </script>
 </head>
 <body>
-@yield('header')
+<div class="header">
+    <a href="index.html" class="col-xs-1"><span class="back disnone">&nbsp;</span></a>
+    <a href="index.html" class="col-xs-10"><span  class="logo">&nbsp;</span></a>
+    <a class="cd-bouncy-nav-trigger col-xs-1" href="#0"><span class="menu">&nbsp;</span></a>
+</div>
 <div class="cd-bouncy-nav-modal">
     <nav>
         <ul class="cd-bouncy-nav">
-            <li><a href="/wap">网站首页</a></li>
-            <li><a href="/wap/item/15">王牌课程</a></li>
-            <li><a href="/wap/teacher">明星师资</a></li>
-            <li><a href="/wap/star">走进片场</a></li>
-            <li><a href="/wap/work">学员作品</a></li>
-            <li><a href="/wap/news">新闻动态</a></li>
-            <li><a href="/wap/about">品牌文化</a></li>
-            <li><a href="/wap/contact">联系我们</a></li>
+            <li><a href="/wap">首页</a></li>
+            <li><a href="/wap/item">项目</a></li>
+            <li><a href="/wap/case">案例</a></li>
+            <li><a href="/wap/team">专家</a></li>
+            <li><a href="/wap/equip">设备</a></li>
+            <li><a href="/wap/news">动态</a></li>
+            <li><a href="/wap/brand">品牌</a></li>
+            <li><a href="/wap/contact">联系</a></li>
         </ul>
     </nav>
     <a href="#0" class="cd-close">关闭</a>
@@ -70,105 +59,106 @@
 @yield('content')
 
 <!-- footer -->
-<div class="clearfix">
-    <div class="online_out">
-        <img src="/images/wap/ho_tit_6.png"  class="img_adap">
-        <form class="on_form_2" action="/front/message" method="post">
-            {{  csrf_field() }}
-            @if (count($errors) > 0)
-                <div style="color: red">
-                    <ul>
-                        @if( is_object($errors) )
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        @else
-                            {{ $errors }}
-                        @endif
-                    </ul>
-                </div>
-            @endif
-            <p><input type="text" value="" name="name" id="name" class="input" placeholder="请输入您的姓名"></p>
-            <p><input type="text" value="" name="phone" id="phone" class="input" placeholder="请输入您的电话"></p>
-            <p>
-                <select id="" name="school">
-                    <option value="0" selected="selected">请选择校区</option>
-                    @foreach( session('meili')[0] as $school )
-                        <option value="{{$school->title}}">{{$school->title}}</option>
-                    @endforeach
-                </select>
-            </p>
-            <p>
-                <select id="" name="class">
-                    <option value="0" selected="selected">请选择课程</option>
-                    @foreach( session('meili')[1] as $school )
-                        <option value="{{$school->title}}">{{$school->title}}</option>
-                    @endforeach
-                </select>
-            </p>
-            <p><textarea name="content" class="textarea" id="" value="" placeholder="如何您还有其他问题，可以在这里给我们留言"></textarea></p>
-            <p class="submit_but"><button type="submit">点击这里提交报名</button></p>
-        </form>
-        <script>
-            $('.submit_but').click(function () {
-                var name = $('#name').val();
-                var phone = $('#phone').val();
-
-                if( phone == "" || name == "" ){
-                    alert("姓名和电话必须填写");
-                    return false;
-                }
-
-                if( isPhoneNo(phone) == false ){
-                    alert("你输入的手机号格式不正确！")
-                    return false;
-                }
-            });
-
-            $('#vaptcha').click(function () {
-                $(this).attr('src','/vaptcha?'+ Math.random());
-            });
-
-            function isPhoneNo(phone) {
-                var pattern = /^1[34578]\d{9}$/;
-                return pattern.test(phone);
-            }
-        </script>
+<div class="appoint_out" id="apply_on">
+    <span class="bk60">&nbsp;</span>
+    <div class="ho_tit_all">
+        <a href="/wap/order">
+            <h2>预/约/通/道</h2>
+        </a>
     </div>
-    <span class="bk10">&nbsp;</span>
-
+    <span class="bk40">&nbsp;</span>
+    <form class="on_form_2" action="" method="post">
+        <p><input type="text" value="" name="" id="" class="input" placeholder="请输入您的电话"></p>
+        <p><input type="text" value="" name="" id="" class="input" placeholder="请输入您的姓名"></p>
+        <p><input type="text" value="" name="" id="" class="input" placeholder="请输入您的预约时间"></p>
+        <p>
+            <select id="" name="">
+                <option value="0" selected="selected">请选择您要预约的项目</option>
+                <option value="1">高贵飘逸眼</option>
+                <option value="2">恒久时尚鼻</option>
+                <option value="3">明快U型轮廓</option>
+                <option value="4">魅力喜悦肌</option>
+                <option value="5">秀美天鹅颈</option>
+                <option value="6">笔直迷人背</option>
+                <option value="7">丝滑质感肤</option>
+            </select>
+        </p>
+        <p><textarea name="content" class="textarea" id="" value="" placeholder="如何您还有其他问题，可以在这里给我们留言，我们会尽快联系您！"></textarea></p>
+        <p class="submit_but"><button type="submit">点击这里提交报名</button></p>
+    </form>
 </div>
-<span class="bk20">&nbsp;</span>
+<!-- 4 -->
+<span class="bk40">&nbsp;</span>
+<div class="ho_btn_call">
+    <span><img src="/images/wap/btn_call.svg"></span>美丽热线：0817-0987246
+</div>
+<span class="bk40">&nbsp;</span>
 <!-- footer -->
 <div class="footer">
-    <dl class="dl_1 dl_call">
-        <dt>招生服务咨询热线</dt>
-        <dd class="dd_1">-hotline-</dd>
-        <dd class="dd_2">{{ session('setting')['fix_phone']  }}</dd>
-    </dl>
-    <dl class="dl_1">
-        <dt>学校地址</dt>
-        <dd class="dd_1">-school address-</dd>
-        <dd class="dd_2">{{ session('setting')['bases']  }}</dd>
-    </dl>
-    <dl class="dl_1">
-        <dt>在线咨询</dt>
-        <dd class="dd_1">-Online consulting-</dd>
-        <dd class="dd_2">QQ:{{ session('setting')['qq']  }}</dd>
-    </dl>
+    <span class="bk40">&nbsp;</span>
+    <div class="swiper-container-4">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="item_in.html">
+                    <span class="pic"><img src="/images/wap/btn_1_1.svg"></span>
+                    <h2>高贵飘逸眼</h2>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="item_in.html">
+                    <span class="pic"><img src="/images/wap/btn_1_2.svg"></span>
+                    <h2>恒久时尚鼻</h2>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="item_in.html">
+                    <span class="pic"><img src="/images/wap/btn_1_3.svg"></span>
+                    <h2>明快U型轮廓</h2>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="item_in.html">
+                    <span class="pic"><img src="/images/wap/btn_1_4.svg"></span>
+                    <h2>魅力喜悦肌</h2>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="item_in.html">
+                    <span class="pic"><img src="/images/wap/btn_1_5.svg"></span>
+                    <h2>秀美天鹅颈</h2>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="item_in.html">
+                    <span class="pic"><img src="/images/wap/btn_1_6.svg"></span>
+                    <h2>笔直迷人背</h2>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="item_in.html">
+                    <span class="pic"><img src="/images/wap/btn_1_7.svg"></span>
+                    <h2>丝滑质感肤</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+    <span class="bk50">&nbsp;</span>
+    <div class="ewm">
+        <img src="/images/wap/ewm.jpg">
+        <p>扫描二维码关注我们</p>
+    </div>
+    <span class="bk20">&nbsp;</span>
+    <h2 class="call"><span><img src="/images/wap/hot_btn.png"></span>0817-7100000</h2>
+    <span class="bk20">&nbsp;</span>
     <div class="bot">
-        <p>版权所有 © 四川美丽俏佳人企业管理有限公司</p>
+        <p>来院地址：南充市顺庆区文化路234号(北湖公园对面)</p>
+        <p>版权所有 © 依美医疗美容机构 Copyright Yimei All Rights Reserved </p>
         <p>技术支持 ：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a></p>
-        <p>Copyright Qiaojiaren All Rights Reserved</p>
     </div>
 </div>
-<!-- fixed -->
 <span class="bk80">&nbsp;</span>
-<div class="fixed">
-    @foreach( session('meili')[0] as $k=>$school )
-        <a href="/wap/compus/{{$school->id}}" class="col-xs-2 @if( $k%2 == 1 ) a2 @endif ">{{$school->title}}</a>
-    @endforeach
-</div>
+<div class="fixed_order"><a href="#apply_on">免费预约依美整形美容&gt;&gt;</a></div>
+
 <a class="to-top clearfix"><img src="/images/wap/to-top.svg" class="fr"></a>
 <script src="/js/wap/jquery.toTop.min.js"></script>
 <script>
@@ -199,7 +189,7 @@
 <!-- 2 -->
 <script>
     var swiper = new Swiper('.swiper-container-2', {
-        pagination: '.swiper-pagination',
+        pagination: '.swiper-pagination-2',
         paginationClickable: true
     });
 </script>
@@ -211,6 +201,15 @@
         grabCursor: true,
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev'
+    });
+</script>
+<!-- 4 -->
+<script>
+    var swiper = new Swiper('.swiper-container-4', {
+        pagination: '.swiper-pagination-4',
+        slidesPerView: 4,
+        paginationClickable: true,
+        spaceBetween:10,
     });
 </script>
 </body>

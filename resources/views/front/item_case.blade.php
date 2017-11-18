@@ -1,12 +1,12 @@
 @extends('front.base')
 @section('content')
-<div class="warp_box">
-  <div class="warp_bot">
-    <div class="brd_tit_all">
-      <span class="bk100">&nbsp;</span>
-      <h2>案例</h2>
-      <p>--- case ---</p>
-    </div>  
+  <div class="warp_box">
+    <div class="warp_bot">
+      <div class="brd_tit_all">
+        <span class="bk100">&nbsp;</span>
+        <h2>案例</h2>
+        <p>--- case ---</p>
+      </div>
       <!-- start -->
       <!-- 1简介 -->
       <div class="w1280 clearfix">
@@ -15,8 +15,8 @@
           <h2 class="tit">{{$article->title}}</h2>
           <span class="bk20">&nbsp;</span>
           <div class="dis">
-            @foreach( explode(',',$article->introduce) as $k=>$intro )
-                <p class="p{{ $k+1 }}">{{$intro}}</p>
+            @foreach( explode(',',$article->introduce) as $intro )
+            <p>{{$intro}}</p>
             @endforeach
           </div>
           <span class="bk20">&nbsp;</span>
@@ -31,7 +31,7 @@
               <ul class="picList item_li_6">
                 @foreach( $article->cases as $case )
                 <li class="clearfix">
-                  <a  class="clearfix">
+                  <a class="clearfix">
                     <div class="img img_2 fr">
                       <span>after</span>
                       <img src="{{$case[1]}}">
@@ -47,24 +47,21 @@
             </div>
           </div>
           <script type="text/javascript">
-          jQuery("#picScroll-case-1").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:1,trigger:"click"});
+              jQuery("#picScroll-case-1").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:1,trigger:"click"});
           </script>
           <span class="bk20">&nbsp;</span>
           <h2 class="bt">案例详情</h2>
           <span class="bk20">&nbsp;</span>
           <div class="box">
-            {!! $article->comtent !!}
+           {!! $article->comtent !!}
           </div>
         </div>
         <div class="backpre clearfix">
-          @if( $up_down['1'] )<a href="/case/{{ $up_down['1'] }}" rel="next">上一篇</a> @endif
-          @if( $up_down['2'] ) <a href="/case/{{ $up_down['0'] }}" rel="prev">下一篇</a>@endif
-          <a href="/case">返回上级目录</a>
         </div>
       </div>
       <!-- end -->
       <span class="bk80">&nbsp;</span>
       <span class="bk100">&nbsp;</span>
+    </div>
   </div>
-</div>
 @endsection

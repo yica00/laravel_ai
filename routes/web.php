@@ -19,7 +19,7 @@ Route::group(['middleware'=>'check_setting'],function (){
     Route::group(['as'=>'front','middleware'=>'get_nav'],function (){
 //    Route::group(['as'=>'front'],function (){
 
-        Route::get('/','FrontController@index');
+//        Route::get('/','FrontController@index');
 
         Route::get('about','FrontController@about');
         Route::get('about/culture','FrontController@culture');
@@ -41,7 +41,7 @@ Route::group(['middleware'=>'check_setting'],function (){
 
         Route::get('item','FrontController@items');
         Route::get('item/{id}','FrontController@items');
-        Route::get('item/category/{id}','FrontController@item_detail');
+        Route::get('item/category/{id}','FrontController@items');
 
         Route::get('store','FrontController@store_list');
         Route::get('about/store/{id}','FrontController@store_dedail');
@@ -67,8 +67,9 @@ Route::group(['middleware'=>'check_setting'],function (){
         Route::get('case/{hid}/{sid}','FrontController@our_case');
 //        Route::get('case/category/{id}','FrontController@our_case');
         Route::get('case/{id}','FrontController@case_detail');
+        Route::get('item_case/{id}','FrontController@item_case');
 
-        Route::get('teacher','FrontController@team');
+        Route::get('team','FrontController@team');
         Route::get('/team/design','FrontController@team_design');
         Route::get('team/supervise','FrontController@team_supervise');
         Route::get('team/{id}','FrontController@team_detail');
@@ -79,6 +80,8 @@ Route::group(['middleware'=>'check_setting'],function (){
 
         Route::get('project','FrontController@project');
         Route::get('project/{id}','FrontController@project_detail');
+
+        Route::get('question/{id}','FrontController@question_detail');
 
         Route::get('product','FrontController@product');
         Route::get('product/category/{id}','FrontController@product');
@@ -107,6 +110,7 @@ Route::group(['middleware'=>'check_setting'],function (){
             Route::get('about','WapController@about');
             Route::get('about/culture','WapController@culture');
 
+            Route::get('item','WapController@items');
             Route::get('item/{id}','WapController@items');
             Route::get('item/detail/{id}','WapController@item_detail');
 
@@ -199,8 +203,9 @@ Route::get('/vaptcha',function (){
 
 Route::group(['middleware'=>'check_setting'],function (){
     Route::group(['as'=>'front','middleware'=>'get_nav'],function () {
-        Route::get('/home', function () {
-            return view('front.home');
+        Route::get('/home', 'FrontController@index');
+        Route::get('/', function () {
+            return view('front.index');
         });
     });
 });

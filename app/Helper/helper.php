@@ -202,6 +202,26 @@ function get_case_page($id){
     return [$id,$pre_id,$next_id];
 }
 
+function get_article_imgs2($str,$num){
+    $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
+    $pattern = "/(?:\/Uploads).*?(?=\")/";
+    preg_match_all($pattern,$str,$matches);
+    if(!$matches[0]){
+        return [];
+    }
+    return $matches[0];
+    $pages = getImgsPage(count($matches[0]),$num);
+    $start = ( $page - 1 ) * $num;
+    $max = $start + $num;
+    $arr = [];
+    for ( $i=$start;$i<$max;$i++ ){
+        if( isset( $matches[0][$i] ) ){
+            $arr[] = mb_substr($matches[0][$i],0,-1,'utf8');
+        }
+    }
+    return [$arr,$pages];
+}
+
 function getImgsPage($total,$num){
     $page = \Illuminate\Support\Facades\Input::get('page')?\Illuminate\Support\Facades\Input::get('page'):1;
     $total_page = ceil( $total/$num);

@@ -27,10 +27,10 @@ class FrontController extends Controller
         $schools = $this->getWorker();
         $works = $this->getGuide();
         $newss= $this->getNews();
-        $stars = $this->getService();
-        $articles = Article::where('pid',26)->get();
-        $messages = Message::orderBy('id','desc')->take(20)->get();
-        return view('front.index',compact('articles','projects','works','schools','qualitys','messages','sliders','stars','cases','newss','classs','teams'));
+//        $stars = $this->getService();
+//        $articles = Article::where('pid',26)->get();
+//        $messages = Message::orderBy('id','desc')->take(20)->get();
+        return view('front.home',compact('articles','projects','works','schools','qualitys','messages','sliders','stars','cases','newss','classs','teams'));
     }
 
 
@@ -61,7 +61,7 @@ class FrontController extends Controller
         return $Articles;
     }
     public function getNews(){
-        $articles = Article::where('pid',12)->orderBy('serial_number','desc')->orderBy('id','desc')->take(6)->get();
+        $articles = Article::where('pid',12)->orderBy('serial_number','desc')->orderBy('id','desc')->take(4)->get();
         return $articles;
     }
     public function getActive(){
@@ -100,7 +100,7 @@ class FrontController extends Controller
         return $article;
     }
     public function getTeam(){
-        $teams = Teams::take(12) ->get();
+        $teams = Article::find(59);
         return $teams;
     }
     public function getWorker(){
@@ -137,7 +137,7 @@ class FrontController extends Controller
     }
     public function getSliders()
     {
-        $sons = Article::select('thumbnail','link','id','pid')->where('pid',35)->get();
+        $sons = Article::select('thumbnail','link','id','pid')->where('pid',56)->get();
         return $sons;
     }
     public function getTeams()
@@ -147,17 +147,47 @@ class FrontController extends Controller
     }
 
     public function items( $id = 15  ){
-        $article = Article::with(['teams' => function($qeury){
-            $qeury->orderBy('id','asc')->take(10);
-        }])
-            ->with(['rcases' => function($qeury){
-                $qeury->orderBy('id','asc')->take(4);
-            }])
-            ->with('articles')
-            ->find($id);
-        $article->comtent = get_article_imgs($article->comtent,5);
-        return view('front.item',compact('article','id'));
+        $article = Article::with('articles')->find($id);
+        for( $i=0;$i<count($article->articles);$i++ ){
+            if ( $article->articles[$i]->serial_number == 800 ){
+                $son = Article::with('articles')->find($article->articles[$i]->id);
+                foreach ( $son->articles as $k=>$arti ){
+                    if( $arti->serial_number > 99 ){
+                        $pattern = "/(?:\/Uploads).*?(?=\")/";
+                        preg_match_all($pattern,$son->articles[$k]->comtent,$matches);
+                        $arr[] = $matches[0];
+                        $son->cases = $arr;
+                    }
+                }
+            }else{
+                $son = Article::with('articles')->find($article->articles[$i]->id);
+            }
+            $id = "s".$article->articles[$i]->serial_number;
+            $article->$id = $son;
+        }
+        return view('front.item',compact('article'));
     }
+
+    public function item_case($id){
+        $article = Article::find($id);
+        $articles = Article::where('pid',$article->pid)->get();
+        foreach ( $articles as $k=>$arti ){
+            if( $arti->serial_number > 99 ){
+                $pattern = "/(?:\/Uploads).*?(?=\")/";
+                preg_match_all($pattern,$arti->comtent,$matches);
+                $arr[] = $matches[0];
+                $article->cases = $arr;
+            }
+        }
+        return view('front.item_case',compact('article'));
+    }
+
+    public function question_detail($id){
+        $article = Article::find($id);
+        $up_down = get_up_down_page($id,$article->pid);
+        return view('front.question_in',compact('article','up_down'));
+    }
+
     public function item_detail($id){
         $article = Article::with('articles')->find($id);
         foreach ( $article->articles as $k=>$item ){
@@ -285,10 +315,10 @@ class FrontController extends Controller
         return view('front.history',compact('nav','sty','articles'));
     }
     public function team(){
-        $teams = Teams::orderBy('id','asc')->paginate(10);
-        $pages = getPage($teams,10);
-        $id =1;
-        return view('front.teacher',compact('teams','pages','id'));
+        $intros = Article::where('pid',5)->get();
+        $teams = Teams::orderBy('id','asc')->get();
+//        $pages = getPage($teams,10);
+        return view('front.team',compact('teams','intros'));
     }
     public function team_supervise(){
         $teams = Teams::where('cate',2)->orderBy('id','asc')->paginate(8);
@@ -297,10 +327,9 @@ class FrontController extends Controller
         return view('front.worker',compact('teams','pages','id'));
     }
     public function team_detail($id){
-        $team = Teams::with(['rcases'=>function( $qurey ) use($id) {
-            $qurey->where('cate',1)->where('team_id',$id)->take(8);
-        }])->find($id);
-        return view('front.teacher_in',compact('team'));
+        $team = Teams::find($id);
+        $team->comtent = get_article_imgs2($team->comtent,10);
+        return view('front.team_in',compact('team'));
     }
     public function worker_detail($id){
         $team = Teams::with('rcases')->find($id);
@@ -387,34 +416,27 @@ class FrontController extends Controller
     }
 
 
-    public function our_case( $hid=0,$sid=0 ){
-        $raw = "";
-
-        if( $hid ){
-            $raw = "house_id = ".$hid;
+    public function our_case( ){
+//        return session('header_nav1');;
+        $articles = Article::with('articles')->where('pid',4)->orderBy('serial_number','desc')
+            ->orderBy('id','desc')->paginate(5);
+        for ( $i=0; $i<count($articles);$i++ ){
+            $arr = [];
+            for ( $j=0; $j<count($articles[$i]->articles);$j++ ){
+                $arr[] = get_article_imgs2($articles[$i]->articles[$j]->comtent,2);
+            }
+            $articles[$i]->cases = $arr;
         }
-
-        if( $sid && !$hid){
-            $raw = "style_id = ".$sid;
-        }
-
-        if( $sid && $hid){
-            $raw .= " and style_id = ".$sid;
-        }
-
-        if( !$sid && !$hid){
-            $raw = true;
-        }
-        $articles = Rcase::whereRaw($raw)
-            ->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
-        $pages = getPage($articles,6);
-        $houses = Article::where('pid',25)->get();
-        $styles = Article::where('pid',26)->get();
-        return view('front.case',compact('articles','pages','id','houses','styles','sid','hid'));
+        $pages = getPage($articles,5);
+        return view('front.case',compact('articles','pages'));
     }
     public function case_detail($id){
-        $article = Rcase::find($id);
-        $up_down = get_case_page($id);
+        $article = Article::with('articles')->find($id);
+        for ( $j=0; $j<count($article->articles);$j++ ){
+            $arr[] = get_article_imgs2($article->articles[$j]->comtent,2);
+        }
+        $article->cases = $arr;
+        $up_down = get_up_down_page($id,$article->pid);
         return view('front.case_in',compact('article','up_down'));
     }
 
