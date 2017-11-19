@@ -112,14 +112,22 @@ Route::group(['middleware'=>'check_setting'],function (){
 
             Route::get('item','WapController@items');
             Route::get('item/{id}','WapController@items');
-            Route::get('item/detail/{id}','WapController@item_detail');
+            Route::get('item/category/{id}','WapController@items');
 
-            Route::get('teacher','WapController@team');
+            Route::get('team','WapController@team');
             Route::get('team/{id}','WapController@team_detail');
             Route::get('tcompus/{id}','WapController@team_compus');
 
-            Route::get('star','WapController@star');
-            Route::get('star/{id}','WapController@star_dedail');
+            Route::get('case','WapController@our_case');
+            Route::get('case/{id}','WapController@case_detail');
+
+            Route::get('equip','WapController@equip');
+            Route::get('equip/{id}','WapController@equip_detail');
+
+            Route::get('brand','WapController@brand');
+            Route::get('culture','WapController@culture');
+            Route::get('environ','WapController@environ');
+            Route::get('honor','WapController@honor');
 
             Route::get('work','WapController@work');
             Route::get('work/{id}','WapController@work_dedail');

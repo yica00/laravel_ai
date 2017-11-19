@@ -1,120 +1,31 @@
 @extends('front.wap.base')
+@section('head')
+  <div class="header">
+    <a href="/wap/news" class="col-xs-1"><span class="back">&nbsp;</span></a>
+    <a class="col-xs-10 ui-title tit" id="popmenu">动态</a>
+    <a class="cd-bouncy-nav-trigger col-xs-1" href="#0"><span class="menu">&nbsp;</span></a>
+  </div>
+
+@endsection
 @section('content')
 <!-- start -->
 <ul class="news_in_list clearfix">
+  @foreach( $articles as $article )
   <li>
-    <a href="news_in.html">
+    <a href="/wap/news/{{$article->id}}">
       <div class="pic">
-          <img src="images/hj_1.jpg" alt="">
+          <img src="{{$article->thumbnail}}" alt="">
       </div>
       <div class="txt">
-        <h2>做瓷贴面对牙齿有伤害吗？</h2>
+        <h2>{{$article->title}}</h2>
         <span>查看更多</span>
       </div>
     </a>
   </li>
-  <li>
-    <a href="news_in.html">
-      <div class="pic">
-          <img src="images/hj_2.jpg" alt="">
-      </div>
-      <div class="txt">
-        <h2>做瓷贴面对牙齿有伤害吗？</h2>
-        <span>查看更多</span>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a href="news_in.html">
-      <div class="pic">
-          <img src="images/hj_3.jpg" alt="">
-      </div>
-      <div class="txt">
-        <h2>做瓷贴面对牙齿有伤害吗？</h2>
-        <span>查看更多</span>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a href="news_in.html">
-      <div class="pic">
-          <img src="images/hj_4.jpg" alt="">
-      </div>
-      <div class="txt">
-        <h2>做瓷贴面对牙齿有伤害吗？</h2>
-        <span>查看更多</span>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a href="news_in.html">
-      <div class="pic">
-          <img src="images/hj_5.jpg" alt="">
-      </div>
-      <div class="txt">
-        <h2>做瓷贴面对牙齿有伤害吗？</h2>
-        <span>查看更多</span>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a href="news_in.html">
-      <div class="pic">
-          <img src="images/hj_6.jpg" alt="">
-      </div>
-      <div class="txt">
-        <h2>做瓷贴面对牙齿有伤害吗？</h2>
-        <span>查看更多</span>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a href="news_in.html">
-      <div class="pic">
-          <img src="images/hj_7.jpg" alt="">
-      </div>
-      <div class="txt">
-        <h2>做瓷贴面对牙齿有伤害吗？</h2>
-        <span>查看更多</span>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a href="news_in.html">
-      <div class="pic">
-          <img src="images/hj_8.jpg" alt="">
-      </div>
-      <div class="txt">
-        <h2>做瓷贴面对牙齿有伤害吗？</h2>
-        <span>查看更多</span>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a href="news_in.html">
-      <div class="pic">
-          <img src="images/hj_9.jpg" alt="">
-      </div>
-      <div class="txt">
-        <h2>做瓷贴面对牙齿有伤害吗？</h2>
-        <span>查看更多</span>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a href="news_in.html">
-      <div class="pic">
-          <img src="images/hj_10.jpg" alt="">
-      </div>
-      <div class="txt">
-        <h2>做瓷贴面对牙齿有伤害吗？</h2>
-        <span>查看更多</span>
-      </div>
-    </a>
-  </li>
+ @endforeach
 </ul>
 
-
+{{ $articles->links() }}
 <!-- end -->
 <!-- 3 -->
 <span class="bk40">&nbsp;</span>

@@ -1,4 +1,11 @@
 @extends('front.wap.base')
+@section('head')
+    <div class="header">
+        <a href="/wap" class="col-xs-1"><span class="back disnone">&nbsp;</span></a>
+        <a href="/wap" class="col-xs-10"><span  class="logo">&nbsp;</span></a>
+        <a class="cd-bouncy-nav-trigger col-xs-1" href="#0"><span class="menu">&nbsp;</span></a>
+    </div>
+@endsection
 @section('content')
 <!-- start -->
 <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>

@@ -11,22 +11,30 @@ class WapController extends Controller
     public function index(Request $request)
     {
         $pics = $this->getPic();
-        $classs = $this->getClass();
-        $works = $this->getWork();
-        $news = $this->getNews();
+        $teams = $this->getTeam();
+//        $classs = $this->getClass();
+//        $works = $this->getWork();
+//        $news = $this->getNews();
         return view('front.wap.index',compact('pics','projects','works','schools','qualitys','messages','news','stars','cases','newss','classs','teams'));
     }
+
+    public function getTeam(){
+        $teams = Article::find(75);
+        return $teams;
+    }
+
     public function getNews(){
         $articles = Article::where('pid',12)->orderBy('serial_number','desc')->orderBy('id','desc')->take(3)->get();
         return $articles;
     }
     public function getPic(){
-        $Articles = Article::where('pid',44)->orderBy('serial_number','asc')->get();
-        foreach ( $Articles as $k=>$Arti ){
-            if( $Arti->serial_number == 50 || $Arti->serial_number == 60 || $Arti->serial_number == 90){
-                $Articles[$k]->comtent = get_article_imgs($Arti->comtent,40);
-            }
-        }
+        $Articles = Article::where('pid',72)->orderBy('serial_number','asc')
+            ->get();
+//        foreach ( $Articles as $k=>$Arti ){
+//            if( $Arti->serial_number == 50 || $Arti->serial_number == 60 || $Arti->serial_number == 90){
+//                $Articles[$k]->comtent = get_article_imgs($Arti->comtent,40);
+//            }
+//        }
         return $Articles;
     }
     public function getClass(){
@@ -41,6 +49,7 @@ class WapController extends Controller
     }
 
     public function items( $id = 63  ){
+        $cates = Article::where('pid',62)->get();
         $article = Article::with('articles')
             ->find($id);
         foreach ( $article->articles as $k=>$item ){
@@ -52,6 +61,12 @@ class WapController extends Controller
                 $article->cases = $sons;
                 unset( $article->articles[$k] );
             }
+            if( $item->serial_number == 200 ){
+                $sons = Article::find($item->id);
+                $article->team = $sons;
+                unset( $article->articles[$k] );
+            }
+
         }
         $article->comtent = get_article_imgs2($article->comtent,2);
         return view('front.wap.item',compact('article','id','cates'));
@@ -68,23 +83,54 @@ class WapController extends Controller
         return view('front.wap.class_in',compact('article','cates'));
     }
 
+    public function our_case( ){
+//        return session('header_nav1');;
+        $articles = Article::with('articles')->where('pid',4)->orderBy('serial_number','desc')
+            ->orderBy('id','desc')->paginate(5);
+        for ( $i=0; $i<count($articles);$i++ ){
+            $arr = [];
+            for ( $j=0; $j<count($articles[$i]->articles);$j++ ){
+                $arr[] = get_article_imgs2($articles[$i]->articles[$j]->comtent,2);
+            }
+            $articles[$i]->cases = $arr;
+        }
+        $pages = getPage($articles,5);
+        return view('front.wap.case',compact('articles','pages'));
+    }
+    public function case_detail($id){
+        $article = Article::with('articles')->find($id);
+        for ( $j=0; $j<count($article->articles);$j++ ){
+            $arr[] = get_article_imgs2($article->articles[$j]->comtent,2);
+        }
+        $article->cases = $arr;
+        $up_down = get_up_down_page($id,$article->pid);
+        return view('front..wap.case_in',compact('article','up_down'));
+    }
+
     public function team(){
-        $teams = Teams::orderBy('id','asc')->paginate(9);
-        $pages = getPage($teams,9);
-        $id =1;
-        return view('front.wap.teacher',compact('teams','pages','id'));
+        $teams = Teams::orderBy('id','asc')->get();
+        return view('front.wap.team',compact('teams'));
     }
     public function team_detail($id){
-        $team = Teams::with(['rcases'=>function( $qurey ) use($id) {
-            $qurey->where('cate',1)->where('team_id',$id)->take(8);
-        }])->find($id);
-        return view('front.wap.teacher_in',compact('team'));
+        $team = Teams::find($id);
+        $team->comtent = get_article_imgs2($team->comtent,10);
+        return view('front.wap.team_in',compact('team'));
     }
     public function team_compus($id){
         $team = Teams::with(['rcases'=>function( $qurey ) use($id) {
             $qurey->where('cate',1)->where('team_id',$id)->take(8);
         }])->find($id);
         return view('front.wap.compus_in2',compact('team'));
+    }
+
+    public function equip(){
+        $articles = Article::where('pid',9)->orderBy('serial_number','desc')
+            ->orderBy('id','desc')->get();
+        return view('front.wap.equip',compact('articles'));
+    }
+    public function equip_detail($id){
+        $article = Article::find($id);
+        return view('front.wap.equip_in',compact('article'));
     }
 
     public function star(){
@@ -111,14 +157,18 @@ class WapController extends Controller
 
     public function news( ){
         $articles = Article::where('pid',12)->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
-        $pages = getPage($articles,6);
         return view('front.wap.news',compact('articles','pages'));
     }
     public function new_detail($id){
         $article = Article::find($id);
         $up_down = get_up_down_page($id,$article->pid);
-        $pid = $article->pid;
+//        $pid = $article->pid;
         return view('front.wap.news_in',compact('pid','article','up_down'));
+    }
+
+    public function brand(){
+        $article = Article::find(7);
+        return view('front.wap.brand',compact('article'));
     }
 
     public function about(){
@@ -126,9 +176,21 @@ class WapController extends Controller
         return view('front.wap.about',compact('article'));
     }
     public function culture(){
-        $article = Article::find(9);
-        return view('front.wap.about',compact('article'));
+        $article = Article::find(8);
+        return view('front.wap.brand',compact('article'));
     }
+    public function environ(){
+        $article = Article::find(10);
+        $article->comtent = get_article_imgs2($article->comtent,40);
+        return view('front.wap.environ',compact('article'));
+    }
+
+    public function honor(){
+        $article = Article::find(11);
+        $article->comtent = get_article_imgs2($article->comtent,40);
+        return view('front.wap.environ',compact('article'));
+    }
+
     public function video(){
         $articles = Article::where('pid',10)->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(6);
         $pages = getPage($articles,6);

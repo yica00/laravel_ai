@@ -1,9 +1,25 @@
 @extends('front.wap.base')
+@section('head')
+  <div class="header">
+    <a href="/wap" class="col-xs-1"><span class="back">&nbsp;</span></a>
+    <a class="col-xs-10 ui-title tit" id="popmenu">{{$article->title}}<span class=""></span></a>
+    <a class="cd-bouncy-nav-trigger col-xs-1" href="#0"><span class="menu">&nbsp;</span></a>
+    <div id="overlay"></div>
+    <div id="win">
+      <ul class="dropdown">
+        <li><a href="/wap/brand">品牌故事</a></li>
+        <li><a href="/wap/culture">企业文化</a></li>
+        <li><a href="/wap/environ">典雅环境</a></li>
+        <li><a href="/wap/honor">依美荣誉</a></li>
+      </ul>
+    </div>
+  </div>
+
+@endsection
 @section('content')
 <!-- start -->
 <div class="txt_mode_1">
-  <p style="color:red;">此处由网站编辑或者客户自由在后台编辑文本内容，可图文配置，可纯文字，亦可纯图。编辑模板：左图右文，右图左文，上图下文，上文下图，文字包围图片等。</p>
-  <p>香港依美医疗美容集团总部在中国香港，集团主营事业是医疗美容新技术研发，医疗美容新产品推广及医疗美容教育。香港依美医疗美容集团总部在中国香港，集团主营事业是医疗美容新技术研发，医疗美容新产品推广及医疗美容教育。香港依美医疗美容集团总部在中国香港，集团主营事业是医疗美容新技术研发，医疗美容新产品推广及医疗美容教育。香港依美医疗美容集团总部在中国香港，集团主营事业是医疗美容新技术研发，医疗美容新产品推广及医疗美容教育。香港依美医疗美容集团总部在中国香港，集团主营事业是医疗美容新技术研发，医疗美容新产品推广及医疗美容教育。</p>
+  {!! $article->comtent !!}
 </div>
 <!-- end -->
 <!-- 3 -->

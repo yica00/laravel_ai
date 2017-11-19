@@ -1,15 +1,23 @@
 @extends('front.wap.base')
+@section('head')
+  <div class="header">
+    <a href="/wap" class="col-xs-1"><span class="back">&nbsp;</span></a>
+    <a class="col-xs-10 ui-title tit" id="popmenu">联系</a>
+    <a class="cd-bouncy-nav-trigger col-xs-1" href="#0"><span class="menu">&nbsp;</span></a>
+  </div>
+
+@endsection
 @section('content')
 <!-- start -->
 
 <div class="compus_top">
-  <p>美丽热线 <span>0817-2224234</span></p>
+  <p>美丽热线 <span>{{ session('setting')['fix_phone']  }}</span></p>
   <span class="bk20">&nbsp;</span>
-  <p>医院地址 <span>四川省南充市顺庆区三公街113号</span></p>
+  <p>医院地址 <span>{{ session('setting')['bases']  }}</span></p>
   <span class="bk20">&nbsp;</span>
-  <p>QQ在线咨询 <span>778632236</span></p>
+  <p>QQ在线咨询 <span>{{ session('setting')['qq']  }}</span></p>
   <span class="bk20">&nbsp;</span>
-  <a href="maps.html" target="_blank">查看在线地图</a>
+  <a href="http://map.baidu.com/?latlng=30.796185,106.097182&title=伊美医疗美容机构&content=电话：{{ session('setting')['fix_phone']  }}&autoOpen=true&l" target="_blank">查看在线地图</a>
 </div>
 <span class="bk20">&nbsp;</span>
 <!-- end -->

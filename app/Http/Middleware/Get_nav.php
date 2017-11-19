@@ -47,6 +47,14 @@ class Get_nav
             session(['header_nav1' =>$cats]);
         }
 
+        if( !session('header_nav2') ){
+            $cats = Article::where('pid',62)->orderBy('serial_number','desc')->get();
+            for ( $i=0;$i<count($cats);$i++ ){
+                $cats[$i]->comtent = get_article_imgs($cats[$i]->comtent,3);
+            }
+            session(['header_nav2' =>$cats]);
+        }
+
         return $next($request);
     }
 }

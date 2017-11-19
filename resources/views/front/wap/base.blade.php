@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>依美医疗美容</title>
+    <title>{{ session('setting')['web_name']  }}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {{--<meta name="viewport" content="width=device-width,initial-scale=1,">--}}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="{{ session('setting')['description']  }}">
+    <meta name="keywords" content="{{ session('setting')['keywords']  }}">
     <!-- base -->
 
     <script type="text/javascript" src="/js/wap/jquery-1.9.1.min.js"></script>
@@ -33,13 +33,26 @@
     <script>
         var _hmt = _hmt || [];
     </script>
+    <script type="text/javascript">
+        window.onload = function (){
+            var oWin = document.getElementById("win");
+            var oLay = document.getElementById("overlay");
+            var oBtn = document.getElementById("popmenu");
+            var oClose = document.getElementById("close");
+            oBtn.onclick = function (){
+                oLay.style.display = "block";
+                oWin.style.display = "block"
+            };
+            oLay.onclick = function (){
+                oLay.style.display = "none";
+                oWin.style.display = "none"
+            }
+        };
+    </script>
+
 </head>
 <body>
-<div class="header">
-    <a href="index.html" class="col-xs-1"><span class="back disnone">&nbsp;</span></a>
-    <a href="index.html" class="col-xs-10"><span  class="logo">&nbsp;</span></a>
-    <a class="cd-bouncy-nav-trigger col-xs-1" href="#0"><span class="menu">&nbsp;</span></a>
-</div>
+@yield('head')
 <div class="cd-bouncy-nav-modal">
     <nav>
         <ul class="cd-bouncy-nav">
@@ -62,35 +75,74 @@
 <div class="appoint_out" id="apply_on">
     <span class="bk60">&nbsp;</span>
     <div class="ho_tit_all">
-        <a href="/wap/order">
+        <a href="#apply_on">
             <h2>预/约/通/道</h2>
         </a>
     </div>
     <span class="bk40">&nbsp;</span>
-    <form class="on_form_2" action="" method="post">
-        <p><input type="text" value="" name="" id="" class="input" placeholder="请输入您的电话"></p>
-        <p><input type="text" value="" name="" id="" class="input" placeholder="请输入您的姓名"></p>
-        <p><input type="text" value="" name="" id="" class="input" placeholder="请输入您的预约时间"></p>
+    <form class="on_form_2" action="/front/message" method="post" id="order">
+        {{  csrf_field() }}
+        @if (count($errors) > 0)
+            <div style="color: red">
+                <ul>
+                    @if( is_object($errors) )
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    @else
+                        {{ $errors }}
+                    @endif
+                </ul>
+            </div>
+        @endif
+        <p><input type="text" value="" name="name" id="name" class="input" placeholder="请输入您的姓名"></p>
+        <p><input type="text" value="" name="phone" id="phone" class="input" placeholder="请输入您的电话"></p>
+        <p><input type="date" value="" name="time"  class="input" placeholder="请输入您要预约的时间"></p>
         <p>
-            <select id="" name="">
-                <option value="0" selected="selected">请选择您要预约的项目</option>
-                <option value="1">高贵飘逸眼</option>
-                <option value="2">恒久时尚鼻</option>
-                <option value="3">明快U型轮廓</option>
-                <option value="4">魅力喜悦肌</option>
-                <option value="5">秀美天鹅颈</option>
-                <option value="6">笔直迷人背</option>
-                <option value="7">丝滑质感肤</option>
+            <select id="" name="item">
+                <option value="0" selected="selected">请选预约项目</option>
+                @foreach( session('header_nav') as $ks=>$navs )
+                    @if( $ks == 2 )
+                        @foreach( $navs->articles as $ar )
+                            <option value="{{$ar->title}}">{{$ar->title}}</option>
+                        @endforeach\
+                    @endif
+                @endforeach
             </select>
         </p>
-        <p><textarea name="content" class="textarea" id="" value="" placeholder="如何您还有其他问题，可以在这里给我们留言，我们会尽快联系您！"></textarea></p>
-        <p class="submit_but"><button type="submit">点击这里提交报名</button></p>
+        <p><textarea name="content" class="textarea" id="" value="" placeholder="如何您还有其他问题，可以在这里给我们留言"></textarea></p>
+        <p class="submit_but"><button type="submit">点击这里提交预约</button></p>
     </form>
+    <script>
+        $('.submit_but').click(function () {
+            var name = $('#name').val();
+            var phone = $('#phone').val();
+
+            if( phone == "" || name == "" ){
+                alert("姓名和电话必须填写");
+                return false;
+            }
+
+            if( isPhoneNo(phone) == false ){
+                alert("你输入的手机号格式不正确！")
+                return false;
+            }
+        });
+
+        $('#vaptcha').click(function () {
+            $(this).attr('src','/vaptcha?'+ Math.random());
+        });
+
+        function isPhoneNo(phone) {
+            var pattern = /^1[34578]\d{9}$/;
+            return pattern.test(phone);
+        }
+    </script>
 </div>
 <!-- 4 -->
 <span class="bk40">&nbsp;</span>
 <div class="ho_btn_call">
-    <span><img src="/images/wap/btn_call.svg"></span>美丽热线：0817-0987246
+    <span><img src="/images/wap/btn_call.svg"></span>美丽热线：{{ session('setting')['fix_phone']  }}
 </div>
 <span class="bk40">&nbsp;</span>
 <!-- footer -->
@@ -98,60 +150,26 @@
     <span class="bk40">&nbsp;</span>
     <div class="swiper-container-4">
         <div class="swiper-wrapper">
+            @foreach( session('header_nav2') as $ks=>$navs )
             <div class="swiper-slide">
-                <a href="item_in.html">
-                    <span class="pic"><img src="/images/wap/btn_1_1.svg"></span>
-                    <h2>高贵飘逸眼</h2>
+                <a href="/wap/item/category/{{$navs->id}}">
+                    <span class="pic"><img src="{{$navs->comtent[0][1]}}"></span>
+                    <h2>{{$navs->title}}</h2>
                 </a>
             </div>
-            <div class="swiper-slide">
-                <a href="item_in.html">
-                    <span class="pic"><img src="/images/wap/btn_1_2.svg"></span>
-                    <h2>恒久时尚鼻</h2>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="item_in.html">
-                    <span class="pic"><img src="/images/wap/btn_1_3.svg"></span>
-                    <h2>明快U型轮廓</h2>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="item_in.html">
-                    <span class="pic"><img src="/images/wap/btn_1_4.svg"></span>
-                    <h2>魅力喜悦肌</h2>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="item_in.html">
-                    <span class="pic"><img src="/images/wap/btn_1_5.svg"></span>
-                    <h2>秀美天鹅颈</h2>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="item_in.html">
-                    <span class="pic"><img src="/images/wap/btn_1_6.svg"></span>
-                    <h2>笔直迷人背</h2>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="item_in.html">
-                    <span class="pic"><img src="/images/wap/btn_1_7.svg"></span>
-                    <h2>丝滑质感肤</h2>
-                </a>
-            </div>
+            @endforeach
         </div>
     </div>
     <span class="bk50">&nbsp;</span>
     <div class="ewm">
-        <img src="/images/wap/ewm.jpg">
+        <img src="{{ session('setting')['wx_map']  }}">
         <p>扫描二维码关注我们</p>
     </div>
     <span class="bk20">&nbsp;</span>
-    <h2 class="call"><span><img src="/images/wap/hot_btn.png"></span>0817-7100000</h2>
+    <h2 class="call"><span><img src="/images/wap/hot_btn.png"></span>{{ session('setting')['fix_phone']  }}</h2>
     <span class="bk20">&nbsp;</span>
     <div class="bot">
-        <p>来院地址：南充市顺庆区文化路234号(北湖公园对面)</p>
+        <p>来院地址：{{ session('setting')['bases']  }}</p>
         <p>版权所有 © 依美医疗美容机构 Copyright Yimei All Rights Reserved </p>
         <p>技术支持 ：<a href="http://www.scnuohang.com/" target="_blank">诺航科技</a></p>
     </div>

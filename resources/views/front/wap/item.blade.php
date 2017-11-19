@@ -1,4 +1,20 @@
 @extends('front.wap.base')
+@section('head')
+  <div class="header">
+    <a href="/wap" class="col-xs-1"><span class="back">&nbsp;</span></a>
+    <a class="col-xs-10 ui-title tit" id="popmenu">{{ $article->title }}<span class=""></span></a>
+    <a class="cd-bouncy-nav-trigger col-xs-1" href="#0"><span class="menu">&nbsp;</span></a>
+    <div id="overlay"></div>
+    <div id="win">
+      <ul class="dropdown">
+        @foreach( $cates as $ks=>$navs )
+          <li><a href="/wap/item/category/{{$navs->id}}" >{{$navs->title}}</a></li>
+        @endforeach
+      </ul>
+    </div>
+  </div>
+
+@endsection
 @section('content')
 <!-- start -->
 <div class="xm_banner">
@@ -39,50 +55,19 @@
     <div class="it_bt">项目医生</div>
     <div class="swiper-container-2">
       <div class="swiper-wrapper">
+
           <div class="swiper-slide">
-            <a href="team_in.html" class="team_o_box">
-              <img src="images/team_1.png">
+            <a href="{{ $article->team->link }}" class="team_o_box">
+              <img src="{{ $article->team->thumbnail }}">
               <div class="txt">
-                <h2>南充医疗美容医院院长</h2>
+                <h2>{{ $article->team->title }}</h2>
                 <div class="dis">
-                  <p>中国医疗美容整形协会会员</p>
-                  <p>国家认证整形外科副主任</p>
-                  <p>香港依美医疗美容集团总裁</p>
-                  <p>“恒久美美雕”医疗美容系列项目创始人</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="team_in.html" class="team_o_box">
-              <img src="images/team_1.png">
-              <div class="txt">
-                <h2>南充医疗美容医院院长2</h2>
-                <div class="dis">
-                  <p>中国医疗美容整形协会会员</p>
-                  <p>国家认证整形外科副主任</p>
-                  <p>香港依美医疗美容集团总裁</p>
-                  <p>“恒久美美雕”医疗美容系列项目创始人</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="team_in.html" class="team_o_box">
-              <img src="images/team_1.png">
-              <div class="txt">
-                <h2>南充医疗美容医院院长3</h2>
-                <div class="dis">
-                  <p>中国医疗美容整形协会会员</p>
-                  <p>国家认证整形外科副主任</p>
-                  <p>香港依美医疗美容集团总裁</p>
-                  <p>“恒久美美雕”医疗美容系列项目创始人</p>
+                  {!! $article->team->comtent !!}
                 </div>
               </div>
             </a>
           </div>
 
-          
       </div>
     </div>
   </div>
