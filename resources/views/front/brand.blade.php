@@ -68,7 +68,9 @@
                   <div class="txt">
                     <span class="sic"><img src="{{$arti->thumbnail}}"></span>
                     <h2>{{$arti->title}}</h2>
-                    <p>{{$arti->introduce}}</p>
+                    @foreach( explode(',',$arti->introduce) as $intro)
+                    <p>{{$intro}}</p>
+                    @endforeach
                   </div>
                 </div>
               </li>
