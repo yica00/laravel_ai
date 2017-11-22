@@ -1,7 +1,7 @@
 @charset "utf-8";
-/* CSS Document */ 
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;} 
-h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;} 
+/* CSS Document */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
 ul,li{list-style:none; margin:0; padding:0;}
 a img{border:0;display: block;}
 html, body {height: auto; }
@@ -16,7 +16,7 @@ body{background:#f2f2f2;overflow-x:hidden;font-size:.6rem;
   font-family: "微软雅黑",Verdana, Arial, Helvetica, sans-serif;}
 html,body{height:auto;width: 100%;max-width: 720px;min-width: 320px;margin: 0 auto;}
 /*颜色字体设置-end-*/
-/******base*******/ 
+/******base*******/
 .bk10,.bk20,.bk30,.bk40,.bk40s,.bk50,.bk60,.bk70,.bk80,.bk90,.bk100{width:100%;overflow: hidden;clear: both;display: block;}
 .bk10{height:.25rem;}
 .bk20{height:.5rem;}
@@ -37,15 +37,15 @@ html,body{height:auto;width: 100%;max-width: 720px;min-width: 320px;margin: 0 au
 .pL10{padding-left:.25rem;}
 .pR10{padding-right:.25rem;}
 .p10{ padding:.25rem;}
-/******other*******/ 
+/******other*******/
 .fl{float:left;display: inline-block;}
 .fr{float:right;display: inline-block;}
-/******clear float*******/ 
-.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; } 
-.clearfix {display: inline-table;} 
-/* Hides from IE-mac \*/ 
-* html .clearfix {height: 1%;} 
-.clearfix {display: block;} 
+/******clear float*******/
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix {display: inline-table;}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
 /*通用*/
 /*btn 48px svg*/
 .header{background: #000;padding: 0 .5rem;height: 2rem;}
@@ -59,14 +59,14 @@ html,body{height:auto;width: 100%;max-width: 720px;min-width: 320px;margin: 0 au
 /*popmenu*/
 #popmenu{display:block; position:relative;height: 2rem;line-height:2rem;color:#fff;}
 #popmenu span{display: inline-block;width:1rem;height:2rem;margin: 0 0 0 0;
-  position: absolute;top:0px; 
+  position: absolute;top:0px;
   background: url(/images/wap/btn_bot.svg) center no-repeat;background-size: contain;}
 #overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;opacity:0;filter:alpha(opacity=0);display:none;z-index: 4;}
 #win{position: fixed;top:2rem;left:0%;width: 100%;display:none;z-index: 5;}
 .dropdown {position: relative;display:block;margin: 0 auto;}
 .dropdown li{display: block;height: 1.25rem;width: 100%;overflow: hidden;margin: 0;}
 .dropdown li a{background: #fff;text-align: center;line-height: 1.25rem;color: #000;font-size: .6rem;
-    display: block;height:1.25rem;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+  display: block;height:1.25rem;-webkit-tap-highlight-color:rgba(0,0,0,0);}
 .dropdown li:hover a,.dropdown li.on a{background: #a21417;color: #fff;}
 /*mask*/
 .cd-bouncy-nav-modal {position: fixed;z-index:99999999999999999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(36, 35, 37, 0.9);opacity: 0;visibility: hidden;
@@ -167,6 +167,7 @@ html,body{height:auto;width: 100%;max-width: 720px;min-width: 320px;margin: 0 au
 .team_out{margin: 0 .5rem;}
 .swiper-container-2{overflow:hidden;}
 .team_o_box{width: 100%;height: 17rem;display: block;position: relative;}
+.team_o_box img{width: 100%;height: 17rem;}
 .team_o_box .txt{position: absolute;top:6.75rem;left: .5rem;width: 8rem;height: 5.5rem;z-index: 999;text-align: right;color: #fff;}
 .team_o_box .txt h2{font-size: .7rem;line-height: 1.5rem;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display:block;}
 .team_o_box .txt p{color: #fff;font-size: .4rem;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display:block;}
@@ -207,7 +208,7 @@ html,body{height:auto;width: 100%;max-width: 720px;min-width: 320px;margin: 0 au
 .swiper-container-4 .swiper-wrapper{width: 25%;text-align: center;}
 .swiper-container-4 h2{color: #b3b3b3;font-size: .6rem;line-height: 1rem;}
 .swiper-container-4 .pic{width: 2rem;height: 2rem;border: 1px solid #b3b3b3;display: inline-block;padding: .4rem;
-   -ms-border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%;-o-border-radius: 50%; border-radius: 50%;}
+  -ms-border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%;-o-border-radius: 50%; border-radius: 50%;}
 .swiper-container-4 .pic img{width: 1.2rem;height: 1.2rem;display: inline-block;}
 .footer .ewm{text-align: center;}
 .footer .ewm img{width: 5.5rem;height:5.5rem;display: block;border:.125rem solid #fff;margin: 0 auto;}
@@ -323,7 +324,7 @@ html,body{height:auto;width: 100%;max-width: 720px;min-width: 320px;margin: 0 au
 .team_in_all .col-xs-6 .pic,.team_in_all .col-xs-6 .pic img{width: 100%;height:10.25rem;display: block; }
 .team_in_all li a .txt{border-top: 1px solid #a21417;height:6.25rem;padding: 0 .5rem;
   background: #000;text-align: center;}
-.team_in_all li a .txt .tit{background: url(/images/wap/tea_line.jpg) center repeat-x;font-size: .6rem;line-height:2rem;} 
+.team_in_all li a .txt .tit{background: url(/images/wap/tea_line.jpg) center repeat-x;font-size: .6rem;line-height:2rem;}
 .team_in_all li a .txt .tit span{display: inline-block;background: #000;color: #fff;line-height:2rem;padding: 0 .5rem;}
 .team_in_all li a .txt h2{color: #fff;font-size:.8rem;}
 .team_in_all li a .txt p{color: #fff;font-size: .6rem;}
