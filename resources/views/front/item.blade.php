@@ -186,7 +186,7 @@
                   <div class="w297 fl mR44  wow bounceInLeft" data-wow-duration="1.5s" style="visibility: visible; animation-duration: 1.5s; animation-name: bounceInLeft;">
                     @if( isset( $article->s700->articles[0] ) )
                     <div class="icon">
-                      <img src="images/hon_btn_1.png" class="p1">
+                      <img src="/images/hon_btn_1.png" class="p1">
                       <p class="p2">{{ $article->s700->articles[0]->title }}</p>
                       <p class="p3">
                         @foreach( explode(',', $article->s700->articles[0]->introduce) as $intro )
@@ -198,7 +198,7 @@
                     <span class="bk50">&nbsp;</span>
                       @if( isset( $article->s700->articles[2] ) )
                     <div class="icon">
-                      <img src="images/hon_btn_2.png" class="p1">
+                      <img src="/images/hon_btn_2.png" class="p1">
                       <p class="p2">{{ $article->s700->articles[1]->title }}</p>
                       <p class="p3">
                         @foreach( explode(',', $article->s700->articles[1]->introduce) as $intro )
@@ -222,7 +222,7 @@
                   <div class="w297 fr wow bounceInRight" data-wow-duration="1.5s" style="visibility: visible; animation-duration: 1.5s; animation-name: bounceInRight;">
                     @if( isset( $article->s700->articles[1] ) )
                     <div class="icon">
-                      <img src="images/hon_btn_3.png" class="p1">
+                      <img src="/images/hon_btn_3.png" class="p1">
                       <p class="p2">{{ $article->s700->articles[2]->title }}</p>
                       <p class="p3">
                         @foreach( explode(',', $article->s700->articles[2]->introduce) as $intro )
@@ -234,7 +234,7 @@
                     <span class="bk50">&nbsp;</span>
                       @if( isset( $article->s700->articles[3] ) )
                     <div class="icon">
-                      <img src="images/hon_btn_4.png" class="p1">
+                      <img src="/images/hon_btn_4.png" class="p1">
                       <p class="p2">{{ $article->s700->articles[3]->title }}</p>
                       <p class="p3">
                         @foreach( explode(',', $article->s700->articles[3]->introduce) as $intro )
