@@ -38,7 +38,9 @@
           <div class="tea_dis_box">
             <h2 class="tit">简介</h2>
             <div class="txt">
-              {!! $team->introduce !!}
+              @foreach( explode(',',$team->introduce) as $intro )
+              <p>{{$intro}}</p>
+              @endforeach
             </div>
           </div>
         </div>
