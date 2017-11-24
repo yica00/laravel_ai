@@ -71,7 +71,11 @@
                   <div class="txt">
                     <h2>{{$arti->title}}</h2>
                     <div class="line">&nbsp;</div>
-                    <p>{{$arti->introduce}}</p>
+                    <p>
+                      @foreach( explode(',',$arti->introduce) as $intro )
+                        {{$intro}}<br>
+                      @endforeach
+                    </p>
                   </div>
                 </div>
               </li>
@@ -97,7 +101,7 @@
             <div class="clearfix">
               <div class="w340 fr">
                 @if( isset( $article->s500->articles[0] ) )
-                <div class="txt wow rotateInDownRight" data-wow-duration="1.5s" data-wow-delay="1.0s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 1s; animation-name: rotateInDownRight;">
+                <div class="txt wow rotateInDownRight" data-wow-duration="1.5s" data-wow-delay="1.0s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 1s; animation-name: rotateInDownRight;height:150px;">
                   <h2>{{ $article->s500->articles[0]->title }}</h2>
                   <p>{{ $article->s500->articles[0]->introduce }}</p>
                 </div>
