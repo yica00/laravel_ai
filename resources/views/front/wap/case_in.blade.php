@@ -1,4 +1,9 @@
 @extends('front.wap.base')
+<style>
+  #xxx img{
+    width: 100vh;height: auto;
+  }
+</style>
 @section('head')
   <div class="header">
     <a href="/wap/case" class="col-xs-1"><span class="back">&nbsp;</span></a>
@@ -34,7 +39,7 @@
   
   <div class="dis">
     <h2>案例详情</h2>
-    <div class="tit">
+    <div class="tit" id="xxx">
       {!! $article->comtent !!}
     </div>
   </div>
