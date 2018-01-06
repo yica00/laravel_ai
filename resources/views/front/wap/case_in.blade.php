@@ -9,7 +9,7 @@
 @section('content')
 <!-- start -->
 <div class="case_mode">
-  <h2 class="kc_bt">做了割双眼皮和开内眼角眼综合整形手术</h2>
+  <h2 class="kc_bt">{{$article->title}}</h2>
   <div class="xix">
     @foreach( explode(',',$article->introduce) as $k=>$intro )
       <p class="p{{ $k+1 }}">{{$intro}}</p>
