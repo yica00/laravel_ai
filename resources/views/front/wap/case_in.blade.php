@@ -1,7 +1,7 @@
 @extends('front.wap.base')
 <style>
   #xxx img{
-    width: 100vw;height: auto;
+    width: 90vw;height: auto;
   }
 </style>
 @section('head')
