@@ -1,4 +1,9 @@
 @extends('front.wap.base')
+<style>
+  #xxxx ul li{
+    width: 90vw;
+  }
+</style>
 @section('head')
   <div class="header">
     <a href="/wap" class="col-xs-1"><span class="back">&nbsp;</span></a>
@@ -14,7 +19,9 @@
     <img src="{{$article->thumbnail}}">
   </div>
   <span class="bk20">&nbsp;</span>
-  {!! $article->comtent !!}
+  <div id="xxxx">
+    {!! $article->comtent !!}
+  </div>
 </div>
 <!-- end -->
 <!-- 3 -->
