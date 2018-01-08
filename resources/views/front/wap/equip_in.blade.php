@@ -11,7 +11,7 @@
 <div class="equp_mode">
   <h2 class="kc_bt">{{$article->title}}</h2>
   <div class="img">
-    <img src="images/sb1.jpg">
+    <img src="{{$article->thumbnail}}">
   </div>
   <span class="bk20">&nbsp;</span>
   {!! $article->comtent !!}
