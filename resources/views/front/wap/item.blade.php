@@ -26,7 +26,7 @@
   <div class="dis">
     <h2>{{$arti->title}}</h2>
     <div class="txt">
-      {{$arti->introduce}}
+      {!! $arti->comtent !!}
     </div>
   </div>
   <span class="bk20">&nbsp;</span>
