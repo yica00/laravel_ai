@@ -13,7 +13,7 @@
         <span class="bk80">&nbsp;</span>
         <div class="brd_li_1 clearfix">
           <div class="txt wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="200" style="visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: fadeInDown;">
-            <h2 class="tit">南充依美医疗美容医院</h2>
+            <h2 class="tit">南充依美医疗美容</h2>
             <div class="dis">
               {!! $articles[0]->comtent !!}
             </div>
