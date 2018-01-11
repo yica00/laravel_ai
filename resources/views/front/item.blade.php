@@ -101,14 +101,14 @@
             <div class="clearfix">
               <div class="w340 fr">
                 @if( isset( $article->s500->articles[0] ) )
-                <div class="txt wow rotateInDownRight" data-wow-duration="1.5s" data-wow-delay="1.0s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 1s; animation-name: rotateInDownRight;height:180px;">
+                <div class="txt wow rotateInDownRight" data-wow-duration="1.5s" data-wow-delay="1.0s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 1s; animation-name: rotateInDownRight;height:210px;">
                   <h2>{{ $article->s500->articles[0]->title }}</h2>
                   <p>{{ $article->s500->articles[0]->introduce }}</p>
                 </div>
                 @endif
                 <span class="bk100">&nbsp;</span>
                   @if( isset( $article->s500->articles[1] ) )
-                <div class="txt wow rotateInDownRight" data-wow-duration="1.5s" data-wow-delay="0.6s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.6s; animation-name: rotateInDownRight;;height:180px;">
+                <div class="txt wow rotateInDownRight" data-wow-duration="1.5s" data-wow-delay="0.6s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.6s; animation-name: rotateInDownRight;;height:210px;">
                   <h2>{{ $article->s500->articles[1]->title }}</h2>
                   <p>{{ $article->s500->articles[1]->introduce }}</p>
                 </div>
@@ -116,14 +116,14 @@
               </div>
               <div class="w340 fl">
                 @if( isset( $article->s500->articles[2] ) )
-                <div class="txt wow rotateInDownLeft" data-wow-duration="1.5s" style="visibility: visible; animation-duration: 1.5s; animation-name: rotateInDownLeft;;height:180px;">
+                <div class="txt wow rotateInDownLeft" data-wow-duration="1.5s" style="visibility: visible; animation-duration: 1.5s; animation-name: rotateInDownLeft;;height:210px;">
                   <h2>{{ $article->s500->articles[2]->title }}</h2>
                   <p>{{ $article->s500->articles[2]->introduce }}</p>
                 </div>
                 @endif
                 <span class="bk100">&nbsp;</span>
                   @if( isset( $article->s500->articles[3] ) )
-                <div class="txt wow rotateInDownLeft" data-wow-duration="1.5s" data-wow-delay="0.6s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.6s; animation-name: rotateInDownLeft;;height:180px;">
+                <div class="txt wow rotateInDownLeft" data-wow-duration="1.5s" data-wow-delay="0.6s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.6s; animation-name: rotateInDownLeft;;height:210px;">
                   <h2>{{ $article->s500->articles[3]->title }}</h2>
                   <p>{{ $article->s500->articles[3]->introduce }}</p>
                 </div>
