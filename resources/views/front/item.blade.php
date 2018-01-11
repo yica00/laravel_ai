@@ -23,8 +23,8 @@
               @foreach( $article->s200->articles as $k=>$arti )
               <li class="wow flipInY" data-wow-duration="1s" data-wow-delay="{{ $k*0.4 }}s" style="visibility: visible; animation-duration: 1s; animation-delay: {{ $k*0.4 }}s; animation-name: flipInY;">
                 <div class="pic"><img src="{{$arti->thumbnail}}" alt="" /></div>
-                <h2>{{$arti->title}}</h2>
-                <p>{{$arti->introduce}}</p>
+                <h2 style="line-height:30px;font-size: 20px" >{{$arti->title}}</h2>
+                <p  style="line-height:20px;font-size: 16px">{{$arti->introduce}}</p>
               </li>
               @endforeach
             </ul>
