@@ -19,7 +19,7 @@ class Get_nav
 
         if( !session('header_nav') ){
             $articles = Article::with(array('articles'=>function( $query ){
-                $query->select('id','pid','title','serial_number','link','thumbnail')->where('is_nav','1');
+                $query->select('id','pid','title','serial_number','link','thumbnail')->where('is_nav','1')->orderBy('serial_number','desc');
             }))
                 ->select('id','pid','title','serial_number','link','introduce')->where('pid','0')->where('is_nav','1')
                 ->orderBy('serial_number','asc')->orderBy('id','asc')->get();
