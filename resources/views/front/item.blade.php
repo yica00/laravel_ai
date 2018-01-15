@@ -51,9 +51,9 @@
       <div class="w1280 clearfix">
         <div class="item_tit_all">
           <span class="bk60">&nbsp;</span>
-          <h2>{{ $article->s400->title }}</h2>
+          <h2 style="line-height: 25px" >{{ $article->s400->title }}</h2>
           <span class="bk10">&nbsp;</span>
-          <p><span>{{ $article->s400->introduce }}</span></p>
+          <p style="line-height: 20px"><span>{{ $article->s400->introduce }}</span></p>
           <span class="bk30">&nbsp;</span>
         </div>
         <div class="picScroll-item" id="picScroll-item-2">
