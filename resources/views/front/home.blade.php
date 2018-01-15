@@ -147,7 +147,7 @@
         <div class="ho_tit_all">
           <a href="/item">
             <h2>经/典/项/目</h2>
-            <p>恒久美美雕<span>七大经典项目</span>，让你的<span>魅力永恒</span></p>
+            <p>恒久美美雕<span>五大经典项目</span>，让你的<span>魅力永恒</span></p>
           </a>
         </div>
         <span class="bk60">&nbsp;</span>
