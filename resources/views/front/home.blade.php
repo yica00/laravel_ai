@@ -245,6 +245,9 @@
   <a class="on_4 ewm" href=""><em><img src="{{ session('setting')['wx_map']  }}"></em></a>
   <a class="on_5" href="" onclick="javascript:scroll(0,0)">&nbsp;</a>
 </div>
+<div class="float_huod">
+    <a class="" href="/news" style="z-index: 999999" ><img src="/images/hdzt_bn.jpg"></a>
+</div>
 <script src="/js/wow.min.js"></script>
 <script src="/js/swiper-3.3.1.jquery.min.js"></script>
 <script src="/js/swiper.animate1.0.2.min.js"></script>
