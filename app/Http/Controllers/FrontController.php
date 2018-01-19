@@ -149,6 +149,11 @@ class FrontController extends Controller
         return $teams;
     }
 
+    public function setting(){
+        $setting = readJson();
+        return ['setting' => $setting];
+    }
+
     public function items( $id = 15  ){
         $article = Article::with('articles')->find($id);
         for( $i=0;$i<count($article->articles);$i++ ){

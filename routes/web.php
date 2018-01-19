@@ -15,14 +15,16 @@ Route::get('session',function (){
 });
 
 
-Route::group(['middleware'=>'check_setting'],function (){
+//Route::group(['middleware'=>'check_setting'],function (){
 
 
 //    Route::group(['as'=>'front','middleware'=>'get_nav'],function (){
 
     Route::group(['as'=>'front'],function (){
+    Route::group(['as'=>'front'],function (){
 
         Route::get('/','FrontController@index');
+        Route::get('/setting','FrontController@setting');
 
         Route::get('about','FrontController@about');
         Route::get('about/culture','FrontController@culture');
