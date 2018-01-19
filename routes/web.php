@@ -16,10 +16,11 @@
 Route::group(['middleware'=>'check_setting'],function (){
 
 
-    Route::group(['as'=>'front','middleware'=>'get_nav'],function (){
-//    Route::group(['as'=>'front'],function (){
+//    Route::group(['as'=>'front','middleware'=>'get_nav'],function (){
 
-//        Route::get('/','FrontController@index');
+    Route::group(['as'=>'front'],function (){
+
+        Route::get('/','FrontController@index');
 
         Route::get('about','FrontController@about');
         Route::get('about/culture','FrontController@culture');
@@ -212,8 +213,8 @@ Route::get('/vaptcha',function (){
 Route::group(['middleware'=>'check_setting'],function (){
     Route::group(['as'=>'front','middleware'=>'get_nav'],function () {
         Route::get('/home', 'FrontController@index');
-        Route::get('/', function () {
-            return view('front.index');
-        });
+//        Route::get('/', function () {
+//            return view('front.index');
+//        });
     });
 });

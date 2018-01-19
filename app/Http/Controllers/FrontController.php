@@ -20,17 +20,17 @@ class FrontController extends Controller
         $sliders = $this->getSliders();
 //        $about = $this->getAbout();
         $cases = $this->getCases();
-        $classs = $this->getHouse();
-        $teams = $this->getTeam();
-//        $qualitys = $this->getQquality();
-        $projects = $this->getProject();
-        $schools = $this->getWorker();
-        $works = $this->getGuide();
-        $newss= $this->getNews();
-//        $stars = $this->getService();
-//        $articles = Article::where('pid',26)->get();
-//        $messages = Message::orderBy('id','desc')->take(20)->get();
-        return view('front.home',compact('articles','projects','works','schools','qualitys','messages','sliders','stars','cases','newss','classs','teams'));
+        $brands = $this->getBrands();
+//        $teams = $this->getTeam();
+////        $qualitys = $this->getQquality();
+//        $projects = $this->getProject();
+//        $schools = $this->getWorker();
+//        $works = $this->getGuide();
+//        $newss= $this->getNews();
+////        $stars = $this->getService();
+////        $articles = Article::where('pid',26)->get();
+////        $messages = Message::orderBy('id','desc')->take(20)->get();
+        return ['sliders'=>$sliders,'brands'=>$brands,'cases'=>$cases];
     }
 
 
@@ -90,13 +90,16 @@ class FrontController extends Controller
         return $articles;
     }
     public function getCases(){
-        $articles = Rcase::select('id','title','thumbnail','serial_number')
-            ->orderBy('serial_number','desc')->orderBy('id','desc')->take(6)->get();
+        $articles = Article::where('pid',9)->orderBy('serial_number','desc')
+            ->orderBy('id','asc')->take(8)->get();
+        foreach ( $articles  as $k=>$article ){
+            $articles[$k]->imgs = explode(',',$article->imgs);
+        }
         return $articles;
     }
     public function getBrands(){
-        $article = Article::where('pid',6)->orderBy('serial_number','desc')
-            ->orderBy('id','desc')->take(12)->get();
+        $article = Article::where('pid',4)->orderBy('serial_number','desc')
+            ->orderBy('id','asc')->take(8)->get();
         return $article;
     }
     public function getTeam(){
@@ -137,7 +140,7 @@ class FrontController extends Controller
     }
     public function getSliders()
     {
-        $sons = Article::select('thumbnail','link','id','pid')->where('pid',56)->get();
+        $sons = Article::select('thumbnail','title','id')->where('pid',1)->get();
         return $sons;
     }
     public function getTeams()
@@ -269,23 +272,24 @@ class FrontController extends Controller
     }
 
     public function compus($id=28){
-        $cates = Article::where('pid',11)->get();
-        $article = Article::with('articles')->find($id);
-        return view('front.compus',compact('article','cates','id'));
+        $articles = Article::where('pid',9)->orderBy('serial_number','desc')
+            ->orderBy('id','desc')->paginate(10);
+        return ['cases'=>$articles];
     }
 
 
     public function active_list(){
-        $articles = Article::where('pid',5)->orderBy('id','desc')->paginate(3);
-        $pages = getPage($articles,3);
-        return view('front.active',compact('articles','pages'));
+        $articles = Article::where('pid',10)->orderBy('serial_number','desc')
+            ->orderBy('id','desc')->paginate(10);
+        return ['actives'=>$articles];
     }
 
     public function active_dedail($id){
         $article = Article::find($id);
-        $up_down = get_up_down_page($id,$article->pid);
-        return view('front.active_in',compact('article','up_down'));
+        $article->imgs = explode(',',$article->imgs);
+        return ['active'=>$article];
     }
+
 
     public function join_detail( $id=13 ){
         $article = Article::find($id);
@@ -417,7 +421,11 @@ class FrontController extends Controller
 
 
     public function our_case( ){
-//        return session('header_nav1');;
+        $articles = Article::where('pid',9)->orderBy('serial_number','desc')
+            ->orderBy('id','desc')->paginate(10);
+        return ['cases'=>$articles];
+
+
         $articles = Article::with('articles')->where('pid',4)->orderBy('serial_number','desc')
             ->orderBy('id','desc')->paginate(5);
         for ( $i=0; $i<count($articles);$i++ ){
@@ -431,6 +439,10 @@ class FrontController extends Controller
         return view('front.case',compact('articles','pages'));
     }
     public function case_detail($id){
+        $article = Article::find($id);
+        $article->imgs = explode(',',$article->imgs);
+        return ['case'=>$article];
+
         $article = Article::with('articles')->find($id);
         for ( $j=0; $j<count($article->articles);$j++ ){
             $arr[] = get_article_imgs2($article->articles[$j]->comtent,2);
@@ -439,6 +451,8 @@ class FrontController extends Controller
         $up_down = get_up_down_page($id,$article->pid);
         return view('front.case_in',compact('article','up_down'));
     }
+
+
 
     public function guide( $id = 16 ){
         $articles = Article::where('pid',$id)->orderBy('serial_number','desc')->orderBy('id','desc')->paginate(8);

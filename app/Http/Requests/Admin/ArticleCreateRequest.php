@@ -26,10 +26,10 @@ class ArticleCreateRequest extends FormRequest
         return [
             'title'=>'required|max:80',
             'thumbnail'=>'mimetypes:image/gif,image/png,image/jpeg,image/bmp',
-            'introduce'=>'max:200',
-            'is_nav'=>'in:0,1',
-//            'serial_number'=>'integer',
-            'link'=>'max:100',
+            'serial_number'=>'integer',
+            'pid'=>'integer',
+            'imgs'=>'max:250',
+            'text'=>'max:1000',
         ];
     }
 

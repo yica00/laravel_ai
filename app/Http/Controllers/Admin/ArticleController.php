@@ -15,10 +15,9 @@ class ArticleController extends Controller
 {
     public function index(Request $request){
         $articles = Article::with(array('articles'=>function( $query ){
-            $query->select('id','pid','title','serial_number')
-                ->where('is_nav','1');
+            $query->select('id','pid','title','serial_number')->where('is_nav',1);
         }))
-            ->select('id','pid','title','serial_number')->where('pid','0')->where('is_nav','1')
+            ->select('id','pid','title','serial_number')->where('pid','0')->where('is_nav',1)
             ->orderBy('serial_number','asc')->orderBy('id','asc')->get();
 
 //        $rel = Article::select('id','title','pid')->where('is_nav','1')->orderBy('id','asc')->get();
@@ -87,6 +86,7 @@ class ArticleController extends Controller
     public function store_son( ArticleCreateRequest $articleCreateRequest ){
         $atic = Input::all();
         $atic['thumbnail'] = getUrl($articleCreateRequest,'thumbnail');
+        $atic['imgs'] = getMultiUrl($articleCreateRequest,'imgs');
         $rel = Article::create($atic);
         if($rel->wasRecentlyCreated){
             return back()->with('errors','添加成功');
@@ -138,8 +138,12 @@ class ArticleController extends Controller
         }
         $atic = Input::all();
         $atic['thumbnail'] = getUrl($articleUpdateRequest,'thumbnail');
-        if( !$atic['thumbnail'] ){
+        $atic['imgs'] = getMultiUrl($articleUpdateRequest,'imgs');
+        if( ! $atic['thumbnail'] ){
             unset( $atic['thumbnail']);
+        }
+        if( ! $atic['imgs'] ){
+            unset( $atic['imgs']);
         }
         $rel = $article->update($atic);
         if($rel){

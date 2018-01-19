@@ -9,74 +9,92 @@
               @else
                 /article/{{ $id }}/look
                @endif">返回上级</a></h3>
+
     <div class="main-wrap fadeInRight">
-        <h3><a>添加【@if( $article ){{$article->title}}@else 顶层 @endif】的子类</a></h3>
-        <form class="formPanel" action="/article/add_son/{{ $id }}" enctype="multipart/form-data" method="post" >
-            {{ csrf_field()  }}
-            <div class="form-group">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-0">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        @if (count($errors) > 0)
+                            <div style="color: red">
+                                <ul>
+                                    @if( is_object($errors) )
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    @else
+                                        {{ $errors }}
+                                    @endif
+                                </ul>
+                            </div>
+                        @endif
 
-                <hr style="border-bottom-color: #000000;height:2px;">
-                @if (count($errors) > 0)
-                    <div style="color: red">
-                        <ul>
-                            @if( is_object($errors) )
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            @else
-                                {{ $errors }}
-                            @endif
-                        </ul>
+                        <h3>新增商品</h3>
+                        <form class="form-horizontal" role="form" method="POST" action="/article/add_son/{{ $id }}" enctype="multipart/form-data" >
+                            {{csrf_field()}}
+                            <input value="{{ $id }}" name="pid" style="display: none" >
+                            <div class="form-group">
+                                <label for="email" class="col-md-3 control-label">商品名字</label>
+                                <div class="col-md-8">
+                                    <input id="email" class="form-control" name="title"   autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group"></label>
+                                <label for="email" class="col-md-3 control-label">缩略图</label>
+                                <div class="col-md-8">
+                                    <input id="email" type="file"  class="form-control" name="thumbnail" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-3 control-label">排序号</label>
+                                <div class="col-md-8">
+                                    <span>默认排序时，数字越大商品越靠前</span>
+                                    <input id="email"  class="form-control" name="serial_number" value="0"  autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group"></label>
+                                <label for="email" class="col-md-3 control-label">正文图片</label>
+                                <div class="col-md-8">
+                                    <input id="email" type="file"  class="form-control" name="imgs[]" multiple autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-3 control-label">正文文字</label>
+                                <div class="col-md-8">
+                                    {{--<span style="color: red">多个规格之间请用英文逗号隔开</span>--}}
+                                    <textarea class="form-control" rows="10" name="text" ></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-3 control-label">是否导航</label>
+                                <div class="col-md-8">
+                                    <select name="is_nav" id="email">
+                                        <option value ="0" >不</option>
+                                        <option value ="1" >导航</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{--</div>--}}
+
+                            <div class="form-group">
+                                <div class="col-md-8 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        添加
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                @endif
-
-                <label>栏目标题：</label><input type="text" class="input-text" name="title" style="width: 62%;"/>
-            </div>
-            <div class="form-group">
-                <label style="float: left" >　缩略图：</label><input style="float: left" name="thumbnail" type="file" >
-            </div>
-            <div style="clear: both;margin-bottom: 2%"></div>
-            <div class="form-group">
-                <label>链接地址：</label>
-                <input name="link"  >
-            </div>
-            <div class="form-group">
-                <label>排序数字：</label>
-                <input name="serial_number" value="0" >
+                </div>
             </div>
 
-            <input name="pid" hidden="hidden" value="{{ $id }}">
-            <div class="form-group">
-                <label>是否导航：</label>
-                <input name="is_nav"  value="0" >  <span style="color: red">0表示不是导航，1表示是导航</span>
-            </div>
-
-            <div class="form-group">
-                <label>简介：</label>
-                <textarea class="form-control" rows="3" style="width: 70%" name="introduce" ></textarea>
-            </div>
-
-            <!-- 加载编辑器的容器 -->
-            <script id="container" name="comtent" type="text/plain">
-
-            </script>
-            <!-- 配置文件 -->
-            <script type="text/javascript" src="/akl/Ueditor/ueditor.config.js"></script>
-            <!-- 编辑器源码文件 -->
-            <script type="text/javascript" src="/akl/Ueditor/ueditor.all.js"></script>
-            <!-- 实例化编辑器 -->
-            <script type="text/javascript">
-                var ue = UE.getEditor('container', {
-                    autoHeightEnabled: true,
-                    autoFloatEnabled: true,
-                    initialFrameWidth : 900,
-                    initialFrameHeight: 400
-                });
-
-
-            </script>
-            <input class="btn btn-primary" style="margin-left: 40%" type="submit" name="send" value="提交" />
-        </form>
+        </div>
     </div>
 
 @endsection

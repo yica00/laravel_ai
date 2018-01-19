@@ -9,7 +9,7 @@ class Article extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['title','thumbnail','comtent','pid','is_nav','link','serial_number','introduce'];
+    protected $fillable = ['title','thumbnail','serial_number','imgs','text','pid','is_nav'];
 
     protected $hidden = ['created_at','updated_at','deleted_at'];
 

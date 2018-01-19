@@ -14,11 +14,12 @@
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-{{--<link rel="stylesheet" href="/assets/css/demo.css">--}}
-<!-- GOOGLE FONTS -->
+
+    <!-- GOOGLE FONTS -->
     <!-- ICONS -->
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon.png">
+    <script src="/assets/scripts/klorofil-common.js"></script>
     <style>
         .tablePanel2 tr:hover{
             background: greenyellow;
@@ -59,7 +60,7 @@
                     <li><a href="/admin" class="active"><i class="lnr lnr-home"></i> <span>后台首页</span></a></li>
                     <li><a href="/admin/article" ><i class="lnr lnr-inbox"></i> <span>内容管理</span></a></li>
                     {{--<li><a href="/admin/order_list" class=""><i class="lnr lnr-cart"></i> <span>订单管理</span></a></li>--}}
-                    <li><a href="/admin/team" class=""><i class="lnr lnr-users"></i> <span>专家团队</span></a></li>
+                    {{--<li><a href="/admin/team" class=""><i class="lnr lnr-users"></i> <span>专家团队</span></a></li>--}}
                     {{--<li><a href="/admin/rcase" class=""><i class="lnr lnr-users"></i> <span>案例管理</span></a></li>--}}
                     {{--<li><a href="/admin/car" class=""><i class="lnr lnr-car"></i> <span>车型管理</span></a></li>--}}
                     {{--<li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>报价管理</span></a></li>--}}
