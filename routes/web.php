@@ -211,13 +211,3 @@ Route::any('/register',function (){
 Route::get('/vaptcha',function (){
     return getCaptcha(4);
 });
-
-
-Route::group(['middleware'=>'check_setting'],function (){
-    Route::group(['as'=>'front','middleware'=>'get_nav'],function () {
-        Route::get('/home', 'FrontController@index');
-//        Route::get('/', function () {
-//            return view('front.index');
-//        });
-    });
-});
