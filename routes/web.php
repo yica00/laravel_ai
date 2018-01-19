@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('session',function (){
+    return 1;
+});
 
 
 Route::group(['middleware'=>'check_setting'],function (){
