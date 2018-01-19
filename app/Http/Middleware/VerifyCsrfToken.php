@@ -12,6 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
+        '/front/message',
 //        '/v1/admin*',
     ];
 }
