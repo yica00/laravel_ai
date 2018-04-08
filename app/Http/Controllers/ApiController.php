@@ -14,16 +14,16 @@ class ApiController extends Controller
     public function index(Request $request)
     {
         $slides = $this->getSlides();
-        $products = $this->getProduct();
-        $categorys = $this->getCategory();
-        $shops = $this->getShop();
-        return [$slides,$shops,$categorys,$products];
+//        $products = $this->getProduct();
+//        $categorys = $this->getCategory();
+//        $shops = $this->getShop();
+        return [$slides];
     }
 
 
     public function getSlides()
     {
-        $articles = Article::select('id', 'link', 'thumbnail')->where('pid', 1)->get();
+        $articles = Article::where('pid', 1)->get();
         return $articles;
     }
     public function getCategory()
@@ -51,7 +51,7 @@ class ApiController extends Controller
 
     public function slides()
     {
-        $articles = Article::select('id', 'link', 'thumbnail')->where('pid', 1)->get();
+        $articles = Article::where('pid', 1)->get();
         return $articles;
     }
 
