@@ -15,101 +15,24 @@ Route::get('session',function (){
 });
 
 
-Route::group(['middleware'=>'check_setting'],function (){
+Route::group(['as'=>'front'],function (){
+
+    Route::group(['prefix'=>'api'],function (){
+        Route::get('/','ApiController@index');
+
+        Route::get('goodss','ApiController@goods_list');
+        Route::get('goods/{id}','ApiController@goods_detail');
+
+        Route::get('shops','ApiController@shop_list');
+        Route::get('shop/{id}','ApiController@shop_detail');
+
+        Route::get('categorys','ApiController@category_list');
+        Route::get('category/{id}','ApiController@category_detail');
+
+        Route::get('brands','ApiController@brand_list');
 
 
-//    Route::group(['as'=>'front','middleware'=>'get_nav'],function (){
-
-    Route::group(['as'=>'front'],function (){
-
-        Route::get('/','FrontController@index');
-        Route::get('/setting','FrontController@setting');
-
-        Route::get('about','FrontController@about');
-        Route::get('about/culture','FrontController@culture');
-        Route::get('about/video','FrontController@video');
-        Route::get('about/video/{id}','FrontController@video_detail');
-        Route::get('about/honor','FrontController@honor');
-        Route::get('about/env','FrontController@env');
-        Route::get('about/contact','FrontController@contact');
-
-        Route::get('order','FrontController@offer');
-
-        Route::get('brand','FrontController@brand');
-
-        Route::get('news','FrontController@news');
-        Route::get('news/category/{id}','FrontController@news');
-        Route::get('news/{id}','FrontController@new_detail');
-
-        Route::get('treatment','FrontController@treatment');
-
-        Route::get('item','FrontController@items');
-        Route::get('item/{id}','FrontController@items');
-        Route::get('item/category/{id}','FrontController@items');
-
-        Route::get('store','FrontController@store_list');
-        Route::get('about/store/{id}','FrontController@store_dedail');
-
-        Route::get('star','FrontController@star');
-        Route::get('star/{id}','FrontController@star_dedail');
-
-        Route::get('about/compus','FrontController@compus');
-        Route::get('about/compus/{id}','FrontController@compus');
-
-        Route::get('work','FrontController@work');
-        Route::get('work/{id}','FrontController@work_dedail');
-
-        Route::get('active','FrontController@active_list');
-        Route::get('active/{id}','FrontController@active_dedail');
-
-        Route::get('join','FrontController@join_detail');
-        Route::get('join/category/{id}','FrontController@join_detail');
-        Route::get('join/suply','FrontController@join_suply');
-
-
-        Route::get('case','FrontController@our_case');
-        Route::get('case/{hid}/{sid}','FrontController@our_case');
-//        Route::get('case/category/{id}','FrontController@our_case');
-        Route::get('case/{id}','FrontController@case_detail');
-        Route::get('item_case/{id}','FrontController@item_case');
-
-        Route::get('team','FrontController@team');
-        Route::get('/team/design','FrontController@team_design');
-        Route::get('team/supervise','FrontController@team_supervise');
-        Route::get('team/{id}','FrontController@team_detail');
-        Route::get('worker/{id}','FrontController@worker_detail');
-
-        Route::get('quality','FrontController@quality');
-        Route::get('quality/category/{id}','FrontController@quality');
-
-        Route::get('project','FrontController@project');
-        Route::get('project/{id}','FrontController@project_detail');
-
-        Route::get('question/{id}','FrontController@question_detail');
-
-        Route::get('product','FrontController@product');
-        Route::get('product/category/{id}','FrontController@product');
-        Route::get('product/{id}','FrontController@product_detail');
-
-        Route::get('guide','FrontController@guide');
-        Route::get('guide/category/{id}','FrontController@guide');
-        Route::get('guide/{id}','FrontController@guide_detail');
-
-        Route::get('service','FrontController@service');
-        Route::get('service/category/{id}','FrontController@service');
-
-        Route::get('budge','FrontController@budge');
-
-
-        Route::get('contact','FrontController@contact');
-        Route::get('contact/way','FrontController@way');
-        Route::get('contact/message','FrontController@message');
-
-        Route::post('/front/message','Admin\MessageController@store');
-        Route::any('/search','FrontController@search');
-
-
-     //此处开始需要用户认证
+        //需要验证登录
         Route::group(['middleware'=>'CheckAuth'],function (){
             Route::get('addCart','ApiController@addCart');  //添加购物车
             Route::get('buying','ApiController@buying'); //下单
@@ -133,9 +56,11 @@ Route::group(['middleware'=>'check_setting'],function (){
             Route::POST('/up_user_info','ApiController@up_user_info'); //完善个人资料
 
         });
-
-
     });
+
+
+
+
 
     Route::get('/admin/logout', function () {
         Auth::guard('admin')->logout();
@@ -147,7 +72,7 @@ Route::group(['middleware'=>'check_setting'],function (){
 
 
 
-    Route::group(['middleware'=>'AdminAuth','namespace'=>'Admin','prefix'=>'admin'],function (){
+    Route::group(['middleware'=>['AdminAuth','check_setting'],'namespace'=>'Admin','prefix'=>'admin'],function (){
         Route::resource('article','ArticleController');
         Route::resource('team','TeamController');
         Route::resource('message','MessageController');

@@ -35,8 +35,8 @@ return [
      * 小程序配置信息
      */
      'mini_program' => [
-         'app_id'  => env('WECHAT_MINI_PROGRAM_APPID', 'wx2d338c4d2b8c88dd'),
-         'secret'  => env('WECHAT_MINI_PROGRAM_SECRET', 'bf91340c1d4f2d6dfb9d729187c8163d'),
+         'app_id'  => env('WECHAT_MINI_PROGRAM_APPID', 'wxc67ddc5b31a6f5e3'),
+         'secret'  => env('WECHAT_MINI_PROGRAM_SECRET', '26c72651b17ad6e546a27ce9d5b91f4f'),
          'token'   => env('WECHAT_MINI_PROGRAM_TOKEN', ''),
          'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY', ''),
      ],
