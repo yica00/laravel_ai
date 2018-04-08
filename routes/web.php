@@ -80,6 +80,7 @@ Route::group(['as'=>'front'],function (){
         Route::resource('order_list','Order_listController');
         Route::resource('rcase','RcaseController');
         Route::resource('report','ReportController');
+        Route::resource('user','UserController');
 
         Route::get('/', 'AuthController@index');
         Route::get('/team/{id}/delete','TeamController@destroy');

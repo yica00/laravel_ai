@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Crm\UserRequest;
 use App\Models\Admin\Area;
+use App\Models\Admin\Teams;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +14,11 @@ use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
 {
+
+    public function index(){
+        $teams = User::paginate(20);
+        return view('admin.team',compact('teams'));
+    }
 
     /**
      * 修改密码

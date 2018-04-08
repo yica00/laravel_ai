@@ -23,7 +23,7 @@
             @foreach($teams as $sort)
                 <tr>
                     <td>{{$sort->name}}</td>
-                    <td>{{$sort->title}}</td>
+                    <td>{{$sort->wx_name}}</td>
                     <td> <img src="{{$sort->photo}}" width="30"> </td>
                     {{--<td>{{$sort->introduce}}</td>--}}
 
