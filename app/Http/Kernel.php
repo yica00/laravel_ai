@@ -18,7 +18,6 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Http\Middleware\Check_setting::class,
     ];
 
     /**
@@ -59,5 +58,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'check_setting' => \App\Http\Middleware\Check_setting::class,
         'get_nav' => \App\Http\Middleware\Get_nav::class,
+        'AdminAuth' => \App\Http\Middleware\AdminAuth::class,
+        'CheckAuth' => \App\Http\Middleware\CheckAuth::class,
     ];
 }

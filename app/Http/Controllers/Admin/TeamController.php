@@ -28,7 +28,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        $items = Article::where('pid',2)->get();
+        $items = Article::where('pid',3)->get();
 //        $ids = getIds($cates);
 //        $articles = Article::select('id','title')->whereIn('pid',$ids)
 //            ->orderBy('id','desc')->get();
@@ -74,12 +74,12 @@ class TeamController extends Controller
     public function edit($id)
     {
         $team = Teams::find($id);
-        $team->production = explode(',',$team->production);
-        $cates = Article::where('pid',15)->get();
-        $ids = getIds($cates);
-        $articles = Article::select('id','title')->whereIn('pid',$ids)
-            ->orderBy('id','desc')->get();
-        $items = Article::where('pid',2)->get();
+//        $team->production = explode(',',$team->production);
+//        $cates = Article::where('pid',15)->get();
+//        $ids = getIds($cates);
+//        $articles = Article::select('id','title')->whereIn('pid',$ids)
+//            ->orderBy('id','desc')->get();
+        $items = Article::where('pid',3)->get();
         return view('admin.team_edit',compact('team','items'));
     }
 

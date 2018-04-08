@@ -83,5 +83,42 @@ class UserController extends Controller
     }
 
 
+    public function pushCode(){
+        $code = Input::get('code');
+        $refer = Input::get('uid');
+        $app = app('wechat');
+        $miniProgram = $app->mini_program;
+        $rel = $miniProgram->sns->getSessionKey($code);
+        if ( isset($rel->openid) ){
+            $user = User::where('openid',$rel->openid)->first();
+            if( !$user ){
+                $xxx = User::find($refer);
+                if(!$xxx){
+                    $refer = 0;
+                }
+                $user = [
+                    'name'=>num11(),
+                    'password'=>Hash::make("123456"),
+                    'openid'=>$rel->openid,
+                    'refer'=>$refer,
+                ];
+                $user = User::create($user);
+            }
+            Auth::login($user);
+            return ['statue'=>1 ];
+        }else{
+            file_put_contents(storage_path('notify.txt'), '时间：' . Carbon::now(). "\r\n", FILE_APPEND);
+            return ['statue'=>0 ];
+        }
+    }
+
+    public function authCheck(){
+        if( Auth::check() ){
+            return ['statue'=>1 ];
+        }
+        return ['statue'=>0 ];
+    }
+
+
 
 }

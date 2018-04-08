@@ -59,6 +59,12 @@
                                     <input id="email"  class="form-control" name="title"  autofocus>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">职务</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="position"  autofocus>
+                                </div>
+                            </div>
 
                             {{--<div class="form-group">--}}
                                 {{--<label for="email" class="col-md-4 control-label">从业年限</label>--}}
@@ -100,13 +106,6 @@
                             {{--</div>--}}
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">荣誉title</label>
-                                <div class="col-md-6">
-                                    <textarea class="form-control" rows="4" name="honor" ></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">擅长项目</label>
                                 <div class="col-md-6">
                                     <textarea class="form-control" rows="4" name="good_at" ></textarea>
@@ -119,6 +118,25 @@
                                     <textarea class="form-control" rows="6" name="introduce" ></textarea>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">上班时间</label>
+                                <div class="col-md-6">
+                                    <label style="color: red">请用英文逗号分隔</label>
+                                    <textarea class="form-control" rows="3" name="work_time" ></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">所属科室</label>
+                                <div class="col-md-6">
+                                    <select name="class_id" id="email" class="form-control" >
+                                        @foreach( $items as $item )
+                                          <option value ="{{$item->id}}"  >{{$item->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
                             {{--<div class="form-group">--}}
                                 {{--<label for="email" class="col-md-4 control-label">主要作品</label>--}}
@@ -129,27 +147,27 @@
                                 {{--</div>--}}
                             {{--</div>--}}
 
-                            <div class="form-group" >
-                                <label for="email" class="col-md-4 control-label">工作图集</label>
-                                <!-- 加载编辑器的容器 -->
-                                <div class="col-md-6">
-                                    <script id="container" name="comtent" type="text/plain">
-                                    </script>
-                                    <!-- 配置文件 -->
-                                    <script type="text/javascript" src="/akl/Ueditor/ueditor.config.js"></script>
-                                    <!-- 编辑器源码文件 -->
-                                    <script type="text/javascript" src="/akl/Ueditor/ueditor.all.js"></script>
-                                    <!-- 实例化编辑器 -->
-                                    <script type="text/javascript">
-                                        var ue = UE.getEditor('container', {
-                                            autoHeightEnabled: true,
-                                            autoFloatEnabled: true,
-                                            initialFrameWidth : 900,
-                                            initialFrameHeight: 400
-                                        });
-                                    </script>
-                                </div>
-                            </div>
+                            {{--<div class="form-group" >--}}
+                                {{--<label for="email" class="col-md-4 control-label">工作图集</label>--}}
+                                {{--<!-- 加载编辑器的容器 -->--}}
+                                {{--<div class="col-md-6">--}}
+                                    {{--<script id="container" name="comtent" type="text/plain">--}}
+                                    {{--</script>--}}
+                                    {{--<!-- 配置文件 -->--}}
+                                    {{--<script type="text/javascript" src="/akl/Ueditor/ueditor.config.js"></script>--}}
+                                    {{--<!-- 编辑器源码文件 -->--}}
+                                    {{--<script type="text/javascript" src="/akl/Ueditor/ueditor.all.js"></script>--}}
+                                    {{--<!-- 实例化编辑器 -->--}}
+                                    {{--<script type="text/javascript">--}}
+                                        {{--var ue = UE.getEditor('container', {--}}
+                                            {{--autoHeightEnabled: true,--}}
+                                            {{--autoFloatEnabled: true,--}}
+                                            {{--initialFrameWidth : 900,--}}
+                                            {{--initialFrameHeight: 400--}}
+                                        {{--});--}}
+                                    {{--</script>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
 
                             <div class="form-group">

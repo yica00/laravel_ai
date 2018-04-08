@@ -30,13 +30,13 @@
                             </div>
                         @endif
 
-                        <h3>新增商品</h3>
+                        <h3>修改栏目</h3>
                         <form class="form-horizontal" role="form" method="POST" action="/admin/article/{{ $article->id  }}" enctype="multipart/form-data" >
                             {{csrf_field()}}
                             <input type="hidden" name="_method" value="PUT">
                             {{--<input value="{{ $article->id  }}" name="pid" style="display: none" >--}}
                             <div class="form-group">
-                                <label for="email" class="col-md-3 control-label">商品名字</label>
+                                <label for="email" class="col-md-3 control-label">栏目名字</label>
                                 <div class="col-md-8">
                                     <input id="email" class="form-control" name="title" value="{{$article->title}}"   autofocus>
                                 </div>

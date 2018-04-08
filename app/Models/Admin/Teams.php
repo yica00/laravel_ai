@@ -9,7 +9,7 @@ class Teams extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name','education','title','honor','photo','wx_img','introduce','good_at','design_concept','comtent','cate'];
+    protected $fillable = ['name','education','title','work_time','photo','position','introduce','good_at','design_concept','comtent','class_id'];
 
     protected $hidden = ['created_at','updated_at','deleted_at'];
 
@@ -18,7 +18,7 @@ class Teams extends Model
     }
 
     public function item(){
-        return $this->belongsTo('App\Models\Admin\Article','work_age','id');
+        return $this->belongsTo('App\Models\Admin\Article','class_id','id');
     }
 }
 

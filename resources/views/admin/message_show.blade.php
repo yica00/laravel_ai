@@ -40,17 +40,30 @@
                                 </div>
                             </div>
 
-                            {{--<div class="form-group">--}}
-                                {{--<label for="email" class="col-md-4 control-label">邮箱</label>--}}
-                                {{--<div class="col-md-6">--}}
-                                    {{--<input id="email"  class="form-control" name="email" value="{{  $message->email }}" disabled="true" autofocus>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">留言时间</label>
+                                <label for="email" class="col-md-4 control-label">预约日期</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="belong_to" value="{{ $message->order_time  }}" disabled="true" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">上午&下午</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="belong_to" value="{{ $message->am_pm  }}" disabled="true" autofocus>
+                                </div
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">预约医生</label>
+                                <div class="col-md-6">
+                                    <input id="email"  class="form-control" name="belong_to" value="{{ $message->team_id  }}" disabled="true" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">提交时间</label>
                                 <div class="col-md-6">
                                     <input id="email"  class="form-control" name="belong_to" value="{{ $message->created_at  }}" disabled="true" autofocus>
                                 </div>
@@ -58,13 +71,13 @@
 
 
 
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">留言内容</label>
-                                <div class="col-md-6">
-                                    <div id="xx2" style="border-style:solid;border-color:#b1b7ba;padding: 10px;border-radius:5px">{!!  $message->message !!}</div>
+                            {{--<div class="form-group">--}}
+                                {{--<label for="email" class="col-md-4 control-label">留言内容</label>--}}
+                                {{--<div class="col-md-6">--}}
+                                    {{--<div id="xx2" style="border-style:solid;border-color:#b1b7ba;padding: 10px;border-radius:5px">{!!  $message->message !!}</div>--}}
                                     {{--<textarea rows="10" cols="50" disabled="true" class="form-control" id="xx2"></textarea>--}}
-                                </div>
-                            </div>
+                                {{--</div>--}}
+                            {{--</div>--}}
 
 
                         </form>

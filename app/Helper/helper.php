@@ -26,13 +26,13 @@ if (!function_exists('getRandom')){
 if (!function_exists('writeJson')){
     function writeJson( $data){
         $json_string = json_encode($data);
-        file_put_contents(__DIR__.'/data.json', $json_string);
+        file_put_contents(storage_path('data.json'), $json_string);
     }
 }
 
 if (!function_exists('readJson')){
     function readJson(){
-        $json_string = file_get_contents(__DIR__.'/data.json');
+        $json_string = file_get_contents(storage_path('data.json'));
         $data = json_decode($json_string, true);
         return $data;
     }
@@ -101,11 +101,11 @@ function getMultiUrl($request,$img){
 
 function writeJson2( $data){
     $json_string = json_encode($data);
-    file_put_contents(__DIR__.'/data2.json', $json_string);
+    file_put_contents(storage_path('data2.json'));
 }
 
 function readJson2(){
-    $json_string = file_get_contents(__DIR__.'/data2.json');
+    $json_string = file_get_contents(storage_path('data2.json'));
     $data = json_decode($json_string, true);
     return $data;
 }

@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/member';
 
     /**
      * Create a new controller instance.
@@ -48,9 +48,22 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => array('unique:users','regex:/^1(3|4|5|7|8)[0-9]\d{8}$/'),
+//            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+//            'rel_name' => 'required|string|max:20',
+//            'phone' => array('regex:/^1(3|4|5|7|8)[0-9]\d{8}$/'),
+        ],[
+           'name.regex' => "电话号码不正确",
+           'name.unique' => "手机号已经存在",
+           'name.required' => "用户名必须填写",
+           'name.max' => "用户名最多20字符",
+           'password.required' => "密码必须填写",
+           'password.min' => "密码最少6位",
+           'password.confirmed' => "两次密码不一致",
+           'rel_name.required' => "真实姓名必须填写",
+           'rel_name.max' => "真实姓名最多20字符",
+           'phone.regex' => "电话号码不正确",
         ]);
     }
 
@@ -64,8 +77,10 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+//            'email' => $data['email'],
             'password' => bcrypt($data['password']),
+//            'rel_name' => $data['rel_name'],
+//            'phone' => $data['phone'],
         ]);
     }
 }
