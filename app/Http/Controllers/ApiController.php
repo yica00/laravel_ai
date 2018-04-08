@@ -100,9 +100,9 @@ class ApiController extends Controller
 
     public function authCheck(){
         if( Auth::check() ){
-            return ['statue'=>1 ];
+            return ['statue'=>1,'photo'=>Auth::user()->photo ];
         }
-        return ['statue'=>0,'photo'=>Auth::user()->photo ];
+        return ['statue'=>0];
     }
 
 
