@@ -315,3 +315,8 @@ function verifyCaptcha(){
     }
     return 0;
 }
+
+function num11(){
+    $number = rand(10000000000,99999999999);
+    return $number;
+}
