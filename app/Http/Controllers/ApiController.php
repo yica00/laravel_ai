@@ -102,7 +102,7 @@ class ApiController extends Controller
         if( Auth::check() ){
             return ['statue'=>1 ];
         }
-        return ['statue'=>0 ];
+        return ['statue'=>0,'photo'=>Auth::user()->photo ];
     }
 
 
