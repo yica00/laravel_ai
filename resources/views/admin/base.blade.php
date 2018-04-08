@@ -60,12 +60,12 @@
                     <li><a href="/admin" class="active"><i class="lnr lnr-home"></i> <span>后台首页</span></a></li>
                     <li><a href="/admin/article" ><i class="lnr lnr-inbox"></i> <span>内容管理</span></a></li>
                     {{--<li><a href="/admin/order_list" class=""><i class="lnr lnr-cart"></i> <span>订单管理</span></a></li>--}}
-                    <li><a href="/admin/team" class=""><i class="lnr lnr-users"></i> <span>专家团队</span></a></li>
+                    {{--<li><a href="/admin/team" class=""><i class="lnr lnr-users"></i> <span>专家团队</span></a></li>--}}
                     {{--<li><a href="/admin/rcase" class=""><i class="lnr lnr-users"></i> <span>案例管理</span></a></li>--}}
                     {{--<li><a href="/admin/car" class=""><i class="lnr lnr-car"></i> <span>车型管理</span></a></li>--}}
                     {{--<li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>报价管理</span></a></li>--}}
-                    <li><a href="/admin/report" class=""><i class="lnr lnr-bubble"></i> <span>报告管理</span></a></li>
-                    <li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>预约管理</span></a></li>
+                    {{--<li><a href="/admin/report" class=""><i class="lnr lnr-bubble"></i> <span>报告管理</span></a></li>--}}
+                    {{--<li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>预约管理</span></a></li>--}}
                     <li><a href="/admin/setting" class=""><i class="lnr lnr-cog"></i> <span>网站配置</span></a></li>
                     <li><a href="/admin/up_password" class=""><i class="lnr lnr-sun"></i> <span>修改密码</span></a></li>
                     {{--<li>--}}

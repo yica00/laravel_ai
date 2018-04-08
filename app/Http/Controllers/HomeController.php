@@ -57,6 +57,7 @@ class HomeController extends Controller
             'phone'=>$request->get('phone'),
             'fix_phone'=>$request->get('fix_phone'),
             'qq'=>$request->get('qq'),
+            'email'=>$request->get('email'),
             'bases'=>$request->get('bases'),
             'bases_xy'=>$request->get('bases_xy'),
             'icp'=>$request->get('icp'),
