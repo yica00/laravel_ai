@@ -57,7 +57,7 @@ class ApiController extends Controller
         return $articles;
     }
 
-    public function up_user_info(UserUpRequest $request)
+    public function up_user_info()
     {
         $atic = Input::except('_token','_method');
         $user = User::find(Auth::id());
