@@ -16,16 +16,20 @@ class ApiController extends Controller
     public function index(Request $request)
     {
         $slides = $this->getSlides();
+        $about = $this->getAbout();
+        $service = $this->getService();
+        $sets = $this->getSeting();
 //        $products = $this->getProduct();
 //        $categorys = $this->getCategory();
 //        $shops = $this->getShop();
-        return [$slides];
+        return [$slides,$about,$service,$sets];
     }
 
 
     public function getSlides()
     {
-        $articles = Article::where('pid', 1)->get();
+        $articles = Article::select('id','thumbnail')->where('pid', 29)
+            ->orderBy('serial_number','desc')->get();
         return $articles;
     }
     public function getCategory()
@@ -47,15 +51,46 @@ class ApiController extends Controller
 
     public function getAbout()
     {
-        $article = Article::find(17);
+        $article = Article::select('thumbnail','text')->find(32);
+        return $article;
+    }
+    public function getService()
+    {
+        $article = Article::select('thumbnail')->find(33);
+        return $article;
+    }
+    public function getSeting()
+    {
+        $article = json_decode(file_get_contents( storage_path('data.json') ));
         return $article;
     }
 
-    public function slides()
+    public function about()
     {
-        $articles = Article::where('pid', 1)->get();
+        $articles = Article::with('articles')->where('pid', 2)
+            ->orderBy('serial_number','deac')->orderBy('id','asc')->get();
         return $articles;
     }
+
+    public function service(){
+        $articles = Article::select('id','thumbnail','title','text')->where('pid', 3)
+            ->orderBy('serial_number','deac')->orderBy('id','asc')->get();
+        return $articles;
+    }
+
+    public function service_detail($id){
+        $article = Article::select('title','thumbnail')->where('pid',$id)
+            ->orderBy('serial_number','deac')->orderBy('id','asc')->get();
+        return $article;
+    }
+
+    public function equipment(){
+        $article = Article::select('title','thumbnail')->where('pid',4)
+            ->orderBy('serial_number','deac')->orderBy('id','asc')->get();
+        return $article;
+
+    }
+
 
     public function up_user_info()
     {

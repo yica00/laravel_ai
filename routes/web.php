@@ -19,6 +19,12 @@ Route::group(['as'=>'front'],function (){
 
     Route::group(['prefix'=>'api'],function (){
         Route::get('/','ApiController@index');
+        Route::get('/about','ApiController@about');
+
+        Route::get('service','ApiController@service');
+        Route::get('service/{id}','ApiController@service_detail');
+
+        Route::get('equipment','ApiController@equipment');
 
         Route::get('goodss','ApiController@goods_list');
         Route::get('goods/{id}','ApiController@goods_detail');
