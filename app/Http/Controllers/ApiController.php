@@ -86,7 +86,7 @@ class ApiController extends Controller
 
     public function news(){
         $articles = Article::select('id','thumbnail','title','created_at')->where('pid', 34)
-            ->orderBy('serial_number','deac')->orderBy('id','asc')->take(30)->get();
+            ->orderBy('serial_number','deac')->orderBy('id','asc')->paginate(3);
         return $articles;
     }
 
