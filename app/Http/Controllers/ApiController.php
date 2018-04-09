@@ -92,6 +92,7 @@ class ApiController extends Controller
 
     public function news_detail($id){
         $article = Article::find($id);
+        $article->imgs = explode(',',$article->imgs);
         return $article;
     }
 
