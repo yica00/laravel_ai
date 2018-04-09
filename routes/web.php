@@ -26,6 +26,9 @@ Route::group(['as'=>'front'],function (){
 
         Route::get('equipment','ApiController@equipment');
 
+        Route::get('news','ApiController@news');
+        Route::get('news/{id}','ApiController@news_detail');
+
         Route::get('goodss','ApiController@goods_list');
         Route::get('goods/{id}','ApiController@goods_detail');
 

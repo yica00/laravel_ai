@@ -11,7 +11,7 @@ class Article extends Model
 
     protected $fillable = ['title','thumbnail','serial_number','imgs','text','pid','is_nav'];
 
-    protected $hidden = ['created_at','updated_at','deleted_at'];
+    protected $hidden = ['updated_at','deleted_at'];
 
     public function articles(){
         return $this->hasMany('App\Models\Admin\Article','pid','id');
