@@ -109,7 +109,7 @@ Route::group(['as'=>'front'],function (){
         Route::get('article/add_son/{id}','ArticleController@add_son');
         Route::get('article/{id}/look','Admin\ArticleController@look_son');
         Route::get('article/{id}/addson','Admin\ArticleController@add_son');
-        Route::get('article/{id}/delete','ArticleController@delete_son');
+        Route::get('article/{id}/delete','Admin\ArticleController@delete_son');
         Route::post('article/add_son/{id}','Admin\ArticleController@store_son');
 
         Route::get('report/{id}/delete','Admin\ReportController@destroy');
