@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Admin\CustomerRequest;
-use App\Models\Admin\Category;
-use App\Models\Admin\Customer;
 use App\Models\Admin\Level;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
-class CustomerController extends Controller
+class LevelController extends Controller
 {
     public function index()
     {
-        $customers = Customer::with('level')->orderBy('id','desc')->paginate(20);
-        return view('admin.customer',compact('customers'));
+        $levels = Level::get();
+        return view('admin.level',compact('levels'));
     }
 
     /**
@@ -25,9 +22,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        $categorys = Category::all();
-        $levels = Level::all();
-        return view('admin.customer_add',compact('categorys','levels'));
+        return view('admin.level_add');
     }
 
     /**
@@ -36,12 +31,11 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomerRequest $request)
+    public function store(Request $request)
     {
         $atic = Input::all();
-        $atic['imgs'] = getMultiUrl($request,'imgs');
-        $rel = Customer::create($atic);
-        if($rel->wasRecentlyCreated){
+        $rel = Level::create($atic);
+        if( $rel->wasRecentlyCreated ){
             return back()->with('errors','添加成功');
         }
         return back()->withErrors();
@@ -66,10 +60,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::find($id);
-        $categorys = Category::all();
-        $levels = Level::all();
-        return view('admin.customer_edit',compact('customer','categorys','levels'));
+        $level = Level::find($id);
+        return view('admin.level_edit',compact('level'));
     }
 
     /**
@@ -79,15 +71,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CustomerRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $atic = Input::except('_token','_method');
-        $atic['imgs'] = getMultiUrl($request,'imgs');
-        if( ! $atic['imgs'] ){
-            unset( $atic['imgs']);
-        }
-        $customer = Customer::find($id);
-        $rel = $customer->update($atic);
+        $level = Level::find($id);
+        $rel = $level->update($atic);
         if( $rel){
             return back()->with('errors','修改成功');
         }
@@ -102,13 +90,10 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        $article = Customer::find($id);
+        $article = Level::find($id);
         if($article && $article->delete()){
             return back()->with('errors',"删除成功");
         }
         return back()->with('errors',"删除失败");
     }
-
-
-
 }

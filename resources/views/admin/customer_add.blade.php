@@ -40,8 +40,9 @@
                                 <label for="email" class="col-md-3 control-label">类型</label>
                                 <div class="col-md-8">
                                     <select name="type"  class="form-control" id="email">
-                                        <option value ="0" >不</option>
-                                        <option value ="1" >导航</option>
+                                        @foreach( $categorys as $cate )
+                                          <option value ="{{$cate->id}}" >{{$cate->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -50,8 +51,9 @@
                                 <label for="email" class="col-md-3 control-label">等级</label>
                                 <div class="col-md-8">
                                     <select name="level" id="email"  class="form-control">
-                                        <option value ="0" >不</option>
-                                        <option value ="1" >导航</option>
+                                        @foreach( $levels as $cate )
+                                            <option value ="{{$cate->id}}" >{{$cate->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

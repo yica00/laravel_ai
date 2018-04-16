@@ -10,33 +10,30 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2018-04-16 11:29:18
+Date: 2018-04-16 15:06:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for articles
+-- Table structure for categorys
 -- ----------------------------
-DROP TABLE IF EXISTS `articles`;
-CREATE TABLE `articles` (
+DROP TABLE IF EXISTS `categorys`;
+CREATE TABLE `categorys` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thumbnail` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `serial_number` int(10) unsigned NOT NULL DEFAULT '0',
-  `pid` int(10) unsigned NOT NULL DEFAULT '0',
-  `is_nav` int(10) unsigned NOT NULL DEFAULT '0',
-  `imgs` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `text` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
--- Records of articles
+-- Records of categorys
 -- ----------------------------
+INSERT INTO `categorys` VALUES ('1', '黄种人', '2018-04-16 14:23:27', '2018-04-16 14:24:23', null);
+INSERT INTO `categorys` VALUES ('2', '白种人', '2018-04-16 14:23:33', '2018-04-16 14:23:33', null);
+INSERT INTO `categorys` VALUES ('3', '蓝种人', '2018-04-16 14:23:51', '2018-04-16 14:29:16', null);
 
 -- ----------------------------
 -- Table structure for customers
@@ -45,20 +42,41 @@ DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` tinyint(4) NOT NULL DEFAULT '1',
-  `level` tinyint(4) NOT NULL DEFAULT '1',
   `blov` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `imgs` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `level_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of customers
 -- ----------------------------
-INSERT INTO `customers` VALUES ('1', '小胖', '1', '0', '很胖，爱吃糖', '/images/15238488733210.jpg,/images/15238488731093.jpg', '2018-04-16 11:21:13', '2018-04-16 11:21:13', null);
+INSERT INTO `customers` VALUES ('1', '小胖', '很胖，爱吃糖', '/images/15238488733210.jpg,/images/15238488731093.jpg', '2018-04-16 11:21:13', '2018-04-16 11:36:39', null, '1', '1');
+INSERT INTO `customers` VALUES ('2', '小草', '性感，漂亮', '/images/15238500909251.jpg,/images/15238500907888.jpg', '2018-04-16 11:41:30', '2018-04-16 14:30:08', null, '2', '2');
+
+-- ----------------------------
+-- Table structure for levels
+-- ----------------------------
+DROP TABLE IF EXISTS `levels`;
+CREATE TABLE `levels` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of levels
+-- ----------------------------
+INSERT INTO `levels` VALUES ('1', '黑道1段', '2018-04-16 14:26:24', '2018-04-16 14:26:24', null);
+INSERT INTO `levels` VALUES ('2', '黑道2段', '2018-04-16 14:26:31', '2018-04-16 14:26:53', null);
+INSERT INTO `levels` VALUES ('3', '黑道三段', '2018-04-16 14:26:35', '2018-04-16 14:29:23', null);
 
 -- ----------------------------
 -- Table structure for managers
@@ -92,7 +110,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of migrations
@@ -108,6 +126,8 @@ INSERT INTO `migrations` VALUES ('8', '2017_11_06_110957_create_rcases_table', '
 INSERT INTO `migrations` VALUES ('9', '2018_04_04_171612_create_reports_table', '1');
 INSERT INTO `migrations` VALUES ('10', '2018_04_08_110206_create_managers_table', '1');
 INSERT INTO `migrations` VALUES ('11', '2018_04_16_103226_create_customers_table', '1');
+INSERT INTO `migrations` VALUES ('12', '2018_04_16_140948_create_categorys_table', '2');
+INSERT INTO `migrations` VALUES ('13', '2018_04_16_141002_create_levels_table', '2');
 
 -- ----------------------------
 -- Table structure for password_resets

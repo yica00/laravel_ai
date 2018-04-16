@@ -35,12 +35,14 @@
                                 </div>
                             </div>
 
+
                             <div class="form-group">
-                                <label for="email" class="col-md-3 control-label">特征</label>
+                                <label for="email" class="col-md-3 control-label">类型</label>
                                 <div class="col-md-8">
-                                    <select name="type" id="email" class="form-control">
-                                        <option value ="0" @if( $customer->is_nav ==0 ) selected @endif >不</option>
-                                        <option value ="1" @if( $customer->is_nav ==1 ) selected @endif >导航</option>
+                                    <select name="type"  class="form-control" id="email">
+                                        @foreach( $categorys as $cate )
+                                            <option @if( $customer->category_id ==$cate->id ) selected @endif value ="{{$cate->id}}" >{{$cate->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -48,9 +50,10 @@
                             <div class="form-group">
                                 <label for="email" class="col-md-3 control-label">等级</label>
                                 <div class="col-md-8">
-                                    <select name="level" id="email" class="form-control">
-                                        <option value ="0" @if( $customer->is_nav ==0 ) selected @endif >不</option>
-                                        <option value ="1" @if( $customer->is_nav ==1 ) selected @endif >导航</option>
+                                    <select name="level" id="email"  class="form-control">
+                                        @foreach( $levels as $cate )
+                                            <option  @if( $customer->level_id ==$cate->id ) selected @endif value ="{{$cate->id}}" >{{$cate->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

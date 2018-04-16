@@ -95,6 +95,8 @@ Route::group(['as'=>'front'],function (){
         Route::resource('user','UserController');
         Route::resource('user','UserController');
         Route::resource('customer','CustomerController');
+        Route::resource('category','CategoryController');
+        Route::resource('level','levelController');
 
         Route::get('/', 'AuthController@index');
         Route::get('/team/{id}/delete','TeamController@destroy');
@@ -108,6 +110,10 @@ Route::group(['as'=>'front'],function (){
         Route::get('/setting', 'HomeController@setting'); //网站设置
         Route::put('/setting', 'HomeController@do_setting');//网站设置
 
+        Route::get('customer/{id}/delete','Admin\CustomerController@destroy');
+        Route::get('category/{id}/delete','Admin\CategoryController@destroy');
+        Route::get('level/{id}/delete','Admin\LevelController@destroy');
+
     });
 
     Route::group(['middleware'=>'AdminAuth'],function (){
@@ -117,7 +123,6 @@ Route::group(['as'=>'front'],function (){
         Route::get('article/{id}/delete','Admin\ArticleController@delete_son');
         Route::post('article/add_son/{id}','Admin\ArticleController@store_son');
 
-        Route::get('report/{id}/delete','Admin\ReportController@destroy');
     });
 
 });

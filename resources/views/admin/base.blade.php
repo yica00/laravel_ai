@@ -60,11 +60,20 @@
                     <li><a href="/admin" class="active"><i class="lnr lnr-home"></i> <span>后台首页</span></a></li>
                     {{--<li><a href="/admin/article" ><i class="lnr lnr-inbox"></i> <span>内容管理</span></a></li>--}}
                     <li>
-                        <a href="#subPages2" class="active" aria-expanded="true" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>客户管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                        <div id="subPages2" class="collapse in" aria-expanded="true">
+                        <a href="#subPages2"  data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>客户管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <div id="subPages2" class="collapse" >
                             <ul class="nav" >
                                 <li><a href="/admin/customer" class="">客户列表</a></li>
                                 <li><a href="/admin/customer/create" class="">新增客户</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#subPages3"   data-toggle="collapse" class="collapsed"><i class="lnr lnr-list"></i> <span>客户管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <div id="subPages3" class="collapse" >
+                            <ul class="nav" >
+                                <li><a href="/admin/category" class="">类别</a></li>
+                                <li><a href="/admin/level" class="">等级</a></li>
                             </ul>
                         </div>
                     </li>
