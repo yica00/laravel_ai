@@ -69,7 +69,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#subPages3"   data-toggle="collapse" class="collapsed"><i class="lnr lnr-list"></i> <span>客户管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <a href="#subPages3"   data-toggle="collapse" class="collapsed"><i class="lnr lnr-list"></i> <span>等级&类别</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="subPages3" class="collapse" >
                             <ul class="nav" >
                                 <li><a href="/admin/category" class="">类别</a></li>

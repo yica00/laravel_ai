@@ -60,10 +60,10 @@
 
 
                             <div class="form-group">
-                                <label for="email" class="col-md-3 control-label">客户特征</label>
+                                <label for="email" class="col-md-3 control-label">备注</label>
                                 <div class="col-md-8">
                                     {{--<span style="color: red">多个规格之间请用英文逗号隔开</span>--}}
-                                    <textarea class="form-control" rows="10" name="blov" >{{$customer->blov}}</textarea>
+                                    <textarea class="form-control" rows="10" name="remark" >{{$customer->remark}}</textarea>
                                 </div>
                             </div>
 

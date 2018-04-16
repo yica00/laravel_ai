@@ -26,7 +26,7 @@
                     <td>{{$sort->name}}</td>
                     <td>{{$sort->category->name}}</td>
                     <td>{{$sort->level->name}}</td>
-                    <td>{{$sort->blov}}</td>
+                    <td>{{ mb_substr($sort->remark，0,10)  }}...</td>
 
                     <td>
                         <a class="act-btn" href="/admin/customer/{{$sort->id}}/edit">编辑</a>
