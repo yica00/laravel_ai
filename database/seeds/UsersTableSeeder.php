@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
         DB::table('managers')->insert([
             'name'=>'admin',
             'email'=>'hupp@vip.qq.com',
-            'password'=>bcrypt('tc1028')
+            'password'=>bcrypt('li1028')
         ]);
     }
 }

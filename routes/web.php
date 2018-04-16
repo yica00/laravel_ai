@@ -13,6 +13,9 @@
 Route::get('session',function (){
     return 1;
 });
+Route::get('/',function (){
+    return redirect('admin');
+});
 
 
 Route::group(['as'=>'front'],function (){
@@ -90,6 +93,8 @@ Route::group(['as'=>'front'],function (){
         Route::resource('rcase','RcaseController');
         Route::resource('report','ReportController');
         Route::resource('user','UserController');
+        Route::resource('user','UserController');
+        Route::resource('customer','CustomerController');
 
         Route::get('/', 'AuthController@index');
         Route::get('/team/{id}/delete','TeamController@destroy');

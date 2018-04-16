@@ -37,10 +37,10 @@ class UserController extends Controller
         if($new_password != $query_password){
             return back()->with('errors',"两次新密码不一致");
         }
-        if(! Hash::check($old_password,Auth::user()->password)){
+        if(! Hash::check($old_password,Auth::guard('admin')->user()->password)){
             return back()->with('errors',"旧密码不正确");
         }
-        $user = Auth::user();
+        $user = Auth::guard('admin')->user();
         $user->password = Hash::make($new_password);
         $user->save();
         return back()->with('errors',"修改成功");

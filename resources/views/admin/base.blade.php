@@ -36,7 +36,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="/"><img src="/assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+            <a href="/">sbTeam~</a>
         </div>
         <div class="container-fluid">
             <div class="navbar-btn">
@@ -58,7 +58,16 @@
             <nav>
                 <ul class="nav">
                     <li><a href="/admin" class="active"><i class="lnr lnr-home"></i> <span>后台首页</span></a></li>
-                    <li><a href="/admin/article" ><i class="lnr lnr-inbox"></i> <span>内容管理</span></a></li>
+                    {{--<li><a href="/admin/article" ><i class="lnr lnr-inbox"></i> <span>内容管理</span></a></li>--}}
+                    <li>
+                        <a href="#subPages2" class="active" aria-expanded="true" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>客户管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <div id="subPages2" class="collapse in" aria-expanded="true">
+                            <ul class="nav" >
+                                <li><a href="/admin/customer" class="">客户列表</a></li>
+                                <li><a href="/admin/customer/create" class="">新增客户</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     {{--<li><a href="/admin/order_list" class=""><i class="lnr lnr-cart"></i> <span>订单管理</span></a></li>--}}
                     {{--<li><a href="/admin/team" class=""><i class="lnr lnr-users"></i> <span>专家团队</span></a></li>--}}
                     {{--<li><a href="/admin/rcase" class=""><i class="lnr lnr-users"></i> <span>案例管理</span></a></li>--}}
@@ -66,7 +75,7 @@
                     {{--<li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>报价管理</span></a></li>--}}
                     {{--<li><a href="/admin/report" class=""><i class="lnr lnr-bubble"></i> <span>报告管理</span></a></li>--}}
                     {{--<li><a href="/admin/message" class=""><i class="lnr lnr-bubble"></i> <span>预约管理</span></a></li>--}}
-                    <li><a href="/admin/setting" class=""><i class="lnr lnr-cog"></i> <span>网站配置</span></a></li>
+                    {{--<li><a href="/admin/setting" class=""><i class="lnr lnr-cog"></i> <span>网站配置</span></a></li>--}}
                     <li><a href="/admin/up_password" class=""><i class="lnr lnr-sun"></i> <span>修改密码</span></a></li>
                     {{--<li>--}}
                     {{--<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>--}}
@@ -99,7 +108,7 @@
     <div class="clearfix" ></div>
     <footer>
         <div class="container-fluid" >
-            <p class="copyright">&copy; 2017  All Rights <a href="/" target="_blank" >天辰科技</a>.  </p>
+            <p class="copyright">&copy; 2017  All Rights <a href="/" target="_blank" >sbTeam~</a>.  </p>
         </div>
     </footer>
 </div>
