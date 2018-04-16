@@ -17,7 +17,7 @@
                 <th>客户名</th>
                 <th>类型</th>
                 <th>登记</th>
-                <th>特征</th>
+                <th>备注</th>
                 <th>操作</th>
             </tr>
             @foreach($customers as $sort)
