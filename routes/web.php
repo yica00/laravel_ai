@@ -96,7 +96,7 @@ Route::group(['as'=>'front'],function (){
         Route::resource('user','UserController');
         Route::resource('customer','CustomerController');
         Route::resource('category','CategoryController');
-        Route::resource('level','levelController');
+        Route::resource('level','LevelController');
 
         Route::get('/', 'AuthController@index');
         Route::get('/team/{id}/delete','TeamController@destroy');
