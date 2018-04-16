@@ -31,14 +31,14 @@
                             <div class="form-group">
                                 <label for="email" class="col-md-3 control-label">客户</label>
                                 <div class="col-md-8">
-                                    <input id="email" class="form-control" name="title" value="{{$customer->name}}"   autofocus>
+                                    <input id="email" class="form-control" name="name" value="{{$customer->name}}"   autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="email" class="col-md-3 control-label">特征</label>
                                 <div class="col-md-8">
-                                    <select name="is_nav" id="email" class="form-control">
+                                    <select name="type" id="email" class="form-control">
                                         <option value ="0" @if( $customer->is_nav ==0 ) selected @endif >不</option>
                                         <option value ="1" @if( $customer->is_nav ==1 ) selected @endif >导航</option>
                                     </select>
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label for="email" class="col-md-3 control-label">等级</label>
                                 <div class="col-md-8">
-                                    <select name="is_nav" id="email" class="form-control">
+                                    <select name="level" id="email" class="form-control">
                                         <option value ="0" @if( $customer->is_nav ==0 ) selected @endif >不</option>
                                         <option value ="1" @if( $customer->is_nav ==1 ) selected @endif >导航</option>
                                     </select>
@@ -60,7 +60,7 @@
                                 <label for="email" class="col-md-3 control-label">客户特征</label>
                                 <div class="col-md-8">
                                     {{--<span style="color: red">多个规格之间请用英文逗号隔开</span>--}}
-                                    <textarea class="form-control" rows="10" name="text" >{{$customer->blov}}</textarea>
+                                    <textarea class="form-control" rows="10" name="blov" >{{$customer->blov}}</textarea>
                                 </div>
                             </div>
 
