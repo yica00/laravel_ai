@@ -28,7 +28,7 @@ class CustomerRequest extends FormRequest
             'type'=>'integer',
             'level'=>'integer',
             'blov'=>'max:255',
-            'imgs.*'=>'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'imgs.*'=>'image|max:1024',
         ];
     }
 
@@ -41,7 +41,7 @@ class CustomerRequest extends FormRequest
             'level.integer'=>'等级参数错误',
             'blov.max'=>'特征介绍最多255字符',
             'imgs.*.max'=>'单个图片最大限制1兆',
-            'imgs.*.mimes'=>'图片类型错误',
+            'imgs.*.image'=>'图片类型错误',
         ];
     }
 }
