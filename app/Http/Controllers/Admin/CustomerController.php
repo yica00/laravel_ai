@@ -125,7 +125,7 @@ class CustomerController extends Controller
                     if( $data->data ){
                         $img = [
                             'url'=> $arr[$i],
-                            'blov'=> $data->data[0]->attrs->feature_b64,
+                            'blov'=> base64_decode($data->data[0]->attrs->feature_b64),
                             'customer_id'=> $customer->id,
                         ];
                         Img::create($img);
