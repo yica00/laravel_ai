@@ -25,6 +25,35 @@ class ApiController extends Controller
         return [$slides,$about,$service,$sets];
     }
 
+    public function face(){
+        $image = storage_path('image.jpg');
+        $fcgi_result = $this->get_face_features("http://58.56.168.70:22222/api/face/process", $image);
+        return $fcgi_result;
+    }
+
+    public function get_face_features($face_api, $image_file) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SAFE_UPLOAD, true);
+        $image = array(
+            'scale' => 2.0,
+            'file' => new \CURLFile(realpath($image_file))
+        );
+        curl_setopt($ch, CURLOPT_URL, $face_api);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $image);
+        curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_USERAGENT,"centos 7.2");
+        $result = curl_exec($ch);
+        $response_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        if($response_code == 200) {
+            return $result;
+        } else {
+            dd($result);
+        }
+    }
 
     public function getSlides()
     {
