@@ -28,7 +28,7 @@ class CustomerRequest extends FormRequest
             'type'=>'integer',
             'level'=>'integer',
             'blov'=>'max:255',
-            'imgs.*'=>'image|max:1024',
+            'imgs.*'=>'max:1024',
         ];
     }
 
