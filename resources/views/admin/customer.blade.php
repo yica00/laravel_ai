@@ -11,7 +11,11 @@
                 echo $errors;
             }?>
         </p>
-
+        <form action="/admin/customer" style="float: left">
+            <select name="type">
+                <option value ="name">客户名字</option>
+            </select> <input name="va" > <button type="submit" >查询</button>
+        </form>
         <table class="tablePanel2" cellpadding="0" cellspacing="0" width="100%">
             <tr style="border-bottom:1px solid #BBB;height: 50px;border-top:1px solid #BBB;">
                 <th>客户名</th>

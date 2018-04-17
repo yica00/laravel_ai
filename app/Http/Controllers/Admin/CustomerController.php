@@ -15,7 +15,18 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Customer::with('level')->orderBy('id','desc')->paginate(20);
+        $name = Input::get('va');
+        $type = Input::get('type');
+        if($name){
+            $name = "%".$name."%";
+            $customers = Customer::with('level')->where($type,'like',$name)
+                ->orderBy('id','desc')->paginate(20);
+        }else{
+            $customers = Customer::with('level')->orderBy('id','desc')->paginate(20);
+        }
+
+
+
         return view('admin.customer',compact('customers'));
     }
 
@@ -51,7 +62,7 @@ class CustomerController extends Controller
                     if( $data->data ){
                         $img = [
                             'url'=> $arr[$i],
-                            'blov'=> $data->data[0]->attrs->feature_b64,
+                            'blov'=> base64_decode($data->data[0]->attrs->feature_b64),
                             'customer_id'=> $rel->id,
                         ];
                         Img::create($img);

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2018-04-17 11:27:54
+Date: 2018-04-17 14:01:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -50,11 +50,12 @@ CREATE TABLE `customers` (
   `level_id` int(11) DEFAULT NULL,
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of customers
 -- ----------------------------
+INSERT INTO `customers` VALUES ('8', '陈生', null, '2018-04-17 12:00:13', '2018-04-17 12:00:13', null, '1', '1', null);
 INSERT INTO `customers` VALUES ('7', '李开复', null, '2018-04-17 10:52:45', '2018-04-17 10:52:45', null, '2', '3', '测试');
 INSERT INTO `customers` VALUES ('6', '陈世旭', null, '2018-04-17 10:49:44', '2018-04-17 10:49:44', null, '1', '1', null);
 
@@ -66,20 +67,17 @@ CREATE TABLE `imgs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
   `url` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `blov` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blov` blob,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of imgs
 -- ----------------------------
-INSERT INTO `imgs` VALUES ('1', '6', '/images/15239333847831.jpg', 'bISCdnSad3p+jnmAbpt0ioB/kISVeXR9iGyBhHmMi4qDh4FliWN6goh/fnh+fImPenyAe3eEiYFwhoiJlXyFg4qHhYeAaHBzdnaBhnqNdnyIhpNtf5J0eYB+eH90eoyFg3yNh31yf5GCfoN4hYlwg3SDhYSEhI2HcYp3kHyUc2k=', '2018-04-17 10:49:45', '2018-04-17 10:49:45', null);
-INSERT INTO `imgs` VALUES ('2', '7', '/images/15239335651891.jpg', 'fYpzfIaEfYiRd3B+dIp/fHuIjXmKcXd6k3CAjX6Sf5F/gIOAf2t+iZaPe4JybIiUgYSCen2EfniDioCHinmEfXKQc4CQb3aBkI6Ke353gG16kod3eIJ4g3Z8bYNvcH11gHaPdX+Je414j3yRfoB9YXeQfYR7fnh8g4l+e5eBf38=', '2018-04-17 10:52:45', '2018-04-17 10:52:45', null);
-INSERT INTO `imgs` VALUES ('3', '7', '/images/15239335652849.jpg', 'bISCdnSad3p+jnmAbpt0ioB/kISVeXR9iGyBhHmMi4qDh4FliWN6goh/fnh+fImPenyAe3eEiYFwhoiJlXyFg4qHhYeAaHBzdnaBhnqNdnyIhpNtf5J0eYB+eH90eoyFg3yNh31yf5GCfoN4hYlwg3SDhYSEhI2HcYp3kHyUc2k=', '2018-04-17 10:52:46', '2018-04-17 10:52:46', null);
-INSERT INTO `imgs` VALUES ('4', '6', '/images/15239351781621.jpg', 'fYpzfIaEfYiRd3B+dIp/fHuIjXmKcXd6k3CAjX6Sf5F/gIOAf2t+iZaPe4JybIiUgYSCen2EfniDioCHinmEfXKQc4CQb3aBkI6Ke353gG16kod3eIJ4g3Z8bYNvcH11gHaPdX+Je414j3yRfoB9YXeQfYR7fnh8g4l+e5eBf38=', '2018-04-17 11:19:38', '2018-04-17 11:19:38', null);
+INSERT INTO `imgs` VALUES ('6', '8', '/images/15239376131891.jpg', 0x7D8A737C86847D889177707E748A7F7C7B888D798A71777A9370808D7E927F917F8083807F6B7E89968F7B82726C88948184827A7D847E78838A80878A79847D72907380906F7681908E8A7B7E77806D7A92877778827883767C6D836F707D7580768F757F897B8D788F7C917E807D6177907D847B7E787C83897E7B97817F7F, '2018-04-17 12:00:13', '2018-04-17 12:00:13', null);
 
 -- ----------------------------
 -- Table structure for levels
