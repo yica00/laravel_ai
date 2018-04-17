@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\CustomerRequest;
 use App\Models\Admin\Category;
 use App\Models\Admin\Customer;
+use App\Models\Admin\Img;
 use App\Models\Admin\Level;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -42,8 +43,25 @@ class CustomerController extends Controller
         $atic['imgs'] = getMultiUrl($request,'imgs');
         $rel = Customer::create($atic);
         if($rel->wasRecentlyCreated){
+            if( $atic['imgs'] ){
+                $arr = explode(',',$atic['imgs']);
+                for ( $i=0; $i<count($arr);$i++ ){
+                    $image = public_path($arr[$i]);
+                    $data = json_decode(get_face_features( $image));
+                    if( $data->data ){
+                        $img = [
+                            'url'=> $arr[$i],
+                            'blov'=> $data->data[0]->attrs->feature_b64,
+                            'customer_id'=> $rel->id,
+                        ];
+                        Img::create($img);
+                    }
+                }
+            }
+
             return back()->with('errors','添加成功');
         }
+
         return back()->withErrors();
     }
 
@@ -66,7 +84,7 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::find($id);
+        $customer = Customer::with('imgs')->find($id);
         $categorys = Category::all();
         $levels = Level::all();
         return view('admin.customer_edit',compact('customer','categorys','levels'));
@@ -82,13 +100,27 @@ class CustomerController extends Controller
     public function update(CustomerRequest $request, $id)
     {
         $atic = Input::except('_token','_method');
+
         $atic['imgs'] = getMultiUrl($request,'imgs');
-        if( ! $atic['imgs'] ){
-            unset( $atic['imgs']);
-        }
+
         $customer = Customer::find($id);
         $rel = $customer->update($atic);
         if( $rel){
+            if( $atic['imgs'] ){
+                $arr = explode(',',$atic['imgs']);
+                for ( $i=0; $i<count($arr);$i++ ){
+                    $image = public_path($arr[$i]);
+                    $data = json_decode(get_face_features( $image));
+                    if( $data->data ){
+                        $img = [
+                            'url'=> $arr[$i],
+                            'blov'=> $data->data[0]->attrs->feature_b64,
+                            'customer_id'=> $customer->id,
+                        ];
+                        Img::create($img);
+                    }
+                }
+            }
             return back()->with('errors','修改成功');
         }
         return back()->withErrors();

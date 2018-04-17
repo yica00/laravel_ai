@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2018-04-16 15:06:51
+Date: 2018-04-17 11:27:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,20 +43,43 @@ CREATE TABLE `customers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `blov` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `imgs` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `level_id` int(11) DEFAULT NULL,
+  `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of customers
 -- ----------------------------
-INSERT INTO `customers` VALUES ('1', '小胖', '很胖，爱吃糖', '/images/15238488733210.jpg,/images/15238488731093.jpg', '2018-04-16 11:21:13', '2018-04-16 11:36:39', null, '1', '1');
-INSERT INTO `customers` VALUES ('2', '小草', '性感，漂亮', '/images/15238500909251.jpg,/images/15238500907888.jpg', '2018-04-16 11:41:30', '2018-04-16 14:30:08', null, '2', '2');
+INSERT INTO `customers` VALUES ('7', '李开复', null, '2018-04-17 10:52:45', '2018-04-17 10:52:45', null, '2', '3', '测试');
+INSERT INTO `customers` VALUES ('6', '陈世旭', null, '2018-04-17 10:49:44', '2018-04-17 10:49:44', null, '1', '1', null);
+
+-- ----------------------------
+-- Table structure for imgs
+-- ----------------------------
+DROP TABLE IF EXISTS `imgs`;
+CREATE TABLE `imgs` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) NOT NULL,
+  `url` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blov` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of imgs
+-- ----------------------------
+INSERT INTO `imgs` VALUES ('1', '6', '/images/15239333847831.jpg', 'bISCdnSad3p+jnmAbpt0ioB/kISVeXR9iGyBhHmMi4qDh4FliWN6goh/fnh+fImPenyAe3eEiYFwhoiJlXyFg4qHhYeAaHBzdnaBhnqNdnyIhpNtf5J0eYB+eH90eoyFg3yNh31yf5GCfoN4hYlwg3SDhYSEhI2HcYp3kHyUc2k=', '2018-04-17 10:49:45', '2018-04-17 10:49:45', null);
+INSERT INTO `imgs` VALUES ('2', '7', '/images/15239335651891.jpg', 'fYpzfIaEfYiRd3B+dIp/fHuIjXmKcXd6k3CAjX6Sf5F/gIOAf2t+iZaPe4JybIiUgYSCen2EfniDioCHinmEfXKQc4CQb3aBkI6Ke353gG16kod3eIJ4g3Z8bYNvcH11gHaPdX+Je414j3yRfoB9YXeQfYR7fnh8g4l+e5eBf38=', '2018-04-17 10:52:45', '2018-04-17 10:52:45', null);
+INSERT INTO `imgs` VALUES ('3', '7', '/images/15239335652849.jpg', 'bISCdnSad3p+jnmAbpt0ioB/kISVeXR9iGyBhHmMi4qDh4FliWN6goh/fnh+fImPenyAe3eEiYFwhoiJlXyFg4qHhYeAaHBzdnaBhnqNdnyIhpNtf5J0eYB+eH90eoyFg3yNh31yf5GCfoN4hYlwg3SDhYSEhI2HcYp3kHyUc2k=', '2018-04-17 10:52:46', '2018-04-17 10:52:46', null);
+INSERT INTO `imgs` VALUES ('4', '6', '/images/15239351781621.jpg', 'fYpzfIaEfYiRd3B+dIp/fHuIjXmKcXd6k3CAjX6Sf5F/gIOAf2t+iZaPe4JybIiUgYSCen2EfniDioCHinmEfXKQc4CQb3aBkI6Ke353gG16kod3eIJ4g3Z8bYNvcH11gHaPdX+Je414j3yRfoB9YXeQfYR7fnh8g4l+e5eBf38=', '2018-04-17 11:19:38', '2018-04-17 11:19:38', null);
 
 -- ----------------------------
 -- Table structure for levels
@@ -110,7 +133,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of migrations
@@ -128,6 +151,7 @@ INSERT INTO `migrations` VALUES ('10', '2018_04_08_110206_create_managers_table'
 INSERT INTO `migrations` VALUES ('11', '2018_04_16_103226_create_customers_table', '1');
 INSERT INTO `migrations` VALUES ('12', '2018_04_16_140948_create_categorys_table', '2');
 INSERT INTO `migrations` VALUES ('13', '2018_04_16_141002_create_levels_table', '2');
+INSERT INTO `migrations` VALUES ('14', '2018_04_17_102032_create_imgs_table', '3');
 
 -- ----------------------------
 -- Table structure for password_resets

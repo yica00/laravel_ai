@@ -68,6 +68,7 @@ Route::group(['as'=>'front'],function (){
             Route::POST('tixian','ApiController@tixian');  //入驻提现
             Route::POST('/up_user_info','ApiController@up_user_info'); //完善个人资料
 
+
         });
     });
 
@@ -105,6 +106,7 @@ Route::group(['as'=>'front'],function (){
         Route::post('/up_password','UserController@do_up_password');
 
 
+
     });
 
     Route::group(['middleware'=>'AdminAuth','prefix'=>'admin'],function (){
@@ -114,7 +116,7 @@ Route::group(['as'=>'front'],function (){
         Route::get('customer/{id}/delete','Admin\CustomerController@destroy');
         Route::get('category/{id}/delete','Admin\CategoryController@destroy');
         Route::get('level/{id}/delete','Admin\LevelController@destroy');
-
+        Route::get('img/{id}/delete','Admin\ImgController@destroy');
     });
 
     Route::group(['middleware'=>'AdminAuth'],function (){

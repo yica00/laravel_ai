@@ -320,3 +320,26 @@ function num11(){
     $number = rand(10000000000,99999999999);
     return $number;
 }
+
+function get_face_features($image_file) {
+    $face_api = "http://58.56.168.70:22222/api/face/image";
+    $ch = curl_init();
+    $image = array(
+        'scale' => 2.0,
+        'image_file' => new \CURLFile($image_file)
+    );
+    curl_setopt($ch, CURLOPT_URL, $face_api);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $image);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_USERAGENT,"centos 7.2");
+    $result = curl_exec($ch);
+    $response_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    if($response_code == 200) {
+        return $result;
+    } else {
+        return false;
+    }
+}

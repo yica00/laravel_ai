@@ -68,14 +68,25 @@
                             </div>
 
 
-
                             <div class="form-group"></label>
                                 <label for="email" class="col-md-3 control-label">照片</label>
                                 <div class="col-md-8">
-                                    <input id="email" type="file"  class="form-control" name="imgs[]" multiple autofocus>
-                                    @foreach( explode(',',$customer->imgs) as $img )
-                                    <img src="{{$img}}" width="100px" />
+                                    @foreach( $customer->imgs as $img )
+                                      <img src="{{$img->url}}" width="100px" id="dele{{$img->id}}" />
+                                       <script>
+                                           $("#dele{{$img->id}}").click(function () {
+                                               if( confirm("你确定删除此图吗？") ){
+                                                   $.get("/admin/img/{{$img->id}}/delete", function(result){
+                                                       alert(result);
+                                                       location.reload();
+                                                   });
+                                               }
+                                           })
+                                       </script>
                                     @endforeach
+
+                                    <input style="margin-top: 20px" name="imgs[]" multiple type="file" class="custom-file-input" id="validatedCustomFile">
+                                    <label class="custom-file-label" for="validatedCustomFile">添加新照片</label>
                                 </div>
                             </div>
 

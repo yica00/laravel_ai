@@ -9,7 +9,7 @@ class Customer extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name','blov','imgs','category_id','level_id','remark'];
+    protected $fillable = ['name','blov','category_id','level_id','remark'];
 
     protected $hidden = ['created_at','updated_at','deleted_at'];
 
@@ -19,5 +19,9 @@ class Customer extends Model
 
     public function level(){
         return $this->belongsTo('App\Models\Admin\Level','level_id','id');
+    }
+
+    public function imgs(){
+        return $this->hasMany('App\Models\Admin\Img','customer_id','id');
     }
 }
